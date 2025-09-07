@@ -33,8 +33,9 @@ processing, each cluster automatically get different seeds.}
 
 \item{method}{matrix of integers. Ordinal trait(s) for age estimation.}
 
-\item{eta}{double. Prior for Cholesky factor, must be > 0. Only used for
-multinormal ordered regression. Default: 1.}
+\item{eta}{double. Prior for the Cholesky factor, must be > 0. Only used for
+multinormal ordered regression for the correlation matrix. 1 implies equal
+correlations, lower values assume higher correlations. Default: 1.}
 
 \item{gomp_b}{double. Optional prior for parameter Gompertz beta. Default:
 NA.}

@@ -16,11 +16,16 @@ knitr::opts_chunk$set(
 )
 ```
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. 
+On modern hardware with usually more than one core, parallel processing is very useful as it cuts down time significantly. In a normal case, you would use as many cores as you specify chains. The default for JAGS is three chains, while for nimble it is four. More chains can help in reaching quality criteria like psrf faster.
 
-## Vignette Info
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
+## Parallel processing in JAGS
 
-## Styles
+Parallel processing in JAGS is straightforward. In bay.ta.jags, you specify the mode of operation with the parameter "method". "rjags" equals single-core-processing, and with "rjparallel" and "parallel", you invoke parallel processing. "parallel" is the usual choice as it gives feedback during processing.
 
+
+## Parallel processing in nimble
+
+Parallel processing in nimble is much more complicated. The handbook gives a general account of the necessary steps (https://r-nimble.org/examples/parallelizing_NIMBLE.html). For a package like ours, there is the additional difficulty that we provide custom functions which have to be supplied in the environment of each cluster. However, simply copying the functions to the global environment would be unacceptable behaviour of a package.
+
+In the end, we hope that we succeeded to make parallel processing with nimble as unintrusive as possible by providing a wrapper function "bay.ta.nimble" which takes care of the different modes of operation. Please note, though, that you will get no feedback during running the function in parallel. Therefore, it is good practice to start with a low number of steps and see how long these take, interpolate the number of necessary steps from the quality measures (especially ESS) and change the settings accordingly.

@@ -186,12 +186,7 @@ extract_corr_from_cholesky <- function(x) {
     # Extract Cholesky sample
     L <- matrix(samples_Ustar[s, ], nrow = n_traits, byrow = FALSE)
     # Reconstruct correlation matrix
-    corr_matrix <- L %*% t(L)
-    # Normalize to ensure diagonals = 1 (numerical precision)
-    D_inv <- diag(1 / sqrt(diag(corr_matrix)))
-    corr_matrix <- D_inv %*% corr_matrix %*% D_inv
-    # Store
-    corr_array[,,s] <- corr_matrix
+    corr_array[,,s] <- crossprod(L)
   }
 
   # Compute posterior mean correlation matrix

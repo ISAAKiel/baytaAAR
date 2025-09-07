@@ -8,8 +8,6 @@ extract_corr_from_cholesky(x)
 }
 \arguments{
 \item{x}{matrix. Output from coda chains}
-
-\item{n_methods}{integer. Number of traits}
 }
 \value{
 a matrix with correlations between traits

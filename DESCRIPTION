@@ -3,7 +3,7 @@ Type: Package
 Title: Bayesian Transition Analysis with MCMC
 Version: 0.1.0
 Author: Nils Müller-Scheeßel, Christoph Rinne
-Maintainer: Nils Müller-Scheeßel <yourself@somewhere.net>
+Maintainer: Nils Müller-Scheeßel <nils.mueller-scheessel@ufg.uni-kiel.de>
 Description: Provides Bayesian age estimation for bioarchaeological skeletal 
     data using ordinal probit regression models implemented in JAGS and NIMBLE. 
     The package is designed to handle multiple ordinal traits of adult individuals

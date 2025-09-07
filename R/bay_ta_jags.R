@@ -150,11 +150,7 @@ bayta.jags <- function(
             thresh[m,k] ~ dnorm(k - 0.5, 1/10^2) T(0.5,)
          }
     }
-    #b  ~ dunif(0.02, 0.1) # b must not be null
     b  ~ dunif(gomp_b_beg, gomp_b_end)
-    #log_a <- (-66.77 * (b - 0.0718) - 7.119) * (-1)
-    #a <- exp(log_a * (-1))
-    #b  ~ dgamma(gamma_gomp_b_shape, gamma_gomp_b_rate) T(0.02,0.1) # b must not be null
     a <- exp(gomp_a0_m * b + gomp_a0_ic)
     M <- 1 / b * log (b/a) + minimum_age
   }

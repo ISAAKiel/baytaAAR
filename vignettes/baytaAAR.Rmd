@@ -16,11 +16,20 @@ knitr::opts_chunk$set(
 )
 ```
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. 
+## JAGS vs. nimble
 
-## Vignette Info
+We use both JAGS and nimble because while JAGS is more user-friendly when it comes to parallel processing, nimble is more versatile in terms of adding custom functions. Therefore, for univariate cases, we propose to use JAGS, while for multivariate applications with multinormal likelihood function, nimble is better suited.
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
+Nimble uses a derivate of the JAGS/BUGS language, so that the models can be used interchangeably with only little modifications (https://r-nimble.org/manual/cha-writing-models.html#sec:supp-feat-bugs).
 
-## Styles
+We interface JAGS with a wrapper function which in turn relies on runjags (##) for running JAGS. nimble is a package in its own right (##).
 
+
+## Gompertz distribution
+
+Gompertz##
+
+
+## Correlation matrix
+
+In our implementation, the correlation matrix stems from a LKJ distribution. We implemented it according to the nimble manual (https://r-nimble.org/manual/cha-writing-models.html#lkj-distribution-for-correlation-matrices).
