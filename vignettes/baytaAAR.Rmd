@@ -27,9 +27,34 @@ We interface JAGS with a wrapper function which in turn relies on runjags (##) f
 
 ## Gompertz distribution
 
-Gompertz##
+Central to baytaAAR is the Gompertz distribution, named after the British
+mathematican W. Gompertz who first presented it in 1825. Despite or even
+because of its simplicity, it is still widely applied. Instrumental for baytaAAR
+is the strong empiric correlation between its two parameters alpha and beta which
+makes it possible to reformulate it as essentially a one-parameter-distribution
+that still captures human mortality. The parameter beta is estimated from the
+observed data, thus at the same time defining the overall level of mortality
+of the respective population and also narrowing down the age range of the
+individuals.
 
 
-## Correlation matrix
+## Parallel processing
 
-In our implementation, the correlation matrix stems from a LKJ distribution. We implemented it according to the nimble manual (https://r-nimble.org/manual/cha-writing-models.html#lkj-distribution-for-correlation-matrices).
+On modern hardware with usually more than one core, parallel processing is very useful as it cuts down time significantly. In a normal case, you would use as many cores as you specify chains. The default for JAGS is three chains, while for nimble it is four. More chains can help in reaching quality criteria like psrf faster.
+
+
+### Parallel processing in JAGS
+
+Parallel processing in JAGS is straightforward. In bay.ta.jags, you specify the mode of operation with the parameter "method". "rjags" equals single-core-processing, and with "rjparallel" and "parallel", you invoke parallel processing. "parallel" is the usual choice as it gives feedback during processing.
+
+
+### Parallel processing in nimble
+
+Parallel processing in nimble is much more complicated. The handbook gives a general account of the necessary steps (https://r-nimble.org/examples/parallelizing_NIMBLE.html). For a package like ours, there is the additional difficulty that we provide custom functions which have to be supplied in the environment of each cluster. However, simply copying the functions to the global environment would be unacceptable behaviour of a package.
+
+In the end, we hope that we succeeded to make parallel processing with nimble as unintrusive as possible by providing a wrapper function "bay.ta.nimble" which takes care of the different modes of operation. Please note, though, that you will get no feedback during running the function in parallel. Therefore, it is good practice to start with a low number of steps and see how long these take, interpolate the number of necessary steps from the quality measures (especially ESS) and change the settings accordingly.
+
+
+## A basic model
+
+---
