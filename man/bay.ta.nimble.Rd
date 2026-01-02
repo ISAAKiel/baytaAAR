@@ -29,13 +29,16 @@ regression or \code{mnorm} for multinormal ordered regression. Default:
 maximally the number of cores -1. Default: 1.}
 
 \item{seed}{integer. Random number for reproducibility. In parallel
-processing, each cluster automatically get different seeds.}
+processing, each cluster automatically gets different seeds.}
 
 \item{method}{matrix of integers. Ordinal trait(s) for age estimation.}
 
 \item{eta}{double. Prior for the Cholesky factor, must be > 0. Only used for
 multinormal ordered regression for the correlation matrix. 1 implies equal
-correlations, lower values assume higher correlations. Default: 1.}
+correlations, lower values assume higher correlations. Default: 1.
+The correlation matrix stems from a LKJ distribution. We implemented it
+according to the nimble manual
+(https://r-nimble.org/manual/cha-writing-models.html#lkj-distribution-for-correlation-matrices).}
 
 \item{gomp_b}{double. Optional prior for parameter Gompertz beta. Default:
 NA.}
@@ -62,8 +65,8 @@ A coda object.
 }
 \description{
 This is a wrapper for the functions \code{bay.ta.nimble.norm} and
-\code{bay.ta.nimble.mnorm}. Both implement the Bayesian Transition Analysis with
-MCMCM with the framework NIMBLE and allow the user to run models with
+\code{bay.ta.nimble.mnorm}. Both implement the Bayesian Transition Analysis
+with MCMCM with the framework NIMBLE and allow the user to run models with
 'simple' ordered regression or multinormal ordered regression, also with
 parallel clusters.
 }

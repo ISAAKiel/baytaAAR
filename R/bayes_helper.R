@@ -1,4 +1,4 @@
-#' @title diagnostic.summary
+#' @title Diagnostic summary of MCMC samples
 #'
 #' @description
 #' Summarising diagnostics partly derived from
@@ -122,7 +122,7 @@ HDIofMCMC = function(
 #'
 #'
 #' @export
-#'
+#' @noRd
 #' @examples
 #' NULL
 #'
@@ -165,7 +165,7 @@ gomp.a0 <- function(
 #' @examples
 #'NULL
 #'
-extract_corr_from_cholesky <- function(x) {
+extract.corr <- function(x) {
   samples_Ustar <- x[,grep("^Ustar\\[", colnames(x))]
 
   # Extract numbers inside the brackets

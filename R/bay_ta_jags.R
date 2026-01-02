@@ -36,11 +36,11 @@
 #'
 #'
 #' @return
-#' One coda object.
+#' a coda object.
 #'
 #' #@examples
-#' # Example usage:
-#' # result <- bayta.jags(method_matrix, c("beta", "age"))
+#'
+#' result <- bayta.jags(method_matrix, c("beta", "age"))
 #'
 #' @rdname bayta.jags
 #' @export

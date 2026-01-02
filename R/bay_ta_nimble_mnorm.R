@@ -16,7 +16,7 @@
 #' coda object
 #'
 #' @export
-#'
+#' @noRd
 #' @examples
 #' NULL
 #'
