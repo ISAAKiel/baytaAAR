@@ -106,7 +106,9 @@ HDIofMCMC = function(
   return( HDIlim )
 }
 
-#' gomp.a0
+#' @title gomp.a0
+#'
+#' @description
 #'
 #' Internal function for generating starting values for the Gompertz model if the starting age is not
 #' 15 years. Not run if the minimum age is actually 15. The original forumula
@@ -153,9 +155,10 @@ gomp.a0 <- function(
 }
 
 
-#' Extract correlation matrix from Cholesky factor
+#' @title Extract correlation matrix from Cholesky factor
 #'
-#' Function for computation of the correlation matrix from Cholesky factor
+#'@description
+#'Function for computation of the correlation matrix from Cholesky factor
 #'
 #' @param x matrix. Output from coda chains
 #'
