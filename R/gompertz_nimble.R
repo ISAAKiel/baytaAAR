@@ -1,4 +1,6 @@
-# gomp
+#' @title Gompertz probability distribution
+#'
+#' @description
 #' The Gompertz distribution and Gompertz function for internal use in
 #' \code{nimble} models
 

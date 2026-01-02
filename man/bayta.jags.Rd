@@ -53,7 +53,7 @@ Default: 7.5.}
 \item{silent.runjags}{TRUE/FALSE Silent mode to run runjags. Default: FALSE.}
 }
 \value{
-One coda object.
+A coda object.
 
 #@examples
 # Example usage:

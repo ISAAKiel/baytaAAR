@@ -8,7 +8,7 @@
 baytaAAR
 -------
 
-With `baytaAAR` you do Bayesian age estimations.
+With `baytaAAR` you do Bayesian age estimations of adults.
 
 For further information, please have a look at the Vignettes.
 
