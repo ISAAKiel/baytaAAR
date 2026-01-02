@@ -16,6 +16,13 @@ knitr::opts_chunk$set(
 )
 ```
 
+## Introduction
+
+`baytaAAR` implements latent trait analysis within a Bayesian Markov Chain Monte Carlo (MCMC) framework.
+
+`baytaAAR` has been introduced and tested in the paper ###.
+
+
 ## JAGS vs. nimble
 
 We use both JAGS and nimble because while JAGS is more user-friendly when it comes to parallel processing, nimble is more versatile in terms of adding custom functions. Therefore, for univariate cases, we propose to use JAGS, while for multivariate applications with multinormal likelihood function, nimble is better suited.
@@ -27,15 +34,7 @@ We interface JAGS with a wrapper function which in turn relies on runjags (##) f
 
 ## Gompertz distribution
 
-Central to baytaAAR is the Gompertz distribution, named after the British
-mathematican W. Gompertz who first presented it in 1825. Despite or even
-because of its simplicity, it is still widely applied. Instrumental for baytaAAR
-is the strong empiric correlation between its two parameters alpha and beta which
-makes it possible to reformulate it as essentially a one-parameter-distribution
-that still captures human mortality. The parameter beta is estimated from the
-observed data, thus at the same time defining the overall level of mortality
-of the respective population and also narrowing down the age range of the
-individuals.
+Central to baytaAAR is the Gompertz distribution, named after the British mathematican W. Gompertz who first presented it in 1825. Despite or even because of its simplicity, it is still widely applied. Instrumental for baytaAAR is the strong empiric correlation between its two parameters alpha and beta which makes it possible to reformulate it as essentially a one-parameter-distribution that still captures human mortality. The parameter beta is estimated from the observed data, thus at the same time defining the overall level of mortality of the respective population and also narrowing down the age range of the individuals.
 
 
 ## Parallel processing

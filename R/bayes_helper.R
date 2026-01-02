@@ -109,7 +109,6 @@ HDIofMCMC = function(
 #' @title gomp.a0
 #'
 #' @description
-#'
 #' Internal function for generating starting values for the Gompertz model if the starting age is not
 #' 15 years. Not run if the minimum age is actually 15. The original forumula
 #' derives from ##.
@@ -158,7 +157,10 @@ gomp.a0 <- function(
 #' @title Extract correlation matrix from Cholesky factor
 #'
 #'@description
-#'Function for computation of the correlation matrix from Cholesky factor
+#' As the LKJ prior uses the Cholesky decomposition of the correlation matrix,
+#' getting the correlation indices from the coda chains is less straightforward
+#' than it seems. It involves taking the cross product from the resulting coda
+#' estimates.
 #'
 #' @param x matrix. Output from coda chains
 #'
