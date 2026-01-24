@@ -25,14 +25,14 @@ Suggests:
     rmarkdown,
     tidyr,
     dplyr,
-    rjags,
-    runjags,
-    coda,
     ggplot2,
     scoringRules
 Depends:
     R (>= 3.5.0),
-    nimble
+    nimble,
+    rjags,
+    runjags,
+    coda
 RdMacros: Rdpack
 VignetteBuilder: knitr
 Config/testthat/edition: 3

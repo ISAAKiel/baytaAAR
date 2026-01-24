@@ -60,6 +60,9 @@ bayta.jags <- function(
     numSavedSteps = 10000,
     silent.jags = F,
     silent.runjags = F) {
+
+  checkmate::assertMatrix(method)
+
   n_methods <- ncol(method)
   Ntotal <- nrow(method)
   nYlevels <- c()
