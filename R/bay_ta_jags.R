@@ -40,12 +40,12 @@
 #'
 #' #@examples
 #'
-#' result <- bayta.jags(method_matrix, c("beta", "age"))
+#' result <- bay.ta.jags(method_matrix, c("beta", "age"))
 #'
-#' @rdname bayta.jags
+#' @rdname bay.ta.jags
 #' @export
 
-bayta.jags <- function(
+bay.ta.jags <- function(
     method,
     parameters,
     gomp_b = NA,
@@ -62,6 +62,8 @@ bayta.jags <- function(
     silent.runjags = F) {
 
   checkmate::assertMatrix(method)
+  checkmate::assertChoice(runjagsMethod, c("rjags", "rjparallel", "parallel"))
+  checkmate::assertCount(nChains, positive = TRUE)
 
   n_methods <- ncol(method)
   Ntotal <- nrow(method)

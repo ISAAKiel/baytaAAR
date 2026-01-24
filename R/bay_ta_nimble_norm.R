@@ -1,4 +1,4 @@
-#' Nimble bayta
+#' Nimble bay.ta
 #'
 #' @param method matrix
 #' @param parameters parameters

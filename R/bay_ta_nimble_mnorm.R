@@ -1,4 +1,4 @@
-#' Multinormal bayta
+#' Multinormal bay.ta
 #'
 #' @param method matrix.
 #' @param parameters parameters

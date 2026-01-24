@@ -85,7 +85,7 @@ bay.ta.nimble  <- function(
   # single core or multi core
   if(cluster_n == 1) { # single core
     if(algorithm == "norm") { # simple ordinal probit regression
-      results <- bay.ta.norm (
+      results <- bay.ta.nimble.norm (
         method = method,
         gomp_b = gomp_b,
         minimum_age = minimum_age,
@@ -94,10 +94,10 @@ bay.ta.nimble  <- function(
         nChains = nChains,
         burnInSteps = burnInSteps,
         thinSteps = thinSteps,
-        numSteps = numSteps
+        numSteps = ceiling(numSteps / nChains)
       )
     } else {
-      results <- bay.ta.mnorm ( # multinormal ordinal probit regression
+      results <- bay.ta.nimble.mnorm ( # multinormal ordinal probit regression
         method = method,
         gomp_b = gomp_b,
         eta = eta,
@@ -107,7 +107,7 @@ bay.ta.nimble  <- function(
         nChains = nChains,
         burnInSteps = burnInSteps,
         thinSteps = thinSteps,
-        numSteps = numSteps
+        numSteps = ceiling(numSteps / nChains)
       )
     }
 
@@ -125,7 +125,7 @@ bay.ta.nimble  <- function(
       parameters = parameters,
       burnInSteps = burnInSteps,
       thinSteps = thinSteps,
-      numSteps = numSteps,
+      numSteps = ceiling(numSteps / cluster_n),
       nChains = 1
     )
 
@@ -134,7 +134,7 @@ bay.ta.nimble  <- function(
     # Export needed functions and objects
     parallel::clusterExport(
       this_cluster,
-      varlist = c("bay.ta.norm", "bay.ta.mnorm","dgomp", "pgomp",
+      varlist = c("bay.ta.nimble.norm", "bay.ta.nimble.mnorm","dgomp", "pgomp",
                   "qgomp", "rgomp","gomp.a0", "shared_args_norm",
                   "shared_args_mnorm", "algorithm", "seed"),
       envir = environment()
@@ -144,10 +144,10 @@ bay.ta.nimble  <- function(
     worker_fun <- function(i, algorithm, args_norm, args_mnorm, seed) {
       if (algorithm == "norm") {
         args_norm$seed <- seed + i
-        do.call(bay.ta.norm, args_norm)
+        do.call(bay.ta.nimble.norm, args_norm)
       } else {
         args_mnorm$seed <- seed + i
-        do.call(bay.ta.mnorm, args_mnorm)
+        do.call(bay.ta.nimble.mnorm, args_mnorm)
       }
     }
 
