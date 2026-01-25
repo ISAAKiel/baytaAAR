@@ -2,7 +2,7 @@
 % Please edit documentation in R/bayes_helper.R
 \name{diagnostic.summary}
 \alias{diagnostic.summary}
-\title{diagnostic.summary}
+\title{Diagnostic summary of MCMC samples}
 \usage{
 diagnostic.summary(
   codaMCMClist,

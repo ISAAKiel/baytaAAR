@@ -26,13 +26,16 @@ Suggests:
     tidyr,
     dplyr,
     ggplot2,
-    scoringRules
+    scoringRules,
+    Metrics,
+    ggpubr
 Depends:
     R (>= 3.5.0),
     nimble,
     rjags,
     runjags,
-    coda
+    coda,
+    checkmate
 RdMacros: Rdpack
 VignetteBuilder: knitr
 Config/testthat/edition: 3

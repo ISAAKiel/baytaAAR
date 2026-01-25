@@ -106,6 +106,18 @@ HDIofMCMC = function(
   return( HDIlim )
 }
 
+
+# max. diagnostics values
+bay.ta.diagnostics <- function(x) {
+  result <- data.frame(PSRF_max = max(x$`PSRF Point est.`[which(x$MCSE > 0)]),
+                       PSRF_upper_max = max(x$`PSRF Upper C.I.`[which(x$MCSE > 0)]),
+                       ESS_min = min(x$ESS[which(x$MCSE > 0)]
+                       ))
+  return(result)
+}
+
+
+
 #' @title gomp.a0
 #'
 #' @description
@@ -151,6 +163,44 @@ gomp.a0 <- function(
     fit_coeff <- unname(fit_coeff)
   }
   return(fit_coeff)
+}
+
+
+#' @title Extract thresholds
+#'
+#'@description
+#' Extract thresholds
+#'
+#' @param x output from function `diagnostic.summary`
+#'
+#' @param mean_value a character string of either "Mode", "Median" or "Mode".
+#' Default: "Mode".
+#'
+#' @return a matrix with threshold values of traits
+#' @export
+#'
+#' @examples
+#'NULL
+#'
+threshold.matrix <- function(x,
+                             mean_value = "Mode")
+  {
+  rn <- rownames(x)
+  sel <- grepl("^thresh_age\\[", rn)
+
+  vals <- x[sel, mean_value]
+
+  idx <- do.call(rbind, regmatches(rn[sel], gregexpr("\\d+", rn[sel])))
+  idx <- matrix(as.integer(idx), ncol = 2)
+
+  nrow <- max(idx[, 1], na.rm = TRUE)
+  ncol <- max(idx[, 2], na.rm = TRUE)
+
+  mat <- matrix(NA, nrow = nrow, ncol = ncol)
+  for (k in seq_along(vals)) {
+    mat[idx[k, 1], idx[k, 2]] <- vals[k]
+  }
+  return(mat)
 }
 
 

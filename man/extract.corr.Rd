@@ -4,7 +4,7 @@
 \alias{extract.corr}
 \title{Extract correlation matrix from Cholesky factor}
 \usage{
-extract.corr(x)
+\method{extract}{corr}(x)
 }
 \arguments{
 \item{x}{matrix. Output from coda chains}
@@ -13,7 +13,10 @@ extract.corr(x)
 a matrix with correlations between traits
 }
 \description{
-Function for computation of the correlation matrix from Cholesky factor
+As the LKJ prior uses the Cholesky decomposition of the correlation matrix,
+getting the correlation indices from the coda chains is less straightforward
+than it seems. It involves taking the cross product from the resulting coda
+estimates.
 }
 \examples{
 NULL

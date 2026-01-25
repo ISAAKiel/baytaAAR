@@ -6,7 +6,7 @@
 #' @param minimum_age min age
 #' @param maximum_age maxage
 #' @param burnInSteps burn-in
-#' @param nChains number of hains
+#' @param nChains number of chains
 #' @param thinSteps thinning
 #' @param numSteps number of steps
 #' @param seed seed
