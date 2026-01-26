@@ -264,3 +264,75 @@ corr.mat.mean <- function(x) {
 
   return(corr_mean)
 }
+
+
+#' @title Plots of stapled probability densities per category
+#'
+#'@description
+#' A plot of probability densities.
+#'
+#' @param mcmc_list a coda mcmc.list object.
+#'
+#' @param df_orig a data.frame of the original raw data
+#'
+#' @param group_col a string specifying the grouping category in `df_orig`.
+#'
+#' @param age_identifier a character string of either "age.s" or "age.s_c" to
+#' select the uncalibrated or calibrated age estimates. Default: "age.s".
+#'
+#' @return a ggplot object with stapled probability density plots
+#'
+#' @export
+#'
+#' @examples
+#'NULL
+#'
+summed.prob.cat <- function(
+    mcmc_list , # mcmc_list
+    age_identifier = "age.s",
+    df_orig,
+    group_col # string
+)
+{
+
+  nChain = length(mcmc_list)
+  t_length <- nrow(df_orig)
+  age_identifier_grep <- ifelse(age_identifier == "age.s",
+                                "age.s[", "age.s_c[")
+
+  xMat = NULL
+  yMat = NULL
+  df_orig$group_factor <- as.factor(df_orig[,group_col])
+  df_orig$factor_cat <- as.numeric(df_orig$group_factor)
+  levels_cat <- sort(unique(df_orig$factor_cat))
+  for ( cLevels in levels_cat) {
+    coda_object_simplified = NULL
+    for ( t in 1:t_length ) {
+      if (cLevels == df_orig$factor_cat[t]) {
+        for ( cIdx in 1:nChain ) {
+          param_name <- paste0(age_identifier_grep, t, "]")
+          onecolumn <- mcmc_list[,param_name][[cIdx]]
+          coda_object_simplified <- rbind(coda_object_simplified, onecolumn)
+        }
+      }
+    }
+    densInfo = density(coda_object_simplified)
+    xMat = cbind(xMat,densInfo$x)
+    yMat = cbind(yMat,densInfo$y)
+  }
+  xMat_melt <- reshape::melt(as.data.frame(xMat), id.vars = NULL)
+  yMat_melt <- reshape::melt(as.data.frame(yMat), id.vars = NULL)
+  dense_xy <- cbind(xMat_melt, yMat_melt[,2])
+  colnames(dense_xy) <- c("category", "x", "y")
+
+  levels(dense_xy$category) <- levels(df_orig$group_factor)
+  df_orig_cat_n <- df_orig %>% group_by(group_factor) %>%
+    dplyr::summarize(n = n())
+  dense_xy$y_prop<-NULL
+  for (i in 1:length(dense_xy$y)) {
+    dense_xy$y_prop[i] <-
+      as.numeric(df_orig_cat_n[as.numeric(dense_xy[i,1]),2] *
+                   dense_xy$y[i]) / nrow(df_orig_cat_n)
+  }
+  return(dense_xy)
+}
