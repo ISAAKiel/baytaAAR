@@ -58,12 +58,16 @@ summarizePost = function(
   paramSampleVec <- na.omit(paramSampleVec)
   meanParam = mean( paramSampleVec )
   medianParam = median( paramSampleVec )
-  dres = density( paramSampleVec )
-  modeParam = dres$x[which.max(dres$y)]
+  dres =  tryCatch({
+    density( paramSampleVec )
+    }, error = function(e) NA)
+  modeParam = tryCatch({
+    dres$x[which.max(dres$y)]
+    }, error = function(e) NA)
   mcmcEffSz = tryCatch({
     es <- round(effectiveSize(paramSampleVec), 1)
     unname(es)
-  }, error = function(e) NA)
+    }, error = function(e) NA)
 
   MCSE = if (!is.na(mcmcEffSz)) sd(paramSampleVec)/sqrt(mcmcEffSz) else NA
 
@@ -107,8 +111,18 @@ HDIofMCMC = function(
 }
 
 
-# max. diagnostics values
-bay.ta.diagnostics <- function(x) {
+#' @title Maximum and minimum diagnostic values
+#'
+#' @description
+#' max. and min diagnostics values
+#'
+#' @rdname diagnostics.max.min
+#' @export
+#'
+#' @examples
+#' NULL
+#'
+diagnostics.max.min <- function(x) {
   result <- data.frame(PSRF_max = max(x$`PSRF Point est.`[which(x$MCSE > 0)]),
                        PSRF_upper_max = max(x$`PSRF Upper C.I.`[which(x$MCSE > 0)]),
                        ESS_min = min(x$ESS[which(x$MCSE > 0)]
@@ -199,6 +213,7 @@ threshold.matrix <- function(x,
   mat <- matrix(NA, nrow = nrow, ncol = ncol)
   for (k in seq_along(vals)) {
     mat[idx[k, 1], idx[k, 2]] <- vals[k]
+    mat[mat < 0] <- NA
   }
   return(mat)
 }
@@ -220,7 +235,7 @@ threshold.matrix <- function(x,
 #' @examples
 #'NULL
 #'
-extract.corr <- function(x) {
+corr.mat.mean <- function(x) {
   samples_Ustar <- x[,grep("^Ustar\\[", colnames(x))]
 
   # Extract numbers inside the brackets

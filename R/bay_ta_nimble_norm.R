@@ -41,13 +41,13 @@ bay.ta.nimble.norm <- function(
   thresh <- NULL
   for (i in 1:n_methods) nYlevels[i] <- as.numeric(max(na.omit(method[,i])))
   nthresh <- nYlevels-1
-  thresh_init <- matrix(NA,n_methods, max(nthresh),)
+  thresh_init <- matrix(NA, n_methods, max(nthresh))
   for (i in 1:n_methods) {
     if ( nthresh[i] > 1) {
-      for (j in 2: (nthresh[i] )) {
+      for (j in 2: max(nthresh)) {
         thresh_init[i,j] <- j - 0.5
       } } }
-  thresh <- matrix(NA,n_methods, max(nthresh),)
+  thresh <- matrix(NA, n_methods, max(nthresh))
   for (i in 1:n_methods) thresh[i,1] <-  0.5
 
   if(!is.na(gomp_b)) {

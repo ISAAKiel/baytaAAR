@@ -217,9 +217,30 @@ bay.ta.plot <- function(x,
    return(plot_result)
 }
 
-
-# function for sequential output of cumulative binomial test
-seq.binom.test <- function(MCMC_list,
+#' @title Sequential output of cumulative binomial test
+#'
+#'@description
+#' Sequential output of cumulative binomial test
+#'
+#' @param x a MCMC list
+#'
+#' @param selector a vector of individuals to include. Optional.
+#'
+#' @param HDImass a numeric with the probability range.
+#'
+#' @param known_age a vector with the known age-at-death.
+#'
+#' @param age_identifier a character string of either "age.s" or "age.s_c" to
+#' select the uncalibrated or calibrated age estimates. Default: "age.s".
+#'
+#' @return a data.frame
+#'
+#' @export
+#'
+#' @examples
+#'NULL
+#'
+sequential.binom.test <- function(x,
                              HDImass = 0.95,
                              known_age,
                              selector = NA,
