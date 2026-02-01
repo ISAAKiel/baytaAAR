@@ -131,6 +131,37 @@ diagnostics.max.min <- function(x) {
 }
 
 
+#' @title HDI median range of age estimates
+#'
+#'@description
+#' Comparison with known age-at-death
+#'
+#' @param x a mcmc list.
+#'
+#' @param age_identifier a character string of either "age.s" or "age.s_c" to
+#' select the uncalibrated or calibrated age estimates. Default: "age.s".
+#'
+#' @return a vector with mean, median and mode of the HDI range
+#'
+#' @export
+#'
+#' @examples
+#'NULL
+#'
+hdi.agerange <- function(x, age_identifier = "age.s")
+  {
+  age_identifier_grep <- ifelse(age_identifier == "age.s",
+                                "^age.s\\[", "^age.s_c")
+
+  x_diag_red <- x[grep(age_identifier_grep,rownames(x)),]
+  hdi_diff <- x_diag_red$HDIhigh - x_diag_red$HDIlow
+  hdi_mean <- mean(hdi_diff)
+  hdi_median <- median(hdi_diff)
+  hdi_dens <- density( hdi_diff )
+  hid_mode <- hdi_dens$x[which.max(hdi_dens$y)]
+  return(c(hdi_mean, hdi_median, hid_mode))
+  }
+
 
 #' @title gomp.a0
 #'
@@ -266,10 +297,10 @@ corr.mat.mean <- function(x) {
 }
 
 
-#' @title Plots of stapled probability densities per category
+#' @title Summed or mean probability densities per category
 #'
 #'@description
-#' A plot of probability densities.
+#' Summing or averaging probability densities per category.
 #'
 #' @param mcmc_list a coda mcmc.list object.
 #'
@@ -277,62 +308,115 @@ corr.mat.mean <- function(x) {
 #'
 #' @param group_col a string specifying the grouping category in `df_orig`.
 #'
+#' @param mode a string specifying the resulting data.frame of summed
+#' probabilities or mean probabilities per category. Either `mean` or `summed`.
+#'
 #' @param age_identifier a character string of either "age.s" or "age.s_c" to
 #' select the uncalibrated or calibrated age estimates. Default: "age.s".
 #'
-#' @return a ggplot object with stapled probability density plots
+#' @return a data.frame with either probability summed by category or mean
+#' per category.
 #'
 #' @export
 #'
 #' @examples
 #'NULL
 #'
-summed.prob.cat <- function(
-    mcmc_list , # mcmc_list
+prob.cat <- function(
+    mcmc_list,
     age_identifier = "age.s",
     df_orig,
-    group_col # string
-)
-{
+    group_col,
+    mode = c("mean", "summed")
+) {
 
-  nChain = length(mcmc_list)
+  mode <- match.arg(mode)
+  nChain <- length(mcmc_list)
   t_length <- nrow(df_orig)
   age_identifier_grep <- ifelse(age_identifier == "age.s",
                                 "age.s[", "age.s_c[")
 
-  xMat = NULL
-  yMat = NULL
-  df_orig$group_factor <- as.factor(df_orig[,group_col])
+  df_orig$group_factor <- droplevels(as.factor(df_orig[, group_col]))
   df_orig$factor_cat <- as.numeric(df_orig$group_factor)
   levels_cat <- sort(unique(df_orig$factor_cat))
-  for ( cLevels in levels_cat) {
-    coda_object_simplified = NULL
-    for ( t in 1:t_length ) {
-      if (cLevels == df_orig$factor_cat[t]) {
-        for ( cIdx in 1:nChain ) {
-          param_name <- paste0(age_identifier_grep, t, "]")
-          onecolumn <- mcmc_list[,param_name][[cIdx]]
-          coda_object_simplified <- rbind(coda_object_simplified, onecolumn)
+
+  if (mode == "mean") {
+
+    # ---- Category-level posterior samples ----
+    cat_post <- list()
+
+    for (cLevels in levels_cat) {
+      cat_samples <- NULL
+
+      for (cIdx in 1:nChain) {
+        chain_samples <- NULL
+
+        for (t in 1:t_length) {
+          if (cLevels == df_orig$factor_cat[t]) {
+            param_name <- paste0(age_identifier_grep, t, "]")
+            chain_samples <- cbind(chain_samples,
+                                   mcmc_list[, param_name][[cIdx]])
+          }
+        }
+
+        cat_samples <- c(cat_samples, rowMeans(chain_samples))
+      }
+
+      cat_post[[as.character(cLevels)]] <- cat_samples
+    }
+
+    dense_xy <- data.frame(
+      category = factor(rep(levels(df_orig$group_factor),
+                            each = length(cat_post[[1]])),
+                        levels = levels(df_orig$group_factor)),
+      value = unlist(cat_post)
+    )
+
+    return(dense_xy)
+
+  } else {
+
+    # ---- Mixture density per category ----
+    xMat <- NULL
+    yMat <- NULL
+
+    for (cLevels in levels_cat) {
+      coda_object_simplified <- NULL
+
+      for (t in 1:t_length) {
+        if (cLevels == df_orig$factor_cat[t]) {
+          for (cIdx in 1:nChain) {
+            param_name <- paste0(age_identifier_grep, t, "]")
+            onecolumn <- mcmc_list[, param_name][[cIdx]]
+            coda_object_simplified <- rbind(coda_object_simplified, onecolumn)
+          }
         }
       }
-    }
-    densInfo = density(coda_object_simplified)
-    xMat = cbind(xMat,densInfo$x)
-    yMat = cbind(yMat,densInfo$y)
-  }
-  xMat_melt <- reshape::melt(as.data.frame(xMat), id.vars = NULL)
-  yMat_melt <- reshape::melt(as.data.frame(yMat), id.vars = NULL)
-  dense_xy <- cbind(xMat_melt, yMat_melt[,2])
-  colnames(dense_xy) <- c("category", "x", "y")
 
-  levels(dense_xy$category) <- levels(df_orig$group_factor)
-  df_orig_cat_n <- df_orig %>% group_by(group_factor) %>%
-    dplyr::summarize(n = n())
-  dense_xy$y_prop<-NULL
-  for (i in 1:length(dense_xy$y)) {
-    dense_xy$y_prop[i] <-
-      as.numeric(df_orig_cat_n[as.numeric(dense_xy[i,1]),2] *
-                   dense_xy$y[i]) / nrow(df_orig_cat_n)
+      densInfo <- density(coda_object_simplified)
+      xMat <- cbind(xMat, densInfo$x)
+      yMat <- cbind(yMat, densInfo$y)
+    }
+
+    xMat_melt <- reshape::melt(as.data.frame(xMat), id.vars = NULL)
+    yMat_melt <- reshape::melt(as.data.frame(yMat), id.vars = NULL)
+    dense_xy <- cbind(xMat_melt, yMat_melt[, 2])
+    colnames(dense_xy) <- c("category", "x", "y")
+
+    levels(dense_xy$category) <- levels(df_orig$group_factor)
+
+    df_orig_cat_n <- df_orig %>%
+      dplyr::group_by(group_factor) %>%
+      dplyr::summarize(n = n(), .groups = "drop")
+
+    dense_xy$y_prop <- NULL
+    for (i in 1:length(dense_xy$y)) {
+      dense_xy$y_prop[i] <-
+        as.numeric(df_orig_cat_n[as.numeric(dense_xy[i, 1]), 2] *
+                     dense_xy$y[i]) / nrow(df_orig_cat_n)
+    }
+
+    return(dense_xy)
   }
-  return(dense_xy)
 }
+

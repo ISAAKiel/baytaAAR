@@ -34,6 +34,7 @@ bay.ta.nimble.norm <- function(
 ){
 
   library(nimble)
+  nimbleOptions(verbose = F)
 
   n_methods = ncol(method)
   Ntotal = nrow(method)
@@ -50,6 +51,24 @@ bay.ta.nimble.norm <- function(
   thresh <- matrix(NA, n_methods, max(nthresh))
   for (i in 1:n_methods) thresh[i,1] <-  0.5
 
+  y_init <- matrix(NA, nrow = Ntotal, ncol = n_methods)
+
+  for (j in 1:n_methods) {
+    for (i in 1:Ntotal) {
+      if (is.na(method[i,j])) {
+        y_init[i,j] <- sample(1:nYlevels[j], 1)
+      }
+    }
+  }
+
+  ystar_init <- matrix(NA, nrow = Ntotal, ncol = n_methods)
+  for (j in 1:n_methods) {
+    for (i in 1:Ntotal) {
+      k <- if (!is.na(method[i,j])) method[i,j] else y_init[i,j]
+      ystar_init[i,j] <- k - runif(1, -0.2, 0.2)
+    }
+  }
+
   if(!is.na(gomp_b)) {
     gomp_b_beg <- gomp_b - 0.001
     gomp_b_end <- gomp_b + 0.001
@@ -62,8 +81,10 @@ bay.ta.nimble.norm <- function(
 
   initsList <- function(){
     init_list <- list(
+      y = y_init - 1,
       thresh = thresh_init,
-      ystar = method - runif(1, 0.8, 1.2),
+      ystar = ystar_init - 1,
+      #ystar = method - runif(1, 0.8, 1.2),
       beta = runif(n_methods, 0.5, 1),
       beta0 = runif(n_methods, -10, -3),
       age = runif(Ntotal, 20, 40),

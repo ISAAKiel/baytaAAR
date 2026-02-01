@@ -51,6 +51,13 @@ bay.ta.nimble.mnorm <- function(
   thresh <- matrix(NA, n_methods, max(nthresh))
   for (i in 1:n_methods) thresh[i,1] <-  0.5
 
+  ystar_init <- matrix(NA, nrow = Ntotal, ncol = n_methods)
+  for (j in 1:n_methods) {
+    for (i in 1:Ntotal) {
+      ystar_init[i,j] <- method[i,j] - runif(1, -0.2, 0.2)
+    }
+  }
+
   if(!is.na(gomp_b)) {
     gomp_b_beg <- gomp_b - 0.001
     gomp_b_end <- gomp_b + 0.001
@@ -65,7 +72,7 @@ bay.ta.nimble.mnorm <- function(
   initsList <- function(){
     init_list <- list(
       thresh = thresh_init,
-      ystar = method - runif(1, 0.8, 1.2),
+      ystar = ystar_init - 1,
       beta = runif(n_methods, 0.5, 1),
       beta0 = runif(n_methods, -10, -3),
       age = runif(Ntotal, 20, 40),

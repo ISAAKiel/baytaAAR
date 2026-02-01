@@ -25,8 +25,6 @@ age.estimate.summarize <- function(x,
                                    chosen_mean = "Mode",
                                    known_age,
                                    age_identifier = "age.s",
-                                   HDIhigh = NULL,
-                                   HDIlow = NULL,
                                    HDImass = 0.95,
                                    gelman_diag = TRUE,
                                    gelman_diag_multivariate = F) {
@@ -41,7 +39,7 @@ age.estimate.summarize <- function(x,
                                  gelman_diag_multivariate)
   x_diag_red <- x_diag[grep(age_identifier_grep,rownames(x_diag)),]
   ages <- x_mcmcMat[,grep(age_identifier_grep,colnames(x_mcmcMat))]
-  if (length(selector) > 0 ) {
+  if (!is.na(selector) ) {
     known_age <- known_age[selector]
     x_diag_red <- x_diag_red[selector,]
     ages <- ages[,selector]
@@ -66,9 +64,8 @@ age.estimate.summarize <- function(x,
                                RMSE = Metrics::rmse(known_age, estimated_age),
                                TMNLP = tmnlp_res,
                                CRPS = crps_res)
-  if (length(HDIhigh) > 0 & length(HDIlow) > 0) {
-    HDIhigh <- x_diag_red[,HDIhigh]
-    HDIlow <- x_diag_red[,HDIlow]
+    HDIhigh <- x_diag_red[,"HDIhigh"]
+    HDIlow <- x_diag_red[,"HDIlow"]
     age_estimation$Coverage <-
       sum(ifelse(known_age >= HDIlow - 0.05 & known_age <=
                    HDIhigh + 0.05, 1, 0)) / length(known_age) * 100
@@ -78,13 +75,6 @@ age.estimate.summarize <- function(x,
                                                          probs = c( 0.025))
     age_estimation$HDI_Diff_quant_975 <- stats::quantile(HDIhigh - HDIlow,
                                                          probs = c(0.975))
-  } else {
-    age_estimation$Coverage <- NA
-    age_estimation$HDI_Diff_median <- NA
-    age_estimation$HDI_Diff_quant_025 <- NA
-    age_estimation$HDI_Diff_quant_975 <- NA
-  }
-
   return(age_estimation)
 }
 
@@ -153,7 +143,7 @@ bay.ta.plot <- function(x,
                                 "^age.s\\[", "^age.s_c")
   x_red <- x[grep(age_identifier_grep,rownames(x)),]
   age_min <- round(min(x_red$HDIlow))
-  if (length(selector) > 0 ) {
+  if (!is.na(selector) ) {
     x_red <- x_red[selector,]
     known_age <- known_age[selector]
   }
@@ -249,7 +239,7 @@ sequential.binom.test <- function(x,
   age_identifier_grep <- ifelse(age_identifier == "age.s",
                                 "^age.s\\[", "^age.s_c")
   for (i in HDImass) {
-    MCMC_diag  <-  diagnostic.summary(MCMC_list, HDImass = i,
+    MCMC_diag  <-  diagnostic.summary(x, HDImass = i,
                                       gelman_diag = T,
                                       gelman_diag_multivariate = F)
     MCMC_diag_age <- MCMC_diag[grep(age_identifier_grep,rownames(MCMC_diag)),]

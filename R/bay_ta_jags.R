@@ -79,6 +79,23 @@ bay.ta.jags <- function(
   thresh <- matrix(NA, n_methods, max(nthresh))
   for (i in 1:n_methods) thresh[i,1] <-  0.5
 
+  y_init <- matrix(NA, nrow = Ntotal, ncol = n_methods)
+  for (j in 1:n_methods) {
+    for (i in 1:Ntotal) {
+      if (is.na(method[i,j])) {
+        y_init[i,j] <- sample(1:nYlevels[j], 1)
+      }
+    }
+  }
+
+  ystar_init <- matrix(NA, nrow = Ntotal, ncol = n_methods)
+  for (j in 1:n_methods) {
+    for (i in 1:Ntotal) {
+      k <- if (!is.na(method[i,j])) method[i,j] else y_init[i,j]
+      ystar_init[i,j] <- k - runif(1, -0.2, 0.2)
+    }
+  }
+
   ones <- rep(1,Ntotal)
   C <- 100000
 
@@ -101,7 +118,7 @@ bay.ta.jags <- function(
       .RNG.name = sample(RNG_list, 1),
       .RNG.seed = sample(1:1e+06, 1),
       thresh = thresh_init,
-      ystar = method - runif(1, 0.8, 1.2),
+      ystar = ystar_init - 1,
       beta = runif(n_methods, 0.5, 1),
       beta0 = runif(n_methods, -10, -3),
       age = runif(Ntotal, 20, 40)

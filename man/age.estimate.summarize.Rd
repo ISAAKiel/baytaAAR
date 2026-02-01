@@ -10,8 +10,6 @@ age.estimate.summarize(
   chosen_mean = "Mode",
   known_age,
   age_identifier = "age.s",
-  HDIhigh = NULL,
-  HDIlow = NULL,
   HDImass = 0.95,
   gelman_diag = TRUE,
   gelman_diag_multivariate = F
