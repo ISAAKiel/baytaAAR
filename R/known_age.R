@@ -245,7 +245,7 @@ sequential.binom.test <- function(x,
     MCMC_diag_age <- MCMC_diag[grep(age_identifier_grep,rownames(MCMC_diag)),]
     MCMC_diag_age$known_age <- known_age
 
-    if(length(selector) > 0 ) {
+    if(!is.na(selector) ) {
       MCMC_diag_age <- MCMC_diag_age[selector,]
     }
 
