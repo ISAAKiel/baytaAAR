@@ -32,11 +32,11 @@ dgomp <- nimbleFunction(
     returnType(double(0))
 
     # Compute the density of the Gompertz distribution
-    density_val <- a * exp(b * x) * exp(-a / b * (exp(b * x) - 1))
+    log_density <- log(a) + b * x - (a / b) * (exp(b * x) - 1)
 
     # Return the log density if log.p = TRUE
-    if(log) return(log(density_val))
-    else return(density_val)
+    if(log) return(log_density)
+    else return(exp(log_density))
   }
 )
 
@@ -85,7 +85,7 @@ qgomp <- nimbleFunction(
     }
 
     # Solve for the quantile (inverse CDF)
-    return(-log(1 - p) / b + log(a) / b)
+    return( (1/b) * log(1 - (b/a) * log(1 - p)) )
   }
 )
 

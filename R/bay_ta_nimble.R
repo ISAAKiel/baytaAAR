@@ -69,15 +69,15 @@ bay.ta.nimble  <- function(
   if(algorithm == "mnorm" & ncol(method) < 2) {
     stop(message("With multinormal ordinal regression, there need to be two traits or more.\n"))
   }
-  if(algorithm == "mnorm" & anyNA(method)) {
-    stop(message("
-    With multinormal ordinal regression, all nodes must be observed or unobserved,
-    traits with partially NAs (missing data) are not allowed. You have 4 options:\n
-    1) Delete all columns which contain NAs.\r
-    2) Delete all rows which contain NAs.\r
-    3) Impute the missing data manually.\r
-    4) Run a multiple ordinal regression (algorithm = \"norm\") instead.\n"))
-  }
+  # if(algorithm == "mnorm" & anyNA(method)) {
+  #   stop(message("
+  #   With multinormal ordinal regression, all nodes must be observed or unobserved,
+  #   traits with partially NAs (missing data) are not allowed. You have 4 options:\n
+  #   1) Delete all columns which contain NAs.\r
+  #   2) Delete all rows which contain NAs.\r
+  #   3) Impute the missing data manually.\r
+  #   4) Run a multiple ordinal regression (algorithm = \"norm\") instead.\n"))
+  # }
 
   start_time <- Sys.time()
   cat("Starting Time:", format(start_time, "%d %b %Y %X"), "\n")

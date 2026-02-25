@@ -15,6 +15,8 @@
 #'
 #'
 #' @param codaMCMClist List. List in codaMCMClist format.
+#' @param minimum_age numeric. Minimum age as specified in the
+#' model. Default = NULL.
 #' @param HDImass numeric. Value within 0 and 1. Default = 0.95.
 #' @param gelman_diag logical. If TRUE, the gelman diagnostics for computing
 #' the PSRF is invoked. Default: TRUE
@@ -25,12 +27,51 @@
 #' @export
 diagnostic.summary <- function(
     codaMCMClist,
+    minimum_age = NULL, # for M
     HDImass = 0.95,
     gelman_diag = TRUE,
     gelman_diag_multivariate = TRUE
     ) {
-  parameterNames = varnames(codaMCMClist)
   mcmcMat = as.matrix(codaMCMClist,chains=TRUE)
+
+  # add M from post-processing
+  if(all(c("a","b") %in% colnames(mcmcMat)) & length(minimum_age) > 0) {
+    M_draws <- 1/mcmcMat[,"b"] * log(mcmcMat[,"b"]/mcmcMat[,"a"]) +
+      minimum_age
+    mcmcMat <- cbind(mcmcMat, M = M_draws)
+  }
+
+  # add thresh_log and thresh_age from post-processing
+  thresh_cols <- grep("^thresh\\[", colnames(mcmcMat), value=TRUE)
+  thresh_len <- length(thresh_cols)
+  beta0_cols <- grep("^beta0", colnames(mcmcMat), value=TRUE)
+
+  for(col in thresh_cols) {
+    # extract indices m,k
+    idx <- gsub("thresh\\[|\\]", "", col)
+    idx <- strsplit(idx, ",")[[1]]
+    m <- idx[1]
+    k <- idx[2]
+    if (length(beta_cols) > 1) {
+      beta_col  <- paste0("beta[", m, "]")
+      beta0_col <- paste0("beta0[", m, "]")
+    } else {
+      beta0_col <- "beta0"
+      beta_col <- "beta"
+    }
+
+    if(all(c(beta_col, beta0_col) %in% colnames(mcmcMat))) {
+      thresh_log_draws <- (unlist(mcmcMat[,col]) - unlist(mcmcMat[,beta0_col])) /
+        unlist(mcmcMat[,beta_col])
+      new_name_log  <- paste0("thresh_log[", m, ",", k, "]")
+      new_name_age  <- paste0("thresh_age[", m, ",", k, "]")
+      mcmcMat <- cbind( mcmcMat, thresh_log_draws, exp(thresh_log_draws) )
+      colnames(mcmcMat)[(ncol(mcmcMat)-1):ncol(mcmcMat)] <-
+        c(new_name_log, new_name_age)
+    }
+  }
+  parameterNames <- colnames(mcmcMat)
+
   summaryInfo = NULL
   for ( parName in parameterNames ) {
     summaryInfo = rbind( summaryInfo , summarizePost( mcmcMat[,parName], credMass = HDImass ) )
@@ -39,7 +80,11 @@ diagnostic.summary <- function(
   }
   summaryInfo_df <- as.data.frame(summaryInfo)
   if(gelman_diag == TRUE) {
-    psrf_df <- as.data.frame((gelman.diag(codaMCMClist, multivariate = gelman_diag_multivariate))$psrf)
+    psrf_df <- as.data.frame((gelman.diag(chelsea_ps_list, multivariate = F))$psrf)
+    thresh_NA <- data.frame(matrix(NA, 1 + 2 * thresh_len, 2))
+    colnames(thresh_NA) <- colnames(psrf_df)
+    rownames(thresh_NA) <- colnames(mcmcMat)[-c(1:(ncol(mcmcMat)- (1 + 2 * thresh_len)))]
+    psrf_df <- rbind(psrf_df,thresh_NA)
     colnames(psrf_df) <- c("PSRF Point est.", "PSRF Upper C.I.")
     diagnostic_summary <- cbind(psrf_df, summaryInfo_df)
   }  else {

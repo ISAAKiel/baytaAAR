@@ -32,10 +32,6 @@ bay.ta.nimble.norm <- function(
     numSteps = 10000,
     seed = FALSE
 ){
-
-  library(nimble)
-  nimbleOptions(verbose = F)
-
   n_methods = ncol(method)
   Ntotal = nrow(method)
   nYlevels <- NULL
@@ -51,8 +47,10 @@ bay.ta.nimble.norm <- function(
   thresh <- matrix(NA, n_methods, max(nthresh))
   for (i in 1:n_methods) thresh[i,1] <-  0.5
 
-  y_init <- matrix(NA, nrow = Ntotal, ncol = n_methods)
+  thresh_k <- thresh_init
+  for (i in 1:n_methods) thresh_k[i,1] <-  0.5
 
+  y_init <- matrix(NA, nrow = Ntotal, ncol = n_methods)
   for (j in 1:n_methods) {
     for (i in 1:Ntotal) {
       if (is.na(method[i,j])) {
@@ -84,7 +82,6 @@ bay.ta.nimble.norm <- function(
       y = y_init - 1,
       thresh = thresh_init,
       ystar = ystar_init - 1,
-      #ystar = method - runif(1, 0.8, 1.2),
       beta = runif(n_methods, 0.5, 1),
       beta0 = runif(n_methods, -10, -3),
       age = runif(Ntotal, 20, 40),
@@ -106,7 +103,8 @@ bay.ta.nimble.norm <- function(
   )
 
   dataList = list(y = method - 1,
-                  thresh = thresh
+                  thresh = thresh,
+                  thresh_k = thresh_k
   )
 
   bay_ta <- nimbleCode({
@@ -124,31 +122,33 @@ bay.ta.nimble.norm <- function(
     for (m in 1 : n_methods) {
       beta[m] ~ T(dnorm(0, 1/10^2), 0, )
       beta0[m] ~ T(dnorm( 0 , 1/10^2 ), , 0)
-      for ( k in 1: (nthresh[m] ) ) {
-        thresh_age_log[m,k] <- ( thresh[m,k] - beta0[m] ) / (beta[m] + 0.001) # adding 0.001 to prevent division by 0
-        thresh_age[m,k] <- exp(thresh_age_log[m,k])
-      }
       for ( k in 2: (nthresh[m]) ) {
-        thresh[m,k] ~  T(dnorm(k - 0.5, 1/10^2), thresh[m,k-1], )
+        thresh[m,k] ~  T(dnorm(thresh_k[m,k], 1/10^2), thresh[m,k-1], )
       }
     }
     b  ~ dunif(gomp_b_beg, gomp_b_end)
     a <- exp(gomp_a0_m * b + gomp_a0_ic)
-    M <- 1 / b * log (b/a) + minimum_age
   })
 
-  samples <- nimbleMCMC(
+  bayta_model <- nimbleModel(
     code = bay_ta,
+    name = "bayta",
     constants = constantList,
     data = dataList,
-    inits = initsList(),
-    monitors = parameters,
-    niter = numSteps,
-    nburnin = burnInSteps,
-    thin = thinSteps,
-    nchains = nChains,
-    samplesAsCodaMCMC = TRUE,
-    setSeed = seed
+    inits = initsList()
   )
+  bayta_conf <- configureMCMC(bayta_model, onlySlice = TRUE)
+  bayta_conf$addMonitors(parameters)
+  comp_model <- compileNimble(bayta_model)
+  bayta_MCMC <- buildMCMC(bayta_conf)
+  comp_bayta_MCMC <- compileNimble(bayta_MCMC)
+  samples <- runMCMC(comp_bayta_MCMC,
+          niter = numSteps,
+          nburnin = burnInSteps,
+          thin = thinSteps,
+          nchains = nChains,
+          setSeed = seed,
+          samplesAsCodaMCMC = TRUE
+          )
   return(samples)
 }

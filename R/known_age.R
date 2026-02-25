@@ -21,7 +21,7 @@
 #'NULL
 #'
 age.estimate.summarize <- function(x,
-                                   selector = NA,
+                                   selector = NULL,
                                    chosen_mean = "Mode",
                                    known_age,
                                    age_identifier = "age.s",
@@ -39,7 +39,7 @@ age.estimate.summarize <- function(x,
                                  gelman_diag_multivariate)
   x_diag_red <- x_diag[grep(age_identifier_grep,rownames(x_diag)),]
   ages <- x_mcmcMat[,grep(age_identifier_grep,colnames(x_mcmcMat))]
-  if (!is.na(selector) ) {
+  if (length(selector) > 0 ) {
     known_age <- known_age[selector]
     x_diag_red <- x_diag_red[selector,]
     ages <- ages[,selector]
@@ -133,7 +133,7 @@ tmnlp <- function(x, mcmcMat) {
 #'NULL
 #'
 bay.ta.plot <- function(x,
-                        selector = NA,
+                        selector = NULL,
                         age_identifier = "age.s",
                         known_age,
                         mean_choice
@@ -143,7 +143,7 @@ bay.ta.plot <- function(x,
                                 "^age.s\\[", "^age.s_c")
   x_red <- x[grep(age_identifier_grep,rownames(x)),]
   age_min <- round(min(x_red$HDIlow))
-  if (!is.na(selector) ) {
+  if (length(selector) > 0)  {
     x_red <- x_red[selector,]
     known_age <- known_age[selector]
   }
@@ -233,7 +233,7 @@ bay.ta.plot <- function(x,
 sequential.binom.test <- function(x,
                              HDImass = 0.95,
                              known_age,
-                             selector = NA,
+                             selector = NULL,
                              age_identifier = "age.s") {
   result_df <- data.frame()
   age_identifier_grep <- ifelse(age_identifier == "age.s",
@@ -245,7 +245,7 @@ sequential.binom.test <- function(x,
     MCMC_diag_age <- MCMC_diag[grep(age_identifier_grep,rownames(MCMC_diag)),]
     MCMC_diag_age$known_age <- known_age
 
-    if(!is.na(selector) ) {
+    if(length(selector) > 0 ) {
       MCMC_diag_age <- MCMC_diag_age[selector,]
     }
 

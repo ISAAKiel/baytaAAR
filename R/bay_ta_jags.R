@@ -164,17 +164,12 @@ bay.ta.jags <- function(
         beta[m] ~ dnorm(0, 1/10^2) T(0,)
         beta0[m] ~ dnorm( 0 , 1/10^2 )T(,0)
         thresh_sort[m,1:nthresh[m]] <- sort(thresh[m,1:nthresh[m]])
-        for ( k in 1: (nthresh[m] ) ) {
-          thresh_age_log[m,k] <- ( thresh[m,k] - beta0[m] ) / (beta[m] + 0.001) # adding 0.001 to prevent division by 0
-          thresh_age[m,k] <- exp(thresh_age_log[m,k])
-        }
       for ( k in 2: (nthresh[m]) ) {
             thresh[m,k] ~ dnorm(k - 0.5, 1/10^2) T(0.5,)
          }
     }
     b  ~ dunif(gomp_b_beg, gomp_b_end)
     a <- exp(gomp_a0_m * b + gomp_a0_ic)
-    M <- 1 / b * log (b/a) + minimum_age
   }
   " # close quote for modelString
 
