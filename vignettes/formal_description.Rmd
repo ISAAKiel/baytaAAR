@@ -19,49 +19,58 @@ $$
 ---
 
 $$
-\textbf{Gompertz age prior}
+\beta \sim \text{Uniform}(a = 0.02,\; b = 0.1)
 $$
 
 $$
-\beta \sim \text{Uniform}(a = 0.02,\; b = 0.1),
+\alpha = \exp(-66.77 \times \beta - 2.325)
 $$
 
 $$
-\alpha = \exp(-66.77 \times \beta - 2.324914),
-$$
-
-$$
-t_i \sim \text{Gompertz}(\alpha = \alpha,\; \beta = \beta,\; 
-a = 15,\; b = 100).
+t_i \sim \text{Gompertz}(\alpha,\; \beta,\; a = 15,\; b = 100)
 $$
 The Gompertz density is
 $$
-f(t_i \mid \alpha,\beta)
+f(t \mid \alpha,\beta)
 =
-\alpha \exp(\beta t_i)
+\alpha \times \exp(\beta \times t) \times
 \exp\!\left(
--\frac{\alpha}{\beta}(e^{\beta t_i}-1)
-\right).
-$$
----
-
-$$
-\textbf{Linear predictor}
+-\frac{\alpha}{\beta}(e^{\beta \times t}-1)
+\right)
 $$
 
+
+
 $$
-\mu_{i,j} = \theta_{0j} + \theta_{1j} \times \ln(t_i),
+\textbf{Threshold model}
 $$
 
 $$
-\theta_{0j} \sim \text{TN}(\mu = 0,\; \sigma = 10,\; 
-a = -\infty,\; b = 0),
+\gamma_{k_1 = 1} < \gamma_{k_1 = 2} < \gamma_{k_1 = 3} < \gamma_{k_1 = 4}
 $$
 
 $$
-\theta_{1j} \sim \text{TN}(\mu = 0,\; \sigma = 10,\; 
-a = 0,\; b = \infty).
+\gamma_{k_j = 1} = 1.5
 $$
+
+$$
+\gamma_{k=2,…,K_j} \sim \textit{TN}(
+\mu = k + 0.5,\;
+\sigma = 10,\;
+a,\;
+b = \infty)
+$$
+
+JAGS
+$$
+a = 1.5
+$$
+NIMBLE
+$$
+a = \gamma_{k-1}
+$$
+
+
 
 ---
 
@@ -71,44 +80,36 @@ $$
 
 \textit{(a) Conditional independence model}
 $$
-z_{i,j} \sim \mathcal{N}(\mu_{i,j},\; \sigma = 1).
+z_{i,j} \sim \mathcal{N}(\mu_{i,j},\; \sigma = 1)
 $$
 
 \textit{(b) Multivariate probit model}
 $$
 \boldsymbol{z}_i \sim \mathcal{MVN}(
-\boldsymbol{\mu}_i,\; 
+{\mu}_{i,j},\; 
 \mathbf{R}),
 $$
 
 $$
-\mathbf{R} \sim \text{LKJ}(\eta = 1).
+\mathbf{R} \sim \text{LKJ}(\eta = 1)
 $$
 
+
+
+$$
+\mu_{i,j} = \textit{beta}_{0_j} + \textit{beta}_j \times \ln(t_i),
+$$
+
+$$
+\textit{beta}_{0_j} \sim \textit{TN}(\mu = 0,\; \sigma = 10,\; 
+a = -\infty,\; b = 0),
+$$
+
+$$
+\textit{beta}_{j} \sim \textit{TN}(\mu = 0,\; \sigma = 10,\; 
+a = 0,\; b = \infty).
+$$
 ---
-
-$$
-\textbf{Threshold model}
-$$
-
-$$
-\gamma_{j,1} = 1.5,
-$$
-
-$$
-\gamma_{j,k} \sim \text{TN}(
-\mu = k,\;
-\sigma = 10,\;
-a = 0,\;
-b = \infty),
-\quad k = 2,\dots,K_j-1,
-$$
-
-with thresholds sorted such that
-$$
-\gamma_{j,1} < \gamma_{j,2} < \dots < \gamma_{j,K_j-1}.
-$$
-
 ---
 
 $$
@@ -118,11 +119,20 @@ $$
 $$
 y_{i,j} =
 \begin{cases}
-1, & \text{if } z_{i,j} \le 0, \\[6pt]
-k, & \text{if } \gamma_{j,k-1} < z_{i,j} \le \gamma_{j,k},
-\quad k=2,\dots,K_j-1, \\[6pt]
-K_j, & \text{if } z_{i,j} > \gamma_{j,K_j-1}.
+1, & \text{if } z_{i,j} \le 1.5, \\[6pt]
+k_j, & \text{if } \gamma_{j,k_j-1} < z_{i,j} \le \gamma_{j,k_j},
+\quad k_j=2,\dots,K_j-1, \\[6pt]
+K_j, & \text{if } \gamma_{j,K_j-1} < z_{i,j} 
 \end{cases}
+$$
+
+Initialization
+
+$$
+k_{j=2,…,K_j}
+$$
+$$
+y_{i,j} - U(-0.2, 0.2)
 $$
 
 $$

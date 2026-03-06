@@ -239,12 +239,12 @@ gomp.a0 <- function(
 
   # we do not want too much overhead so no computation if the default age of 15 is true
   if (minimum_age == 15) {
-    fit_coeff <- c(-66.77, -2.324914, 0.0823)
+    fit_coeff <- c(-66.76844784, -2.32502545, 0.0823)
   } else {
     null_age <- minimum_age - 15
 
     ind_df <- data.frame(b = runif(n = sampling, min = b_min, max = b_max)) |>
-      dplyr::mutate(a = exp(rnorm(dplyr::n(), (-66.77 * (b - 0.0718) - 7.119), sqrt(0.0823) ))) |>
+      dplyr::mutate(a = exp(rnorm(dplyr::n(), (-66.76844784 * (b - 0.0718) - 7.119), sqrt(0.0823) ))) |>
       dplyr::mutate(a0 = a * exp(b * null_age))
 
     fit <- lm(log(a0) ~ b, data = ind_df)
