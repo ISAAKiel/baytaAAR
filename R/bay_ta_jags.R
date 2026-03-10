@@ -68,7 +68,7 @@ bay.ta.jags <- function(
   n_methods <- ncol(method)
   Ntotal <- nrow(method)
   nYlevels <- c()
-  for (i in 1:n_methods) nYlevels[i] <- as.numeric(max(na.omit(method[,i])))
+  for (i in 1:n_methods) nYlevels[i] <- as.numeric(max(2, na.omit(method[,i])))
   nthresh <- nYlevels-1
   thresh_init <- matrix(NA, n_methods, max(nthresh))
   for (i in 1:n_methods) {
@@ -116,7 +116,7 @@ bay.ta.jags <- function(
                   "base::Mersenne-Twister")
     init_list <- list(
       .RNG.name = sample(RNG_list, 1),
-      .RNG.seed = sample(1:1e+06, 1),
+      .RNG.seed = as.integer(sample(1:1e+06, 1)),
       thresh = thresh_init,
       ystar = ystar_init - 1,
       beta = runif(n_methods, 0.5, 1),

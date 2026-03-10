@@ -41,13 +41,13 @@ bay.ta.nimble.mnorm <- function(
   thresh <- NULL
   for (i in 1:n_methods) nYlevels[i] <- as.numeric(max(na.omit(method[,i])))
   nthresh <- nYlevels-1
-  thresh_init <- matrix(NA, n_methods, max(nthresh))
+  thresh_init <- matrix(NA, n_methods, max(2,nthresh))
   for (i in 1:n_methods) {
-    if ( nthresh[i] > 1) {
-      for (j in 2: max(nthresh)) {
-        thresh_init[i,j] <- j - 0.5
-      } } }
-  thresh <- matrix(NA, n_methods, max(nthresh))
+    #if ( nthresh[i] > 1) {
+    for (j in 2: max(2,nthresh)) {
+      thresh_init[i,j] <- j - 0.5
+    } } #}#
+  thresh <- matrix(NA, n_methods, max(2,nthresh))
   for (i in 1:n_methods) thresh[i,1] <-  0.5
 
   thresh_k <- thresh_init
@@ -129,7 +129,7 @@ bay.ta.nimble.mnorm <- function(
     for (m in 1 : n_methods) {
       beta[m] ~ T(dnorm(0, 1/10^2), 0, )
       beta0[m] ~ T(dnorm( 0 , 1/10^2 ), , 0)
-      for ( k in 2: (nthresh[m]) ) {
+      for ( k in 2: max(2, nthresh[m]) ) {
         thresh[m,k] ~  T(dnorm(thresh_k[m,k], 1/10^2), thresh[m,k-1], )
       }
     }
@@ -145,7 +145,7 @@ bay.ta.nimble.mnorm <- function(
     data = dataList,
     inits = initsList()
   )
-  bayta_conf <- configureMCMC(bayta_model, onlySlice = TRUE)
+  bayta_conf <- configureMCMC(bayta_model, onlySlice = FALSE)
   bayta_conf$addMonitors(parameters)
   comp_model <- compileNimble(bayta_model)
   bayta_MCMC <- buildMCMC(bayta_conf)
