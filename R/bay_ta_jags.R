@@ -68,8 +68,11 @@ bay.ta.jags <- function(
   n_methods <- ncol(method)
   Ntotal <- nrow(method)
   nYlevels <- c()
-  for (i in 1:n_methods) nYlevels[i] <- as.numeric(max(2, na.omit(method[,i])))
-  nthresh <- nYlevels-1
+  nthresh <- c()
+  for (i in 1:n_methods) {
+    nYlevels[i] <- as.numeric(max(na.omit(method[,i])))
+    nthresh[i] <- max(nYlevels[i]-1, 1)
+  }
   thresh_init <- matrix(NA, n_methods, max(nthresh))
   for (i in 1:n_methods) {
     if ( nthresh[i] > 1) {

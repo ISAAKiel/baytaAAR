@@ -1,8 +1,23 @@
 ---
-title: "Untitled"
-author: "Nils Müller-Scheeßel"
-date: "2026-02-23"
-output: html_document
+title: "A Fully Bayesian Approach to Adult Skeletal Age Estimation: Multivariate Latent Trait Modeling with Markov Chain Monte Carlo sampling"
+subtitle: "LaTeX code"
+author:
+- "Nils Müller-Scheeßel^[Institute for Prehistoric and Protohistoric Archaeology - Kiel University nils.mueller-scheessel@ufg.uni-kiel.de]"
+- "Katharina Fuchs^[Institute for Prehistoric and Protohistoric Archaeology - Kiel University, k.fuchs@ufg.uni-kiel.de]"
+- "Christoph Rinne^[Institute for Prehistoric and Protohistoric Archaeology - Kiel University, crinne@ufg.uni-kiel.de]"
+date: "`r format(Sys.time(), '%d. %B %Y')`"
+output:
+  pdf_document:
+    toc: no
+    number_sections: true
+    extra_dependencies: ["float"]
+    pandoc_args: ["--variable", "footnote=numbered"]
+license: "CC-BY 4.0"
+header-includes: null
+papersize: a4
+urlcolor: blue
+link-citations: yes
+linkcolor: blue
 ---
 
 ```{r setup, include=FALSE}
@@ -10,26 +25,19 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 $$
-\textbf{Indices:} \quad
 i = 1,\dots,N, \qquad
 j = 1,\dots,J, \qquad
-k = 1,\dots,K_j.
+k = 1,\dots,K_j
 $$
-
----
-
 $$
-\beta \sim \text{Uniform}(a = 0.02,\; b = 0.1)
+\beta \sim \mathcal{U}(a = 0.02,\; b = 0.1)
 $$
-
 $$
 \alpha = \exp(-66.77 \times \beta - 2.325)
 $$
-
 $$
-t_i \sim \text{Gompertz}(\alpha,\; \beta,\; a = 15,\; b = 100)
+t_i \sim \textit{Gompertz}(\alpha,\; \beta,\; a = 15,\; b = 100)
 $$
-The Gompertz density is
 $$
 f(t \mid \alpha,\beta)
 =
@@ -38,21 +46,12 @@ f(t \mid \alpha,\beta)
 -\frac{\alpha}{\beta}(e^{\beta \times t}-1)
 \right)
 $$
-
-
-
-$$
-\textbf{Threshold model}
-$$
-
 $$
 \gamma_{k_1 = 1} < \gamma_{k_1 = 2} < \gamma_{k_1 = 3} < \gamma_{k_1 = 4}
 $$
-
 $$
 \gamma_{k_j = 1} = 1.5
 $$
-
 $$
 \gamma_{k=2,…,K_j} \sim \textit{TN}(
 \mu = k + 0.5,\;
@@ -60,62 +59,34 @@ $$
 a,\;
 b = \infty)
 $$
-
-JAGS
 $$
 a = 1.5
 $$
-NIMBLE
 $$
 a = \gamma_{k-1}
 $$
-
-
-
----
-
-$$
-\textbf{Latent structure}
-$$
-
-\textit{(a) Conditional independence model}
 $$
 z_{i,j} \sim \mathcal{N}(\mu_{i,j},\; \sigma = 1)
 $$
-
-\textit{(b) Multivariate probit model}
 $$
 \boldsymbol{z}_i \sim \mathcal{MVN}(
 {\mu}_{i,j},\; 
 \mathbf{R}),
 $$
-
 $$
-\mathbf{R} \sim \text{LKJ}(\eta = 1)
+\mathbf{R} \sim \textit{LKJ}(\eta = 1)
 $$
-
-
-
 $$
-\mu_{i,j} = \textit{beta}_{0_j} + \textit{beta}_j \times \ln(t_i),
+\mu_{i,j} = \textit{beta}_{0_j} + \textit{beta}_j \times \ln(t_i)
 $$
-
 $$
 \textit{beta}_{0_j} \sim \textit{TN}(\mu = 0,\; \sigma = 10,\; 
-a = -\infty,\; b = 0),
+a = -\infty,\; b = 0)
 $$
-
 $$
 \textit{beta}_{j} \sim \textit{TN}(\mu = 0,\; \sigma = 10,\; 
-a = 0,\; b = \infty).
+a = 0,\; b = \infty)
 $$
----
----
-
-$$
-\textbf{Observation model (ordered probit)}
-$$
-
 $$
 y_{i,j} =
 \begin{cases}
@@ -123,196 +94,5 @@ y_{i,j} =
 k_j, & \text{if } \gamma_{j,k_j-1} < z_{i,j} \le \gamma_{j,k_j},
 \quad k_j=2,\dots,K_j-1, \\[6pt]
 K_j, & \text{if } \gamma_{j,K_j-1} < z_{i,j} 
-\end{cases}
-$$
-
-Initialization
-
-$$
-k_{j=2,…,K_j}
-$$
-$$
-y_{i,j} - U(-0.2, 0.2)
-$$
-
-$$
-\begin{aligned}
-&\text{Observed ordinal traits:} && y_{i,j} \in \{1,\dots,K_j\},\quad i=1,\dots,N,\; j=1,\dots,J \\
-&\text{Zero-based transformation for dinterval:} && \tilde{y}_{i,j} = y_{i,j} - 1 \in \{0,\dots,K_j-1\} \\
-&\text{Interval likelihood:} && \tilde{y}_{i,j} \sim \mathrm{interval}(z_{i,j}, \boldsymbol{\gamma}_j) \\
-&\text{Thresholds:} && \gamma_{j,1} = 0.5,\quad 
-\gamma_{j,k} \sim \mathcal{N}(k-0.5,10),\; k=2,\dots,K_j-1,\;\gamma_{j,1} < \dots < \gamma_{j,K_j-1} \\
-&\text{Latent multivariate normal:} && \mathbf{z}_i \sim \mathcal{N}_J(\boldsymbol{\mu}_i, \mathbf{R}),\quad \mathbf{R} \sim \mathrm{LKJ}(\eta=1) \\
-&\text{Linear predictor:} && \mu_{i,j} = \beta_{0j} + \beta_j \log(t_i) \\
-&\text{Regression priors:} && \beta_{0j} \sim \mathcal{N}(0,10)\,T(-\infty,0),\quad
-\beta_j \sim \mathcal{N}(0,10)\,T(0,\infty) \\
-&\text{Age (Gompertz) prior:} && t_i \sim \mathrm{Gompertz}(\alpha,\beta)\,T(a_{\min},a_{\max}) \\
-&\text{Gompertz parameters:} && \beta \sim \mathcal{U}(0.02,0.1),\quad
-\alpha = \exp(-66.77 \beta - 2.324914) \\
-&\text{Simple independent alternative:} && z_{i,j} \sim \mathcal{N}(\mu_{i,j},1)
-\end{aligned}
-$$
-
-$$
-\textbf{Threshold model}
-$$
-
-$$
-\gamma_{j,1} = 0.5,
-$$
-
-$$
-\gamma_{j,k} \sim \mathrm{TN}\!\left(
-\mu = k - 0.5,\;
-\sigma = 10,\;
-a = 0,\;
-b = \infty
-\right),
-\quad k = 2,\dots,K_j-1,
-$$
-
-with ordered thresholds
-$$
-\gamma_{j,1} < \gamma_{j,2} < \dots < \gamma_{j,K_j-1}.
-$$
-
----
-
-$$
-\textbf{Observation model (ordered probit; dinterval parameterization)}
-$$
-
-$$
-y_{i,j} =
-\begin{cases}
-1, & \text{if } z_{i,j} \le \gamma_{j,1}, \\[2mm]
-k, & \text{if } \gamma_{j,k-1} < z_{i,j} \le \gamma_{j,k},
-\quad k=2,\dots,K_j-1, \\[2mm]
-K_j, & \text{if } z_{i,j} > \gamma_{j,K_j-1}.
-\end{cases}
-$$
-
-$$
-\begin{aligned}
-&p\Big(
-\beta,\{\theta_{0j},\theta_{1j}\}_{j=1}^J,
-\{\gamma_{j,k}\},
-\mathbf{R},
-\{t_i\},
-\{\boldsymbol{z}_i\}
-\;\Big|\;
-\{y_{i,j}\}
-\Big)
-\\[6pt]
-&\propto
-\underbrace{
-\prod_{i=1}^{N}
-\prod_{j=1}^{J}
-p\!\left(
-y_{i,j}
-\mid
-z_{i,j},
-\{\gamma_{j,k}\}
-\right)
-}_{\text{ordered probit likelihood}}
-\\[6pt]
-&\quad\times
-\underbrace{
-\prod_{i=1}^{N}
-\mathcal{N}_J\!\left(
-\boldsymbol{z}_i
-\mid
-\boldsymbol{\mu}_i,
-\mathbf{R}
-\right)
-}_{\text{latent multivariate normal}}
-\\[6pt]
-&\quad\times
-\underbrace{
-\prod_{i=1}^{N}
-\text{Gompertz}\!\left(
-t_i
-\mid
-\alpha = \exp(-66.77\,\beta - 2.324914),
-\beta = \beta,
-a = 15,
-b = 100
-\right)
-}_{\text{age prior}}
-\\[6pt]
-&\quad\times
-\underbrace{
-\prod_{j=1}^{J}
-\text{TN}\!\left(
-\theta_{0j}
-\mid
-\mu = 0,
-\sigma = 10,
-a = -\infty,
-b = 0
-\right)
-}_{\text{intercept priors}}
-\\[6pt]
-&\quad\times
-\underbrace{
-\prod_{j=1}^{J}
-\text{TN}\!\left(
-\theta_{1j}
-\mid
-\mu = 0,
-\sigma = 10,
-a = 0,
-b = \infty
-\right)
-}_{\text{slope priors}}
-\\[6pt]
-&\quad\times
-\underbrace{
-\prod_{j=1}^{J}
-\prod_{k=2}^{K_j-1}
-\text{TN}\!\left(
-\gamma_{j,k}
-\mid
-\mu = k,
-\sigma = 10,
-a = 0,
-b = \infty
-\right)
-}_{\text{threshold priors}}
-\\[6pt]
-&\quad\times
-\underbrace{
-\text{LKJ}\!\left(
-\mathbf{R}
-\mid
-\eta = 1
-\right)
-}_{\text{correlation prior}}
-\\[6pt]
-&\quad\times
-\underbrace{
-\text{Uniform}\!\left(
-\beta
-\mid
-a = 0.02,
-b = 0.1
-\right)
-}_{\text{Gompertz slope prior}}.
-\end{aligned}
-$$
-
-$$
-\boldsymbol{\mu}_i =
-(\mu_{i,1},\dots,\mu_{i,J})^\top,
-\qquad
-\mu_{i,j} = \theta_{0j} + \theta_{1j}\ln(t_i).
-$$
-
-$$
-p(y_{i,j} \mid z_{i,j}, \{\gamma_{j,k}\})
-=
-\begin{cases}
-1 & \text{if thresholds are satisfied,} \\
-0 & \text{otherwise.}
 \end{cases}
 $$
