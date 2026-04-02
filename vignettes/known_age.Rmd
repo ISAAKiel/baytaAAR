@@ -1,0 +1,19 @@
+---
+title: "Comparison with known age"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{known_age}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(baytaAAR)
+```

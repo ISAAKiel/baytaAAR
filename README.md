@@ -10,7 +10,17 @@ baytaAAR
 
 With `baytaAAR` you do Bayesian age estimations of adults.
 
-For further information, please have a look at the Vignettes.
+For further information, please have a look at the Documentation with several vignettes.
+
+
+How to cite this package
+------------
+
+You can cite this package like this "we calculated archaeological life tables with the mortAAR R package
+(Müller-Scheeßel et al. 2026)". Here is the full bibliographic reference to include in your reference list (don't forget to update the 'last accessed' date):
+
+> N. Müller-Scheeßel, K. Fuchs, C. Rinne (2026). baytaAAR: Bayesian age estimations of adults (vers. 1.0.0). <https://doi.org/10.32614/CRAN.package.baytaAAR>.
+
 
 Installation
 ------------

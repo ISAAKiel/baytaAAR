@@ -4,7 +4,13 @@
 \alias{bay.ta.plot}
 \title{Plots of quality measures of age estimation}
 \usage{
-bay.ta.plot(x, selector = NA, age_identifier = "age.s", known_age, mean_choice)
+bay.ta.plot(
+  x,
+  selector = NULL,
+  age_identifier = "age.s",
+  known_age,
+  mean_choice
+)
 }
 \arguments{
 \item{x}{output from the function `diagnostic.summary`}

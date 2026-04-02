@@ -8,7 +8,7 @@ sequential.binom.test(
   x,
   HDImass = 0.95,
   known_age,
-  selector = NA,
+  selector = NULL,
   age_identifier = "age.s"
 )
 }

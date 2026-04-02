@@ -1,34 +1,26 @@
 ---
-title: "A Fully Bayesian Approach to Adult Skeletal Age Estimation: Multivariate Latent Trait Modeling with Markov Chain Monte Carlo sampling"
-subtitle: "LaTeX code"
-author:
-- "Nils Müller-Scheeßel^[Institute for Prehistoric and Protohistoric Archaeology - Kiel University nils.mueller-scheessel@ufg.uni-kiel.de]"
-- "Katharina Fuchs^[Institute for Prehistoric and Protohistoric Archaeology - Kiel University, k.fuchs@ufg.uni-kiel.de]"
-- "Christoph Rinne^[Institute for Prehistoric and Protohistoric Archaeology - Kiel University, crinne@ufg.uni-kiel.de]"
-date: "`r format(Sys.time(), '%d. %B %Y')`"
-output:
-  pdf_document:
-    toc: no
-    number_sections: true
-    extra_dependencies: ["float"]
-    pandoc_args: ["--variable", "footnote=numbered"]
-license: "CC-BY 4.0"
-header-includes: null
-papersize: a4
-urlcolor: blue
-link-citations: yes
-linkcolor: blue
+title: "Mathematical_notation"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Mathematical_notation}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
 ```
+
 
 $$
 i = 1,\dots,N, \qquad
 j = 1,\dots,J, \qquad
 k = 1,\dots,K_j
 $$
+
 $$
 \beta \sim \mathcal{U}(a = 0.02,\; b = 0.1)
 $$

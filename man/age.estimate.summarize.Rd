@@ -6,7 +6,7 @@
 \usage{
 age.estimate.summarize(
   x,
-  selector = NA,
+  selector = NULL,
   chosen_mean = "Mode",
   known_age,
   age_identifier = "age.s",
