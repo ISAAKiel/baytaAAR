@@ -5,7 +5,7 @@
 [![](https://cranlogs.r-pkg.org/badges/grand-total/baytaAAR)](https://CRAN.R-project.org/package=baytaAAR)
 [![license](https://img.shields.io/badge/license-GPL%203-B50B82.svg)](https://www.r-project.org/Licenses/GPL-3)
 
-<img src="man/figures/logo.pdf" align="right" height="139" alt="" />
+<img src="man/figures/logo.png" align="right" height="139" alt="" />
 
 baytaAAR
 -------
