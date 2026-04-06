@@ -4,7 +4,6 @@
 \alias{spitalfields}
 \title{Spitalfields}
 \format{
-## `spitalfields`
 A data frame with 180 rows and 7 columns:
 \itemize{
   \item \bold{Age:} Known age-at-death

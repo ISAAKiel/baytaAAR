@@ -1,177 +1,213 @@
 #' Bayesian Transition Analysis with NIMBLE
-#'
-#' This is a wrapper for the functions \code{bay.ta.nimble.norm} and
-#' \code{bay.ta.nimble.mnorm}. Both implement the Bayesian Transition Analysis
-#' with MCMCM with the framework NIMBLE and allow the user to run models with
-#' 'simple' ordered regression or multinormal ordered regression, also with
-#' parallel clusters.
-#'
+
 #' @param algorithm character string. Either \code{norm} for 'simple' ordered
-#' regression or \code{mnorm} for multinormal ordered regression. Default:
-#' \code{norm}.
-#' @param cluster_n integer. Number of clusters for parallel processing chains,
-#' maximally the number of cores -1. Default: 1.
-#' @param seed integer. Random number for reproducibility. In parallel
-#' processing, each cluster automatically gets different seeds.
-#' @param method matrix of integers. Ordinal trait(s) for age estimation.
-#' @param eta double. Prior for the Cholesky factor, must be > 0. Only used for
-#' multinormal ordered regression for the correlation matrix. 1 implies equal
-#' correlations, lower values assume higher correlations. Default: 1.
-#' The correlation matrix stems from a LKJ distribution. We implemented it
-#' according to the nimble manual
-#' (https://r-nimble.org/manual/cha-writing-models.html#lkj-distribution-for-correlation-matrices).
-#' @param gomp_b double. Optional prior for parameter Gompertz beta. Default:
-#' NA.
-#' @param minimum_age double. Minimum age for Gompertz distribution. Default:
-#' 15.
-#' @param maximum_age double. Maximum age for Gompertz distribution. Default:
-#' 100.
-#' @param parameters vector of character strings. Parameters to monitor.
-#' @param nChains integer. Number of chains. Default: 4.
-#' @param burnInSteps integer. Number of steps for burn-in. Default: 2000.
-#' @param thinSteps integer. Thinning, i. e. which ith step should be saved.
-#' Default: 1 (no thinning).
-#' @param numSteps integer. Number of steps to run the model. Default: 10000.
+#' regression or \code{mnorm} for multinormal ordered regression.
+#' @param method matrix.
+#' @param parameters parameters
+#' @param eta Cholesky
+#' @param gomp_b Gompertz
+#' @param minimum_age minimum age
+#' @param maximum_age maximum age
+#' @param burnInSteps burn-in
+#' @param nChains number of chains
+#' @param thinSteps thinning
+#' @param numSteps number of steps
+#' @param seed seed
 #'
 #' @return
-#' A coda object.
+#' coda object
 #'
 #' @export
 #'
 #' @examples
 #' NULL
 #'
-#'
-bay.ta.nimble  <- function(
-    algorithm = "norm",
-    cluster_n = 1,
-    seed = FALSE,
+bay.ta.nimble <- function(
+    algorithm,
     method,
+    parameters,
     eta = 1,
     gomp_b = NA,
+    error_sd,
     minimum_age = 15,
     maximum_age = 100,
-    parameters,
-    nChains = 3,
     burnInSteps = 2000,
+    nChains = 3,
     thinSteps = 1,
-    numSteps = 10000) {
+    numSteps = 10000,
+    seed = FALSE
+){
+  library(nimble)
 
-  checkmate::assertChoice(algorithm, c("norm", "mnorm"))
-  checkmate::assertCount(cluster_n, positive = TRUE)
-  checkmate::assertMatrix(method)
-  available_cores <- parallel::detectCores(logical = FALSE)
-  if(cluster_n > available_cores - 1) {
-    stop(message(paste0("
-    Your machine has only ", available_cores, " physical cores. To maintain usability,
-    it is advisable to choose one cluster less than this number.\n")))
-  }
-  if(algorithm == "mnorm" & ncol(method) < 2) {
-    stop(message("With multinormal ordinal regression, there need to be two traits or more.\n"))
-  }
-  # if(algorithm == "mnorm" & anyNA(method)) {
-  #   stop(message("
-  #   With multinormal ordinal regression, all nodes must be observed or unobserved,
-  #   traits with partially NAs (missing data) are not allowed. You have 4 options:\n
-  #   1) Delete all columns which contain NAs.\r
-  #   2) Delete all rows which contain NAs.\r
-  #   3) Impute the missing data manually.\r
-  #   4) Run a multiple ordinal regression (algorithm = \"norm\") instead.\n"))
-  # }
+  n_methods = ncol(method)
+  Ntotal = nrow(method)
+  nYlevels <- NULL
+  thresh <- NULL
+  for (i in 1:n_methods) nYlevels[i] <- as.numeric(max(na.omit(method[,i])))
+  nthresh <- nYlevels-1
+  thresh_init <- matrix(NA, n_methods, max(2,nthresh))
+  for (i in 1:n_methods) {
+    for (j in 2: max(2,nthresh)) {
+      thresh_init[i,j] <- j - 0.5
+    } }
+  thresh <- matrix(NA, n_methods, max(2,nthresh))
+  for (i in 1:n_methods) thresh[i,1] <-  0.5
 
-  start_time <- Sys.time()
-  cat("Starting Time:", format(start_time, "%d %b %Y %X"), "\n")
+  thresh_k <- thresh_init
+  for (i in 1:n_methods) thresh_k[i,1] <-  0.5
 
-  # single core or multi core
-  if(cluster_n == 1) { # single core
-    if(algorithm == "norm") { # simple ordinal probit regression
-      results <- bay.ta.nimble.norm (
-        method = method,
-        gomp_b = gomp_b,
-        minimum_age = minimum_age,
-        maximum_age = maximum_age,
-        parameters = parameters,
-        nChains = nChains,
-        burnInSteps = burnInSteps,
-        thinSteps = thinSteps,
-        numSteps = ceiling(numSteps / nChains)
-      )
-    } else {
-      results <- bay.ta.nimble.mnorm ( # multinormal ordinal probit regression
-        method = method,
-        gomp_b = gomp_b,
-        eta = eta,
-        minimum_age = minimum_age,
-        maximum_age = maximum_age,
-        parameters = parameters,
-        nChains = nChains,
-        burnInSteps = burnInSteps,
-        thinSteps = thinSteps,
-        numSteps = ceiling(numSteps / nChains)
-      )
-    }
+  y_init <- matrix(NA, nrow = Ntotal, ncol = n_methods)
 
-  } else { # multicore
-
-    this_cluster <- parallel::makeCluster(cluster_n)
-    on.exit(parallel::stopCluster(this_cluster))
-
-    # Create argument sets
-    shared_args_norm <- list(
-      method = method,
-      gomp_b = gomp_b,
-      minimum_age = minimum_age,
-      maximum_age = maximum_age,
-      parameters = parameters,
-      burnInSteps = burnInSteps,
-      thinSteps = thinSteps,
-      numSteps = ceiling(numSteps / cluster_n),
-      nChains = 1
-    )
-
-    shared_args_mnorm <- c(shared_args_norm, eta = eta)
-
-    # Export needed functions and objects
-    parallel::clusterExport(
-      this_cluster,
-      varlist = c("bay.ta.nimble.norm", "bay.ta.nimble.mnorm","dgomp", "pgomp",
-                  "qgomp", "rgomp","gomp.a0", "shared_args_norm",
-                  "shared_args_mnorm", "algorithm", "seed"),
-      envir = environment()
-    )
-
-    # Worker function
-    worker_fun <- function(i, algorithm, args_norm, args_mnorm, seed) {
-      if (algorithm == "norm") {
-        args_norm$seed <- seed + i
-        do.call(bay.ta.nimble.norm, args_norm)
-      } else {
-        args_mnorm$seed <- seed + i
-        do.call(bay.ta.nimble.mnorm, args_mnorm)
+  for (j in 1:n_methods) {
+    for (i in 1:Ntotal) {
+      if (is.na(method[i,j])) {
+        y_init[i,j] <- sample(1:nYlevels[j], 1)
       }
     }
-
-    parallel::clusterExport(this_cluster, varlist = "worker_fun", envir = environment())
-
-    results <- parallel::parLapply(
-      cl = this_cluster,
-      X = 1:cluster_n,
-      fun = function(i) worker_fun(i, algorithm, shared_args_norm, shared_args_mnorm, seed)
-    )
   }
-  # Calculate time difference
-  time_diff <- difftime(Sys.time(), start_time, units = "secs")
-  time_secs <- as.numeric(time_diff)
 
-  # Convert to readable format
-  if (time_secs < 60) {
-    cat("Execution Time:", round(time_secs, 2), "seconds\n")
-  } else if (time_secs < 3600) {
-    cat("Execution Time:", round(time_secs / 60, 2), "minutes\n")
-  } else if (time_secs < 86400) {
-    cat("Execution Time:", round(time_secs / 3600, 2), "hours\n")
+  ystar_init <- matrix(NA, nrow = Ntotal, ncol = n_methods)
+  for (j in 1:n_methods) {
+    for (i in 1:Ntotal) {
+      k <- if (!is.na(method[i,j])) method[i,j] else y_init[i,j]
+      ystar_init[i,j] <- k - runif(1, -0.2, 0.2)
+    }
+  }
+
+  if(!is.na(gomp_b)) {
+    gomp_b_beg <- gomp_b - 0.001
+    gomp_b_end <- gomp_b + 0.001
   } else {
-    cat("Execution Time:", round(time_secs / 86400, 2), "days\n")
+    gomp_b_beg <- 0.02
+    gomp_b_end <- 0.1
   }
-  return(results)
+
+  # Generate values for Gompertz alpha if minimum age is not 15
+  gomp_a0 <- gomp.a0(minimum_age = minimum_age)
+
+  initsList <- function(){
+    init_list <- list(
+      y = y_init - 1,
+      thresh = thresh_init,
+      ystar = ystar_init - 1,
+      beta = runif(n_methods, 0.5, 1),
+      beta0 = runif(n_methods, -10, -3),
+      age = runif(Ntotal, 20, 40),
+      b = runif(1, 0.02, 0.1)
+    )
+    if(algorithm == "mnorm") init_list[["Ustar"]] <- diag(rep(1, n_methods))
+    return(init_list)
+  }
+
+  constantList = list(
+    Ntotal = Ntotal,
+    nthresh = nthresh,
+    n_methods = n_methods,
+    minimum_age = minimum_age,
+    maximum_age = maximum_age,
+    gomp_b_beg = gomp_b_beg,
+    gomp_b_end = gomp_b_end,
+    gomp_a0_m = gomp_a0[1],
+    gomp_a0_ic = gomp_a0[2]
+  )
+
+  dataList = list(y = method - 1,
+                  thresh = thresh,
+                  thresh_k = thresh_k
+  )
+
+  bay_ta_common <- nimbleCode({
+    for ( i in 1:Ntotal ) {
+      for (j in 1:n_methods) {
+        mu[i,j] <- beta0[j] + beta[j] * log_age[i]
+      }
+      log_age[i] <- log(age.s[i])
+      age[i] ~ T(dgomp(b, a), 0, maximum_age - minimum_age)
+      age.s[i] <- age[i] + minimum_age
+    }
+    for (m in 1 : n_methods) {
+      beta[m] ~ T(dnorm(0, 1/10^2), 0, )
+      beta0[m] ~ T(dnorm( 0 , 1/10^2 ), , 0)
+    }
+    b  ~ dunif(gomp_b_beg, gomp_b_end)
+    a <- exp(gomp_a0_m * b + gomp_a0_ic)
+  })
+
+  bay_ta_norm <- nimbleCode({
+    for ( i in 1:Ntotal ) {
+      for (j in 1:n_methods) {
+      ystar[i,j] ~  dnorm( mu[i,j], 1)
+    } } } )
+
+  bay_ta_mnorm <- nimbleCode({
+    for ( i in 1:Ntotal ) {
+      ystar[i,1:n_methods] ~
+        dmnorm( mu[i,1:n_methods], cholesky = Ustar[1:n_methods,
+                                                    1:n_methods],prec_param = 0)
+    }
+    Ustar[1:n_methods,1:n_methods] ~ dlkj_corr_cholesky(eta, n_methods)
+    } )
+
+  bay_ta_error <- nimbleCode({
+    for ( i in 1:Ntotal ) {
+      age.s_c[i] ~ T(dnorm(age.s[i], 1/(error_sd)^2), minimum_age, maximum_age)
+  }})
+
+    bay_ta_nthresh_single <- nimbleCode({
+    for (m in 1 : n_methods) {
+      for ( k in 2: max(2, nthresh) ) {
+        thresh[m,k] ~  T(dnorm(thresh_k[m,k], 1/10^2), thresh[m,k-1], )
+      }
+    }
+      for ( i in 1:Ntotal ) {
+        for (j in 1:n_methods) {
+          y[i,j] ~ dinterval(ystar[i,j],thresh[j,1:nthresh])
+        }
+      }
+    })
+
+      bay_ta_nthresh <- nimbleCode({
+        for (m in 1 : n_methods) {
+          for ( k in 2: max(2, nthresh[m]) ) {
+            thresh[m,k] ~  T(dnorm(thresh_k[m,k], 1/10^2), thresh[m,k-1], )
+          }
+        }
+        for ( i in 1:Ntotal ) {
+          for (j in 1:n_methods) {
+            y[i,j] ~ dinterval(ystar[i,j],thresh[j,1:nthresh[j]])
+          }
+      } })
+
+  if(algorithm == "mnorm") {
+    constantList[["eta"]] <- eta
+    bay_ta <- nimbleCode(bay_ta_common, bay_ta_mnorm)
+  } else { # simple ordinal regression
+    bay_ta <- nimbleCode(bay_ta_common, bay_ta_norm)
+  }
+
+  if(length(nthresh) == 1) {
+    bay_ta <- nimbleCode(bay_ta, bay_ta_nthresh_single)
+  } else {
+    bay_ta <- nimbleCode(bay_ta, bay_ta_nthresh)
+  }
+
+  if(!is.na(error_sd)) {
+    constantList[["error_sd"]] <- error_sd
+    bay_ta <- nimbleCode(bay_ta, bay_ta_error)
+  }
+
+  samples <- nimbleMCMC(
+    code = bay_ta,
+    constants = constantList,
+    data = dataList,
+    inits = initsList(),
+    monitors = parameters,
+    niter = numSteps,
+    nburnin = burnInSteps,
+    thin = thinSteps,
+    nchains = nChains,
+    samplesAsCodaMCMC = TRUE,
+    setSeed = seed
+  )
+  return(samples)
 }

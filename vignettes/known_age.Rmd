@@ -1,6 +1,9 @@
 ---
-title: "Comparison with known age"
+title: "Spitalfields: Comparison with known age-at-deah"
+author: "Nils Müller-Scheeßel"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
+bibliography: ../inst/REFERENCES.bib
 vignette: >
   %\VignetteIndexEntry{known_age}
   %\VignetteEngine{knitr::rmarkdown}
@@ -14,6 +17,74 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r setup, echo = F}
 library(baytaAAR)
+library(dplyr)
+library(ggplot2)
 ```
+
+To show how the age estimations of `baytaAAR` can be compared with known age-at-death, we use the dataset of Spitalfields [@ref_263525]. The individuals come from a crypt at London ## and were identified in terms of age and sex by plates on their coffins.
+
+```{r spitalfields data, echo = F}
+data(spitalfields, package = "baytaAAR")
+head(spitalfields)
+```
+
+Buckberry and Chamberlain introduced a new scoring system of the ## and thereby changed a single score with multiple levels to several traits with fewer levels each.
+
+For running the model, with use NIMBLE and the multinorm likelihood (`mnorm`). `multicore` is set to `TRUE` to reduce computation time. Still, even on modern hardware, the model will run for several days until the usual quality criteria are met.
+
+```{r spitalfields bayta, echo = TRUE}
+spitalfields_res <- bay.ta(
+  framework = "NIMBLE",
+  algorithm = "mnorm",
+  multicore = T,
+  method = as.matrix(spitalfields[,c(2:6)]),
+  minimum_age = 16,
+  parameters = c("b", "a", "beta0", "beta", "thresh", "age.s", "Ustar"),
+  thinSteps = 10,
+  numSavedSteps = 100000,
+  seed = 233
+)
+```
+
+For once, we ignore the inspection of the diagnostics and go straight to the comparison with known age-at-death. For this, `bataAAR` provides several custom functions which essentially work as wrappers of other R-functions for convenience.
+
+As the name suggests, the function `age.estimate.summarize` summarizes standard frequentist and Bayesian quality measures. It can make quite a difference which mean is chosen for the point estimate. These fall into three groups:
+
+++
+
+```{r spitalfields age.estimate.summarize, echo = TRUE}
+age.comp.summarize(x = spitalfields_res,
+            known_age = spitalfields$Age,
+            mean_choice = "Mode") %>% t(.) %>% round(.,2) %>%
+  knitr::kable (., col.names = "value") %>%
+  kableExtra::kable_styling(latex_options = c("HOLD_position"))
+```
+
+The age estimates are off
+
+To test the deviation formally, in the literature the binomial test is usually invoked ##. The wrapper `sequential.binom.test` calculates this test for several given credibility levels.
+
+```{r spitalfields binom test}
+sequential.binom.test(spitalfields_res,
+                      HDImass = c(seq(0.5, 0.9, 0.1), 0.95),
+                      known_age = spitalfields$Age) %>%
+  knitr::kable (.) %>%
+  kableExtra::kable_styling(latex_options = c("HOLD_position"))
+```
+
+The result suggests that.
+
+Finally, `age.comp.plot` shows the relationship between estimated and known age-at-death graphically. It can make quite a difference which mean is chosen for the point estimate.
+
+```{r spitalfields plot, fig.width=8, fig.height=6, fig.align = 'center' }
+spitalfields_diag <- diagnostic.summary(spitalfields_res)
+age.comp.plot(spitalfields_diag, known_age = spitalfields$Age)
+```
+
+The plot demonstrate that
+
+---
+
+## References

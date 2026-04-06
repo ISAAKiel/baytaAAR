@@ -18,7 +18,8 @@ bay.ta.jags(
   thinSteps = 1,
   numSavedSteps = 10000,
   silent.jags = F,
-  silent.runjags = F
+  silent.runjags = F,
+  seed = seed
 )
 }
 \arguments{

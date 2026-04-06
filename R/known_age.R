@@ -1,7 +1,7 @@
 #' @title Quality measures of age estimation
 #'
 #'@description
-#' Comparison with known age-at-death
+#' Comparison of estimated age with known age-at-death.
 #'
 #' @param x MCMC output from coda chains.
 #'
@@ -20,14 +20,14 @@
 #' @examples
 #'NULL
 #'
-age.estimate.summarize <- function(x,
-                                   selector = NULL,
-                                   chosen_mean = "Mode",
-                                   known_age,
-                                   age_identifier = "age.s",
-                                   HDImass = 0.95,
-                                   gelman_diag = TRUE,
-                                   gelman_diag_multivariate = F) {
+age.comp.summarize <- function(x,
+                               selector = NULL,
+                               mean_choice = "Mode",
+                               known_age,
+                               age_identifier = "age.s",
+                               HDImass = 0.95,
+                               gelman_diag = FALSE,
+                               gelman_diag_multivariate = F) {
   age_identifier_grep <- ifelse(age_identifier == "age.s",
                                 "^age.s\\[", "^age.s_c")
   x_mcmc_list <- as.mcmc.list(x)
@@ -45,7 +45,7 @@ age.estimate.summarize <- function(x,
     ages <- ages[,selector]
   }
 
-  estimated_age <- x_diag_red[,chosen_mean]
+  estimated_age <- x_diag_red[,mean_choice]
   Residual_model  <-  lm((known_age - estimated_age) ~ known_age)
 
   corrPearson <- cor.test(estimated_age,known_age, method="pearson")
@@ -113,7 +113,7 @@ tmnlp <- function(x, mcmcMat) {
 #' @title Plots of quality measures of age estimation
 #'
 #'@description
-#' Comparison with known age-at-death
+#' Comparison of estimated age with known age-at-death.
 #'
 #' @param x output from the function `diagnostic.summary`
 #'
@@ -132,11 +132,11 @@ tmnlp <- function(x, mcmcMat) {
 #' @examples
 #'NULL
 #'
-bay.ta.plot <- function(x,
+age.comp.plot <- function(x,
                         selector = NULL,
                         age_identifier = "age.s",
                         known_age,
-                        mean_choice
+                        mean_choice = "Mode"
 ) {
   x$chosen_mean <- x[,mean_choice]
   age_identifier_grep <- ifelse(age_identifier == "age.s",
@@ -240,7 +240,7 @@ sequential.binom.test <- function(x,
                                 "^age.s\\[", "^age.s_c")
   for (i in HDImass) {
     MCMC_diag  <-  diagnostic.summary(x, HDImass = i,
-                                      gelman_diag = T,
+                                      gelman_diag = F,
                                       gelman_diag_multivariate = F)
     MCMC_diag_age <- MCMC_diag[grep(age_identifier_grep,rownames(MCMC_diag)),]
     MCMC_diag_age$known_age <- known_age

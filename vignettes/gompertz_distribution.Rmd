@@ -139,9 +139,7 @@ $$
 
 ## The Gompertz distribution with JAGS and NIMBLE
 
-The Gompertz distribution is implemented in JAGS with the so-called "ones"-trick, which is a simple, convenient way to implement custom distributions [@ref_77051, 214--215]. Theoretically, NIMBLE allows to add custom functions as nimble functions that are therefore compiled at runtime. Because of this difference in implementation, the same data will lead to slightly different estimates of the alpha and beta parameters when run with the JAGS- or the NIMBLE-models.
-
-Nimble truncates the probability distribution.
+The Gompertz distribution is implemented in JAGS with the so-called "ones"-trick, which is a simple, convenient way to implement custom distributions [@ref_77051, 214--215]. NIMBLE allows to add custom functions as nimble functions that are therefore compiled at runtime.
 
 ---
 

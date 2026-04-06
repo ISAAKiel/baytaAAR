@@ -5,73 +5,54 @@
 \title{Bayesian Transition Analysis with NIMBLE}
 \usage{
 bay.ta.nimble(
-  algorithm = "norm",
-  cluster_n = 1,
-  seed = FALSE,
+  algorithm,
   method,
+  parameters,
   eta = 1,
   gomp_b = NA,
+  error_sd,
   minimum_age = 15,
   maximum_age = 100,
-  parameters,
-  nChains = 3,
   burnInSteps = 2000,
+  nChains = 3,
   thinSteps = 1,
-  numSteps = 10000
+  numSteps = 10000,
+  seed = FALSE
 )
 }
 \arguments{
 \item{algorithm}{character string. Either \code{norm} for 'simple' ordered
-regression or \code{mnorm} for multinormal ordered regression. Default:
-\code{norm}.}
+regression or \code{mnorm} for multinormal ordered regression.}
 
-\item{cluster_n}{integer. Number of clusters for parallel processing chains,
-maximally the number of cores -1. Default: 1.}
+\item{method}{matrix.}
 
-\item{seed}{integer. Random number for reproducibility. In parallel
-processing, each cluster automatically gets different seeds.}
+\item{parameters}{parameters}
 
-\item{method}{matrix of integers. Ordinal trait(s) for age estimation.}
+\item{eta}{Cholesky}
 
-\item{eta}{double. Prior for the Cholesky factor, must be > 0. Only used for
-multinormal ordered regression for the correlation matrix. 1 implies equal
-correlations, lower values assume higher correlations. Default: 1.
-The correlation matrix stems from a LKJ distribution. We implemented it
-according to the nimble manual
-(https://r-nimble.org/manual/cha-writing-models.html#lkj-distribution-for-correlation-matrices).}
+\item{gomp_b}{Gompertz}
 
-\item{gomp_b}{double. Optional prior for parameter Gompertz beta. Default:
-NA.}
+\item{minimum_age}{minimum age}
 
-\item{minimum_age}{double. Minimum age for Gompertz distribution. Default:
-15.}
+\item{maximum_age}{maximum age}
 
-\item{maximum_age}{double. Maximum age for Gompertz distribution. Default:
-100.}
+\item{burnInSteps}{burn-in}
 
-\item{parameters}{vector of character strings. Parameters to monitor.}
+\item{nChains}{number of chains}
 
-\item{nChains}{integer. Number of chains. Default: 4.}
+\item{thinSteps}{thinning}
 
-\item{burnInSteps}{integer. Number of steps for burn-in. Default: 2000.}
+\item{numSteps}{number of steps}
 
-\item{thinSteps}{integer. Thinning, i. e. which ith step should be saved.
-Default: 1 (no thinning).}
-
-\item{numSteps}{integer. Number of steps to run the model. Default: 10000.}
+\item{seed}{seed}
 }
 \value{
-A coda object.
+coda object
 }
 \description{
-This is a wrapper for the functions \code{bay.ta.nimble.norm} and
-\code{bay.ta.nimble.mnorm}. Both implement the Bayesian Transition Analysis
-with MCMCM with the framework NIMBLE and allow the user to run models with
-'simple' ordered regression or multinormal ordered regression, also with
-parallel clusters.
+Bayesian Transition Analysis with NIMBLE
 }
 \examples{
 NULL
-
 
 }

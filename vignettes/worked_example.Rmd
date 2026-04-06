@@ -1,8 +1,11 @@
 ---
-title: "Worked_example"
+title: "Chelsea 'Old Church': A worked example with `baytaAAR`"
+author: "Nils Müller-Scheeßel"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
+bibliography: ../inst/REFERENCES.bib
 vignette: >
-  %\VignetteIndexEntry{Worked_example}
+  %\VignetteIndexEntry{Chelsea 'Old Church': A worked example with `baytaAAR`}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -14,6 +17,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r setup, echo = F}
 library(baytaAAR)
 ```

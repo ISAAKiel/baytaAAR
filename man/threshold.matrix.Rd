@@ -9,7 +9,7 @@ threshold.matrix(x, mean_value = "Mode")
 \arguments{
 \item{x}{output from function `diagnostic.summary`}
 
-\item{mean_value}{a character string of either "Mode", "Median" or "Mode".
+\item{mean_value}{a character string of either "Mode", "Median" or "Mean".
 Default: "Mode".}
 }
 \value{

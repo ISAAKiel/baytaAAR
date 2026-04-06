@@ -1,6 +1,8 @@
 ---
-title: "Data preparation"
+title: "Data input"
 output: rmarkdown::html_vignette
+author: "Nils Müller-Scheeßel"
+date: "`r Sys.Date()`"
 vignette: >
   %\VignetteIndexEntry{Data_preparation}
   %\VignetteEngine{knitr::rmarkdown}
@@ -17,3 +19,13 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(baytaAAR)
 ```
+
+Possible data structure
+
+Data input must be a matrix. 
+
+The levels should start at 1. Binary data is possible.
+
+Mixed levels should be an absolute no-go.
+
+The nodes (= rows of the matrix) do not have to be fully observed.

@@ -59,11 +59,14 @@ bay.ta.jags <- function(
     thinSteps = 1,
     numSavedSteps = 10000,
     silent.jags = F,
-    silent.runjags = F) {
+    silent.runjags = F,
+    seed = seed) {
 
   checkmate::assertMatrix(method)
   checkmate::assertChoice(runjagsMethod, c("rjags", "rjparallel", "parallel"))
   checkmate::assertCount(nChains, positive = TRUE)
+
+  set.seed(seed)
 
   n_methods <- ncol(method)
   Ntotal <- nrow(method)

@@ -2,45 +2,71 @@
 #'
 #' @description
 #' Summarising diagnostics partly derived from
-#'  \href{https://jkkweb.sitehost.iu.edu/DoingBayesianDataAnalysis/}{Kruschke (2015)}.
-#'  Enter a codaMCMClist and receive a dataframe.
-#'  {Columns:} PSRF Point est.,
-#'  PSRF Upper C.I., Mean, Median, Mode, ESS, MCSE, HDImass, HDIlow, HDIhigh.
-#'
-#'  In certain situations, invoking the Gelman diagnostics can lead to errors,
-#'  for example when constants are included or if the data is too sparse. In
-#'  such cases, set first \code{gelman_diag_multivariate} to \code{FALSE}, and,
-#'  if this still produces an error, deactivate \code{gelman_diag} altogether
-#'  by setting it to \code{FALSE}, too.
+#'  \href{https://jkkweb.sitehost.iu.edu/DoingBayesianDataAnalysis/}{Kruschke
+#'  (2015)}. Enter a codaMCMClist and receive a dataframe with summarising
+#'  diagnostics.
 #'
 #'
-#' @param codaMCMClist List. List in codaMCMClist format.
+#' @details
+#'  Because the first threshold is always fixed, the gelman multivariate PSRF
+#'  will always throw an error, this is automatically set to \code{FALSE}. If
+#'  the gelman diagnostics still produce an error, deactivate \code{gelman_diag}
+#'  altogether by setting it to \code{FALSE}, too.
+#'
+#'
+#' @param codaMCMClist. List in codaMCMClist format.
 #' @param HDImass numeric. Value within 0 and 1. Default = 0.95.
 #' @param gelman_diag logical. If TRUE, the gelman diagnostics for computing
 #' the PSRF is invoked. Default: TRUE
-#' @param gelman_diag_multivariate logical. If TRUE, the gelman diagnostics for
-#' computing the PSRF multivariately is invoked. Default: FALSE.
+#'
+#' @return
+#' A data.frame of class `diagnostic_summary`.
+#'
+#' {Columns:} PSRF Point est.,PSRF Upper C.I., Mean, Median, Mode, ESS,
+#' MCSE, HDImass, HDIlow, HDIhigh.
 #'
 #' @rdname diagnostic.summary
 #' @export
-diagnostic.summary <- function(codaMCMClist, HDImass = 0.95, gelman_diag = TRUE,
-                               gelman_diag_multivariate = TRUE) {
+#'
+#' @examples
+#' # select Sorsum data with auricular surface after Lovejoy et al. 1985 and
+#' # convert to matrix
+#' sorsum <- as.matrix(sorsum_as[,2])
+#'
+#' # example with default settings
+#' sorsum_res <- bay.ta(method = sorsum)
+#'
+#' sorsum_diag <- diagnostic.summary(sorsum_res)
+#'
+#' # show first rows
+#' head(sorsum_diag)
+#'
+diagnostic.summary <- function(codaMCMClist, HDImass = 0.95, gelman_diag = TRUE)
+  {
+  checkmate::assertClass(codaMCMClist, "coda::mcmc.list")
+  checkmate::assertNumeric(HDImass, lower = 0, upper = 1, len = 1)
+  checkmate::assertLogical(gelman_diag)
+
   parameterNames = varnames(codaMCMClist)
   mcmcMat = as.matrix(codaMCMClist,chains=TRUE)
   summaryInfo = NULL
   for ( parName in parameterNames ) {
-    summaryInfo = rbind( summaryInfo , summarizePost( mcmcMat[,parName], credMass = HDImass ) )
+    summaryInfo = rbind( summaryInfo , summarizePost( mcmcMat[,parName],
+                                                      credMass = HDImass ) )
     thisRowName = parName
     rownames(summaryInfo)[NROW(summaryInfo)] = thisRowName
   }
   summaryInfo_df <- as.data.frame(summaryInfo)
   if(gelman_diag == TRUE) {
-    psrf_df <- as.data.frame((gelman.diag(codaMCMClist, multivariate = gelman_diag_multivariate))$psrf)
+    psrf_df <- as.data.frame((gelman.diag(codaMCMClist, multivariate =
+                                            FALSE))$psrf)
     colnames(psrf_df) <- c("PSRF Point est.", "PSRF Upper C.I.")
     diagnostic_summary <- cbind(psrf_df, summaryInfo_df)
   }  else {
     diagnostic_summary <- summaryInfo_df
   }
+  class(diagnostic_summary) <- c("diagnostic_summary", class(diagnostic_summary))
+  return(diagnostic_summary)
 }
 
 # simplified version of a similar function in Kruschke 2015
@@ -119,8 +145,11 @@ HDIofMCMC = function(
 #' NULL
 #'
 diagnostics.max.min <- function(x) {
-  result <- data.frame(PSRF_max = max(x$`PSRF Point est.`[which(x$MCSE > 0)]),
-                       PSRF_upper_max = max(x$`PSRF Upper C.I.`[which(x$MCSE > 0)]),
+  checkmate::assertClass(x, "diagnostic_summary")
+
+  result <-
+    data.frame(PSRF_max = max(x$`PSRF Point est.`[which(x$MCSE > 0)]),
+               PSRF_upper_max = max(x$`PSRF Upper C.I.`[which(x$MCSE > 0)]),
                        ESS_min = min(x$ESS[which(x$MCSE > 0)]
                        ))
   return(result)
@@ -130,9 +159,9 @@ diagnostics.max.min <- function(x) {
 #' @title HDI median range of age estimates
 #'
 #'@description
-#' Comparison with known age-at-death
+#' Median ranges
 #'
-#' @param x a mcmc list.
+#' @param x output from function `diagnostics.summary()`
 #'
 #' @param age_identifier a character string of either "age.s" or "age.s_c" to
 #' select the uncalibrated or calibrated age estimates. Default: "age.s".
@@ -146,6 +175,9 @@ diagnostics.max.min <- function(x) {
 #'
 hdi.agerange <- function(x, age_identifier = "age.s")
   {
+  checkmate::assertClass(x, "diagnostic_summary")
+  checkmate::assertChoice(age_identifier, c("age.s", "age.s_c"))
+
   age_identifier_grep <- ifelse(age_identifier == "age.s",
                                 "^age.s\\[", "^age.s_c")
 
@@ -162,9 +194,9 @@ hdi.agerange <- function(x, age_identifier = "age.s")
 #' @title gomp.a0
 #'
 #' @description
-#' Internal function for generating starting values for the Gompertz model if the starting age is not
-#' 15 years. Not run if the minimum age is actually 15. The original forumula
-#' derives from ##.
+#' Internal function for generating starting values for the Gompertz model if
+#' the starting age is not 15 years. Not run if the minimum age is actually 15.
+#' The original forumula derives from ##.
 #'
 #' @param sampling integer. Number of sampling steps. Default: 100000.
 #' @param b_min numeric. Minimum of Gompertz beta parameter. Default: 0.02.
@@ -188,14 +220,16 @@ gomp.a0 <- function(
     b_max = 0.1,
     minimum_age = 15) {
 
-  # we do not want too much overhead so no computation if the default age of 15 is true
+  # we do not want too much overhead so no computation if the default age == 15
   if (minimum_age == 15) {
     fit_coeff <- c(-66.76844784, -2.32502545, 0.0823)
   } else {
     null_age <- minimum_age - 15
 
     ind_df <- data.frame(b = runif(n = sampling, min = b_min, max = b_max)) |>
-      dplyr::mutate(a = exp(rnorm(dplyr::n(), (-66.76844784 * (b - 0.0718) - 7.119), sqrt(0.0823) ))) |>
+      dplyr::mutate(a = exp(rnorm(dplyr::n(),
+                                  (-66.76844784 * (b - 0.0718) - 7.119),
+                                  sqrt(0.0823) ))) |>
       dplyr::mutate(a0 = a * exp(b * null_age))
 
     fit <- lm(log(a0) ~ b, data = ind_df)
@@ -207,6 +241,67 @@ gomp.a0 <- function(
 }
 
 
+#' @title Compute thresholds for chains
+#'
+#'@description
+#' Compute thresholds
+#'
+#' @param x output from MCMC sampling
+#'
+#' @return a coda mcmc-list with three chains for threshold values of traits
+#' @export
+#'
+#' @examples
+#'NULL
+#'
+threshold.chains <- function(x) {
+  checkmate::assertClass(x, "coda::mcmc.list")
+
+  out <- lapply(x, function(chain) {
+    s <- as.matrix(chain)
+
+    # identify columns
+    thresh_cols <- grep("^thresh\\[", colnames(s), value = TRUE)
+    beta0_cols  <- grep("^beta0\\[", colnames(s), value = TRUE)
+    beta_cols   <- grep("^beta\\[", colnames(s), value = TRUE)
+
+    if (length(beta_cols) == 0) {
+      beta_cols  <- "beta"
+      beta0_cols <- "beta0"
+    }
+
+    n_thresh  <- length(thresh_cols)
+    n_methods <- length(beta_cols)
+
+    thresholds_list <- vector("list", n_methods)
+
+    for (m in seq_len(n_methods)) {
+
+      beta0 <- s[, beta0_cols[m]]
+      beta  <- s[, beta_cols[m]]
+
+      # fully vectorized (faster than sapply)
+      thresholds_m <- exp((s[, thresh_cols] - beta0) / beta)
+
+      colnames(thresholds_m) <-
+        paste0("thresh_age[", m, ",", seq_len(n_thresh), "]")
+
+      thresholds_list[[m]] <- thresholds_m
+    }
+
+    thresholds_mat <- do.call(cbind, thresholds_list)
+
+    # return as mcmc object (preserve iteration + thinning)
+    coda::as.mcmc(thresholds_mat,
+                  start = start(chain),
+                  end   = end(chain),
+                  thin  = thin(chain))
+  })
+
+  return(coda::as.mcmc.list(out))
+}
+
+
 #' @title Extract thresholds
 #'
 #'@description
@@ -214,7 +309,7 @@ gomp.a0 <- function(
 #'
 #' @param x output from function `diagnostic.summary`
 #'
-#' @param mean_value a character string of either "Mode", "Median" or "Mode".
+#' @param mean_value a character string of either "Mode", "Median" or "Mean".
 #' Default: "Mode".
 #'
 #' @return a matrix with threshold values of traits
@@ -223,9 +318,13 @@ gomp.a0 <- function(
 #' @examples
 #'NULL
 #'
-threshold.matrix <- function(x,
-                             mean_value = "Mode")
+threshold.matrix <- function(
+    x,
+    mean_value = "Mode")
   {
+  checkmate::assertClass(x, "diagnostic_summary")
+  checkmate::assertChoice(mean_value, c("Mode", "Median", "Mean"))
+
   rn <- rownames(x)
   sel <- grepl("^thresh_age\\[", rn)
 
@@ -263,11 +362,13 @@ threshold.matrix <- function(x,
 #'NULL
 #'
 corr.mat.mean <- function(x) {
+  checkmate::assertClass(x, "coda::mcmc.list")
+
   samples_Ustar <- x[,grep("^Ustar\\[", colnames(x))]
 
   # Extract numbers inside the brackets
-  numbers <- gsub("Ustar\\[|\\]", "", colnames(samples_Ustar))        # Remove "Ustar[" and "]"
-  index_matrix <- do.call(rbind, strsplit(numbers, ", ")) # Split by comma and convert to matrix
+  numbers <- gsub("Ustar\\[|\\]", "", colnames(samples_Ustar))
+  index_matrix <- do.call(rbind, strsplit(numbers, ", "))
 
   # Convert to numeric and find the maximum index
   index_matrix_numeric <- apply(index_matrix, 2, as.numeric)
@@ -325,6 +426,10 @@ prob.cat <- function(
     group_col,
     mode = c("mean", "summed")
 ) {
+  checkmate::assertClass(mcmc_list, "coda::mcmc.list")
+  checkmate::assertClass(df_orig, "data.frame")
+  checkmate::assertChoice(age_identifier, c("age.s", "age.s_c"))
+  checkmate::assertChoice(mode, c("mean", "summed"))
 
   mode <- match.arg(mode)
   nChain <- length(mcmc_list)
@@ -367,9 +472,6 @@ prob.cat <- function(
                         levels = levels(df_orig$group_factor)),
       value = unlist(cat_post)
     )
-
-    return(dense_xy)
-
   } else {
 
     # ---- Mixture density per category ----
@@ -411,8 +513,6 @@ prob.cat <- function(
         as.numeric(df_orig_cat_n[as.numeric(dense_xy[i, 1]), 2] *
                      dense_xy$y[i]) / nrow(df_orig_cat_n)
     }
-
-    return(dense_xy)
   }
+  return(dense_xy)
 }
-

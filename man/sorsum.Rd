@@ -4,7 +4,6 @@
 \alias{sorsum}
 \title{Sorsum}
 \format{
-## `sorsum`
 A data frame with 38 rows and 2 columns:
 \itemize{
   \item \bold{id:} individual id
@@ -13,7 +12,7 @@ A data frame with 38 rows and 2 columns:
 }
 \description{
 Neolithic population from a gallery grave in Hessen/Germany. From the
-published raw data, the trait which was possible to assess most often
+published raw data, only the trait which was possible to assess most often
 (auricular surface after Lovejoy et al. 1985) is included. It is taken from
 Moser et al. 2025, table S69.
 }

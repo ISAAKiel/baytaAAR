@@ -7,7 +7,7 @@
 hdi.agerange(x, age_identifier = "age.s")
 }
 \arguments{
-\item{x}{a mcmc list.}
+\item{x}{output from function `diagnostics.summary()`}
 
 \item{age_identifier}{a character string of either "age.s" or "age.s_c" to
 select the uncalibrated or calibrated age estimates. Default: "age.s".}
@@ -16,7 +16,7 @@ select the uncalibrated or calibrated age estimates. Default: "age.s".}
 a vector with mean, median and mode of the HDI range
 }
 \description{
-Comparison with known age-at-death
+Median ranges
 }
 \examples{
 NULL
