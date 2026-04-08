@@ -15,7 +15,7 @@
 #' @param maximum_age numeric. Maximum age. Default: 100.
 #'
 #' @param error_sd numeric. Optional calibration term for estimation of age.
-#' Default: 7.5.
+#' Default: NA.
 #'
 #' @param adaptSteps integer. Number of adaptation steps. Default: 2000.
 #'
@@ -51,7 +51,7 @@ bay.ta.jags <- function(
     gomp_b = NA,
     minimum_age = 15,
     maximum_age = 100,
-    error_sd = 7.5,
+    error_sd = NA,
     adaptSteps = 2000,
     burnInSteps = 3000,
     runjagsMethod ="rjags",
@@ -65,6 +65,8 @@ bay.ta.jags <- function(
   checkmate::assertMatrix(method)
   checkmate::assertChoice(runjagsMethod, c("rjags", "rjparallel", "parallel"))
   checkmate::assertCount(nChains, positive = TRUE)
+
+  if(is.na(error_sd)) error_sd =  1
 
   set.seed(seed)
 

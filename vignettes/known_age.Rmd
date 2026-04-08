@@ -38,12 +38,12 @@ For running the model, with use NIMBLE and the multinorm likelihood (`mnorm`). `
 spitalfields_res <- bay.ta(
   framework = "NIMBLE",
   algorithm = "mnorm",
-  multicore = T,
+  multicore = F,
   method = as.matrix(spitalfields[,c(2:6)]),
   minimum_age = 16,
   parameters = c("b", "a", "beta0", "beta", "thresh", "age.s", "Ustar"),
-  thinSteps = 10,
-  numSavedSteps = 100000,
+  thinSteps = 1,
+  numSavedSteps = 10000,
   seed = 233
 )
 ```
@@ -55,7 +55,7 @@ As the name suggests, the function `age.estimate.summarize` summarizes standard 
 ++
 
 ```{r spitalfields age.estimate.summarize, echo = TRUE}
-age.comp.summarize(x = spitalfields_res,
+age.comp.summarize(mcmc_list = spitalfields_res,
             known_age = spitalfields$Age,
             mean_choice = "Mode") %>% t(.) %>% round(.,2) %>%
   knitr::kable (., col.names = "value") %>%

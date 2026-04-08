@@ -3,11 +3,12 @@
 #'@description
 #' Comparison of estimated age with known age-at-death.
 #'
-#' @param x MCMC output from coda chains.
+#' @param mcmc_list MCMC output from coda chains.
 #'
-#' @param selector a vector of individuals to include. Optional.
+#' @param known_age a vector of known age-at-death. NAs are allowed and those
+#' individuals will subsequently be ignored.
 #'
-#' @param chosen_mean a character string of either "Mode", "Median" or "Mode".
+#' @param mean_choice a character string of either "Mode", "Median" or "Mode".
 #' Default: "Mode".
 #'
 #' @param age_identifier a character string of either "age.s" or "age.s_c" to
@@ -20,35 +21,29 @@
 #' @examples
 #'NULL
 #'
-age.comp.summarize <- function(x,
-                               selector = NULL,
-                               mean_choice = "Mode",
+age.comp.summarize <- function(mcmc_list,
                                known_age,
+                               mean_choice = "Mode",
                                age_identifier = "age.s",
-                               HDImass = 0.95,
-                               gelman_diag = FALSE,
-                               gelman_diag_multivariate = F) {
+                              ...) {
+  checkmate::assertClass(mcmc_list, "mcmc.list")
+  checkmate::assertChoice(age_identifier, c("age.s", "age.s_c"))
+  checkmate::assertAtomic(known_age, all.missing = FALSE)
+  checkmate::assertChoice(mean_choice, c("Mean", "Median", "Mode"))
+
   age_identifier_grep <- ifelse(age_identifier == "age.s",
                                 "^age.s\\[", "^age.s_c")
-  x_mcmc_list <- as.mcmc.list(x)
-  x_mcmcMat = as.matrix(x_mcmc_list, chains=TRUE)
-  x_diag <- diagnostic.summary(x_mcmc_list,
-                               HDImass = HDImass,
-                               gelman_diag = gelman_diag,
-                               gelman_diag_multivariate =
-                                 gelman_diag_multivariate)
-  x_diag_red <- x_diag[grep(age_identifier_grep,rownames(x_diag)),]
-  ages <- x_mcmcMat[,grep(age_identifier_grep,colnames(x_mcmcMat))]
-  if (length(selector) > 0 ) {
-    known_age <- known_age[selector]
-    x_diag_red <- x_diag_red[selector,]
-    ages <- ages[,selector]
-  }
+  idx <- which(!is.na(known_age))
+  x_mcmcMat = as.matrix(mcmc_list, chains=TRUE)
+  x_diag <- diagnostic.summary(mcmc_list, ...)
+  x_diag_red <- x_diag[grep(age_identifier_grep,rownames(x_diag)),][idx,]
+  ages <- x_mcmcMat[,grep(age_identifier_grep,colnames(x_mcmcMat))][,idx]
+  known_age <- known_age[idx]
 
   estimated_age <- x_diag_red[,mean_choice]
   Residual_model  <-  lm((known_age - estimated_age) ~ known_age)
 
-  corrPearson <- cor.test(estimated_age,known_age, method="pearson")
+  corrPearson <- cor.test(estimated_age, known_age, method="pearson")
 
   tmnlp_res <- tmnlp(known_age, ages)
   crps_res <- mean(scoringRules::crps_sample(known_age, t(ages)) )
@@ -84,8 +79,8 @@ age.comp.summarize <- function(x,
 #' @description
 #' Internal function for computing the TMNLP.
 #'
-#' @param x a vector with known age-at-death.
-#' @param mcmcMat MCMC output from coda.
+#' @inheritParams age.comp.summarize
+#' @param mcmcMat MCMC matrix.
 #'
 #' @return numeric. Value of TMNLP, smaller is better.
 #'
@@ -95,13 +90,13 @@ age.comp.summarize <- function(x,
 #' @examples
 #' NULL
 #'
-tmnlp <- function(x, mcmcMat) {
-  x_length <- length(x)
+tmnlp <- function(known_age, mcmcMat) {
+  x_length <- length(known_age)
   log_vals <- numeric(x_length)
 
   for (i in seq_len(x_length)) {
     age_dens <- density(mcmcMat[i, ], n = 512 * 8)
-    vec_i <- approx(age_dens$x, age_dens$y, xout = x[i], rule = 2)$y
+    vec_i <- approx(age_dens$x, age_dens$y, xout = known_age[i], rule = 2)$y
     vec_i <- pmax(vec_i, .Machine$double.eps)
     log_vals[i] <- log(vec_i)
   }
@@ -117,13 +112,7 @@ tmnlp <- function(x, mcmcMat) {
 #'
 #' @param x output from the function `diagnostic.summary`
 #'
-#' @param selector a vector of individuals to include. Optional.
-#'
-#' @param mean_choice a character string of either "Mode", "Median" or "Mode".
-#' Default: "Mode".
-#'
-#' @param age_identifier a character string of either "age.s" or "age.s_c" to
-#' select the uncalibrated or calibrated age estimates. Default: "age.s".
+#' @inheritParams age.comp.summarize
 #'
 #' @return a ggplot object with 2 x 2 single plots, showing
 #'
@@ -133,34 +122,32 @@ tmnlp <- function(x, mcmcMat) {
 #'NULL
 #'
 age.comp.plot <- function(x,
-                        selector = NULL,
                         age_identifier = "age.s",
                         known_age,
-                        mean_choice = "Mode"
-) {
+                        mean_choice = "Mode" ) {
+  checkmate::assertClass(x, "diagnostic_summary")
+  checkmate::assertChoice(age_identifier, c("age.s", "age.s_c"))
+  checkmate::assertAtomic(known_age, all.missing = FALSE)
+  checkmate::assertChoice(mean_choice, c("Mean", "Median", "Mode"))
+
   x$chosen_mean <- x[,mean_choice]
   age_identifier_grep <- ifelse(age_identifier == "age.s",
                                 "^age.s\\[", "^age.s_c")
-  x_red <- x[grep(age_identifier_grep,rownames(x)),]
+  idx <- which(!is.na(known_age))
+  x_red <- x[grep(age_identifier_grep,rownames(x)),][idx,]
   age_min <- round(min(x_red$HDIlow))
-  if (length(selector) > 0)  {
-    x_red <- x_red[selector,]
-    known_age <- known_age[selector]
-  }
 
-  x_red$known_age <- known_age
+  x_red$known_age <- known_age[idx]
   known_age_density <- density(x_red$known_age, bw = 5)
   known_age_density_df <- data.frame(x = known_age_density$x,
                                      y = known_age_density$y)
-
   x_length <- length(x_red$known_age)
   x_ordered <- x_red[order(x_red$known_age),]
   x_ordered$id <- c(1:x_length)
-
-  alpha <- x['a','chosen_mean']
-  beta <- x['b','chosen_mean']
   alpha_mean <- x['a',"Mean"]
   beta_mean <- x['b',"Mean"]
+
+  library(ggplot2)
 
   plot1 <- ggplot(x_ordered, aes(x = id)) +
     geom_errorbar(aes(ymin=HDIlow, ymax=HDIhigh,
@@ -212,16 +199,9 @@ age.comp.plot <- function(x,
 #'@description
 #' Sequential output of cumulative binomial test
 #'
-#' @param x a MCMC list
+#' @param HDImass a numeric or a vector with the probability range.
 #'
-#' @param selector a vector of individuals to include. Optional.
-#'
-#' @param HDImass a numeric with the probability range.
-#'
-#' @param known_age a vector with the known age-at-death.
-#'
-#' @param age_identifier a character string of either "age.s" or "age.s_c" to
-#' select the uncalibrated or calibrated age estimates. Default: "age.s".
+#' @inheritParams age.comp.summarize
 #'
 #' @return a data.frame
 #'
@@ -230,27 +210,32 @@ age.comp.plot <- function(x,
 #' @examples
 #'NULL
 #'
-sequential.binom.test <- function(x,
-                             HDImass = 0.95,
-                             known_age,
-                             selector = NULL,
-                             age_identifier = "age.s") {
+sequential.binom.test <- function(mcmc_list,
+                                  known_age,
+                                  HDImass = 0.95,
+                                  age_identifier = "age.s") {
+  checkmate::assertClass(mcmc_list, "mcmc.list")
+  checkmate::assertAtomic(known_age, all.missing = FALSE)
+  checkmate::assertAtomic(HDImass, all.missing = FALSE, any.missing = FALSE,
+                          unique = TRUE)
+  checkmate::assertChoice(age_identifier, c("age.s", "age.s_c"))
+
   result_df <- data.frame()
   age_identifier_grep <- ifelse(age_identifier == "age.s",
                                 "^age.s\\[", "^age.s_c")
+
+  idx <- which(!is.na(known_age))
+  known_age <- known_age[idx]
+
   for (i in HDImass) {
-    MCMC_diag  <-  diagnostic.summary(x, HDImass = i,
-                                      gelman_diag = F,
-                                      gelman_diag_multivariate = F)
-    MCMC_diag_age <- MCMC_diag[grep(age_identifier_grep,rownames(MCMC_diag)),]
+    MCMC_diag  <-  diagnostic.summary(mcmc_list, HDImass = i, gelman_diag = F)
+    MCMC_diag_age <-
+      MCMC_diag[grep(age_identifier_grep,rownames(MCMC_diag)),][idx,]
     MCMC_diag_age$known_age <- known_age
 
-    if(length(selector) > 0 ) {
-      MCMC_diag_age <- MCMC_diag_age[selector,]
-    }
-
-    MCMC_diag_age$in_HDI <- MCMC_diag_age$known_age >= MCMC_diag_age$HDIlow &
-      MCMC_diag_age$known_age <= MCMC_diag_age$HDIhigh
+    MCMC_diag_age$in_HDI <-
+      MCMC_diag_age$known_age >= MCMC_diag_age$HDIlow - 0.05 &
+      MCMC_diag_age$known_age <= MCMC_diag_age$HDIhigh + 0.05
     n_total <- nrow(MCMC_diag_age)
     n_in <- sum(MCMC_diag_age$in_HDI)
 
@@ -261,7 +246,7 @@ sequential.binom.test <- function(x,
                                CI_low = binom_coverage$conf.int[1],
                                CI_up = binom_coverage$conf.int[2],
                                p_value = binom_coverage$p.value)
-    result_df <- rbind(result_df,binom_result)
+    result_df <- rbind(result_df, binom_result)
   }
   return(result_df)
 }

@@ -4,7 +4,7 @@ output: rmarkdown::html_vignette
 author: "Nils Müller-Scheeßel"
 date: "`r Sys.Date()`"
 vignette: >
-  %\VignetteIndexEntry{Data_preparation}
+  %\VignetteIndexEntry{Data input}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

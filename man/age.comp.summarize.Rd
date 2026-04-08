@@ -10,9 +10,7 @@ age.comp.summarize(
   mean_choice = "Mode",
   known_age,
   age_identifier = "age.s",
-  HDImass = 0.95,
-  gelman_diag = FALSE,
-  gelman_diag_multivariate = F
+  ...
 )
 }
 \arguments{

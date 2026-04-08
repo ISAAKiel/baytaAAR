@@ -6,7 +6,9 @@
 \alias{baytaAAR-package}
 \title{baytaAAR: Bayesian Transition Analysis with MCMC}
 \description{
-Provides Bayesian age estimation for bioarchaeological skeletal data using ordinal probit regression models implemented in JAGS and NIMBLE. The package is designed to handle multiple ordinal traits of adult individuals and incorporates a Gompertz prior on age to reflect population-level mortality trends. It accounts for observational error and supports full customization of model parameters and MCMC settings. Ideal for analyzing age-at-death in archaeological samples through a probabilistic and reproducible framework.
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
+Provides Bayesian age estimation for bioarchaeological skeletal data using ordinal probit regression models implemented in JAGS and NIMBLE. The package is designed to handle multiple ordinal traits of adult individuals and incorporates a Gompertz prior on age to reflect population-level mortality trends. It accounts for estimation uncertainties and supports full customization of model parameters and MCMC settings.
 }
 \seealso{
 Useful links:

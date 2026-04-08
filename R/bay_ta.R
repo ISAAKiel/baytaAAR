@@ -89,15 +89,15 @@ bay.ta  <- function(
     method,
     eta = 1,
     gomp_b = NA,
-    error_sd = 7.5,
+    error_sd = NA,
     minimum_age = 15,
     maximum_age = 100,
     parameters = c("b", "a", "beta0", "beta", "thresh", "age.s"),
     nChains = 3L,
-    adaptSteps = 2000L,
-    burnInSteps = 3000L,
-    thinSteps = 1L,
-    numSavedSteps = 10000L,
+    adaptSteps = 2000,
+    burnInSteps = 3000,
+    thinSteps = 1,
+    numSavedSteps = 10000,
     silent.jags = F,
     silent.runjags = F) {
 
@@ -115,12 +115,10 @@ bay.ta  <- function(
                           choices = c("b", "a", "beta0", "beta",
                                       "thresh", "age.s", "age.s_c", "Ustar"))
   checkmate::assertCount(nChains, positive = TRUE)
-  checkmate::assertInteger(adaptSteps, lower = 0,
-                           upper = numSavedSteps - burnInSteps)
-  checkmate::assertInteger(burnInSteps, lower = 0,
-                           upper = numSavedSteps - adaptSteps)
-  checkmate::assertInteger(thinSteps, lower = 1)
-  checkmate::assertInteger(numSavedSteps, lower = adaptSteps + burnInSteps)
+  checkmate::assertNumeric(adaptSteps, lower = 0 )
+  checkmate::assertNumeric(burnInSteps, lower = 0 )
+  checkmate::assertNumeric(thinSteps, lower = 1)
+  checkmate::assertNumeric(numSavedSteps)
   checkmate::assertLogical(silent.jags)
   checkmate::assertLogical(silent.runjags)
   available_cores <- parallel::detectCores(logical = FALSE)
@@ -185,7 +183,7 @@ bay.ta  <- function(
         nChains = nChains,
         burnInSteps = burnInSteps,
         thinSteps = thinSteps,
-        numSteps = ceiling(numSavedSteps * thinSteps / nChains),
+        numSteps = burnInSteps + ceiling(numSavedSteps * thinSteps / nChains),
         seed = nimble.set.seed
       )
     } else { # multicore
@@ -206,7 +204,7 @@ bay.ta  <- function(
       parameters = parameters,
       burnInSteps = burnInSteps,
       thinSteps = thinSteps,
-      numSteps = ceiling(numSavedSteps * thinSteps / nChains_),
+      numSteps = burnInSteps + ceiling(numSavedSteps * thinSteps / nChains_),
       nChains = 1
     )
 

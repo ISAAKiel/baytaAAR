@@ -14,7 +14,7 @@
 #'  altogether by setting it to \code{FALSE}, too.
 #'
 #'
-#' @param codaMCMClist. List in codaMCMClist format.
+#' @inheritParams age.comp.summarize
 #' @param HDImass numeric. Value within 0 and 1. Default = 0.95.
 #' @param gelman_diag logical. If TRUE, the gelman diagnostics for computing
 #' the PSRF is invoked. Default: TRUE
@@ -41,14 +41,14 @@
 #' # show first rows
 #' head(sorsum_diag)
 #'
-diagnostic.summary <- function(codaMCMClist, HDImass = 0.95, gelman_diag = TRUE)
+diagnostic.summary <- function(mcmc_list, HDImass = 0.95, gelman_diag = TRUE)
   {
-  checkmate::assertClass(codaMCMClist, "coda::mcmc.list")
+  checkmate::assertClass(mcmc_list, "mcmc.list")
   checkmate::assertNumeric(HDImass, lower = 0, upper = 1, len = 1)
   checkmate::assertLogical(gelman_diag)
 
-  parameterNames = varnames(codaMCMClist)
-  mcmcMat = as.matrix(codaMCMClist,chains=TRUE)
+  parameterNames = varnames(mcmc_list)
+  mcmcMat = as.matrix(mcmc_list,chains=TRUE)
   summaryInfo = NULL
   for ( parName in parameterNames ) {
     summaryInfo = rbind( summaryInfo , summarizePost( mcmcMat[,parName],
@@ -58,7 +58,7 @@ diagnostic.summary <- function(codaMCMClist, HDImass = 0.95, gelman_diag = TRUE)
   }
   summaryInfo_df <- as.data.frame(summaryInfo)
   if(gelman_diag == TRUE) {
-    psrf_df <- as.data.frame((gelman.diag(codaMCMClist, multivariate =
+    psrf_df <- as.data.frame((gelman.diag(mcmc_list, multivariate =
                                             FALSE))$psrf)
     colnames(psrf_df) <- c("PSRF Point est.", "PSRF Upper C.I.")
     diagnostic_summary <- cbind(psrf_df, summaryInfo_df)
@@ -138,6 +138,8 @@ HDIofMCMC = function(
 #' @description
 #' max. and min diagnostics values
 #'
+#' @param x output from function `diagnostics.summary()`
+#'
 #' @rdname diagnostics.max.min
 #' @export
 #'
@@ -163,8 +165,7 @@ diagnostics.max.min <- function(x) {
 #'
 #' @param x output from function `diagnostics.summary()`
 #'
-#' @param age_identifier a character string of either "age.s" or "age.s_c" to
-#' select the uncalibrated or calibrated age estimates. Default: "age.s".
+#' @inheritParams age.comp.summarize
 #'
 #' @return a vector with mean, median and mode of the HDI range
 #'
@@ -210,9 +211,8 @@ hdi.agerange <- function(x, age_identifier = "age.s")
 #' @export
 #' @noRd
 #' @examples
-#' NULL
 #'
-#' gomp.a0(minimum_age = 12)
+#' gomp.a0()
 #'
 gomp.a0 <- function(
     sampling = 100000,
@@ -246,18 +246,18 @@ gomp.a0 <- function(
 #'@description
 #' Compute thresholds
 #'
-#' @param x output from MCMC sampling
+#' @inheritParams age.comp.summarize
 #'
-#' @return a coda mcmc-list with three chains for threshold values of traits
+#' @return a mcmc-list of coda chains for threshold values of traits
 #' @export
 #'
 #' @examples
 #'NULL
 #'
-threshold.chains <- function(x) {
-  checkmate::assertClass(x, "coda::mcmc.list")
+threshold.chains <- function(mcmc_list) {
+  checkmate::assertClass(mcmc_list, "mcmc.list")
 
-  out <- lapply(x, function(chain) {
+  out <- lapply(mcmc_list, function(chain) {
     s <- as.matrix(chain)
 
     # identify columns
@@ -309,8 +309,7 @@ threshold.chains <- function(x) {
 #'
 #' @param x output from function `diagnostic.summary`
 #'
-#' @param mean_value a character string of either "Mode", "Median" or "Mean".
-#' Default: "Mode".
+#' @inheritParams age.comp.summarize
 #'
 #' @return a matrix with threshold values of traits
 #' @export
@@ -320,15 +319,15 @@ threshold.chains <- function(x) {
 #'
 threshold.matrix <- function(
     x,
-    mean_value = "Mode")
+    mean_choice = "Mode")
   {
   checkmate::assertClass(x, "diagnostic_summary")
-  checkmate::assertChoice(mean_value, c("Mode", "Median", "Mean"))
+  checkmate::assertChoice(mean_choice, c("Mode", "Median", "Mean"))
 
   rn <- rownames(x)
   sel <- grepl("^thresh_age\\[", rn)
 
-  vals <- x[sel, mean_value]
+  vals <- x[sel, mean_choice]
 
   idx <- do.call(rbind, regmatches(rn[sel], gregexpr("\\d+", rn[sel])))
   idx <- matrix(as.integer(idx), ncol = 2)
@@ -353,7 +352,7 @@ threshold.matrix <- function(
 #' than it seems. It involves taking the cross product from the resulting coda
 #' estimates.
 #'
-#' @param x matrix. Output from coda chains
+#' @inheritParams age.comp.summarize
 #'
 #' @return a matrix with correlations between traits
 #' @export
@@ -361,10 +360,12 @@ threshold.matrix <- function(
 #' @examples
 #'NULL
 #'
-corr.mat.mean <- function(x) {
-  checkmate::assertClass(x, "coda::mcmc.list")
+corr.mat.mean <- function(mcmc_list) {
+  checkmate::assertClass(mcmc_list, "mcmc.list")
 
-  samples_Ustar <- x[,grep("^Ustar\\[", colnames(x))]
+  x_matrix <- as.matrix(mcmc_list, chains=TRUE)
+
+  samples_Ustar <- x_matrix[,grep("^Ustar\\[", colnames(x_matrix))]
 
   # Extract numbers inside the brackets
   numbers <- gsub("Ustar\\[|\\]", "", colnames(samples_Ustar))
@@ -399,8 +400,6 @@ corr.mat.mean <- function(x) {
 #'@description
 #' Summing or averaging probability densities per category.
 #'
-#' @param mcmc_list a coda mcmc.list object.
-#'
 #' @param df_orig a data.frame of the original raw data
 #'
 #' @param group_col a string specifying the grouping category in `df_orig`.
@@ -408,8 +407,7 @@ corr.mat.mean <- function(x) {
 #' @param mode a string specifying the resulting data.frame of summed
 #' probabilities or mean probabilities per category. Either `mean` or `summed`.
 #'
-#' @param age_identifier a character string of either "age.s" or "age.s_c" to
-#' select the uncalibrated or calibrated age estimates. Default: "age.s".
+#' @inheritParams age.comp.summarize
 #'
 #' @return a data.frame with either probability summed by category or mean
 #' per category.
@@ -426,9 +424,10 @@ prob.cat <- function(
     group_col,
     mode = c("mean", "summed")
 ) {
-  checkmate::assertClass(mcmc_list, "coda::mcmc.list")
-  checkmate::assertClass(df_orig, "data.frame")
+  checkmate::assertClass(mcmc_list, "mcmc.list")
   checkmate::assertChoice(age_identifier, c("age.s", "age.s_c"))
+  checkmate::assertClass(df_orig, "data.frame")
+  checkmate::assertScalar(group_col)
   checkmate::assertChoice(mode, c("mean", "summed"))
 
   mode <- match.arg(mode)
@@ -505,7 +504,7 @@ prob.cat <- function(
 
     df_orig_cat_n <- df_orig %>%
       dplyr::group_by(group_factor) %>%
-      dplyr::summarize(n = n(), .groups = "drop")
+      dplyr::summarize(n = dplyr::n(), .groups = "drop")
 
     dense_xy$y_prop <- NULL
     for (i in 1:length(dense_xy$y)) {

@@ -4,12 +4,7 @@
 \alias{diagnostic.summary}
 \title{Diagnostic summary of MCMC samples}
 \usage{
-diagnostic.summary(
-  codaMCMClist,
-  HDImass = 0.95,
-  gelman_diag = TRUE,
-  gelman_diag_multivariate = FALSE
-)
+diagnostic.summary(codaMCMClist, HDImass = 0.95, gelman_diag = TRUE)
 }
 \arguments{
 \item{HDImass}{numeric. Value within 0 and 1. Default = 0.95.}
@@ -17,13 +12,11 @@ diagnostic.summary(
 \item{gelman_diag}{logical. If TRUE, the gelman diagnostics for computing
 the PSRF is invoked. Default: TRUE}
 
-\item{gelman_diag_multivariate}{logical. If TRUE, the gelman diagnostics for
-computing the PSRF multivariately is invoked. Default: FALSE.}
-
 \item{codaMCMClist.}{List in codaMCMClist format.}
 }
 \value{
 A data.frame of class `diagnostic_summary`.
+
 {Columns:} PSRF Point est.,PSRF Upper C.I., Mean, Median, Mode, ESS,
 MCSE, HDImass, HDIlow, HDIhigh.
 }
@@ -34,15 +27,22 @@ Summarising diagnostics partly derived from
  diagnostics.
 }
 \details{
-In certain situations, invoking the Gelman diagnostics can lead to errors,
- for example when constants are included or if the data is too sparse. In
- such cases, set first \code{gelman_diag_multivariate} to \code{FALSE}, and,
- if this still produces an error, deactivate \code{gelman_diag} altogether
- by setting it to \code{FALSE}, too.
+Because the first threshold is always fixed, the gelman multivariate PSRF
+ will always throw an error, this is automatically set to \code{FALSE}. If
+ the gelman diagnostics still produce an error, deactivate \code{gelman_diag}
+ altogether by setting it to \code{FALSE}, too.
 }
 \examples{
-# run
+# select Sorsum data with auricular surface after Lovejoy et al. 1985 and
+# convert to matrix
+sorsum <- as.matrix(sorsum_as[,2])
 
+# example with default settings
+sorsum_res <- bay.ta(method = sorsum)
 
+sorsum_diag <- diagnostic.summary(sorsum_res)
+
+# show first rows
+head(sorsum_diag)
 
 }

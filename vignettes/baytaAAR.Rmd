@@ -64,10 +64,15 @@ sorsum_as_res <- bay.ta(
 )
 ```
 
-The analysis takes about 1 minute, depending on the computer power. The model output (`sorsum_as_res` in this case) are a matrix with the number of chains (three in the default case).
+The analysis takes about 1 minute, depending on the computer power. The model output (`sorsum_as_res` in this case) is a matrix with the number of chains (three in the default case).
 
 ```{r sorsum diagnostics, echo = TRUE}
 sorsum_as_res_diag <- diagnostic.summary(sorsum_as_res)
+```
+
+The output can be processed with any function able to deal with `coda` mcmc.lists but `baytaAAR provides some functions for convenience to quickly achieve results. One of them is the function `diagnostic.summary` which exactly does what the name suggests: a summary of diagnostic measures of the parameters.
+
+```{r sorsum diagnostics table head, echo = FALSE}
 sorsum_as_res_diag %>% head(., 20) %>% knitr::kable(., digits = 4)
 ```
 
@@ -82,7 +87,7 @@ Quality measures ...
 ```{r sorsum thresholds, echo = TRUE}
 thresholds <- threshold.chains(sorsum_as_res)
 thresh_diag <- diagnostic.summary(thresholds)
-threshold.matrix(thresh_diag, mean_value = "Mode") %>% data.frame(.) %>%
+threshold.matrix(thresh_diag, mean_choice = "Mode") %>% data.frame(.) %>%
   knitr::kable(., digits = 4)
 ```
 
@@ -138,6 +143,11 @@ ggplot() + ylab("density\n") +
 ```
 
 Gompertz distribution.
+
+
+## Going further
+
+More vignettes are dedicated to ...
 
 ---
 

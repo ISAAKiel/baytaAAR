@@ -4,7 +4,7 @@ author: "Nils Müller-Scheeßel"
 output: rmarkdown::html_vignette
 bibliography: ../inst/REFERENCES.bib
 vignette: >
-  %\VignetteIndexEntry{gompertz_distribution}
+  %\VignetteIndexEntry{The Gompertz distribution}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
