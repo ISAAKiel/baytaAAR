@@ -10,7 +10,7 @@ bay.ta.jags(
   gomp_b = NA,
   minimum_age = 15,
   maximum_age = 100,
-  error_sd = 7.5,
+  error_sd = NA,
   adaptSteps = 2000,
   burnInSteps = 3000,
   runjagsMethod = "rjags",
@@ -34,7 +34,7 @@ bay.ta.jags(
 \item{maximum_age}{numeric. Maximum age. Default: 100.}
 
 \item{error_sd}{numeric. Optional calibration term for estimation of age.
-Default: 7.5.}
+Default: NA.}
 
 \item{adaptSteps}{integer. Number of adaptation steps. Default: 2000.}
 

@@ -6,6 +6,9 @@
 \usage{
 diagnostics.max.min(x)
 }
+\arguments{
+\item{x}{output from function `diagnostics.summary()`}
+}
 \description{
 max. and min diagnostics values
 }

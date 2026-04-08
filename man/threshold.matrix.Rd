@@ -4,12 +4,12 @@
 \alias{threshold.matrix}
 \title{Extract thresholds}
 \usage{
-threshold.matrix(x, mean_value = "Mode")
+threshold.matrix(x, mean_choice = "Mode")
 }
 \arguments{
 \item{x}{output from function `diagnostic.summary`}
 
-\item{mean_value}{a character string of either "Mode", "Median" or "Mean".
+\item{mean_choice}{a character string of either "Mode", "Median" or "Mode".
 Default: "Mode".}
 }
 \value{

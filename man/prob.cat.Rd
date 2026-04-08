@@ -13,7 +13,7 @@ prob.cat(
 )
 }
 \arguments{
-\item{mcmc_list}{a coda mcmc.list object.}
+\item{mcmc_list}{MCMC output from coda chains.}
 
 \item{age_identifier}{a character string of either "age.s" or "age.s_c" to
 select the uncalibrated or calibrated age estimates. Default: "age.s".}

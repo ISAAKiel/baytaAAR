@@ -5,21 +5,19 @@
 \title{Sequential output of cumulative binomial test}
 \usage{
 sequential.binom.test(
-  x,
-  HDImass = 0.95,
+  mcmc_list,
   known_age,
-  selector = NULL,
+  HDImass = 0.95,
   age_identifier = "age.s"
 )
 }
 \arguments{
-\item{x}{a MCMC list}
+\item{mcmc_list}{MCMC output from coda chains.}
 
-\item{HDImass}{a numeric with the probability range.}
+\item{known_age}{a vector of known age-at-death. NAs are allowed and those
+individuals will subsequently be ignored.}
 
-\item{known_age}{a vector with the known age-at-death.}
-
-\item{selector}{a vector of individuals to include. Optional.}
+\item{HDImass}{a numeric or a vector with the probability range.}
 
 \item{age_identifier}{a character string of either "age.s" or "age.s_c" to
 select the uncalibrated or calibrated age estimates. Default: "age.s".}

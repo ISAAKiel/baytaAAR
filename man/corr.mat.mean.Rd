@@ -4,10 +4,10 @@
 \alias{corr.mat.mean}
 \title{Extract correlation matrix from Cholesky factor}
 \usage{
-corr.mat.mean(x)
+corr.mat.mean(mcmc_list)
 }
 \arguments{
-\item{x}{matrix. Output from coda chains}
+\item{mcmc_list}{MCMC output from coda chains.}
 }
 \value{
 a matrix with correlations between traits

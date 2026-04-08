@@ -4,15 +4,15 @@
 \alias{diagnostic.summary}
 \title{Diagnostic summary of MCMC samples}
 \usage{
-diagnostic.summary(codaMCMClist, HDImass = 0.95, gelman_diag = TRUE)
+diagnostic.summary(mcmc_list, HDImass = 0.95, gelman_diag = TRUE)
 }
 \arguments{
+\item{mcmc_list}{MCMC output from coda chains.}
+
 \item{HDImass}{numeric. Value within 0 and 1. Default = 0.95.}
 
 \item{gelman_diag}{logical. If TRUE, the gelman diagnostics for computing
 the PSRF is invoked. Default: TRUE}
-
-\item{codaMCMClist.}{List in codaMCMClist format.}
 }
 \value{
 A data.frame of class `diagnostic_summary`.

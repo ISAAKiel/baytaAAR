@@ -4,21 +4,16 @@
 \alias{age.comp.plot}
 \title{Plots of quality measures of age estimation}
 \usage{
-age.comp.plot(
-  x,
-  selector = NULL,
-  age_identifier = "age.s",
-  known_age,
-  mean_choice = "Mode"
-)
+age.comp.plot(x, age_identifier = "age.s", known_age, mean_choice = "Mode")
 }
 \arguments{
 \item{x}{output from the function `diagnostic.summary`}
 
-\item{selector}{a vector of individuals to include. Optional.}
-
 \item{age_identifier}{a character string of either "age.s" or "age.s_c" to
 select the uncalibrated or calibrated age estimates. Default: "age.s".}
+
+\item{known_age}{a vector of known age-at-death. NAs are allowed and those
+individuals will subsequently be ignored.}
 
 \item{mean_choice}{a character string of either "Mode", "Median" or "Mode".
 Default: "Mode".}

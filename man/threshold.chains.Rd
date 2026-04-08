@@ -4,13 +4,13 @@
 \alias{threshold.chains}
 \title{Compute thresholds for chains}
 \usage{
-threshold.chains(x)
+threshold.chains(mcmc_list)
 }
 \arguments{
-\item{x}{output from MCMC sampling}
+\item{mcmc_list}{MCMC output from coda chains.}
 }
 \value{
-a coda mcmc-list with three chains for threshold values of traits
+a mcmc-list of coda chains for threshold values of traits
 }
 \description{
 Compute thresholds

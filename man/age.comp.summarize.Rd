@@ -5,24 +5,24 @@
 \title{Quality measures of age estimation}
 \usage{
 age.comp.summarize(
-  x,
-  selector = NULL,
-  mean_choice = "Mode",
+  mcmc_list,
   known_age,
+  mean_choice = "Mode",
   age_identifier = "age.s",
   ...
 )
 }
 \arguments{
-\item{x}{MCMC output from coda chains.}
+\item{mcmc_list}{MCMC output from coda chains.}
 
-\item{selector}{a vector of individuals to include. Optional.}
+\item{known_age}{a vector of known age-at-death. NAs are allowed and those
+individuals will subsequently be ignored.}
+
+\item{mean_choice}{a character string of either "Mode", "Median" or "Mode".
+Default: "Mode".}
 
 \item{age_identifier}{a character string of either "age.s" or "age.s_c" to
 select the uncalibrated or calibrated age estimates. Default: "age.s".}
-
-\item{chosen_mean}{a character string of either "Mode", "Median" or "Mode".
-Default: "Mode".}
 }
 \value{
 a dataframe with age estimation quality parameters
