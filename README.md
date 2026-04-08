@@ -1,6 +1,5 @@
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![Coverage Status](https://img.shields.io/codecov/c/github/ISAAKiel/baytaAAR/master.svg)](https://app.codecov.io/github/ISAAKiel/baytaAAR?branch=master)
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/baytaAAR)](https://CRAN.R-project.org/package=baytaAAR)
+[![Codecov test coverage](https://codecov.io/gh/nmueller18/baytaAAR/graph/badge.svg)](https://app.codecov.io/gh/nmueller18/baytaAAR)[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/baytaAAR)](https://CRAN.R-project.org/package=baytaAAR)
 [![](https://cranlogs.r-pkg.org/badges/baytaAAR)](https://CRAN.R-project.org/package=baytaAAR)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/baytaAAR)](https://CRAN.R-project.org/package=baytaAAR)
 [![license](https://img.shields.io/badge/license-GPL%203-B50B82.svg)](https://www.r-project.org/Licenses/GPL-3)
