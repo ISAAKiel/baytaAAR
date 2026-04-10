@@ -3,6 +3,7 @@
 [![](https://cranlogs.r-pkg.org/badges/baytaAAR)](https://CRAN.R-project.org/package=baytaAAR)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/baytaAAR)](https://CRAN.R-project.org/package=baytaAAR)
 [![license](https://img.shields.io/badge/license-GPL%203-B50B82.svg)](https://www.r-project.org/Licenses/GPL-3)
+[![R-CMD-check](https://github.com/nmueller18/baytaAAR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/nmueller18/baytaAAR/actions/workflows/R-CMD-check.yaml)
 
 baytaAAR
 -------
