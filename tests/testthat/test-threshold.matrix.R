@@ -16,6 +16,6 @@ test_that("threshold.chains() produces correct output", {
   bay.ta_compare_mcmc_list <- threshold.chains(bay.ta_compare)
   bay.ta_compare_diag <- diagnostic.summary(bay.ta_compare_mcmc_list)
   expect_equal(threshold.matrix(bay.ta_compare_diag),
-               matrix(c(14.80124860, 25.57174185, 33.37472069, 46.46155074,
-                        63.97373410, 59.65893684, 89.83167260), nrow = 1))
+               matrix(c(14.97331291, 20.88689129, 32.80741133, 40.57041316,
+                        51.62735790, 58.91687489, 81.11982071), nrow = 1))
 })

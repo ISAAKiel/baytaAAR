@@ -3,5 +3,5 @@
     Code
       hdi.agerange(bay.ta_compare_diag)
     Output
-      [1] 55.74445 58.81692 60.07861
+      [1] 46.10650 49.12108 51.69557
 

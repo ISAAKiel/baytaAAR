@@ -51,7 +51,7 @@ bay.ta.nimble(
   parameters,
   eta = 1,
   gomp_b = NA,
-  error_sd,
+  error_sd = NA,
   minimum_age = 15,
   maximum_age = 100,
   burnInSteps = 2000,

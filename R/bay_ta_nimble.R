@@ -12,7 +12,7 @@ bay.ta.nimble <- function(
     parameters,
     eta = 1,
     gomp_b = NA,
-    error_sd,
+    error_sd = NA,
     minimum_age = 15,
     maximum_age = 100,
     burnInSteps = 2000,
@@ -179,18 +179,27 @@ bay.ta.nimble <- function(
     bay_ta <- nimble::nimbleCode(bay_ta, bay_ta_error)
   }
 
-  samples <- nimble::nimbleMCMC(
-    code = bay_ta,
-    constants = constantList,
-    data = dataList,
-    inits = initsList(),
-    monitors = parameters,
-    niter = numSteps,
-    nburnin = burnInSteps,
-    thin = thinSteps,
-    nchains = nChains,
-    samplesAsCodaMCMC = TRUE,
-    setSeed = seed
-  )
+      model <- nimble::nimbleModel(
+        code = bay_ta,
+        constants = constantList,
+        data = dataList,
+        inits = initsList(),
+        check = TRUE
+      )
+
+      cmodel <- nimble::compileNimble(model)
+      conf <- nimble::configureMCMC(model, monitors = parameters)
+      mcmc <- nimble::buildMCMC(conf)
+      cmcmc <- nimble::compileNimble(mcmc, project = model)
+
+      samples <- nimble::runMCMC(
+        cmcmc,
+        niter = numSteps,
+        nburnin = burnInSteps,
+        thin = thinSteps,
+        nchains = nChains,
+        samplesAsCodaMCMC = TRUE,
+        setSeed = seed
+      )
   return(samples)
 }
