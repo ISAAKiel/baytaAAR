@@ -22,10 +22,12 @@ knitr::opts_chunk$set(
 ```{r, message=FALSE}
 library(ggplot2)
 library(baytaAAR)
+library(nimble)
 library(dplyr)
 library(posterior)
 library(tidybayes)
 library(tidyr)
+library(flexsurv)
 ```
 
 ## Introduction

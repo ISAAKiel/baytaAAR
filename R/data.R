@@ -19,7 +19,7 @@
 #'
 #' @family examples
 #'
-#' @name sorsum
+#' @name sorsum_as
 NULL
 
 #' Spitalfields

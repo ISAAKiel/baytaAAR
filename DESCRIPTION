@@ -14,26 +14,31 @@ License: GPL-3 | file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:
-    magrittr (>= 1.5),
-    Rdpack (>= 0.4-20)
+    tidyr,
+    Rdpack,
+    dplyr,
+    scoringRules,
+    ggpubr,
+    flexsurv,
+    coda,
+    checkmate,
+    stats
 RoxygenNote: 7.3.3
 Suggests:
     testthat (>= 3.0.0),
+    withr,
     knitr,
     rmarkdown,
-    tidyr,
-    dplyr,
     ggplot2,
-    scoringRules,
-    Metrics,
-    ggpubr
-Depends:
-    R (>= 3.5.0),
-    nimble,
+    gridExtra,
+    kableExtra,
+    posterior,
+    tidybayes,
     rjags,
-    runjags,
-    coda,
-    checkmate
+    runjags
+Depends:
+    R (>= 4.1.0),
+    nimble
 RdMacros: Rdpack
 VignetteBuilder: knitr
 Config/testthat/edition: 3

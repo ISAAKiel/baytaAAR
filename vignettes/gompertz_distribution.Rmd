@@ -45,6 +45,8 @@ The parameter $\beta$ is estimated from the observed data, thus at the same time
 
 ```{r gompertz_figure, warning=FALSE , fig.width=6, fig.height=5, include=TRUE, echo=FALSE}
 library(ggplot2)
+library(gridExtra)
+library(flexsurv)
 # examples of Gompertz curves
 
 # after Pflaumer 2011, 734

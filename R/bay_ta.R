@@ -1,54 +1,55 @@
-#' Bayesian Transition Analysis
+#' Bayesian Transition Analysis with JAGS or NIMBLE
 #'
-#' This is a wrapper for the functions \code{bay.ta.jags} and
-#' \code{bay.ta.nimble}. Both implement the Bayesian Transition Analysis
-#' with MCMC. The framework NIMBLE allows the user to run models with
-#' multinormal ordered regression, also with parallel clusters while JAGS
-#' tends to be more stable. The latter presupposes, however, that you have
-#' installed JAGS outside of R.
+#' [bay.ta()] is a wrapper for the functions [bay.ta.jags()] and
+#' [bay.ta.nimble()]. Both implement the Bayesian Transition Analysis with MCMC.
+#' NIMBLE allows the user to run models with multinormal ordered regression,
+#' also with parallel clusters. In this respect, however, JAGS tends to be more
+#' stable. The latter presupposes, however, that you have installed JAGS outside
+#' of R.
 #'
-#' @details
-#' blabla
+#' @details blabla
 #'
+#' @param framework character string. Either \code{JAGS} \code{NIMBLE}. Default:
+#'   \code{NIMBLE}.
 #' @param algorithm character string. Either \code{norm} for 'simple' ordered
-#' regression or \code{mnorm} for multinormal ordered regression. Default:
-#' \code{norm}.
+#'   regression or \code{mnorm} for multinormal ordered regression. Default:
+#'   \code{norm}.
 #' @param multicore TRUE/FALSE. If TRUE each chain is assigned to a dedicated
-#' core. Default: FALSE.
+#'   core. Default: FALSE.
 #' @param seed integer. Random number for reproducibility. In parallel
-#' processing, each cluster automatically gets different seeds. If no seed is
-#' specified, the value is set to today's date as integer.
+#'   processing, each cluster automatically gets different seeds. If no seed is
+#'   specified, the value is set to today's date as integer.
 #' @param method matrix of integers. Ordinal trait(s) for age estimation.
-#' @param eta double. Prior for the Cholesky factor, must be > 0. Only used for
-#' multinormal ordered regression for the correlation matrix. 1 implies equal
-#' correlations, lower values assume higher correlations. Default: 1.
-#' The correlation matrix stems from a LKJ distribution. We implemented it
-#' according to the nimble manual
-#' (https://r-nimble.org/manual/cha-writing-models.html#lkj-distribution-for-correlation-matrices).
-#' @param gomp_b double. Optional prior for parameter Gompertz beta. Default:
-#' NA.
-#' @param minimum_age double. Minimum age for Gompertz distribution. Default:
-#' 15.
-#' @param maximum_age double. Maximum age for Gompertz distribution. Default:
-#' 100.
+#' @param eta numeric. Prior for the Cholesky factor, must be > 0. Only used for
+#'   multinormal ordered regression for the correlation matrix. 1 implies equal
+#'   correlations, lower values assume higher correlations. Default: 1. The
+#'   correlation matrix stems from a LKJ distribution. We implemented it
+#'   according to the nimble manual
+#'   (https://r-nimble.org/manual/cha-writing-models.html#lkj-distribution-for-correlation-matrices).
+#' @param gomp_b numeric Optional prior for parameter Gompertz beta. Default:
+#'   NA.
+#' @param error_sd numeric.
+#' @param minimum_age numeric. Minimum age for Gompertz distribution. Default:
+#'   15.
+#' @param maximum_age numeric. Maximum age for Gompertz distribution. Default:
+#'   100.
 #' @param parameters vector of character strings. Parameters to monitor.
 #' @param eta Cholesky
 #' @param nChains integer. Number of chains. Default: 3.
-#' @param adaptSteps integer. Number of adaptation steps, ignored when
-#' framework is set to NIMBLE. Default: 2000.
+#' @param adaptSteps integer. Number of adaptation steps, ignored when framework
+#'   is set to NIMBLE. Default: 2000.
 #' @param burnInSteps integer. Number of steps for burn-in. Default: 3000.
 #' @param thinSteps integer. Thinning, i. e. which ith step should be saved.
-#' Default: 1 (no thinning).
+#'   Default: 1 (no thinning).
 #' @param numSavedSteps integer. Number of saved steps. Default: 10000. The
-#' total number of steps equals \code{thinSteps × numSavedSteps}.
+#'   total number of steps equals \code{thinSteps × numSavedSteps}.
 #' @param silent.jags TRUE/FALSE Silent mode to run JAGS. Default: FALSE.
-#' Ignored when framework is set to NIMBLE.
+#'   Ignored when framework is set to NIMBLE.
 #' @param silent.runjags TRUE/FALSE Silent mode to run runjags. Default: FALSE.
-#' Ignored when framework is set to NIMBLE.
+#'   Ignored when framework is set to NIMBLE.
 #'
 #'
-#' @return
-#' A list of MCMC chains of class `coda::mcmc.list`.
+#' @return A list of MCMC chains of class \code{coda::mcmc.list}.
 #'
 #' @export
 #'
@@ -82,7 +83,7 @@
 #' method = spitalfields_traits) }
 #'
 bay.ta  <- function(
-    framework = "JAGS",
+    framework = "NIMBLE",
     algorithm = "norm",
     multicore = FALSE,
     seed = as.integer(format(Sys.Date(), "%Y%m%d")),
@@ -246,12 +247,12 @@ bay.ta  <- function(
     cat("Execution Time:", round(time_secs / 86400, 2), "days\n")
   }
 
-  results <- as.mcmc.list(lapply(results, function(chain) {
+  results <- coda::as.mcmc.list(lapply(results, function(chain) {
     s <- as.matrix(chain)
     a <- s[, "a"]
     b <- s[, "b"]
     M <- (1 / b) * log(b / a) + minimum_age
-    as.mcmc(cbind(s, M = M))
+    coda::as.mcmc(cbind(s, M = M))
   }))
   return(results)
 }

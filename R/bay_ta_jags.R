@@ -1,48 +1,14 @@
-#' Bayesian Transition Analysis with JAGS
+#' Bayesian Transition Analysis with JAGS or NIMBLE
 #'
 #' This function implements a version of the Bayesian Transition Analysis with
 #' MCMCM with JAGS. It presupposes an installed version of JAGS which it
-#' interfaces with runjags (##).
+#' interfaces with `runjags` (##).
 #'
-#' @param method a matrix with traits, starting from 1.
-#'
-#' @param parameters a vector with parameters to monitor.
-#'
-#' @param gomp_b numeric. Optional Gompertz parameter. Default: NA.
-#'
-#' @param minimum_age numeric. Minimum age. Default: 15.
-#'
-#' @param maximum_age numeric. Maximum age. Default: 100.
-#'
-#' @param error_sd numeric. Optional calibration term for estimation of age.
-#' Default: NA.
-#'
-#' @param adaptSteps integer. Number of adaptation steps. Default: 2000.
-#'
-#' @param burnInSteps integer. Number of adaptation steps. Default: 3000.
-#'
-#' @param thinSteps integer. Number of thinning steps. Default: 1.
-#'
-#' @param numSavedSteps integer. Number of saved steps. Default: 10000.
-#'
-#' @param nChains integer. Number of chains. Default: 3.
-#'
-#' @param runjagsMethod string. Mode to run runjags, options: "rjags",
+#' @param runjagsMethod string. Mode to run `runjags`, options: "rjags",
 #' "rjparallel", "parallel". Default: "rjags".
 #'
-#' @param silent.jags TRUE/FALSE Silent mode to run jags. Default: FALSE.
+#' @rdname bay.ta
 #'
-#' @param silent.runjags TRUE/FALSE Silent mode to run runjags. Default: FALSE.
-#'
-#'
-#' @return
-#' a coda object.
-#'
-#' #@examples
-#'
-#' result <- bay.ta.jags(method_matrix, c("beta", "age"))
-#'
-#' @rdname bay.ta.jags
 #' @export
 
 bay.ta.jags <- function(
@@ -75,7 +41,7 @@ bay.ta.jags <- function(
   nYlevels <- c()
   nthresh <- c()
   for (i in 1:n_methods) {
-    nYlevels[i] <- as.numeric(max(na.omit(method[,i])))
+    nYlevels[i] <- as.numeric(max(stats::na.omit(method[,i])))
     nthresh[i] <- max(nYlevels[i]-1, 1)
   }
   thresh_init <- matrix(NA, n_methods, max(nthresh))
@@ -100,7 +66,7 @@ bay.ta.jags <- function(
   for (j in 1:n_methods) {
     for (i in 1:Ntotal) {
       k <- if (!is.na(method[i,j])) method[i,j] else y_init[i,j]
-      ystar_init[i,j] <- k - runif(1, -0.2, 0.2)
+      ystar_init[i,j] <- k - stats::runif(1, -0.2, 0.2)
     }
   }
 
@@ -127,9 +93,9 @@ bay.ta.jags <- function(
       .RNG.seed = as.integer(sample(1:1e+06, 1)),
       thresh = thresh_init,
       ystar = ystar_init - 1,
-      beta = runif(n_methods, 0.5, 1),
-      beta0 = runif(n_methods, -10, -3),
-      age = runif(Ntotal, 20, 40)
+      beta = stats::runif(n_methods, 0.5, 1),
+      beta0 = stats::runif(n_methods, -10, -3),
+      age = stats::runif(Ntotal, 20, 40)
     )
     return(init_list)
   }
@@ -183,12 +149,12 @@ bay.ta.jags <- function(
 
   #-----------------------------------------------------------------------------
   # RUN THE CHAINS
-  runjags.options(
+  runjags::runjags.options(
     silent.jags = silent.jags,
     silent.runjags = silent.runjags
     )
 
-  runJagsOut <- run.jags( method = runjagsMethod,
+  runJagsOut <- runjags::run.jags( method = runjagsMethod,
                           model=modelString ,
                           monitor=parameters ,
                           data=dataList ,
@@ -201,6 +167,6 @@ bay.ta.jags <- function(
                           thin=thinSteps ,
                           summarise=FALSE ,
                           plots=FALSE )
-  codaSamples = as.mcmc.list( runJagsOut )
+  codaSamples = coda::as.mcmc.list( runJagsOut )
   return(codaSamples)
 }

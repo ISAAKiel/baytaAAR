@@ -17,8 +17,8 @@ the PSRF is invoked. Default: TRUE}
 \value{
 A data.frame of class `diagnostic_summary`.
 
-{Columns:} PSRF Point est.,PSRF Upper C.I., Mean, Median, Mode, ESS,
-MCSE, HDImass, HDIlow, HDIhigh.
+Columns: PSRF Point est.,PSRF Upper C.I., Mean, Median, Mode, ESS, MCSE,
+HDImass, HDIlow, HDIhigh.
 }
 \description{
 Summarising diagnostics partly derived from

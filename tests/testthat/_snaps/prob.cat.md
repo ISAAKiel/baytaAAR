@@ -2013,1030 +2013,3079 @@
 
     Code
       prob.cat(bay.ta_compare, df_orig = spitalfields, group_col = 7, mode = "summed")
+    Condition
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
+      Warning in `[.tbl_df`:
+      NAs introduced by coercion
     Output
-           category         x            y       y_prop
-      1           F  10.29665 1.732108e-06 8.140908e-05
-      2           F  10.48155 2.528980e-06 1.188621e-04
-      3           F  10.66644 3.639315e-06 1.710478e-04
-      4           F  10.85134 5.163971e-06 2.427066e-04
-      5           F  11.03624 7.319487e-06 3.440159e-04
-      6           F  11.22113 1.026447e-05 4.824302e-04
-      7           F  11.40603 1.418948e-05 6.669055e-04
-      8           F  11.59092 1.934292e-05 9.091174e-04
-      9           F  11.77582 2.601142e-05 1.222537e-03
-      10          F  11.96072 3.451913e-05 1.622399e-03
-      11          F  12.14561 4.522538e-05 2.125593e-03
-      12          F  12.33051 5.852022e-05 2.750450e-03
-      13          F  12.51541 7.501538e-05 3.525723e-03
-      14          F  12.70030 9.540139e-05 4.483865e-03
-      15          F  12.88520 1.197896e-04 5.630113e-03
-      16          F  13.07010 1.485615e-04 6.982391e-03
-      17          F  13.25499 1.820454e-04 8.556132e-03
-      18          F  13.43989 2.204966e-04 1.036334e-02
-      19          F  13.62479 2.640781e-04 1.241167e-02
-      20          F  13.80968 3.128425e-04 1.470360e-02
-      21          F  13.99458 3.667156e-04 1.723563e-02
-      22          F  14.17948 4.261223e-04 2.002775e-02
-      23          F  14.36437 4.898776e-04 2.302425e-02
-      24          F  14.54927 5.573387e-04 2.619492e-02
-      25          F  14.73416 6.277731e-04 2.950534e-02
-      26          F  14.91906 7.003399e-04 3.291597e-02
-      27          F  15.10396 7.741149e-04 3.638340e-02
-      28          F  15.28885 8.481207e-04 3.986167e-02
-      29          F  15.47375 9.213588e-04 4.330386e-02
-      30          F  15.65865 9.926011e-04 4.665225e-02
-      31          F  15.84354 1.060734e-03 4.985452e-02
-      32          F  16.02844 1.125139e-03 5.288153e-02
-      33          F  16.21334 1.185208e-03 5.570480e-02
-      34          F  16.39823 1.240498e-03 5.830342e-02
-      35          F  16.58313 1.290738e-03 6.066467e-02
-      36          F  16.76803 1.335831e-03 6.278408e-02
-      37          F  16.95292 1.375858e-03 6.466532e-02
-      38          F  17.13782 1.410970e-03 6.631558e-02
-      39          F  17.32272 1.441171e-03 6.773505e-02
-      40          F  17.50761 1.467681e-03 6.898100e-02
-      41          F  17.69251 1.491125e-03 7.008289e-02
-      42          F  17.87741 1.512162e-03 7.107162e-02
-      43          F  18.06230 1.531451e-03 7.197819e-02
-      44          F  18.24720 1.549625e-03 7.283237e-02
-      45          F  18.43209 1.567270e-03 7.366168e-02
-      46          F  18.61699 1.584903e-03 7.449042e-02
-      47          F  18.80189 1.603049e-03 7.534331e-02
-      48          F  18.98678 1.622052e-03 7.623645e-02
-      49          F  19.17168 1.642074e-03 7.717750e-02
-      50          F  19.35658 1.663214e-03 7.817107e-02
-      51          F  19.54147 1.685496e-03 7.921829e-02
-      52          F  19.72637 1.708883e-03 8.031749e-02
-      53          F  19.91127 1.733293e-03 8.146478e-02
-      54          F  20.09616 1.758614e-03 8.265484e-02
-      55          F  20.28106 1.784743e-03 8.388291e-02
-      56          F  20.46596 1.811553e-03 8.514299e-02
-      57          F  20.65085 1.838844e-03 8.642568e-02
-      58          F  20.83575 1.866519e-03 8.772637e-02
-      59          F  21.02065 1.894497e-03 8.904137e-02
-      60          F  21.20554 1.922721e-03 9.036789e-02
-      61          F  21.39044 1.951149e-03 9.170399e-02
-      62          F  21.57533 1.979755e-03 9.304847e-02
-      63          F  21.76023 2.008526e-03 9.440070e-02
-      64          F  21.94513 2.037483e-03 9.576169e-02
-      65          F  22.13002 2.066617e-03 9.713099e-02
-      66          F  22.31492 2.095946e-03 9.850945e-02
-      67          F  22.49982 2.125501e-03 9.989855e-02
-      68          F  22.68471 2.155328e-03 1.013004e-01
-      69          F  22.86961 2.185487e-03 1.027179e-01
-      70          F  23.05451 2.216055e-03 1.041546e-01
-      71          F  23.23940 2.247129e-03 1.056151e-01
-      72          F  23.42430 2.278883e-03 1.071075e-01
-      73          F  23.60920 2.311485e-03 1.086398e-01
-      74          F  23.79409 2.345030e-03 1.102164e-01
-      75          F  23.97899 2.379663e-03 1.118442e-01
-      76          F  24.16389 2.415524e-03 1.135297e-01
-      77          F  24.34878 2.452744e-03 1.152790e-01
-      78          F  24.53368 2.491439e-03 1.170976e-01
-      79          F  24.71858 2.531708e-03 1.189903e-01
-      80          F  24.90347 2.573654e-03 1.209617e-01
-      81          F  25.08837 2.617563e-03 1.230255e-01
-      82          F  25.27326 2.663228e-03 1.251717e-01
-      83          F  25.45816 2.710657e-03 1.274009e-01
-      84          F  25.64306 2.759842e-03 1.297126e-01
-      85          F  25.82795 2.810758e-03 1.321056e-01
-      86          F  26.01285 2.863362e-03 1.345780e-01
-      87          F  26.19775 2.917587e-03 1.371266e-01
-      88          F  26.38264 2.973343e-03 1.397471e-01
-      89          F  26.56754 3.030638e-03 1.424400e-01
-      90          F  26.75244 3.089188e-03 1.451918e-01
-      91          F  26.93733 3.148708e-03 1.479893e-01
-      92          F  27.12223 3.208947e-03 1.508205e-01
-      93          F  27.30713 3.269621e-03 1.536722e-01
-      94          F  27.49202 3.330417e-03 1.565296e-01
-      95          F  27.67692 3.391006e-03 1.593773e-01
-      96          F  27.86182 3.451047e-03 1.621992e-01
-      97          F  28.04671 3.510147e-03 1.649769e-01
-      98          F  28.23161 3.567821e-03 1.676876e-01
-      99          F  28.41651 3.623899e-03 1.703233e-01
-      100         F  28.60140 3.678146e-03 1.728728e-01
-      101         F  28.78630 3.730374e-03 1.753276e-01
-      102         F  28.97119 3.780445e-03 1.776809e-01
-      103         F  29.15609 3.828264e-03 1.799284e-01
-      104         F  29.34099 3.873785e-03 1.820679e-01
-      105         F  29.52588 3.916999e-03 1.840989e-01
-      106         F  29.71078 3.957638e-03 1.860090e-01
-      107         F  29.89568 3.996037e-03 1.878137e-01
-      108         F  30.08057 4.032332e-03 1.895196e-01
-      109         F  30.26547 4.066624e-03 1.911313e-01
-      110         F  30.45037 4.099026e-03 1.926542e-01
-      111         F  30.63526 4.129658e-03 1.940939e-01
-      112         F  30.82016 4.158647e-03 1.954564e-01
-      113         F  31.00506 4.186128e-03 1.967480e-01
-      114         F  31.18995 4.212160e-03 1.979715e-01
-      115         F  31.37485 4.236911e-03 1.991348e-01
-      116         F  31.55975 4.260656e-03 2.002508e-01
-      117         F  31.74464 4.283555e-03 2.013271e-01
-      118         F  31.92954 4.305776e-03 2.023715e-01
-      119         F  32.11443 4.327485e-03 2.033918e-01
-      120         F  32.29933 4.348854e-03 2.043961e-01
-      121         F  32.48423 4.370053e-03 2.053925e-01
-      122         F  32.66912 4.391251e-03 2.063888e-01
-      123         F  32.85402 4.412674e-03 2.073957e-01
-      124         F  33.03892 4.434482e-03 2.084206e-01
-      125         F  33.22381 4.456827e-03 2.094708e-01
-      126         F  33.40871 4.479857e-03 2.105533e-01
-      127         F  33.59361 4.503716e-03 2.116746e-01
-      128         F  33.77850 4.528541e-03 2.128414e-01
-      129         F  33.96340 4.554467e-03 2.140600e-01
-      130         F  34.14830 4.581628e-03 2.153365e-01
-      131         F  34.33319 4.610310e-03 2.166846e-01
-      132         F  34.51809 4.640627e-03 2.181095e-01
-      133         F  34.70299 4.672644e-03 2.196143e-01
-      134         F  34.88788 4.706510e-03 2.212060e-01
-      135         F  35.07278 4.742374e-03 2.228916e-01
-      136         F  35.25768 4.780385e-03 2.246781e-01
-      137         F  35.44257 4.820679e-03 2.265719e-01
-      138         F  35.62747 4.863378e-03 2.285788e-01
-      139         F  35.81236 4.908661e-03 2.307071e-01
-      140         F  35.99726 4.956787e-03 2.329690e-01
-      141         F  36.18216 5.007397e-03 2.353477e-01
-      142         F  36.36705 5.060355e-03 2.378367e-01
-      143         F  36.55195 5.115438e-03 2.404256e-01
-      144         F  36.73685 5.172327e-03 2.430994e-01
-      145         F  36.92174 5.230615e-03 2.458389e-01
-      146         F  37.10664 5.289809e-03 2.486210e-01
-      147         F  37.29154 5.349341e-03 2.514190e-01
-      148         F  37.47643 5.408438e-03 2.541966e-01
-      149         F  37.66133 5.466334e-03 2.569177e-01
-      150         F  37.84623 5.522401e-03 2.595528e-01
-      151         F  38.03112 5.576044e-03 2.620741e-01
-      152         F  38.21602 5.626751e-03 2.644573e-01
-      153         F  38.40092 5.674106e-03 2.666830e-01
-      154         F  38.58581 5.717814e-03 2.687373e-01
-      155         F  38.77071 5.757713e-03 2.706125e-01
-      156         F  38.95560 5.793550e-03 2.722969e-01
-      157         F  39.14050 5.825426e-03 2.737950e-01
-      158         F  39.32540 5.854026e-03 2.751392e-01
-      159         F  39.51029 5.879788e-03 2.763500e-01
-      160         F  39.69519 5.903224e-03 2.774515e-01
-      161         F  39.88009 5.924903e-03 2.784704e-01
-      162         F  40.06498 5.945424e-03 2.794349e-01
-      163         F  40.24988 5.965391e-03 2.803734e-01
-      164         F  40.43478 5.985395e-03 2.813135e-01
-      165         F  40.61967 6.006181e-03 2.822905e-01
-      166         F  40.80457 6.028207e-03 2.833257e-01
-      167         F  40.98947 6.051866e-03 2.844377e-01
-      168         F  41.17436 6.077485e-03 2.856418e-01
-      169         F  41.35926 6.105323e-03 2.869502e-01
-      170         F  41.54416 6.135581e-03 2.883723e-01
-      171         F  41.72905 6.168401e-03 2.899148e-01
-      172         F  41.91395 6.203879e-03 2.915823e-01
-      173         F  42.09885 6.242321e-03 2.933891e-01
-      174         F  42.28374 6.283670e-03 2.953325e-01
-      175         F  42.46864 6.327738e-03 2.974037e-01
-      176         F  42.65353 6.374498e-03 2.996014e-01
-      177         F  42.83843 6.423913e-03 3.019239e-01
-      178         F  43.02333 6.475942e-03 3.043693e-01
-      179         F  43.20822 6.530542e-03 3.069355e-01
-      180         F  43.39312 6.587669e-03 3.096205e-01
-      181         F  43.57802 6.647355e-03 3.124257e-01
-      182         F  43.76291 6.709806e-03 3.153609e-01
-      183         F  43.94781 6.774688e-03 3.184103e-01
-      184         F  44.13271 6.841991e-03 3.215736e-01
-      185         F  44.31760 6.911717e-03 3.248507e-01
-      186         F  44.50250 6.983871e-03 3.282419e-01
-      187         F  44.68740 7.058459e-03 3.317476e-01
-      188         F  44.87229 7.135485e-03 3.353678e-01
-      189         F  45.05719 7.214940e-03 3.391022e-01
-      190         F  45.24209 7.297073e-03 3.429624e-01
-      191         F  45.42698 7.381586e-03 3.469345e-01
-      192         F  45.61188 7.468259e-03 3.510082e-01
-      193         F  45.79678 7.556899e-03 3.551743e-01
-      194         F  45.98167 7.647250e-03 3.594208e-01
-      195         F  46.16657 7.738991e-03 3.637326e-01
-      196         F  46.35146 7.831738e-03 3.680917e-01
-      197         F  46.53636 7.925042e-03 3.724770e-01
-      198         F  46.72126 8.018368e-03 3.768633e-01
-      199         F  46.90615 8.111001e-03 3.812170e-01
-      200         F  47.09105 8.202369e-03 3.855113e-01
-      201         F  47.27595 8.291916e-03 3.897201e-01
-      202         F  47.46084 8.379126e-03 3.938189e-01
-      203         F  47.64574 8.463542e-03 3.977865e-01
-      204         F  47.83064 8.544792e-03 4.016052e-01
-      205         F  48.01553 8.622609e-03 4.052626e-01
-      206         F  48.20043 8.696851e-03 4.087520e-01
-      207         F  48.38533 8.767026e-03 4.120502e-01
-      208         F  48.57022 8.833892e-03 4.151929e-01
-      209         F  48.75512 8.897876e-03 4.182002e-01
-      210         F  48.94002 8.959516e-03 4.210973e-01
-      211         F  49.12491 9.019466e-03 4.239149e-01
-      212         F  49.30981 9.078470e-03 4.266881e-01
-      213         F  49.49470 9.137335e-03 4.294548e-01
-      214         F  49.67960 9.196895e-03 4.322541e-01
-      215         F  49.86450 9.258183e-03 4.351346e-01
-      216         F  50.04939 9.322110e-03 4.381392e-01
-      217         F  50.23429 9.389161e-03 4.412906e-01
-      218         F  50.41919 9.459785e-03 4.446099e-01
-      219         F  50.60408 9.534275e-03 4.481109e-01
-      220         F  50.78898 9.612756e-03 4.517995e-01
-      221         F  50.97388 9.695192e-03 4.556740e-01
-      222         F  51.15877 9.781392e-03 4.597254e-01
-      223         F  51.34367 9.871087e-03 4.639411e-01
-      224         F  51.52857 9.964058e-03 4.683107e-01
-      225         F  51.71346 1.005930e-02 4.727872e-01
-      226         F  51.89836 1.015628e-02 4.773451e-01
-      227         F  52.08326 1.025447e-02 4.819599e-01
-      228         F  52.26815 1.035340e-02 4.866098e-01
-      229         F  52.45305 1.045269e-02 4.912763e-01
-      230         F  52.63795 1.055203e-02 4.959453e-01
-      231         F  52.82284 1.065122e-02 5.006073e-01
-      232         F  53.00774 1.075014e-02 5.052564e-01
-      233         F  53.19263 1.084882e-02 5.098946e-01
-      234         F  53.37753 1.094740e-02 5.145279e-01
-      235         F  53.56243 1.104604e-02 5.191640e-01
-      236         F  53.74732 1.114494e-02 5.238122e-01
-      237         F  53.93222 1.124431e-02 5.284824e-01
-      238         F  54.11712 1.134436e-02 5.331849e-01
-      239         F  54.30201 1.144532e-02 5.379301e-01
-      240         F  54.48691 1.154747e-02 5.427311e-01
-      241         F  54.67181 1.165115e-02 5.476039e-01
-      242         F  54.85670 1.175645e-02 5.525530e-01
-      243         F  55.04160 1.186360e-02 5.575892e-01
-      244         F  55.22650 1.197285e-02 5.627240e-01
-      245         F  55.41139 1.208447e-02 5.679699e-01
-      246         F  55.59629 1.219872e-02 5.733399e-01
-      247         F  55.78119 1.231590e-02 5.788472e-01
-      248         F  55.96608 1.243627e-02 5.845045e-01
-      249         F  56.15098 1.256059e-02 5.903477e-01
-      250         F  56.33587 1.268861e-02 5.963645e-01
-      251         F  56.52077 1.282030e-02 6.025543e-01
-      252         F  56.70567 1.295560e-02 6.089130e-01
-      253         F  56.89056 1.309426e-02 6.154303e-01
-      254         F  57.07546 1.323594e-02 6.220894e-01
-      255         F  57.26036 1.338014e-02 6.288668e-01
-      256         F  57.44525 1.352624e-02 6.357330e-01
-      257         F  57.63015 1.367348e-02 6.426536e-01
-      258         F  57.81505 1.382081e-02 6.495781e-01
-      259         F  57.99994 1.396725e-02 6.564609e-01
-      260         F  58.18484 1.411194e-02 6.632614e-01
-      261         F  58.36974 1.425408e-02 6.699416e-01
-      262         F  58.55463 1.439292e-02 6.764674e-01
-      263         F  58.73953 1.452787e-02 6.828100e-01
-      264         F  58.92443 1.465845e-02 6.889470e-01
-      265         F  59.10932 1.478425e-02 6.948596e-01
-      266         F  59.29422 1.490449e-02 7.005111e-01
-      267         F  59.47912 1.501994e-02 7.059370e-01
-      268         F  59.66401 1.513081e-02 7.111480e-01
-      269         F  59.84891 1.523746e-02 7.161604e-01
-      270         F  60.03380 1.534033e-02 7.209955e-01
-      271         F  60.21870 1.543996e-02 7.256782e-01
-      272         F  60.40360 1.553694e-02 7.302361e-01
-      273         F  60.58849 1.563188e-02 7.346985e-01
-      274         F  60.77339 1.572537e-02 7.390922e-01
-      275         F  60.95829 1.581822e-02 7.434565e-01
-      276         F  61.14318 1.591108e-02 7.478206e-01
-      277         F  61.32808 1.600442e-02 7.522080e-01
-      278         F  61.51298 1.609870e-02 7.566391e-01
-      279         F  61.69787 1.619428e-02 7.611311e-01
-      280         F  61.88277 1.629145e-02 7.656980e-01
-      281         F  62.06767 1.639044e-02 7.703506e-01
-      282         F  62.25256 1.649152e-02 7.751013e-01
-      283         F  62.43746 1.659498e-02 7.799642e-01
-      284         F  62.62236 1.670070e-02 7.849328e-01
-      285         F  62.80725 1.680875e-02 7.900111e-01
-      286         F  62.99215 1.691924e-02 7.952042e-01
-      287         F  63.17705 1.703230e-02 8.005183e-01
-      288         F  63.36194 1.714812e-02 8.059619e-01
-      289         F  63.54684 1.726692e-02 8.115452e-01
-      290         F  63.73173 1.738896e-02 8.172810e-01
-      291         F  63.91663 1.751510e-02 8.232096e-01
-      292         F  64.10153 1.764534e-02 8.293311e-01
-      293         F  64.28642 1.777995e-02 8.356577e-01
-      294         F  64.47132 1.791922e-02 8.422032e-01
-      295         F  64.65622 1.806336e-02 8.489777e-01
-      296         F  64.84111 1.821248e-02 8.559863e-01
-      297         F  65.02601 1.836655e-02 8.632279e-01
-      298         F  65.21091 1.852540e-02 8.706937e-01
-      299         F  65.39580 1.868891e-02 8.783788e-01
-      300         F  65.58070 1.885637e-02 8.862492e-01
-      301         F  65.76560 1.902654e-02 8.942476e-01
-      302         F  65.95049 1.919846e-02 9.023277e-01
-      303         F  66.13539 1.937103e-02 9.104383e-01
-      304         F  66.32029 1.954310e-02 9.185259e-01
-      305         F  66.50518 1.971354e-02 9.265364e-01
-      306         F  66.69008 1.988123e-02 9.344178e-01
-      307         F  66.87497 2.004514e-02 9.421215e-01
-      308         F  67.05987 2.020363e-02 9.495707e-01
-      309         F  67.24477 2.035676e-02 9.567677e-01
-      310         F  67.42966 2.050425e-02 9.636997e-01
-      311         F  67.61456 2.064608e-02 9.703658e-01
-      312         F  67.79946 2.078247e-02 9.767762e-01
-      313         F  67.98435 2.091387e-02 9.829517e-01
-      314         F  68.16925 2.104090e-02 9.889224e-01
-      315         F  68.35415 2.116440e-02 9.947268e-01
-      316         F  68.53904 2.128519e-02 1.000404e+00
-      317         F  68.72394 2.140471e-02 1.006022e+00
-      318         F  68.90884 2.152422e-02 1.011638e+00
-      319         F  69.09373 2.164479e-02 1.017305e+00
-      320         F  69.27863 2.176747e-02 1.023071e+00
-      321         F  69.46353 2.189323e-02 1.028982e+00
-      322         F  69.64842 2.202291e-02 1.035077e+00
-      323         F  69.83332 2.215725e-02 1.041391e+00
-      324         F  70.01822 2.229698e-02 1.047958e+00
-      325         F  70.20311 2.244298e-02 1.054820e+00
-      326         F  70.38801 2.259461e-02 1.061947e+00
-      327         F  70.57290 2.275162e-02 1.069326e+00
-      328         F  70.75780 2.291352e-02 1.076935e+00
-      329         F  70.94270 2.307953e-02 1.084738e+00
-      330         F  71.12759 2.324865e-02 1.092686e+00
-      331         F  71.31249 2.341959e-02 1.100721e+00
-      332         F  71.49739 2.359090e-02 1.108772e+00
-      333         F  71.68228 2.376042e-02 1.116740e+00
-      334         F  71.86718 2.392611e-02 1.124527e+00
-      335         F  72.05208 2.408614e-02 1.132049e+00
-      336         F  72.23697 2.423873e-02 1.139221e+00
-      337         F  72.42187 2.438220e-02 1.145963e+00
-      338         F  72.60677 2.451503e-02 1.152206e+00
-      339         F  72.79166 2.463596e-02 1.157890e+00
-      340         F  72.97656 2.474401e-02 1.162968e+00
-      341         F  73.16146 2.483759e-02 1.167367e+00
-      342         F  73.34635 2.491604e-02 1.171054e+00
-      343         F  73.53125 2.498080e-02 1.174098e+00
-      344         F  73.71614 2.503240e-02 1.176523e+00
-      345         F  73.90104 2.507161e-02 1.178366e+00
-      346         F  74.08594 2.509943e-02 1.179673e+00
-      347         F  74.27083 2.511705e-02 1.180501e+00
-      348         F  74.45573 2.512575e-02 1.180910e+00
-      349         F  74.64063 2.512691e-02 1.180965e+00
-      350         F  74.82552 2.512123e-02 1.180698e+00
-      351         F  75.01042 2.511117e-02 1.180225e+00
-      352         F  75.19532 2.509792e-02 1.179602e+00
-      353         F  75.38021 2.508251e-02 1.178878e+00
-      354         F  75.56511 2.506583e-02 1.178094e+00
-      355         F  75.75001 2.504860e-02 1.177284e+00
-      356         F  75.93490 2.503139e-02 1.176475e+00
-      357         F  76.11980 2.501460e-02 1.175686e+00
-      358         F  76.30470 2.499858e-02 1.174933e+00
-      359         F  76.48959 2.498346e-02 1.174223e+00
-      360         F  76.67449 2.496921e-02 1.173553e+00
-      361         F  76.85939 2.495579e-02 1.172922e+00
-      362         F  77.04428 2.494314e-02 1.172328e+00
-      363         F  77.22918 2.493119e-02 1.171766e+00
-      364         F  77.41407 2.491983e-02 1.171232e+00
-      365         F  77.59897 2.490899e-02 1.170723e+00
-      366         F  77.78387 2.489857e-02 1.170233e+00
-      367         F  77.96876 2.488843e-02 1.169756e+00
-      368         F  78.15366 2.487835e-02 1.169282e+00
-      369         F  78.33856 2.486809e-02 1.168800e+00
-      370         F  78.52345 2.485734e-02 1.168295e+00
-      371         F  78.70835 2.484577e-02 1.167751e+00
-      372         F  78.89325 2.483296e-02 1.167149e+00
-      373         F  79.07814 2.481847e-02 1.166468e+00
-      374         F  79.26304 2.480184e-02 1.165686e+00
-      375         F  79.44794 2.478223e-02 1.164765e+00
-      376         F  79.63283 2.475939e-02 1.163691e+00
-      377         F  79.81773 2.473315e-02 1.162458e+00
-      378         F  80.00263 2.470334e-02 1.161057e+00
-      379         F  80.18752 2.466994e-02 1.159487e+00
-      380         F  80.37242 2.463301e-02 1.157752e+00
-      381         F  80.55732 2.459277e-02 1.155860e+00
-      382         F  80.74221 2.454947e-02 1.153825e+00
-      383         F  80.92711 2.450333e-02 1.151656e+00
-      384         F  81.11200 2.445464e-02 1.149368e+00
-      385         F  81.29690 2.440388e-02 1.146983e+00
-      386         F  81.48180 2.435115e-02 1.144504e+00
-      387         F  81.66669 2.429634e-02 1.141928e+00
-      388         F  81.85159 2.423916e-02 1.139240e+00
-      389         F  82.03649 2.417909e-02 1.136417e+00
-      390         F  82.22138 2.411542e-02 1.133425e+00
-      391         F  82.40628 2.404722e-02 1.130220e+00
-      392         F  82.59118 2.397231e-02 1.126698e+00
-      393         F  82.77607 2.389003e-02 1.122831e+00
-      394         F  82.96097 2.379916e-02 1.118561e+00
-      395         F  83.14587 2.369849e-02 1.113829e+00
-      396         F  83.33076 2.358691e-02 1.108585e+00
-      397         F  83.51566 2.346349e-02 1.102784e+00
-      398         F  83.70056 2.332750e-02 1.096392e+00
-      399         F  83.88545 2.317844e-02 1.089387e+00
-      400         F  84.07035 2.301496e-02 1.081703e+00
-      401         F  84.25524 2.283740e-02 1.073358e+00
-      402         F  84.44014 2.264713e-02 1.064415e+00
-      403         F  84.62504 2.244476e-02 1.054903e+00
-      404         F  84.80993 2.223105e-02 1.044859e+00
-      405         F  84.99483 2.200689e-02 1.034324e+00
-      406         F  85.17973 2.177325e-02 1.023343e+00
-      407         F  85.36462 2.153113e-02 1.011963e+00
-      408         F  85.54952 2.128141e-02 1.000226e+00
-      409         F  85.73442 2.102466e-02 9.881589e-01
-      410         F  85.91931 2.076286e-02 9.758546e-01
-      411         F  86.10421 2.049705e-02 9.633613e-01
-      412         F  86.28911 2.022824e-02 9.507273e-01
-      413         F  86.47400 1.995748e-02 9.380017e-01
-      414         F  86.65890 1.968585e-02 9.252351e-01
-      415         F  86.84380 1.941445e-02 9.124793e-01
-      416         F  87.02869 1.914441e-02 8.997873e-01
-      417         F  87.21359 1.887731e-02 8.872335e-01
-      418         F  87.39849 1.861430e-02 8.748719e-01
-      419         F  87.58338 1.835623e-02 8.627428e-01
-      420         F  87.76828 1.810392e-02 8.508844e-01
-      421         F  87.95317 1.785797e-02 8.393248e-01
-      422         F  88.13807 1.761873e-02 8.280801e-01
-      423         F  88.32297 1.738623e-02 8.171527e-01
-      424         F  88.50786 1.716020e-02 8.065293e-01
-      425         F  88.69276 1.694023e-02 7.961909e-01
-      426         F  88.87766 1.672525e-02 7.860865e-01
-      427         F  89.06255 1.651313e-02 7.761173e-01
-      428         F  89.24745 1.630217e-02 7.662020e-01
-      429         F  89.43235 1.609047e-02 7.562521e-01
-      430         F  89.61724 1.587607e-02 7.461751e-01
-      431         F  89.80214 1.565700e-02 7.358790e-01
-      432         F  89.98704 1.543140e-02 7.252760e-01
-      433         F  90.17193 1.519758e-02 7.142865e-01
-      434         F  90.35683 1.495254e-02 7.027695e-01
-      435         F  90.54173 1.469640e-02 6.907310e-01
-      436         F  90.72662 1.442884e-02 6.781553e-01
-      437         F  90.91152 1.414978e-02 6.650395e-01
-      438         F  91.09641 1.385954e-02 6.513985e-01
-      439         F  91.28131 1.355882e-02 6.372645e-01
-      440         F  91.46621 1.324860e-02 6.226844e-01
-      441         F  91.65110 1.293016e-02 6.077174e-01
-      442         F  91.83600 1.260458e-02 5.924152e-01
-      443         F  92.02090 1.227393e-02 5.768748e-01
-      444         F  92.20579 1.194037e-02 5.611976e-01
-      445         F  92.39069 1.160549e-02 5.454582e-01
-      446         F  92.57559 1.127078e-02 5.297267e-01
-      447         F  92.76048 1.093759e-02 5.140665e-01
-      448         F  92.94538 1.060710e-02 4.985337e-01
-      449         F  93.13028 1.028033e-02 4.831757e-01
-      450         F  93.31517 9.958189e-03 4.680349e-01
-      451         F  93.50007 9.642042e-03 4.531760e-01
-      452         F  93.68497 9.331599e-03 4.385851e-01
-      453         F  93.86986 9.027059e-03 4.242717e-01
-      454         F  94.05476 8.728494e-03 4.102392e-01
-      455         F  94.23966 8.435867e-03 3.964858e-01
-      456         F  94.42455 8.149052e-03 3.830054e-01
-      457         F  94.60945 7.867850e-03 3.697890e-01
-      458         F  94.79434 7.592010e-03 3.568245e-01
-      459         F  94.97924 7.321742e-03 3.441219e-01
-      460         F  95.16414 7.056364e-03 3.316491e-01
-      461         F  95.34903 6.795316e-03 3.193798e-01
-      462         F  95.53393 6.538290e-03 3.072996e-01
-      463         F  95.71883 6.285000e-03 2.953950e-01
-      464         F  95.90372 6.035176e-03 2.836533e-01
-      465         F  96.08862 5.788579e-03 2.720632e-01
-      466         F  96.27352 5.544993e-03 2.606147e-01
-      467         F  96.45841 5.304350e-03 2.493044e-01
-      468         F  96.64331 5.066653e-03 2.381327e-01
-      469         F  96.82821 4.831480e-03 2.270795e-01
-      470         F  97.01310 4.598758e-03 2.161416e-01
-      471         F  97.19800 4.368448e-03 2.053171e-01
-      472         F  97.38290 4.140543e-03 1.946055e-01
-      473         F  97.56779 3.915073e-03 1.840084e-01
-      474         F  97.75269 3.692113e-03 1.735293e-01
-      475         F  97.93759 3.471782e-03 1.631738e-01
-      476         F  98.12248 3.254678e-03 1.529699e-01
-      477         F  98.30738 3.040785e-03 1.429169e-01
-      478         F  98.49227 2.830385e-03 1.330281e-01
-      479         F  98.67717 2.623887e-03 1.233227e-01
-      480         F  98.86207 2.421768e-03 1.138231e-01
-      481         F  99.04696 2.224568e-03 1.045547e-01
-      482         F  99.23186 2.032884e-03 9.554554e-02
-      483         F  99.41676 1.847360e-03 8.682590e-02
-      484         F  99.60165 1.669224e-03 7.845354e-02
-      485         F  99.78655 1.499445e-03 7.047389e-02
-      486         F  99.97145 1.338096e-03 6.289053e-02
-      487         F 100.15634 1.185783e-03 5.573182e-02
-      488         F 100.34124 1.043033e-03 4.902255e-02
-      489         F 100.52614 9.102775e-04 4.278304e-02
-      490         F 100.71103 7.878356e-04 3.702827e-02
-      491         F 100.89593 6.758993e-04 3.176727e-02
-      492         F 101.08083 5.746071e-04 2.700653e-02
-      493         F 101.26572 4.852772e-04 2.280803e-02
-      494         F 101.45062 4.060313e-04 1.908347e-02
-      495         F 101.63551 3.364350e-04 1.581244e-02
-      496         F 101.82041 2.759507e-04 1.296968e-02
-      497         F 102.00531 2.239564e-04 1.052595e-02
-      498         F 102.19020 1.797665e-04 8.449025e-03
-      499         F 102.37510 1.426522e-04 6.704654e-03
-      500         F 102.56000 1.118629e-04 5.257555e-03
-      501         F 102.74489 8.710995e-05 4.094168e-03
-      502         F 102.92979 6.724843e-05 3.160676e-03
-      503         F 103.11469 5.130391e-05 2.411284e-03
-      504         F 103.29958 3.866207e-05 1.817117e-03
-      505         F 103.48448 2.876744e-05 1.352070e-03
-      506         F 103.66938 2.112606e-05 9.929249e-04
-      507         F 103.85427 1.530607e-05 7.193854e-04
-      508         F 104.03917 1.093634e-05 5.140078e-04
-      509         F 104.22407 7.733800e-06 3.634886e-04
-      510         F 104.40896 5.464093e-06 2.568124e-04
-      511         F 104.59386 3.807671e-06 1.789606e-04
-      512         F 104.77876 2.615933e-06 1.229488e-04
-      513         M  10.25613 5.407098e-07 2.325052e-05
-      514         M  10.44105 7.853616e-07 3.377055e-05
-      515         M  10.62598 1.124962e-06 4.837338e-05
-      516         M  10.81090 1.589849e-06 6.836350e-05
-      517         M  10.99583 2.245850e-06 9.657156e-05
-      518         M  11.18075 3.140313e-06 1.350334e-04
-      519         M  11.36568 4.331949e-06 1.862738e-04
-      520         M  11.55060 5.897559e-06 2.535950e-04
-      521         M  11.73553 7.926963e-06 3.408594e-04
-      522         M  11.92045 1.052349e-05 4.525102e-04
-      523         M  12.10538 1.380410e-05 5.935764e-04
-      524         M  12.29030 1.789906e-05 7.696597e-04
-      525         M  12.47523 2.301779e-05 9.897650e-04
-      526         M  12.66015 2.940229e-05 1.264298e-03
-      527         M  12.84508 3.712255e-05 1.596270e-03
-      528         M  13.03000 4.634499e-05 1.992834e-03
-      529         M  13.21493 5.723286e-05 2.461013e-03
-      530         M  13.39985 6.994138e-05 3.007479e-03
-      531         M  13.58478 8.461248e-05 3.638337e-03
-      532         M  13.76970 1.013695e-04 4.358890e-03
-      533         M  13.95463 1.203119e-04 5.173413e-03
-      534         M  14.13955 1.418522e-04 6.099645e-03
-      535         M  14.32448 1.656878e-04 7.124575e-03
-      536         M  14.50940 1.917753e-04 8.246338e-03
-      537         M  14.69433 2.200438e-04 9.461884e-03
-      538         M  14.87925 2.503814e-04 1.076640e-02
-      539         M  15.06418 2.826365e-04 1.215337e-02
-      540         M  15.24910 3.166211e-04 1.361471e-02
-      541         M  15.43403 3.521142e-04 1.514091e-02
-      542         M  15.61895 3.889448e-04 1.672463e-02
-      543         M  15.80388 4.267461e-04 1.835008e-02
-      544         M  15.98880 4.651458e-04 2.000127e-02
-      545         M  16.17373 5.038603e-04 2.166599e-02
-      546         M  16.35865 5.426152e-04 2.333246e-02
-      547         M  16.54358 5.811539e-04 2.498962e-02
-      548         M  16.72850 6.192441e-04 2.662749e-02
-      549         M  16.91343 6.566845e-04 2.823744e-02
-      550         M  17.09835 6.932903e-04 2.981148e-02
-      551         M  17.28328 7.288235e-04 3.133941e-02
-      552         M  17.46820 7.633520e-04 3.282414e-02
-      553         M  17.65313 7.968849e-04 3.426605e-02
-      554         M  17.83805 8.294809e-04 3.566768e-02
-      555         M  18.02298 8.612465e-04 3.703360e-02
-      556         M  18.20790 8.923319e-04 3.837027e-02
-      557         M  18.39283 9.229263e-04 3.968583e-02
-      558         M  18.57775 9.532512e-04 4.098980e-02
-      559         M  18.76268 9.835883e-04 4.229430e-02
-      560         M  18.94760 1.014255e-03 4.361296e-02
-      561         M  19.13253 1.045500e-03 4.495650e-02
-      562         M  19.31745 1.077551e-03 4.633471e-02
-      563         M  19.50238 1.110603e-03 4.775592e-02
-      564         M  19.68730 1.144804e-03 4.922656e-02
-      565         M  19.87223 1.180251e-03 5.075078e-02
-      566         M  20.05715 1.216980e-03 5.233014e-02
-      567         M  20.24208 1.255020e-03 5.396586e-02
-      568         M  20.42700 1.294293e-03 5.565462e-02
-      569         M  20.61193 1.334477e-03 5.738250e-02
-      570         M  20.79685 1.375335e-03 5.913942e-02
-      571         M  20.98178 1.416605e-03 6.091403e-02
-      572         M  21.16670 1.458013e-03 6.269456e-02
-      573         M  21.35163 1.499291e-03 6.446951e-02
-      574         M  21.53655 1.540199e-03 6.622858e-02
-      575         M  21.72148 1.580545e-03 6.796345e-02
-      576         M  21.90640 1.620100e-03 6.966430e-02
-      577         M  22.09133 1.658945e-03 7.133466e-02
-      578         M  22.27625 1.697202e-03 7.297967e-02
-      579         M  22.46118 1.735073e-03 7.460814e-02
-      580         M  22.64610 1.772849e-03 7.623252e-02
-      581         M  22.83103 1.810892e-03 7.786835e-02
-      582         M  23.01595 1.849615e-03 7.953344e-02
-      583         M  23.20088 1.889464e-03 8.124695e-02
-      584         M  23.38580 1.931054e-03 8.303534e-02
-      585         M  23.57073 1.974900e-03 8.492072e-02
-      586         M  23.75565 2.021192e-03 8.691124e-02
-      587         M  23.94058 2.070143e-03 8.901616e-02
-      588         M  24.12550 2.121858e-03 9.123989e-02
-      589         M  24.31043 2.176318e-03 9.358166e-02
-      590         M  24.49535 2.233381e-03 9.603539e-02
-      591         M  24.68028 2.292789e-03 9.858993e-02
-      592         M  24.86520 2.354195e-03 1.012304e-01
-      593         M  25.05013 2.417211e-03 1.039401e-01
-      594         M  25.23505 2.481012e-03 1.066835e-01
-      595         M  25.41998 2.545041e-03 1.094368e-01
-      596         M  25.60490 2.608759e-03 1.121766e-01
-      597         M  25.78983 2.671665e-03 1.148816e-01
-      598         M  25.97475 2.733324e-03 1.175329e-01
-      599         M  26.15968 2.793376e-03 1.201152e-01
-      600         M  26.34460 2.851553e-03 1.226168e-01
-      601         M  26.52953 2.907456e-03 1.250206e-01
-      602         M  26.71445 2.961148e-03 1.273294e-01
-      603         M  26.89938 3.012785e-03 1.295497e-01
-      604         M  27.08430 3.062481e-03 1.316867e-01
-      605         M  27.26923 3.110392e-03 1.337469e-01
-      606         M  27.45415 3.156699e-03 1.357381e-01
-      607         M  27.63908 3.201590e-03 1.376684e-01
-      608         M  27.82400 3.245250e-03 1.395458e-01
-      609         M  28.00893 3.287809e-03 1.413758e-01
-      610         M  28.19385 3.329379e-03 1.431633e-01
-      611         M  28.37878 3.370189e-03 1.449181e-01
-      612         M  28.56370 3.410334e-03 1.466444e-01
-      613         M  28.74863 3.449901e-03 1.483458e-01
-      614         M  28.93355 3.488979e-03 1.500261e-01
-      615         M  29.11848 3.527665e-03 1.516896e-01
-      616         M  29.30340 3.566068e-03 1.533409e-01
-      617         M  29.48833 3.604315e-03 1.549855e-01
-      618         M  29.67325 3.642579e-03 1.566309e-01
-      619         M  29.85818 3.681048e-03 1.582851e-01
-      620         M  30.04310 3.719878e-03 1.599548e-01
-      621         M  30.22803 3.759204e-03 1.616458e-01
-      622         M  30.41295 3.799127e-03 1.633625e-01
-      623         M  30.59788 3.839702e-03 1.651072e-01
-      624         M  30.78280 3.880924e-03 1.668797e-01
-      625         M  30.96773 3.922720e-03 1.686769e-01
-      626         M  31.15265 3.964947e-03 1.704927e-01
-      627         M  31.33758 4.007289e-03 1.723134e-01
-      628         M  31.52250 4.049372e-03 1.741230e-01
-      629         M  31.70743 4.090804e-03 1.759046e-01
-      630         M  31.89235 4.131166e-03 1.776401e-01
-      631         M  32.07728 4.170033e-03 1.793114e-01
-      632         M  32.26220 4.206995e-03 1.809008e-01
-      633         M  32.44713 4.241684e-03 1.823924e-01
-      634         M  32.63205 4.273778e-03 1.837725e-01
-      635         M  32.81698 4.302669e-03 1.850147e-01
-      636         M  33.00190 4.328726e-03 1.861352e-01
-      637         M  33.18683 4.352079e-03 1.871394e-01
-      638         M  33.37175 4.372996e-03 1.880388e-01
-      639         M  33.55668 4.391883e-03 1.888510e-01
-      640         M  33.74160 4.409276e-03 1.895989e-01
-      641         M  33.92653 4.425828e-03 1.903106e-01
-      642         M  34.11145 4.442291e-03 1.910185e-01
-      643         M  34.29638 4.459682e-03 1.917663e-01
-      644         M  34.48130 4.479066e-03 1.925999e-01
-      645         M  34.66623 4.501279e-03 1.935550e-01
-      646         M  34.85115 4.527161e-03 1.946679e-01
-      647         M  35.03608 4.557488e-03 1.959720e-01
-      648         M  35.22100 4.592941e-03 1.974965e-01
-      649         M  35.40593 4.634086e-03 1.992657e-01
-      650         M  35.59085 4.681354e-03 2.012982e-01
-      651         M  35.77578 4.735260e-03 2.036162e-01
-      652         M  35.96070 4.796436e-03 2.062468e-01
-      653         M  36.14563 4.863951e-03 2.091499e-01
-      654         M  36.33055 4.937477e-03 2.123115e-01
-      655         M  36.51548 5.016534e-03 2.157109e-01
-      656         M  36.70040 5.100499e-03 2.193215e-01
-      657         M  36.88533 5.188624e-03 2.231108e-01
-      658         M  37.07025 5.280053e-03 2.270423e-01
-      659         M  37.25518 5.373838e-03 2.310751e-01
-      660         M  37.44010 5.468954e-03 2.351650e-01
-      661         M  37.62503 5.563981e-03 2.392512e-01
-      662         M  37.80995 5.657811e-03 2.432859e-01
-      663         M  37.99488 5.749385e-03 2.472236e-01
-      664         M  38.17980 5.837689e-03 2.510206e-01
-      665         M  38.36473 5.921769e-03 2.546361e-01
-      666         M  38.54965 6.000759e-03 2.580326e-01
-      667         M  38.73458 6.073892e-03 2.611774e-01
-      668         M  38.91950 6.140073e-03 2.640232e-01
-      669         M  39.10443 6.198544e-03 2.665374e-01
-      670         M  39.28935 6.249683e-03 2.687364e-01
-      671         M  39.47428 6.293449e-03 2.706183e-01
-      672         M  39.65920 6.329984e-03 2.721893e-01
-      673         M  39.84413 6.359615e-03 2.734635e-01
-      674         M  40.02905 6.382843e-03 2.744623e-01
-      675         M  40.21398 6.400336e-03 2.752145e-01
-      676         M  40.39890 6.412910e-03 2.757551e-01
-      677         M  40.58383 6.421122e-03 2.761082e-01
-      678         M  40.76875 6.426828e-03 2.763536e-01
-      679         M  40.95368 6.431159e-03 2.765399e-01
-      680         M  41.13860 6.435253e-03 2.767159e-01
-      681         M  41.32353 6.440225e-03 2.769297e-01
-      682         M  41.50845 6.447142e-03 2.772271e-01
-      683         M  41.69338 6.456995e-03 2.776508e-01
-      684         M  41.87830 6.470674e-03 2.782390e-01
-      685         M  42.06323 6.489444e-03 2.790461e-01
-      686         M  42.24815 6.513893e-03 2.800974e-01
-      687         M  42.43308 6.544093e-03 2.813960e-01
-      688         M  42.61800 6.580240e-03 2.829503e-01
-      689         M  42.80293 6.622363e-03 2.847616e-01
-      690         M  42.98785 6.670319e-03 2.868237e-01
-      691         M  43.17278 6.723802e-03 2.891235e-01
-      692         M  43.35770 6.782350e-03 2.916410e-01
-      693         M  43.54263 6.845455e-03 2.943546e-01
-      694         M  43.72755 6.912542e-03 2.972393e-01
-      695         M  43.91248 6.982158e-03 3.002328e-01
-      696         M  44.09740 7.053368e-03 3.032948e-01
-      697         M  44.28233 7.125221e-03 3.063845e-01
-      698         M  44.46725 7.196780e-03 3.094616e-01
-      699         M  44.65218 7.267162e-03 3.124879e-01
-      700         M  44.83710 7.335558e-03 3.154290e-01
-      701         M  45.02203 7.401276e-03 3.182549e-01
-      702         M  45.20695 7.463316e-03 3.209226e-01
-      703         M  45.39188 7.521573e-03 3.234276e-01
-      704         M  45.57680 7.576086e-03 3.257717e-01
-      705         M  45.76173 7.626982e-03 3.279602e-01
-      706         M  45.94665 7.674589e-03 3.300073e-01
-      707         M  46.13158 7.719428e-03 3.319354e-01
-      708         M  46.31650 7.762206e-03 3.337749e-01
-      709         M  46.50143 7.803798e-03 3.355633e-01
-      710         M  46.68635 7.845301e-03 3.373479e-01
-      711         M  46.87128 7.888223e-03 3.391936e-01
-      712         M  47.05620 7.933817e-03 3.411541e-01
-      713         M  47.24113 7.983318e-03 3.432827e-01
-      714         M  47.42605 8.037911e-03 3.456302e-01
-      715         M  47.61098 8.098678e-03 3.482432e-01
-      716         M  47.79590 8.166546e-03 3.511615e-01
-      717         M  47.98083 8.242241e-03 3.544164e-01
-      718         M  48.16575 8.326248e-03 3.580286e-01
-      719         M  48.35068 8.419979e-03 3.620591e-01
-      720         M  48.53560 8.521921e-03 3.664426e-01
-      721         M  48.72053 8.631355e-03 3.711483e-01
-      722         M  48.90545 8.747317e-03 3.761346e-01
-      723         M  49.09038 8.868574e-03 3.813487e-01
-      724         M  49.27530 8.993672e-03 3.867279e-01
-      725         M  49.46023 9.120996e-03 3.922028e-01
-      726         M  49.64515 9.248834e-03 3.976999e-01
-      727         M  49.83008 9.375181e-03 4.031328e-01
-      728         M  50.01500 9.498026e-03 4.084151e-01
-      729         M  50.19993 9.616116e-03 4.134930e-01
-      730         M  50.38485 9.728374e-03 4.183201e-01
-      731         M  50.56978 9.834038e-03 4.228637e-01
-      732         M  50.75470 9.932682e-03 4.271053e-01
-      733         M  50.93963 1.002422e-02 4.310417e-01
-      734         M  51.12455 1.010892e-02 4.346837e-01
-      735         M  51.30948 1.018724e-02 4.380511e-01
-      736         M  51.49440 1.025966e-02 4.411652e-01
-      737         M  51.67933 1.032818e-02 4.441118e-01
-      738         M  51.86425 1.039405e-02 4.469442e-01
-      739         M  52.04918 1.045852e-02 4.497165e-01
-      740         M  52.23410 1.052282e-02 4.524812e-01
-      741         M  52.41903 1.058806e-02 4.552866e-01
-      742         M  52.60395 1.065523e-02 4.581749e-01
-      743         M  52.78888 1.072514e-02 4.611809e-01
-      744         M  52.97380 1.079880e-02 4.643484e-01
-      745         M  53.15873 1.087635e-02 4.676828e-01
-      746         M  53.34365 1.095765e-02 4.711790e-01
-      747         M  53.52858 1.104254e-02 4.748293e-01
-      748         M  53.71350 1.113068e-02 4.786193e-01
-      749         M  53.89843 1.122159e-02 4.825284e-01
-      750         M  54.08335 1.131469e-02 4.865315e-01
-      751         M  54.26828 1.140931e-02 4.906001e-01
-      752         M  54.45320 1.150476e-02 4.947045e-01
-      753         M  54.63813 1.160019e-02 4.988080e-01
-      754         M  54.82305 1.169490e-02 5.028806e-01
-      755         M  55.00798 1.178837e-02 5.068997e-01
-      756         M  55.19290 1.188018e-02 5.108477e-01
-      757         M  55.37783 1.197006e-02 5.147126e-01
-      758         M  55.56275 1.205787e-02 5.184883e-01
-      759         M  55.74768 1.214361e-02 5.221754e-01
-      760         M  55.93260 1.222746e-02 5.257807e-01
-      761         M  56.11753 1.230958e-02 5.293121e-01
-      762         M  56.30245 1.239077e-02 5.328030e-01
-      763         M  56.48738 1.247165e-02 5.362811e-01
-      764         M  56.67230 1.255292e-02 5.397758e-01
-      765         M  56.85723 1.263530e-02 5.433179e-01
-      766         M  57.04215 1.271951e-02 5.469390e-01
-      767         M  57.22708 1.280626e-02 5.506690e-01
-      768         M  57.41200 1.289618e-02 5.545358e-01
-      769         M  57.59693 1.299018e-02 5.585776e-01
-      770         M  57.78185 1.308875e-02 5.628163e-01
-      771         M  57.96678 1.319181e-02 5.672480e-01
-      772         M  58.15170 1.329941e-02 5.718747e-01
-      773         M  58.33663 1.341143e-02 5.766915e-01
-      774         M  58.52155 1.352760e-02 5.816869e-01
-      775         M  58.70648 1.364752e-02 5.868432e-01
-      776         M  58.89140 1.377063e-02 5.921373e-01
-      777         M  59.07633 1.389634e-02 5.975426e-01
-      778         M  59.26125 1.402397e-02 6.030306e-01
-      779         M  59.44618 1.415238e-02 6.085522e-01
-      780         M  59.63110 1.428081e-02 6.140748e-01
-      781         M  59.81603 1.440855e-02 6.195676e-01
-      782         M  60.00095 1.453496e-02 6.250032e-01
-      783         M  60.18588 1.465950e-02 6.303586e-01
-      784         M  60.37080 1.478177e-02 6.356159e-01
-      785         M  60.55573 1.490148e-02 6.407634e-01
-      786         M  60.74065 1.501824e-02 6.457845e-01
-      787         M  60.92558 1.513235e-02 6.506912e-01
-      788         M  61.11050 1.524425e-02 6.555028e-01
-      789         M  61.29543 1.535439e-02 6.602390e-01
-      790         M  61.48035 1.546337e-02 6.649248e-01
-      791         M  61.66528 1.557186e-02 6.695900e-01
-      792         M  61.85020 1.568063e-02 6.742673e-01
-      793         M  62.03513 1.579050e-02 6.789916e-01
-      794         M  62.22005 1.590241e-02 6.838035e-01
-      795         M  62.40498 1.601750e-02 6.887527e-01
-      796         M  62.58990 1.613623e-02 6.938579e-01
-      797         M  62.77483 1.625911e-02 6.991418e-01
-      798         M  62.95975 1.638652e-02 7.046204e-01
-      799         M  63.14468 1.651866e-02 7.103026e-01
-      800         M  63.32960 1.665557e-02 7.161894e-01
-      801         M  63.51453 1.679708e-02 7.222745e-01
-      802         M  63.69945 1.694289e-02 7.285443e-01
-      803         M  63.88438 1.709293e-02 7.349958e-01
-      804         M  64.06930 1.724602e-02 7.415789e-01
-      805         M  64.25423 1.740140e-02 7.482603e-01
-      806         M  64.43915 1.755837e-02 7.550099e-01
-      807         M  64.62408 1.771626e-02 7.617990e-01
-      808         M  64.80900 1.787446e-02 7.686017e-01
-      809         M  64.99393 1.803247e-02 7.753961e-01
-      810         M  65.17885 1.818990e-02 7.821656e-01
-      811         M  65.36378 1.834643e-02 7.888964e-01
-      812         M  65.54870 1.850197e-02 7.955846e-01
-      813         M  65.73363 1.865670e-02 8.022382e-01
-      814         M  65.91855 1.881087e-02 8.088673e-01
-      815         M  66.10348 1.896479e-02 8.154861e-01
-      816         M  66.28840 1.911888e-02 8.221118e-01
-      817         M  66.47333 1.927357e-02 8.287634e-01
-      818         M  66.65825 1.942933e-02 8.354611e-01
-      819         M  66.84318 1.958663e-02 8.422250e-01
-      820         M  67.02810 1.974624e-02 8.490884e-01
-      821         M  67.21303 1.990825e-02 8.560546e-01
-      822         M  67.39795 2.007283e-02 8.631317e-01
-      823         M  67.58288 2.024006e-02 8.703227e-01
-      824         M  67.76780 2.040986e-02 8.776239e-01
-      825         M  67.95273 2.058197e-02 8.850246e-01
-      826         M  68.13765 2.075597e-02 8.925068e-01
-      827         M  68.32258 2.093127e-02 9.000448e-01
-      828         M  68.50750 2.110701e-02 9.076016e-01
-      829         M  68.69243 2.128193e-02 9.151228e-01
-      830         M  68.87735 2.145481e-02 9.225569e-01
-      831         M  69.06228 2.162442e-02 9.298502e-01
-      832         M  69.24720 2.178947e-02 9.369474e-01
-      833         M  69.43213 2.194869e-02 9.437937e-01
-      834         M  69.61705 2.210087e-02 9.503376e-01
-      835         M  69.80198 2.224494e-02 9.565324e-01
-      836         M  69.98690 2.237964e-02 9.623245e-01
-      837         M  70.17183 2.250339e-02 9.676457e-01
-      838         M  70.35675 2.261706e-02 9.725336e-01
-      839         M  70.54168 2.272073e-02 9.769913e-01
-      840         M  70.72660 2.281477e-02 9.810351e-01
-      841         M  70.91153 2.289984e-02 9.846933e-01
-      842         M  71.09645 2.297687e-02 9.880055e-01
-      843         M  71.28138 2.304701e-02 9.910213e-01
-      844         M  71.46630 2.311158e-02 9.937981e-01
-      845         M  71.65123 2.317184e-02 9.963890e-01
-      846         M  71.83615 2.323006e-02 9.988928e-01
-      847         M  72.02108 2.328796e-02 1.001382e+00
-      848         M  72.20600 2.334703e-02 1.003922e+00
-      849         M  72.39093 2.340870e-02 1.006574e+00
-      850         M  72.57585 2.347423e-02 1.009392e+00
-      851         M  72.76078 2.354473e-02 1.012423e+00
-      852         M  72.94570 2.362107e-02 1.015706e+00
-      853         M  73.13063 2.370436e-02 1.019288e+00
-      854         M  73.31555 2.379524e-02 1.023195e+00
-      855         M  73.50048 2.389309e-02 1.027403e+00
-      856         M  73.68540 2.399767e-02 1.031900e+00
-      857         M  73.87033 2.410849e-02 1.036665e+00
-      858         M  74.05525 2.422485e-02 1.041669e+00
-      859         M  74.24018 2.434589e-02 1.046873e+00
-      860         M  74.42510 2.447055e-02 1.052234e+00
-      861         M  74.61003 2.459767e-02 1.057700e+00
-      862         M  74.79495 2.472588e-02 1.063213e+00
-      863         M  74.97988 2.485347e-02 1.068699e+00
-      864         M  75.16480 2.497915e-02 1.074103e+00
-      865         M  75.34973 2.510163e-02 1.079370e+00
-      866         M  75.53465 2.521974e-02 1.084449e+00
-      867         M  75.71958 2.533237e-02 1.089292e+00
-      868         M  75.90450 2.543854e-02 1.093857e+00
-      869         M  76.08943 2.553741e-02 1.098109e+00
-      870         M  76.27435 2.562748e-02 1.101982e+00
-      871         M  76.45928 2.570834e-02 1.105459e+00
-      872         M  76.64420 2.578025e-02 1.108551e+00
-      873         M  76.82913 2.584307e-02 1.111252e+00
-      874         M  77.01405 2.589687e-02 1.113565e+00
-      875         M  77.19898 2.594185e-02 1.115500e+00
-      876         M  77.38390 2.597837e-02 1.117070e+00
-      877         M  77.56883 2.600692e-02 1.118298e+00
-      878         M  77.75375 2.602794e-02 1.119201e+00
-      879         M  77.93868 2.604166e-02 1.119792e+00
-      880         M  78.12360 2.604985e-02 1.120143e+00
-      881         M  78.30853 2.605330e-02 1.120292e+00
-      882         M  78.49345 2.605280e-02 1.120271e+00
-      883         M  78.67838 2.604909e-02 1.120111e+00
-      884         M  78.86330 2.604277e-02 1.119839e+00
-      885         M  79.04823 2.603435e-02 1.119477e+00
-      886         M  79.23315 2.602416e-02 1.119039e+00
-      887         M  79.41808 2.601214e-02 1.118522e+00
-      888         M  79.60300 2.599829e-02 1.117927e+00
-      889         M  79.78793 2.598228e-02 1.117238e+00
-      890         M  79.97285 2.596353e-02 1.116432e+00
-      891         M  80.15778 2.594128e-02 1.115475e+00
-      892         M  80.34270 2.591463e-02 1.114329e+00
-      893         M  80.52763 2.588255e-02 1.112950e+00
-      894         M  80.71255 2.584390e-02 1.111288e+00
-      895         M  80.89748 2.579700e-02 1.109271e+00
-      896         M  81.08240 2.573999e-02 1.106820e+00
-      897         M  81.26733 2.567260e-02 1.103922e+00
-      898         M  81.45225 2.559389e-02 1.100537e+00
-      899         M  81.63718 2.550310e-02 1.096633e+00
-      900         M  81.82210 2.539969e-02 1.092187e+00
-      901         M  82.00703 2.528332e-02 1.087183e+00
-      902         M  82.19195 2.515390e-02 1.081618e+00
-      903         M  82.37688 2.501159e-02 1.075499e+00
-      904         M  82.56180 2.485507e-02 1.068768e+00
-      905         M  82.74673 2.468687e-02 1.061535e+00
-      906         M  82.93165 2.450793e-02 1.053841e+00
-      907         M  83.11658 2.431920e-02 1.045726e+00
-      908         M  83.30150 2.412165e-02 1.037231e+00
-      909         M  83.48643 2.391625e-02 1.028399e+00
-      910         M  83.67135 2.370392e-02 1.019269e+00
-      911         M  83.85628 2.348552e-02 1.009877e+00
-      912         M  84.04120 2.326139e-02 1.000240e+00
-      913         M  84.22613 2.303237e-02 9.903919e-01
-      914         M  84.41105 2.279930e-02 9.803699e-01
-      915         M  84.59598 2.256258e-02 9.701911e-01
-      916         M  84.78090 2.232258e-02 9.598711e-01
-      917         M  84.96583 2.207966e-02 9.494255e-01
-      918         M  85.15075 2.183421e-02 9.388709e-01
-      919         M  85.33568 2.158665e-02 9.282259e-01
-      920         M  85.52060 2.133748e-02 9.175116e-01
-      921         M  85.70553 2.108732e-02 9.067548e-01
-      922         M  85.89045 2.083709e-02 8.959950e-01
-      923         M  86.07538 2.058753e-02 8.852639e-01
-      924         M  86.26030 2.033938e-02 8.745935e-01
-      925         M  86.44523 2.009337e-02 8.640149e-01
-      926         M  86.63015 1.985014e-02 8.535562e-01
-      927         M  86.81508 1.961027e-02 8.432416e-01
-      928         M  87.00000 1.937419e-02 8.330900e-01
-      929         M  87.18493 1.914265e-02 8.231339e-01
-      930         M  87.36985 1.891544e-02 8.133640e-01
-      931         M  87.55478 1.869223e-02 8.037658e-01
-      932         M  87.73970 1.847269e-02 7.943258e-01
-      933         M  87.92463 1.825639e-02 7.850246e-01
-      934         M  88.10955 1.804274e-02 7.758378e-01
-      935         M  88.29448 1.783110e-02 7.667375e-01
-      936         M  88.47940 1.762077e-02 7.576930e-01
-      937         M  88.66433 1.741096e-02 7.486711e-01
-      938         M  88.84925 1.720072e-02 7.396308e-01
-      939         M  89.03418 1.698927e-02 7.305384e-01
-      940         M  89.21910 1.677592e-02 7.213645e-01
-      941         M  89.40403 1.656003e-02 7.120815e-01
-      942         M  89.58895 1.634102e-02 7.026640e-01
-      943         M  89.77388 1.611835e-02 6.930891e-01
-      944         M  89.95880 1.589153e-02 6.833357e-01
-      945         M  90.14373 1.566012e-02 6.733853e-01
-      946         M  90.32865 1.542298e-02 6.631883e-01
-      947         M  90.51358 1.518036e-02 6.527554e-01
-      948         M  90.69850 1.493206e-02 6.420785e-01
-      949         M  90.88343 1.467787e-02 6.311484e-01
-      950         M  91.06835 1.441763e-02 6.199582e-01
-      951         M  91.25328 1.415123e-02 6.085030e-01
-      952         M  91.43820 1.387863e-02 5.967809e-01
-      953         M  91.62313 1.359983e-02 5.847926e-01
-      954         M  91.80805 1.331447e-02 5.725221e-01
-      955         M  91.99298 1.302277e-02 5.599791e-01
-      956         M  92.17790 1.272550e-02 5.471965e-01
-      957         M  92.36283 1.242301e-02 5.341895e-01
-      958         M  92.54775 1.211574e-02 5.209767e-01
-      959         M  92.73268 1.180418e-02 5.075797e-01
-      960         M  92.91760 1.148890e-02 4.940227e-01
-      961         M  93.10253 1.117052e-02 4.803324e-01
-      962         M  93.28745 1.084969e-02 4.665369e-01
-      963         M  93.47238 1.052709e-02 4.526649e-01
-      964         M  93.65730 1.020382e-02 4.387641e-01
-      965         M  93.84223 9.880657e-03 4.248682e-01
-      966         M  94.02715 9.558396e-03 4.110110e-01
-      967         M  94.21208 9.237814e-03 3.972260e-01
-      968         M  94.39700 8.919674e-03 3.835460e-01
-      969         M  94.58193 8.604715e-03 3.700027e-01
-      970         M  94.76685 8.293634e-03 3.566263e-01
-      971         M  94.95178 7.987637e-03 3.434684e-01
-      972         M  95.13670 7.687168e-03 3.305482e-01
-      973         M  95.32163 7.392452e-03 3.178754e-01
-      974         M  95.50655 7.103857e-03 3.054658e-01
-      975         M  95.69148 6.821648e-03 2.933309e-01
-      976         M  95.87640 6.545989e-03 2.814775e-01
-      977         M  96.06133 6.276932e-03 2.699081e-01
-      978         M  96.24625 6.014415e-03 2.586198e-01
-      979         M  96.43118 5.758517e-03 2.476162e-01
-      980         M  96.61610 5.509292e-03 2.368996e-01
-      981         M  96.80103 5.265575e-03 2.264197e-01
-      982         M  96.98595 5.026853e-03 2.161547e-01
-      983         M  97.17088 4.792561e-03 2.060801e-01
-      984         M  97.35580 4.562103e-03 1.961704e-01
-      985         M  97.54073 4.334884e-03 1.864000e-01
-      986         M  97.72565 4.110332e-03 1.767443e-01
-      987         M  97.91058 3.887931e-03 1.671810e-01
-      988         M  98.09550 3.667439e-03 1.576999e-01
-      989         M  98.28043 3.448377e-03 1.482802e-01
-      990         M  98.46535 3.230668e-03 1.389187e-01
-      991         M  98.65028 3.014456e-03 1.296216e-01
-      992         M  98.83520 2.800076e-03 1.204033e-01
-      993         M  99.02013 2.588047e-03 1.112860e-01
-      994         M  99.20505 2.379068e-03 1.022999e-01
-      995         M  99.38998 2.173993e-03 9.348171e-02
-      996         M  99.57490 1.974250e-03 8.489277e-02
-      997         M  99.75983 1.781327e-03 7.659707e-02
-      998         M  99.94475 1.595920e-03 6.862458e-02
-      999         M 100.12968 1.419115e-03 6.102193e-02
-      1000        M 100.31460 1.251910e-03 5.383212e-02
-      1001        M 100.49953 1.095181e-03 4.709280e-02
-      1002        M 100.68445 9.496486e-04 4.083489e-02
-      1003        M 100.86938 8.158466e-04 3.508140e-02
-      1004        M 101.05430 6.941815e-04 2.984980e-02
-      1005        M 101.23923 5.864865e-04 2.521892e-02
-      1006        M 101.42415 4.907256e-04 2.110120e-02
-      1007        M 101.60908 4.064895e-04 1.747905e-02
-      1008        M 101.79400 3.332115e-04 1.432809e-02
-      1009        M 101.97893 2.701951e-04 1.161839e-02
-      1010        M 102.16385 2.166445e-04 9.315713e-03
-      1011        M 102.34878 1.716945e-04 7.382862e-03
-      1012        M 102.53370 1.344409e-04 5.780960e-03
-      1013        M 102.71863 1.045226e-04 4.494474e-03
-      1014        M 102.90355 8.056536e-05 3.464311e-03
-      1015        M 103.08848 6.136456e-05 2.638676e-03
-      1016        M 103.27340 4.616787e-05 1.985218e-03
-      1017        M 103.45833 3.429567e-05 1.474714e-03
-      1018        M 103.64325 2.514464e-05 1.081219e-03
-      1019        M 103.82818 1.818837e-05 7.821000e-04
-      1020        M 104.01310 1.297564e-05 5.579524e-04
-      1021        M 104.19803 9.160707e-06 3.939104e-04
-      1022        M 104.38295 6.464213e-06 2.779612e-04
-      1023        M 104.56788 4.499366e-06 1.934727e-04
-      1024        M 104.75280 3.087813e-06 1.327759e-04
+           category         x            y y_prop
+      1          V1  10.29665 1.732108e-06     NA
+      2          V2  10.25613 5.407098e-07     NA
+      3          V1  10.48155 2.528980e-06     NA
+      4          V2  10.44105 7.853616e-07     NA
+      5          V1  10.66644 3.639315e-06     NA
+      6          V2  10.62598 1.124962e-06     NA
+      7          V1  10.85134 5.163971e-06     NA
+      8          V2  10.81090 1.589849e-06     NA
+      9          V1  11.03624 7.319487e-06     NA
+      10         V2  10.99583 2.245850e-06     NA
+      11         V1  11.22113 1.026447e-05     NA
+      12         V2  11.18075 3.140313e-06     NA
+      13         V1  11.40603 1.418948e-05     NA
+      14         V2  11.36568 4.331949e-06     NA
+      15         V1  11.59092 1.934292e-05     NA
+      16         V2  11.55060 5.897559e-06     NA
+      17         V1  11.77582 2.601142e-05     NA
+      18         V2  11.73553 7.926963e-06     NA
+      19         V1  11.96072 3.451913e-05     NA
+      20         V2  11.92045 1.052349e-05     NA
+      21         V1  12.14561 4.522538e-05     NA
+      22         V2  12.10538 1.380410e-05     NA
+      23         V1  12.33051 5.852022e-05     NA
+      24         V2  12.29030 1.789906e-05     NA
+      25         V1  12.51541 7.501538e-05     NA
+      26         V2  12.47523 2.301779e-05     NA
+      27         V1  12.70030 9.540139e-05     NA
+      28         V2  12.66015 2.940229e-05     NA
+      29         V1  12.88520 1.197896e-04     NA
+      30         V2  12.84508 3.712255e-05     NA
+      31         V1  13.07010 1.485615e-04     NA
+      32         V2  13.03000 4.634499e-05     NA
+      33         V1  13.25499 1.820454e-04     NA
+      34         V2  13.21493 5.723286e-05     NA
+      35         V1  13.43989 2.204966e-04     NA
+      36         V2  13.39985 6.994138e-05     NA
+      37         V1  13.62479 2.640781e-04     NA
+      38         V2  13.58478 8.461248e-05     NA
+      39         V1  13.80968 3.128425e-04     NA
+      40         V2  13.76970 1.013695e-04     NA
+      41         V1  13.99458 3.667156e-04     NA
+      42         V2  13.95463 1.203119e-04     NA
+      43         V1  14.17948 4.261223e-04     NA
+      44         V2  14.13955 1.418522e-04     NA
+      45         V1  14.36437 4.898776e-04     NA
+      46         V2  14.32448 1.656878e-04     NA
+      47         V1  14.54927 5.573387e-04     NA
+      48         V2  14.50940 1.917753e-04     NA
+      49         V1  14.73416 6.277731e-04     NA
+      50         V2  14.69433 2.200438e-04     NA
+      51         V1  14.91906 7.003399e-04     NA
+      52         V2  14.87925 2.503814e-04     NA
+      53         V1  15.10396 7.741149e-04     NA
+      54         V2  15.06418 2.826365e-04     NA
+      55         V1  15.28885 8.481207e-04     NA
+      56         V2  15.24910 3.166211e-04     NA
+      57         V1  15.47375 9.213588e-04     NA
+      58         V2  15.43403 3.521142e-04     NA
+      59         V1  15.65865 9.926011e-04     NA
+      60         V2  15.61895 3.889448e-04     NA
+      61         V1  15.84354 1.060734e-03     NA
+      62         V2  15.80388 4.267461e-04     NA
+      63         V1  16.02844 1.125139e-03     NA
+      64         V2  15.98880 4.651458e-04     NA
+      65         V1  16.21334 1.185208e-03     NA
+      66         V2  16.17373 5.038603e-04     NA
+      67         V1  16.39823 1.240498e-03     NA
+      68         V2  16.35865 5.426152e-04     NA
+      69         V1  16.58313 1.290738e-03     NA
+      70         V2  16.54358 5.811539e-04     NA
+      71         V1  16.76803 1.335831e-03     NA
+      72         V2  16.72850 6.192441e-04     NA
+      73         V1  16.95292 1.375858e-03     NA
+      74         V2  16.91343 6.566845e-04     NA
+      75         V1  17.13782 1.410970e-03     NA
+      76         V2  17.09835 6.932903e-04     NA
+      77         V1  17.32272 1.441171e-03     NA
+      78         V2  17.28328 7.288235e-04     NA
+      79         V1  17.50761 1.467681e-03     NA
+      80         V2  17.46820 7.633520e-04     NA
+      81         V1  17.69251 1.491125e-03     NA
+      82         V2  17.65313 7.968849e-04     NA
+      83         V1  17.87741 1.512162e-03     NA
+      84         V2  17.83805 8.294809e-04     NA
+      85         V1  18.06230 1.531451e-03     NA
+      86         V2  18.02298 8.612465e-04     NA
+      87         V1  18.24720 1.549625e-03     NA
+      88         V2  18.20790 8.923319e-04     NA
+      89         V1  18.43209 1.567270e-03     NA
+      90         V2  18.39283 9.229263e-04     NA
+      91         V1  18.61699 1.584903e-03     NA
+      92         V2  18.57775 9.532512e-04     NA
+      93         V1  18.80189 1.603049e-03     NA
+      94         V2  18.76268 9.835883e-04     NA
+      95         V1  18.98678 1.622052e-03     NA
+      96         V2  18.94760 1.014255e-03     NA
+      97         V1  19.17168 1.642074e-03     NA
+      98         V2  19.13253 1.045500e-03     NA
+      99         V1  19.35658 1.663214e-03     NA
+      100        V2  19.31745 1.077551e-03     NA
+      101        V1  19.54147 1.685496e-03     NA
+      102        V2  19.50238 1.110603e-03     NA
+      103        V1  19.72637 1.708883e-03     NA
+      104        V2  19.68730 1.144804e-03     NA
+      105        V1  19.91127 1.733293e-03     NA
+      106        V2  19.87223 1.180251e-03     NA
+      107        V1  20.09616 1.758614e-03     NA
+      108        V2  20.05715 1.216980e-03     NA
+      109        V1  20.28106 1.784743e-03     NA
+      110        V2  20.24208 1.255020e-03     NA
+      111        V1  20.46596 1.811553e-03     NA
+      112        V2  20.42700 1.294293e-03     NA
+      113        V1  20.65085 1.838844e-03     NA
+      114        V2  20.61193 1.334477e-03     NA
+      115        V1  20.83575 1.866519e-03     NA
+      116        V2  20.79685 1.375335e-03     NA
+      117        V1  21.02065 1.894497e-03     NA
+      118        V2  20.98178 1.416605e-03     NA
+      119        V1  21.20554 1.922721e-03     NA
+      120        V2  21.16670 1.458013e-03     NA
+      121        V1  21.39044 1.951149e-03     NA
+      122        V2  21.35163 1.499291e-03     NA
+      123        V1  21.57533 1.979755e-03     NA
+      124        V2  21.53655 1.540199e-03     NA
+      125        V1  21.76023 2.008526e-03     NA
+      126        V2  21.72148 1.580545e-03     NA
+      127        V1  21.94513 2.037483e-03     NA
+      128        V2  21.90640 1.620100e-03     NA
+      129        V1  22.13002 2.066617e-03     NA
+      130        V2  22.09133 1.658945e-03     NA
+      131        V1  22.31492 2.095946e-03     NA
+      132        V2  22.27625 1.697202e-03     NA
+      133        V1  22.49982 2.125501e-03     NA
+      134        V2  22.46118 1.735073e-03     NA
+      135        V1  22.68471 2.155328e-03     NA
+      136        V2  22.64610 1.772849e-03     NA
+      137        V1  22.86961 2.185487e-03     NA
+      138        V2  22.83103 1.810892e-03     NA
+      139        V1  23.05451 2.216055e-03     NA
+      140        V2  23.01595 1.849615e-03     NA
+      141        V1  23.23940 2.247129e-03     NA
+      142        V2  23.20088 1.889464e-03     NA
+      143        V1  23.42430 2.278883e-03     NA
+      144        V2  23.38580 1.931054e-03     NA
+      145        V1  23.60920 2.311485e-03     NA
+      146        V2  23.57073 1.974900e-03     NA
+      147        V1  23.79409 2.345030e-03     NA
+      148        V2  23.75565 2.021192e-03     NA
+      149        V1  23.97899 2.379663e-03     NA
+      150        V2  23.94058 2.070143e-03     NA
+      151        V1  24.16389 2.415524e-03     NA
+      152        V2  24.12550 2.121858e-03     NA
+      153        V1  24.34878 2.452744e-03     NA
+      154        V2  24.31043 2.176318e-03     NA
+      155        V1  24.53368 2.491439e-03     NA
+      156        V2  24.49535 2.233381e-03     NA
+      157        V1  24.71858 2.531708e-03     NA
+      158        V2  24.68028 2.292789e-03     NA
+      159        V1  24.90347 2.573654e-03     NA
+      160        V2  24.86520 2.354195e-03     NA
+      161        V1  25.08837 2.617563e-03     NA
+      162        V2  25.05013 2.417211e-03     NA
+      163        V1  25.27326 2.663228e-03     NA
+      164        V2  25.23505 2.481012e-03     NA
+      165        V1  25.45816 2.710657e-03     NA
+      166        V2  25.41998 2.545041e-03     NA
+      167        V1  25.64306 2.759842e-03     NA
+      168        V2  25.60490 2.608759e-03     NA
+      169        V1  25.82795 2.810758e-03     NA
+      170        V2  25.78983 2.671665e-03     NA
+      171        V1  26.01285 2.863362e-03     NA
+      172        V2  25.97475 2.733324e-03     NA
+      173        V1  26.19775 2.917587e-03     NA
+      174        V2  26.15968 2.793376e-03     NA
+      175        V1  26.38264 2.973343e-03     NA
+      176        V2  26.34460 2.851553e-03     NA
+      177        V1  26.56754 3.030638e-03     NA
+      178        V2  26.52953 2.907456e-03     NA
+      179        V1  26.75244 3.089188e-03     NA
+      180        V2  26.71445 2.961148e-03     NA
+      181        V1  26.93733 3.148708e-03     NA
+      182        V2  26.89938 3.012785e-03     NA
+      183        V1  27.12223 3.208947e-03     NA
+      184        V2  27.08430 3.062481e-03     NA
+      185        V1  27.30713 3.269621e-03     NA
+      186        V2  27.26923 3.110392e-03     NA
+      187        V1  27.49202 3.330417e-03     NA
+      188        V2  27.45415 3.156699e-03     NA
+      189        V1  27.67692 3.391006e-03     NA
+      190        V2  27.63908 3.201590e-03     NA
+      191        V1  27.86182 3.451047e-03     NA
+      192        V2  27.82400 3.245250e-03     NA
+      193        V1  28.04671 3.510147e-03     NA
+      194        V2  28.00893 3.287809e-03     NA
+      195        V1  28.23161 3.567821e-03     NA
+      196        V2  28.19385 3.329379e-03     NA
+      197        V1  28.41651 3.623899e-03     NA
+      198        V2  28.37878 3.370189e-03     NA
+      199        V1  28.60140 3.678146e-03     NA
+      200        V2  28.56370 3.410334e-03     NA
+      201        V1  28.78630 3.730374e-03     NA
+      202        V2  28.74863 3.449901e-03     NA
+      203        V1  28.97119 3.780445e-03     NA
+      204        V2  28.93355 3.488979e-03     NA
+      205        V1  29.15609 3.828264e-03     NA
+      206        V2  29.11848 3.527665e-03     NA
+      207        V1  29.34099 3.873785e-03     NA
+      208        V2  29.30340 3.566068e-03     NA
+      209        V1  29.52588 3.916999e-03     NA
+      210        V2  29.48833 3.604315e-03     NA
+      211        V1  29.71078 3.957638e-03     NA
+      212        V2  29.67325 3.642579e-03     NA
+      213        V1  29.89568 3.996037e-03     NA
+      214        V2  29.85818 3.681048e-03     NA
+      215        V1  30.08057 4.032332e-03     NA
+      216        V2  30.04310 3.719878e-03     NA
+      217        V1  30.26547 4.066624e-03     NA
+      218        V2  30.22803 3.759204e-03     NA
+      219        V1  30.45037 4.099026e-03     NA
+      220        V2  30.41295 3.799127e-03     NA
+      221        V1  30.63526 4.129658e-03     NA
+      222        V2  30.59788 3.839702e-03     NA
+      223        V1  30.82016 4.158647e-03     NA
+      224        V2  30.78280 3.880924e-03     NA
+      225        V1  31.00506 4.186128e-03     NA
+      226        V2  30.96773 3.922720e-03     NA
+      227        V1  31.18995 4.212160e-03     NA
+      228        V2  31.15265 3.964947e-03     NA
+      229        V1  31.37485 4.236911e-03     NA
+      230        V2  31.33758 4.007289e-03     NA
+      231        V1  31.55975 4.260656e-03     NA
+      232        V2  31.52250 4.049372e-03     NA
+      233        V1  31.74464 4.283555e-03     NA
+      234        V2  31.70743 4.090804e-03     NA
+      235        V1  31.92954 4.305776e-03     NA
+      236        V2  31.89235 4.131166e-03     NA
+      237        V1  32.11443 4.327485e-03     NA
+      238        V2  32.07728 4.170033e-03     NA
+      239        V1  32.29933 4.348854e-03     NA
+      240        V2  32.26220 4.206995e-03     NA
+      241        V1  32.48423 4.370053e-03     NA
+      242        V2  32.44713 4.241684e-03     NA
+      243        V1  32.66912 4.391251e-03     NA
+      244        V2  32.63205 4.273778e-03     NA
+      245        V1  32.85402 4.412674e-03     NA
+      246        V2  32.81698 4.302669e-03     NA
+      247        V1  33.03892 4.434482e-03     NA
+      248        V2  33.00190 4.328726e-03     NA
+      249        V1  33.22381 4.456827e-03     NA
+      250        V2  33.18683 4.352079e-03     NA
+      251        V1  33.40871 4.479857e-03     NA
+      252        V2  33.37175 4.372996e-03     NA
+      253        V1  33.59361 4.503716e-03     NA
+      254        V2  33.55668 4.391883e-03     NA
+      255        V1  33.77850 4.528541e-03     NA
+      256        V2  33.74160 4.409276e-03     NA
+      257        V1  33.96340 4.554467e-03     NA
+      258        V2  33.92653 4.425828e-03     NA
+      259        V1  34.14830 4.581628e-03     NA
+      260        V2  34.11145 4.442291e-03     NA
+      261        V1  34.33319 4.610310e-03     NA
+      262        V2  34.29638 4.459682e-03     NA
+      263        V1  34.51809 4.640627e-03     NA
+      264        V2  34.48130 4.479066e-03     NA
+      265        V1  34.70299 4.672644e-03     NA
+      266        V2  34.66623 4.501279e-03     NA
+      267        V1  34.88788 4.706510e-03     NA
+      268        V2  34.85115 4.527161e-03     NA
+      269        V1  35.07278 4.742374e-03     NA
+      270        V2  35.03608 4.557488e-03     NA
+      271        V1  35.25768 4.780385e-03     NA
+      272        V2  35.22100 4.592941e-03     NA
+      273        V1  35.44257 4.820679e-03     NA
+      274        V2  35.40593 4.634086e-03     NA
+      275        V1  35.62747 4.863378e-03     NA
+      276        V2  35.59085 4.681354e-03     NA
+      277        V1  35.81236 4.908661e-03     NA
+      278        V2  35.77578 4.735260e-03     NA
+      279        V1  35.99726 4.956787e-03     NA
+      280        V2  35.96070 4.796436e-03     NA
+      281        V1  36.18216 5.007397e-03     NA
+      282        V2  36.14563 4.863951e-03     NA
+      283        V1  36.36705 5.060355e-03     NA
+      284        V2  36.33055 4.937477e-03     NA
+      285        V1  36.55195 5.115438e-03     NA
+      286        V2  36.51548 5.016534e-03     NA
+      287        V1  36.73685 5.172327e-03     NA
+      288        V2  36.70040 5.100499e-03     NA
+      289        V1  36.92174 5.230615e-03     NA
+      290        V2  36.88533 5.188624e-03     NA
+      291        V1  37.10664 5.289809e-03     NA
+      292        V2  37.07025 5.280053e-03     NA
+      293        V1  37.29154 5.349341e-03     NA
+      294        V2  37.25518 5.373838e-03     NA
+      295        V1  37.47643 5.408438e-03     NA
+      296        V2  37.44010 5.468954e-03     NA
+      297        V1  37.66133 5.466334e-03     NA
+      298        V2  37.62503 5.563981e-03     NA
+      299        V1  37.84623 5.522401e-03     NA
+      300        V2  37.80995 5.657811e-03     NA
+      301        V1  38.03112 5.576044e-03     NA
+      302        V2  37.99488 5.749385e-03     NA
+      303        V1  38.21602 5.626751e-03     NA
+      304        V2  38.17980 5.837689e-03     NA
+      305        V1  38.40092 5.674106e-03     NA
+      306        V2  38.36473 5.921769e-03     NA
+      307        V1  38.58581 5.717814e-03     NA
+      308        V2  38.54965 6.000759e-03     NA
+      309        V1  38.77071 5.757713e-03     NA
+      310        V2  38.73458 6.073892e-03     NA
+      311        V1  38.95560 5.793550e-03     NA
+      312        V2  38.91950 6.140073e-03     NA
+      313        V1  39.14050 5.825426e-03     NA
+      314        V2  39.10443 6.198544e-03     NA
+      315        V1  39.32540 5.854026e-03     NA
+      316        V2  39.28935 6.249683e-03     NA
+      317        V1  39.51029 5.879788e-03     NA
+      318        V2  39.47428 6.293449e-03     NA
+      319        V1  39.69519 5.903224e-03     NA
+      320        V2  39.65920 6.329984e-03     NA
+      321        V1  39.88009 5.924903e-03     NA
+      322        V2  39.84413 6.359615e-03     NA
+      323        V1  40.06498 5.945424e-03     NA
+      324        V2  40.02905 6.382843e-03     NA
+      325        V1  40.24988 5.965391e-03     NA
+      326        V2  40.21398 6.400336e-03     NA
+      327        V1  40.43478 5.985395e-03     NA
+      328        V2  40.39890 6.412910e-03     NA
+      329        V1  40.61967 6.006181e-03     NA
+      330        V2  40.58383 6.421122e-03     NA
+      331        V1  40.80457 6.028207e-03     NA
+      332        V2  40.76875 6.426828e-03     NA
+      333        V1  40.98947 6.051866e-03     NA
+      334        V2  40.95368 6.431159e-03     NA
+      335        V1  41.17436 6.077485e-03     NA
+      336        V2  41.13860 6.435253e-03     NA
+      337        V1  41.35926 6.105323e-03     NA
+      338        V2  41.32353 6.440225e-03     NA
+      339        V1  41.54416 6.135581e-03     NA
+      340        V2  41.50845 6.447142e-03     NA
+      341        V1  41.72905 6.168401e-03     NA
+      342        V2  41.69338 6.456995e-03     NA
+      343        V1  41.91395 6.203879e-03     NA
+      344        V2  41.87830 6.470674e-03     NA
+      345        V1  42.09885 6.242321e-03     NA
+      346        V2  42.06323 6.489444e-03     NA
+      347        V1  42.28374 6.283670e-03     NA
+      348        V2  42.24815 6.513893e-03     NA
+      349        V1  42.46864 6.327738e-03     NA
+      350        V2  42.43308 6.544093e-03     NA
+      351        V1  42.65353 6.374498e-03     NA
+      352        V2  42.61800 6.580240e-03     NA
+      353        V1  42.83843 6.423913e-03     NA
+      354        V2  42.80293 6.622363e-03     NA
+      355        V1  43.02333 6.475942e-03     NA
+      356        V2  42.98785 6.670319e-03     NA
+      357        V1  43.20822 6.530542e-03     NA
+      358        V2  43.17278 6.723802e-03     NA
+      359        V1  43.39312 6.587669e-03     NA
+      360        V2  43.35770 6.782350e-03     NA
+      361        V1  43.57802 6.647355e-03     NA
+      362        V2  43.54263 6.845455e-03     NA
+      363        V1  43.76291 6.709806e-03     NA
+      364        V2  43.72755 6.912542e-03     NA
+      365        V1  43.94781 6.774688e-03     NA
+      366        V2  43.91248 6.982158e-03     NA
+      367        V1  44.13271 6.841991e-03     NA
+      368        V2  44.09740 7.053368e-03     NA
+      369        V1  44.31760 6.911717e-03     NA
+      370        V2  44.28233 7.125221e-03     NA
+      371        V1  44.50250 6.983871e-03     NA
+      372        V2  44.46725 7.196780e-03     NA
+      373        V1  44.68740 7.058459e-03     NA
+      374        V2  44.65218 7.267162e-03     NA
+      375        V1  44.87229 7.135485e-03     NA
+      376        V2  44.83710 7.335558e-03     NA
+      377        V1  45.05719 7.214940e-03     NA
+      378        V2  45.02203 7.401276e-03     NA
+      379        V1  45.24209 7.297073e-03     NA
+      380        V2  45.20695 7.463316e-03     NA
+      381        V1  45.42698 7.381586e-03     NA
+      382        V2  45.39188 7.521573e-03     NA
+      383        V1  45.61188 7.468259e-03     NA
+      384        V2  45.57680 7.576086e-03     NA
+      385        V1  45.79678 7.556899e-03     NA
+      386        V2  45.76173 7.626982e-03     NA
+      387        V1  45.98167 7.647250e-03     NA
+      388        V2  45.94665 7.674589e-03     NA
+      389        V1  46.16657 7.738991e-03     NA
+      390        V2  46.13158 7.719428e-03     NA
+      391        V1  46.35146 7.831738e-03     NA
+      392        V2  46.31650 7.762206e-03     NA
+      393        V1  46.53636 7.925042e-03     NA
+      394        V2  46.50143 7.803798e-03     NA
+      395        V1  46.72126 8.018368e-03     NA
+      396        V2  46.68635 7.845301e-03     NA
+      397        V1  46.90615 8.111001e-03     NA
+      398        V2  46.87128 7.888223e-03     NA
+      399        V1  47.09105 8.202369e-03     NA
+      400        V2  47.05620 7.933817e-03     NA
+      401        V1  47.27595 8.291916e-03     NA
+      402        V2  47.24113 7.983318e-03     NA
+      403        V1  47.46084 8.379126e-03     NA
+      404        V2  47.42605 8.037911e-03     NA
+      405        V1  47.64574 8.463542e-03     NA
+      406        V2  47.61098 8.098678e-03     NA
+      407        V1  47.83064 8.544792e-03     NA
+      408        V2  47.79590 8.166546e-03     NA
+      409        V1  48.01553 8.622609e-03     NA
+      410        V2  47.98083 8.242241e-03     NA
+      411        V1  48.20043 8.696851e-03     NA
+      412        V2  48.16575 8.326248e-03     NA
+      413        V1  48.38533 8.767026e-03     NA
+      414        V2  48.35068 8.419979e-03     NA
+      415        V1  48.57022 8.833892e-03     NA
+      416        V2  48.53560 8.521921e-03     NA
+      417        V1  48.75512 8.897876e-03     NA
+      418        V2  48.72053 8.631355e-03     NA
+      419        V1  48.94002 8.959516e-03     NA
+      420        V2  48.90545 8.747317e-03     NA
+      421        V1  49.12491 9.019466e-03     NA
+      422        V2  49.09038 8.868574e-03     NA
+      423        V1  49.30981 9.078470e-03     NA
+      424        V2  49.27530 8.993672e-03     NA
+      425        V1  49.49470 9.137335e-03     NA
+      426        V2  49.46023 9.120996e-03     NA
+      427        V1  49.67960 9.196895e-03     NA
+      428        V2  49.64515 9.248834e-03     NA
+      429        V1  49.86450 9.258183e-03     NA
+      430        V2  49.83008 9.375181e-03     NA
+      431        V1  50.04939 9.322110e-03     NA
+      432        V2  50.01500 9.498026e-03     NA
+      433        V1  50.23429 9.389161e-03     NA
+      434        V2  50.19993 9.616116e-03     NA
+      435        V1  50.41919 9.459785e-03     NA
+      436        V2  50.38485 9.728374e-03     NA
+      437        V1  50.60408 9.534275e-03     NA
+      438        V2  50.56978 9.834038e-03     NA
+      439        V1  50.78898 9.612756e-03     NA
+      440        V2  50.75470 9.932682e-03     NA
+      441        V1  50.97388 9.695192e-03     NA
+      442        V2  50.93963 1.002422e-02     NA
+      443        V1  51.15877 9.781392e-03     NA
+      444        V2  51.12455 1.010892e-02     NA
+      445        V1  51.34367 9.871087e-03     NA
+      446        V2  51.30948 1.018724e-02     NA
+      447        V1  51.52857 9.964058e-03     NA
+      448        V2  51.49440 1.025966e-02     NA
+      449        V1  51.71346 1.005930e-02     NA
+      450        V2  51.67933 1.032818e-02     NA
+      451        V1  51.89836 1.015628e-02     NA
+      452        V2  51.86425 1.039405e-02     NA
+      453        V1  52.08326 1.025447e-02     NA
+      454        V2  52.04918 1.045852e-02     NA
+      455        V1  52.26815 1.035340e-02     NA
+      456        V2  52.23410 1.052282e-02     NA
+      457        V1  52.45305 1.045269e-02     NA
+      458        V2  52.41903 1.058806e-02     NA
+      459        V1  52.63795 1.055203e-02     NA
+      460        V2  52.60395 1.065523e-02     NA
+      461        V1  52.82284 1.065122e-02     NA
+      462        V2  52.78888 1.072514e-02     NA
+      463        V1  53.00774 1.075014e-02     NA
+      464        V2  52.97380 1.079880e-02     NA
+      465        V1  53.19263 1.084882e-02     NA
+      466        V2  53.15873 1.087635e-02     NA
+      467        V1  53.37753 1.094740e-02     NA
+      468        V2  53.34365 1.095765e-02     NA
+      469        V1  53.56243 1.104604e-02     NA
+      470        V2  53.52858 1.104254e-02     NA
+      471        V1  53.74732 1.114494e-02     NA
+      472        V2  53.71350 1.113068e-02     NA
+      473        V1  53.93222 1.124431e-02     NA
+      474        V2  53.89843 1.122159e-02     NA
+      475        V1  54.11712 1.134436e-02     NA
+      476        V2  54.08335 1.131469e-02     NA
+      477        V1  54.30201 1.144532e-02     NA
+      478        V2  54.26828 1.140931e-02     NA
+      479        V1  54.48691 1.154747e-02     NA
+      480        V2  54.45320 1.150476e-02     NA
+      481        V1  54.67181 1.165115e-02     NA
+      482        V2  54.63813 1.160019e-02     NA
+      483        V1  54.85670 1.175645e-02     NA
+      484        V2  54.82305 1.169490e-02     NA
+      485        V1  55.04160 1.186360e-02     NA
+      486        V2  55.00798 1.178837e-02     NA
+      487        V1  55.22650 1.197285e-02     NA
+      488        V2  55.19290 1.188018e-02     NA
+      489        V1  55.41139 1.208447e-02     NA
+      490        V2  55.37783 1.197006e-02     NA
+      491        V1  55.59629 1.219872e-02     NA
+      492        V2  55.56275 1.205787e-02     NA
+      493        V1  55.78119 1.231590e-02     NA
+      494        V2  55.74768 1.214361e-02     NA
+      495        V1  55.96608 1.243627e-02     NA
+      496        V2  55.93260 1.222746e-02     NA
+      497        V1  56.15098 1.256059e-02     NA
+      498        V2  56.11753 1.230958e-02     NA
+      499        V1  56.33587 1.268861e-02     NA
+      500        V2  56.30245 1.239077e-02     NA
+      501        V1  56.52077 1.282030e-02     NA
+      502        V2  56.48738 1.247165e-02     NA
+      503        V1  56.70567 1.295560e-02     NA
+      504        V2  56.67230 1.255292e-02     NA
+      505        V1  56.89056 1.309426e-02     NA
+      506        V2  56.85723 1.263530e-02     NA
+      507        V1  57.07546 1.323594e-02     NA
+      508        V2  57.04215 1.271951e-02     NA
+      509        V1  57.26036 1.338014e-02     NA
+      510        V2  57.22708 1.280626e-02     NA
+      511        V1  57.44525 1.352624e-02     NA
+      512        V2  57.41200 1.289618e-02     NA
+      513        V1  57.63015 1.367348e-02     NA
+      514        V2  57.59693 1.299018e-02     NA
+      515        V1  57.81505 1.382081e-02     NA
+      516        V2  57.78185 1.308875e-02     NA
+      517        V1  57.99994 1.396725e-02     NA
+      518        V2  57.96678 1.319181e-02     NA
+      519        V1  58.18484 1.411194e-02     NA
+      520        V2  58.15170 1.329941e-02     NA
+      521        V1  58.36974 1.425408e-02     NA
+      522        V2  58.33663 1.341143e-02     NA
+      523        V1  58.55463 1.439292e-02     NA
+      524        V2  58.52155 1.352760e-02     NA
+      525        V1  58.73953 1.452787e-02     NA
+      526        V2  58.70648 1.364752e-02     NA
+      527        V1  58.92443 1.465845e-02     NA
+      528        V2  58.89140 1.377063e-02     NA
+      529        V1  59.10932 1.478425e-02     NA
+      530        V2  59.07633 1.389634e-02     NA
+      531        V1  59.29422 1.490449e-02     NA
+      532        V2  59.26125 1.402397e-02     NA
+      533        V1  59.47912 1.501994e-02     NA
+      534        V2  59.44618 1.415238e-02     NA
+      535        V1  59.66401 1.513081e-02     NA
+      536        V2  59.63110 1.428081e-02     NA
+      537        V1  59.84891 1.523746e-02     NA
+      538        V2  59.81603 1.440855e-02     NA
+      539        V1  60.03380 1.534033e-02     NA
+      540        V2  60.00095 1.453496e-02     NA
+      541        V1  60.21870 1.543996e-02     NA
+      542        V2  60.18588 1.465950e-02     NA
+      543        V1  60.40360 1.553694e-02     NA
+      544        V2  60.37080 1.478177e-02     NA
+      545        V1  60.58849 1.563188e-02     NA
+      546        V2  60.55573 1.490148e-02     NA
+      547        V1  60.77339 1.572537e-02     NA
+      548        V2  60.74065 1.501824e-02     NA
+      549        V1  60.95829 1.581822e-02     NA
+      550        V2  60.92558 1.513235e-02     NA
+      551        V1  61.14318 1.591108e-02     NA
+      552        V2  61.11050 1.524425e-02     NA
+      553        V1  61.32808 1.600442e-02     NA
+      554        V2  61.29543 1.535439e-02     NA
+      555        V1  61.51298 1.609870e-02     NA
+      556        V2  61.48035 1.546337e-02     NA
+      557        V1  61.69787 1.619428e-02     NA
+      558        V2  61.66528 1.557186e-02     NA
+      559        V1  61.88277 1.629145e-02     NA
+      560        V2  61.85020 1.568063e-02     NA
+      561        V1  62.06767 1.639044e-02     NA
+      562        V2  62.03513 1.579050e-02     NA
+      563        V1  62.25256 1.649152e-02     NA
+      564        V2  62.22005 1.590241e-02     NA
+      565        V1  62.43746 1.659498e-02     NA
+      566        V2  62.40498 1.601750e-02     NA
+      567        V1  62.62236 1.670070e-02     NA
+      568        V2  62.58990 1.613623e-02     NA
+      569        V1  62.80725 1.680875e-02     NA
+      570        V2  62.77483 1.625911e-02     NA
+      571        V1  62.99215 1.691924e-02     NA
+      572        V2  62.95975 1.638652e-02     NA
+      573        V1  63.17705 1.703230e-02     NA
+      574        V2  63.14468 1.651866e-02     NA
+      575        V1  63.36194 1.714812e-02     NA
+      576        V2  63.32960 1.665557e-02     NA
+      577        V1  63.54684 1.726692e-02     NA
+      578        V2  63.51453 1.679708e-02     NA
+      579        V1  63.73173 1.738896e-02     NA
+      580        V2  63.69945 1.694289e-02     NA
+      581        V1  63.91663 1.751510e-02     NA
+      582        V2  63.88438 1.709293e-02     NA
+      583        V1  64.10153 1.764534e-02     NA
+      584        V2  64.06930 1.724602e-02     NA
+      585        V1  64.28642 1.777995e-02     NA
+      586        V2  64.25423 1.740140e-02     NA
+      587        V1  64.47132 1.791922e-02     NA
+      588        V2  64.43915 1.755837e-02     NA
+      589        V1  64.65622 1.806336e-02     NA
+      590        V2  64.62408 1.771626e-02     NA
+      591        V1  64.84111 1.821248e-02     NA
+      592        V2  64.80900 1.787446e-02     NA
+      593        V1  65.02601 1.836655e-02     NA
+      594        V2  64.99393 1.803247e-02     NA
+      595        V1  65.21091 1.852540e-02     NA
+      596        V2  65.17885 1.818990e-02     NA
+      597        V1  65.39580 1.868891e-02     NA
+      598        V2  65.36378 1.834643e-02     NA
+      599        V1  65.58070 1.885637e-02     NA
+      600        V2  65.54870 1.850197e-02     NA
+      601        V1  65.76560 1.902654e-02     NA
+      602        V2  65.73363 1.865670e-02     NA
+      603        V1  65.95049 1.919846e-02     NA
+      604        V2  65.91855 1.881087e-02     NA
+      605        V1  66.13539 1.937103e-02     NA
+      606        V2  66.10348 1.896479e-02     NA
+      607        V1  66.32029 1.954310e-02     NA
+      608        V2  66.28840 1.911888e-02     NA
+      609        V1  66.50518 1.971354e-02     NA
+      610        V2  66.47333 1.927357e-02     NA
+      611        V1  66.69008 1.988123e-02     NA
+      612        V2  66.65825 1.942933e-02     NA
+      613        V1  66.87497 2.004514e-02     NA
+      614        V2  66.84318 1.958663e-02     NA
+      615        V1  67.05987 2.020363e-02     NA
+      616        V2  67.02810 1.974624e-02     NA
+      617        V1  67.24477 2.035676e-02     NA
+      618        V2  67.21303 1.990825e-02     NA
+      619        V1  67.42966 2.050425e-02     NA
+      620        V2  67.39795 2.007283e-02     NA
+      621        V1  67.61456 2.064608e-02     NA
+      622        V2  67.58288 2.024006e-02     NA
+      623        V1  67.79946 2.078247e-02     NA
+      624        V2  67.76780 2.040986e-02     NA
+      625        V1  67.98435 2.091387e-02     NA
+      626        V2  67.95273 2.058197e-02     NA
+      627        V1  68.16925 2.104090e-02     NA
+      628        V2  68.13765 2.075597e-02     NA
+      629        V1  68.35415 2.116440e-02     NA
+      630        V2  68.32258 2.093127e-02     NA
+      631        V1  68.53904 2.128519e-02     NA
+      632        V2  68.50750 2.110701e-02     NA
+      633        V1  68.72394 2.140471e-02     NA
+      634        V2  68.69243 2.128193e-02     NA
+      635        V1  68.90884 2.152422e-02     NA
+      636        V2  68.87735 2.145481e-02     NA
+      637        V1  69.09373 2.164479e-02     NA
+      638        V2  69.06228 2.162442e-02     NA
+      639        V1  69.27863 2.176747e-02     NA
+      640        V2  69.24720 2.178947e-02     NA
+      641        V1  69.46353 2.189323e-02     NA
+      642        V2  69.43213 2.194869e-02     NA
+      643        V1  69.64842 2.202291e-02     NA
+      644        V2  69.61705 2.210087e-02     NA
+      645        V1  69.83332 2.215725e-02     NA
+      646        V2  69.80198 2.224494e-02     NA
+      647        V1  70.01822 2.229698e-02     NA
+      648        V2  69.98690 2.237964e-02     NA
+      649        V1  70.20311 2.244298e-02     NA
+      650        V2  70.17183 2.250339e-02     NA
+      651        V1  70.38801 2.259461e-02     NA
+      652        V2  70.35675 2.261706e-02     NA
+      653        V1  70.57290 2.275162e-02     NA
+      654        V2  70.54168 2.272073e-02     NA
+      655        V1  70.75780 2.291352e-02     NA
+      656        V2  70.72660 2.281477e-02     NA
+      657        V1  70.94270 2.307953e-02     NA
+      658        V2  70.91153 2.289984e-02     NA
+      659        V1  71.12759 2.324865e-02     NA
+      660        V2  71.09645 2.297687e-02     NA
+      661        V1  71.31249 2.341959e-02     NA
+      662        V2  71.28138 2.304701e-02     NA
+      663        V1  71.49739 2.359090e-02     NA
+      664        V2  71.46630 2.311158e-02     NA
+      665        V1  71.68228 2.376042e-02     NA
+      666        V2  71.65123 2.317184e-02     NA
+      667        V1  71.86718 2.392611e-02     NA
+      668        V2  71.83615 2.323006e-02     NA
+      669        V1  72.05208 2.408614e-02     NA
+      670        V2  72.02108 2.328796e-02     NA
+      671        V1  72.23697 2.423873e-02     NA
+      672        V2  72.20600 2.334703e-02     NA
+      673        V1  72.42187 2.438220e-02     NA
+      674        V2  72.39093 2.340870e-02     NA
+      675        V1  72.60677 2.451503e-02     NA
+      676        V2  72.57585 2.347423e-02     NA
+      677        V1  72.79166 2.463596e-02     NA
+      678        V2  72.76078 2.354473e-02     NA
+      679        V1  72.97656 2.474401e-02     NA
+      680        V2  72.94570 2.362107e-02     NA
+      681        V1  73.16146 2.483759e-02     NA
+      682        V2  73.13063 2.370436e-02     NA
+      683        V1  73.34635 2.491604e-02     NA
+      684        V2  73.31555 2.379524e-02     NA
+      685        V1  73.53125 2.498080e-02     NA
+      686        V2  73.50048 2.389309e-02     NA
+      687        V1  73.71614 2.503240e-02     NA
+      688        V2  73.68540 2.399767e-02     NA
+      689        V1  73.90104 2.507161e-02     NA
+      690        V2  73.87033 2.410849e-02     NA
+      691        V1  74.08594 2.509943e-02     NA
+      692        V2  74.05525 2.422485e-02     NA
+      693        V1  74.27083 2.511705e-02     NA
+      694        V2  74.24018 2.434589e-02     NA
+      695        V1  74.45573 2.512575e-02     NA
+      696        V2  74.42510 2.447055e-02     NA
+      697        V1  74.64063 2.512691e-02     NA
+      698        V2  74.61003 2.459767e-02     NA
+      699        V1  74.82552 2.512123e-02     NA
+      700        V2  74.79495 2.472588e-02     NA
+      701        V1  75.01042 2.511117e-02     NA
+      702        V2  74.97988 2.485347e-02     NA
+      703        V1  75.19532 2.509792e-02     NA
+      704        V2  75.16480 2.497915e-02     NA
+      705        V1  75.38021 2.508251e-02     NA
+      706        V2  75.34973 2.510163e-02     NA
+      707        V1  75.56511 2.506583e-02     NA
+      708        V2  75.53465 2.521974e-02     NA
+      709        V1  75.75001 2.504860e-02     NA
+      710        V2  75.71958 2.533237e-02     NA
+      711        V1  75.93490 2.503139e-02     NA
+      712        V2  75.90450 2.543854e-02     NA
+      713        V1  76.11980 2.501460e-02     NA
+      714        V2  76.08943 2.553741e-02     NA
+      715        V1  76.30470 2.499858e-02     NA
+      716        V2  76.27435 2.562748e-02     NA
+      717        V1  76.48959 2.498346e-02     NA
+      718        V2  76.45928 2.570834e-02     NA
+      719        V1  76.67449 2.496921e-02     NA
+      720        V2  76.64420 2.578025e-02     NA
+      721        V1  76.85939 2.495579e-02     NA
+      722        V2  76.82913 2.584307e-02     NA
+      723        V1  77.04428 2.494314e-02     NA
+      724        V2  77.01405 2.589687e-02     NA
+      725        V1  77.22918 2.493119e-02     NA
+      726        V2  77.19898 2.594185e-02     NA
+      727        V1  77.41407 2.491983e-02     NA
+      728        V2  77.38390 2.597837e-02     NA
+      729        V1  77.59897 2.490899e-02     NA
+      730        V2  77.56883 2.600692e-02     NA
+      731        V1  77.78387 2.489857e-02     NA
+      732        V2  77.75375 2.602794e-02     NA
+      733        V1  77.96876 2.488843e-02     NA
+      734        V2  77.93868 2.604166e-02     NA
+      735        V1  78.15366 2.487835e-02     NA
+      736        V2  78.12360 2.604985e-02     NA
+      737        V1  78.33856 2.486809e-02     NA
+      738        V2  78.30853 2.605330e-02     NA
+      739        V1  78.52345 2.485734e-02     NA
+      740        V2  78.49345 2.605280e-02     NA
+      741        V1  78.70835 2.484577e-02     NA
+      742        V2  78.67838 2.604909e-02     NA
+      743        V1  78.89325 2.483296e-02     NA
+      744        V2  78.86330 2.604277e-02     NA
+      745        V1  79.07814 2.481847e-02     NA
+      746        V2  79.04823 2.603435e-02     NA
+      747        V1  79.26304 2.480184e-02     NA
+      748        V2  79.23315 2.602416e-02     NA
+      749        V1  79.44794 2.478223e-02     NA
+      750        V2  79.41808 2.601214e-02     NA
+      751        V1  79.63283 2.475939e-02     NA
+      752        V2  79.60300 2.599829e-02     NA
+      753        V1  79.81773 2.473315e-02     NA
+      754        V2  79.78793 2.598228e-02     NA
+      755        V1  80.00263 2.470334e-02     NA
+      756        V2  79.97285 2.596353e-02     NA
+      757        V1  80.18752 2.466994e-02     NA
+      758        V2  80.15778 2.594128e-02     NA
+      759        V1  80.37242 2.463301e-02     NA
+      760        V2  80.34270 2.591463e-02     NA
+      761        V1  80.55732 2.459277e-02     NA
+      762        V2  80.52763 2.588255e-02     NA
+      763        V1  80.74221 2.454947e-02     NA
+      764        V2  80.71255 2.584390e-02     NA
+      765        V1  80.92711 2.450333e-02     NA
+      766        V2  80.89748 2.579700e-02     NA
+      767        V1  81.11200 2.445464e-02     NA
+      768        V2  81.08240 2.573999e-02     NA
+      769        V1  81.29690 2.440388e-02     NA
+      770        V2  81.26733 2.567260e-02     NA
+      771        V1  81.48180 2.435115e-02     NA
+      772        V2  81.45225 2.559389e-02     NA
+      773        V1  81.66669 2.429634e-02     NA
+      774        V2  81.63718 2.550310e-02     NA
+      775        V1  81.85159 2.423916e-02     NA
+      776        V2  81.82210 2.539969e-02     NA
+      777        V1  82.03649 2.417909e-02     NA
+      778        V2  82.00703 2.528332e-02     NA
+      779        V1  82.22138 2.411542e-02     NA
+      780        V2  82.19195 2.515390e-02     NA
+      781        V1  82.40628 2.404722e-02     NA
+      782        V2  82.37688 2.501159e-02     NA
+      783        V1  82.59118 2.397231e-02     NA
+      784        V2  82.56180 2.485507e-02     NA
+      785        V1  82.77607 2.389003e-02     NA
+      786        V2  82.74673 2.468687e-02     NA
+      787        V1  82.96097 2.379916e-02     NA
+      788        V2  82.93165 2.450793e-02     NA
+      789        V1  83.14587 2.369849e-02     NA
+      790        V2  83.11658 2.431920e-02     NA
+      791        V1  83.33076 2.358691e-02     NA
+      792        V2  83.30150 2.412165e-02     NA
+      793        V1  83.51566 2.346349e-02     NA
+      794        V2  83.48643 2.391625e-02     NA
+      795        V1  83.70056 2.332750e-02     NA
+      796        V2  83.67135 2.370392e-02     NA
+      797        V1  83.88545 2.317844e-02     NA
+      798        V2  83.85628 2.348552e-02     NA
+      799        V1  84.07035 2.301496e-02     NA
+      800        V2  84.04120 2.326139e-02     NA
+      801        V1  84.25524 2.283740e-02     NA
+      802        V2  84.22613 2.303237e-02     NA
+      803        V1  84.44014 2.264713e-02     NA
+      804        V2  84.41105 2.279930e-02     NA
+      805        V1  84.62504 2.244476e-02     NA
+      806        V2  84.59598 2.256258e-02     NA
+      807        V1  84.80993 2.223105e-02     NA
+      808        V2  84.78090 2.232258e-02     NA
+      809        V1  84.99483 2.200689e-02     NA
+      810        V2  84.96583 2.207966e-02     NA
+      811        V1  85.17973 2.177325e-02     NA
+      812        V2  85.15075 2.183421e-02     NA
+      813        V1  85.36462 2.153113e-02     NA
+      814        V2  85.33568 2.158665e-02     NA
+      815        V1  85.54952 2.128141e-02     NA
+      816        V2  85.52060 2.133748e-02     NA
+      817        V1  85.73442 2.102466e-02     NA
+      818        V2  85.70553 2.108732e-02     NA
+      819        V1  85.91931 2.076286e-02     NA
+      820        V2  85.89045 2.083709e-02     NA
+      821        V1  86.10421 2.049705e-02     NA
+      822        V2  86.07538 2.058753e-02     NA
+      823        V1  86.28911 2.022824e-02     NA
+      824        V2  86.26030 2.033938e-02     NA
+      825        V1  86.47400 1.995748e-02     NA
+      826        V2  86.44523 2.009337e-02     NA
+      827        V1  86.65890 1.968585e-02     NA
+      828        V2  86.63015 1.985014e-02     NA
+      829        V1  86.84380 1.941445e-02     NA
+      830        V2  86.81508 1.961027e-02     NA
+      831        V1  87.02869 1.914441e-02     NA
+      832        V2  87.00000 1.937419e-02     NA
+      833        V1  87.21359 1.887731e-02     NA
+      834        V2  87.18493 1.914265e-02     NA
+      835        V1  87.39849 1.861430e-02     NA
+      836        V2  87.36985 1.891544e-02     NA
+      837        V1  87.58338 1.835623e-02     NA
+      838        V2  87.55478 1.869223e-02     NA
+      839        V1  87.76828 1.810392e-02     NA
+      840        V2  87.73970 1.847269e-02     NA
+      841        V1  87.95317 1.785797e-02     NA
+      842        V2  87.92463 1.825639e-02     NA
+      843        V1  88.13807 1.761873e-02     NA
+      844        V2  88.10955 1.804274e-02     NA
+      845        V1  88.32297 1.738623e-02     NA
+      846        V2  88.29448 1.783110e-02     NA
+      847        V1  88.50786 1.716020e-02     NA
+      848        V2  88.47940 1.762077e-02     NA
+      849        V1  88.69276 1.694023e-02     NA
+      850        V2  88.66433 1.741096e-02     NA
+      851        V1  88.87766 1.672525e-02     NA
+      852        V2  88.84925 1.720072e-02     NA
+      853        V1  89.06255 1.651313e-02     NA
+      854        V2  89.03418 1.698927e-02     NA
+      855        V1  89.24745 1.630217e-02     NA
+      856        V2  89.21910 1.677592e-02     NA
+      857        V1  89.43235 1.609047e-02     NA
+      858        V2  89.40403 1.656003e-02     NA
+      859        V1  89.61724 1.587607e-02     NA
+      860        V2  89.58895 1.634102e-02     NA
+      861        V1  89.80214 1.565700e-02     NA
+      862        V2  89.77388 1.611835e-02     NA
+      863        V1  89.98704 1.543140e-02     NA
+      864        V2  89.95880 1.589153e-02     NA
+      865        V1  90.17193 1.519758e-02     NA
+      866        V2  90.14373 1.566012e-02     NA
+      867        V1  90.35683 1.495254e-02     NA
+      868        V2  90.32865 1.542298e-02     NA
+      869        V1  90.54173 1.469640e-02     NA
+      870        V2  90.51358 1.518036e-02     NA
+      871        V1  90.72662 1.442884e-02     NA
+      872        V2  90.69850 1.493206e-02     NA
+      873        V1  90.91152 1.414978e-02     NA
+      874        V2  90.88343 1.467787e-02     NA
+      875        V1  91.09641 1.385954e-02     NA
+      876        V2  91.06835 1.441763e-02     NA
+      877        V1  91.28131 1.355882e-02     NA
+      878        V2  91.25328 1.415123e-02     NA
+      879        V1  91.46621 1.324860e-02     NA
+      880        V2  91.43820 1.387863e-02     NA
+      881        V1  91.65110 1.293016e-02     NA
+      882        V2  91.62313 1.359983e-02     NA
+      883        V1  91.83600 1.260458e-02     NA
+      884        V2  91.80805 1.331447e-02     NA
+      885        V1  92.02090 1.227393e-02     NA
+      886        V2  91.99298 1.302277e-02     NA
+      887        V1  92.20579 1.194037e-02     NA
+      888        V2  92.17790 1.272550e-02     NA
+      889        V1  92.39069 1.160549e-02     NA
+      890        V2  92.36283 1.242301e-02     NA
+      891        V1  92.57559 1.127078e-02     NA
+      892        V2  92.54775 1.211574e-02     NA
+      893        V1  92.76048 1.093759e-02     NA
+      894        V2  92.73268 1.180418e-02     NA
+      895        V1  92.94538 1.060710e-02     NA
+      896        V2  92.91760 1.148890e-02     NA
+      897        V1  93.13028 1.028033e-02     NA
+      898        V2  93.10253 1.117052e-02     NA
+      899        V1  93.31517 9.958189e-03     NA
+      900        V2  93.28745 1.084969e-02     NA
+      901        V1  93.50007 9.642042e-03     NA
+      902        V2  93.47238 1.052709e-02     NA
+      903        V1  93.68497 9.331599e-03     NA
+      904        V2  93.65730 1.020382e-02     NA
+      905        V1  93.86986 9.027059e-03     NA
+      906        V2  93.84223 9.880657e-03     NA
+      907        V1  94.05476 8.728494e-03     NA
+      908        V2  94.02715 9.558396e-03     NA
+      909        V1  94.23966 8.435867e-03     NA
+      910        V2  94.21208 9.237814e-03     NA
+      911        V1  94.42455 8.149052e-03     NA
+      912        V2  94.39700 8.919674e-03     NA
+      913        V1  94.60945 7.867850e-03     NA
+      914        V2  94.58193 8.604715e-03     NA
+      915        V1  94.79434 7.592010e-03     NA
+      916        V2  94.76685 8.293634e-03     NA
+      917        V1  94.97924 7.321742e-03     NA
+      918        V2  94.95178 7.987637e-03     NA
+      919        V1  95.16414 7.056364e-03     NA
+      920        V2  95.13670 7.687168e-03     NA
+      921        V1  95.34903 6.795316e-03     NA
+      922        V2  95.32163 7.392452e-03     NA
+      923        V1  95.53393 6.538290e-03     NA
+      924        V2  95.50655 7.103857e-03     NA
+      925        V1  95.71883 6.285000e-03     NA
+      926        V2  95.69148 6.821648e-03     NA
+      927        V1  95.90372 6.035176e-03     NA
+      928        V2  95.87640 6.545989e-03     NA
+      929        V1  96.08862 5.788579e-03     NA
+      930        V2  96.06133 6.276932e-03     NA
+      931        V1  96.27352 5.544993e-03     NA
+      932        V2  96.24625 6.014415e-03     NA
+      933        V1  96.45841 5.304350e-03     NA
+      934        V2  96.43118 5.758517e-03     NA
+      935        V1  96.64331 5.066653e-03     NA
+      936        V2  96.61610 5.509292e-03     NA
+      937        V1  96.82821 4.831480e-03     NA
+      938        V2  96.80103 5.265575e-03     NA
+      939        V1  97.01310 4.598758e-03     NA
+      940        V2  96.98595 5.026853e-03     NA
+      941        V1  97.19800 4.368448e-03     NA
+      942        V2  97.17088 4.792561e-03     NA
+      943        V1  97.38290 4.140543e-03     NA
+      944        V2  97.35580 4.562103e-03     NA
+      945        V1  97.56779 3.915073e-03     NA
+      946        V2  97.54073 4.334884e-03     NA
+      947        V1  97.75269 3.692113e-03     NA
+      948        V2  97.72565 4.110332e-03     NA
+      949        V1  97.93759 3.471782e-03     NA
+      950        V2  97.91058 3.887931e-03     NA
+      951        V1  98.12248 3.254678e-03     NA
+      952        V2  98.09550 3.667439e-03     NA
+      953        V1  98.30738 3.040785e-03     NA
+      954        V2  98.28043 3.448377e-03     NA
+      955        V1  98.49227 2.830385e-03     NA
+      956        V2  98.46535 3.230668e-03     NA
+      957        V1  98.67717 2.623887e-03     NA
+      958        V2  98.65028 3.014456e-03     NA
+      959        V1  98.86207 2.421768e-03     NA
+      960        V2  98.83520 2.800076e-03     NA
+      961        V1  99.04696 2.224568e-03     NA
+      962        V2  99.02013 2.588047e-03     NA
+      963        V1  99.23186 2.032884e-03     NA
+      964        V2  99.20505 2.379068e-03     NA
+      965        V1  99.41676 1.847360e-03     NA
+      966        V2  99.38998 2.173993e-03     NA
+      967        V1  99.60165 1.669224e-03     NA
+      968        V2  99.57490 1.974250e-03     NA
+      969        V1  99.78655 1.499445e-03     NA
+      970        V2  99.75983 1.781327e-03     NA
+      971        V1  99.97145 1.338096e-03     NA
+      972        V2  99.94475 1.595920e-03     NA
+      973        V1 100.15634 1.185783e-03     NA
+      974        V2 100.12968 1.419115e-03     NA
+      975        V1 100.34124 1.043033e-03     NA
+      976        V2 100.31460 1.251910e-03     NA
+      977        V1 100.52614 9.102775e-04     NA
+      978        V2 100.49953 1.095181e-03     NA
+      979        V1 100.71103 7.878356e-04     NA
+      980        V2 100.68445 9.496486e-04     NA
+      981        V1 100.89593 6.758993e-04     NA
+      982        V2 100.86938 8.158466e-04     NA
+      983        V1 101.08083 5.746071e-04     NA
+      984        V2 101.05430 6.941815e-04     NA
+      985        V1 101.26572 4.852772e-04     NA
+      986        V2 101.23923 5.864865e-04     NA
+      987        V1 101.45062 4.060313e-04     NA
+      988        V2 101.42415 4.907256e-04     NA
+      989        V1 101.63551 3.364350e-04     NA
+      990        V2 101.60908 4.064895e-04     NA
+      991        V1 101.82041 2.759507e-04     NA
+      992        V2 101.79400 3.332115e-04     NA
+      993        V1 102.00531 2.239564e-04     NA
+      994        V2 101.97893 2.701951e-04     NA
+      995        V1 102.19020 1.797665e-04     NA
+      996        V2 102.16385 2.166445e-04     NA
+      997        V1 102.37510 1.426522e-04     NA
+      998        V2 102.34878 1.716945e-04     NA
+      999        V1 102.56000 1.118629e-04     NA
+      1000       V2 102.53370 1.344409e-04     NA
+      1001       V1 102.74489 8.710995e-05     NA
+      1002       V2 102.71863 1.045226e-04     NA
+      1003       V1 102.92979 6.724843e-05     NA
+      1004       V2 102.90355 8.056536e-05     NA
+      1005       V1 103.11469 5.130391e-05     NA
+      1006       V2 103.08848 6.136456e-05     NA
+      1007       V1 103.29958 3.866207e-05     NA
+      1008       V2 103.27340 4.616787e-05     NA
+      1009       V1 103.48448 2.876744e-05     NA
+      1010       V2 103.45833 3.429567e-05     NA
+      1011       V1 103.66938 2.112606e-05     NA
+      1012       V2 103.64325 2.514464e-05     NA
+      1013       V1 103.85427 1.530607e-05     NA
+      1014       V2 103.82818 1.818837e-05     NA
+      1015       V1 104.03917 1.093634e-05     NA
+      1016       V2 104.01310 1.297564e-05     NA
+      1017       V1 104.22407 7.733800e-06     NA
+      1018       V2 104.19803 9.160707e-06     NA
+      1019       V1 104.40896 5.464093e-06     NA
+      1020       V2 104.38295 6.464213e-06     NA
+      1021       V1 104.59386 3.807671e-06     NA
+      1022       V2 104.56788 4.499366e-06     NA
+      1023       V1 104.77876 2.615933e-06     NA
+      1024       V2 104.75280 3.087813e-06     NA
 

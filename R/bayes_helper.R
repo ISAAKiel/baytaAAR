@@ -22,8 +22,8 @@
 #' @return
 #' A data.frame of class `diagnostic_summary`.
 #'
-#' {Columns:} PSRF Point est.,PSRF Upper C.I., Mean, Median, Mode, ESS,
-#' MCSE, HDImass, HDIlow, HDIhigh.
+#' Columns: PSRF Point est.,PSRF Upper C.I., Mean, Median, Mode, ESS, MCSE,
+#' HDImass, HDIlow, HDIhigh.
 #'
 #' @rdname diagnostic.summary
 #' @export
@@ -47,7 +47,7 @@ diagnostic.summary <- function(mcmc_list, HDImass = 0.95, gelman_diag = TRUE)
   checkmate::assertNumeric(HDImass, lower = 0, upper = 1, len = 1)
   checkmate::assertLogical(gelman_diag)
 
-  parameterNames = varnames(mcmc_list)
+  parameterNames = coda::varnames(mcmc_list)
   mcmcMat = as.matrix(mcmc_list,chains=TRUE)
   summaryInfo = NULL
   for ( parName in parameterNames ) {
@@ -58,7 +58,7 @@ diagnostic.summary <- function(mcmc_list, HDImass = 0.95, gelman_diag = TRUE)
   }
   summaryInfo_df <- as.data.frame(summaryInfo)
   if(gelman_diag == TRUE) {
-    psrf_df <- as.data.frame((gelman.diag(mcmc_list, multivariate =
+    psrf_df <- as.data.frame((coda::gelman.diag(mcmc_list, multivariate =
                                             FALSE))$psrf)
     colnames(psrf_df) <- c("PSRF Point est.", "PSRF Upper C.I.")
     diagnostic_summary <- cbind(psrf_df, summaryInfo_df)
@@ -71,27 +71,26 @@ diagnostic.summary <- function(mcmc_list, HDImass = 0.95, gelman_diag = TRUE)
 
 # simplified version of a similar function in Kruschke 2015
 #' @rdname summarizePost
-#' @export
 #' @noRd
 summarizePost = function(
     paramSampleVec,
     credMass=0.95
     ) {
-  paramSampleVec <- na.omit(paramSampleVec)
+  paramSampleVec <- stats::na.omit(paramSampleVec)
   meanParam = mean( paramSampleVec )
-  medianParam = median( paramSampleVec )
+  medianParam = stats::median( paramSampleVec )
   dres =  tryCatch({
-    density( paramSampleVec )
+    stats::density( paramSampleVec )
     }, error = function(e) NA)
   modeParam = tryCatch({
     dres$x[which.max(dres$y)]
     }, error = function(e) NA)
   mcmcEffSz = tryCatch({
-    es <- round(effectiveSize(paramSampleVec), 1)
+    es <- round(coda::effectiveSize(paramSampleVec), 1)
     unname(es)
     }, error = function(e) NA)
 
-  MCSE = if (!is.na(mcmcEffSz)) sd(paramSampleVec)/sqrt(mcmcEffSz) else NA
+  MCSE = if (!is.na(mcmcEffSz)) stats::sd(paramSampleVec)/sqrt(mcmcEffSz) else NA
 
   hdiLim = tryCatch({
     HDIofMCMC(paramSampleVec, credMass = credMass)
@@ -103,7 +102,6 @@ summarizePost = function(
 
 # simplified version of a similar function in Kruschke 2015
 #' @rdname HDIofMCMC
-#' @export
 #' @noRd
 HDIofMCMC = function(
     sampleVec,
@@ -185,8 +183,8 @@ hdi.agerange <- function(x, age_identifier = "age.s")
   x_diag_red <- x[grep(age_identifier_grep,rownames(x)),]
   hdi_diff <- x_diag_red$HDIhigh - x_diag_red$HDIlow
   hdi_mean <- mean(hdi_diff)
-  hdi_median <- median(hdi_diff)
-  hdi_dens <- density( hdi_diff )
+  hdi_median <- stats::median(hdi_diff)
+  hdi_dens <- stats::density( hdi_diff )
   hid_mode <- hdi_dens$x[which.max(hdi_dens$y)]
   return(c(hdi_mean, hdi_median, hid_mode))
   }
@@ -207,8 +205,6 @@ hdi.agerange <- function(x, age_identifier = "age.s")
 #' @return vector with coefficients for generating alpha and beta parameters
 #' for Gompertz function.
 #'
-#'
-#' @export
 #' @noRd
 #' @examples
 #'
@@ -226,13 +222,13 @@ gomp.a0 <- function(
   } else {
     null_age <- minimum_age - 15
 
-    ind_df <- data.frame(b = runif(n = sampling, min = b_min, max = b_max)) |>
-      dplyr::mutate(a = exp(rnorm(dplyr::n(),
+    ind_df <- data.frame(b = stats::runif(n = sampling, min = b_min, max = b_max)) |>
+      dplyr::mutate(a = exp(stats::rnorm(dplyr::n(),
                                   (-66.76844784 * (b - 0.0718) - 7.119),
                                   sqrt(0.0823) ))) |>
       dplyr::mutate(a0 = a * exp(b * null_age))
 
-    fit <- lm(log(a0) ~ b, data = ind_df)
+    fit <- stats::lm(log(a0) ~ b, data = ind_df)
     rse <- sum(fit$residuals**2)/fit$df.residual # without squaring
     fit_coeff <- c(fit$coefficients[2], fit$coefficients[1], rse )
     fit_coeff <- unname(fit_coeff)
@@ -293,9 +289,9 @@ threshold.chains <- function(mcmc_list) {
 
     # return as mcmc object (preserve iteration + thinning)
     coda::as.mcmc(thresholds_mat,
-                  start = start(chain),
-                  end   = end(chain),
-                  thin  = thin(chain))
+                  start = stats::start(chain),
+                  end   = stats::end(chain),
+                  thin  = coda::thin(chain))
   })
 
   return(coda::as.mcmc.list(out))
@@ -436,7 +432,8 @@ prob.cat <- function(
   age_identifier_grep <- ifelse(age_identifier == "age.s",
                                 "age.s[", "age.s_c[")
 
-  df_orig$group_factor <- droplevels(as.factor(df_orig[, group_col]))
+  group_factor <- droplevels(as.factor(df_orig[, group_col]))
+  df_orig$group_factor <- group_factor
   df_orig$factor_cat <- as.numeric(df_orig$group_factor)
   levels_cat <- sort(unique(df_orig$factor_cat))
 
@@ -490,20 +487,26 @@ prob.cat <- function(
         }
       }
 
-      densInfo <- density(coda_object_simplified)
+      densInfo <- stats::density(coda_object_simplified)
       xMat <- cbind(xMat, densInfo$x)
       yMat <- cbind(yMat, densInfo$y)
     }
 
-    xMat_melt <- reshape::melt(as.data.frame(xMat), id.vars = NULL)
-    yMat_melt <- reshape::melt(as.data.frame(yMat), id.vars = NULL)
+    xMat_melt <- tidyr::pivot_longer(as.data.frame(xMat),
+                                     cols = tidyr::everything(),
+                                     names_to = "variable",
+                                     values_to = "value")
+    yMat_melt <- tidyr::pivot_longer(as.data.frame(yMat),
+                                     cols = tidyr::everything(),
+                                      names_to = "variable",
+                                      values_to = "value")
     dense_xy <- cbind(xMat_melt, yMat_melt[, 2])
     colnames(dense_xy) <- c("category", "x", "y")
 
     levels(dense_xy$category) <- levels(df_orig$group_factor)
 
-    df_orig_cat_n <- df_orig %>%
-      dplyr::group_by(group_factor) %>%
+    df_orig_cat_n <- df_orig |>
+      dplyr::group_by(group_factor) |>
       dplyr::summarize(n = dplyr::n(), .groups = "drop")
 
     dense_xy$y_prop <- NULL

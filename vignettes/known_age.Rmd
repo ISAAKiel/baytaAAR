@@ -19,8 +19,10 @@ knitr::opts_chunk$set(
 
 ```{r setup, echo = F}
 library(baytaAAR)
+library(nimble)
 library(dplyr)
 library(ggplot2)
+library(kableExtra)
 ```
 
 To show how the age estimations of `baytaAAR` can be compared with known age-at-death, we use the dataset of Spitalfields [@ref_263525]. The individuals come from a crypt at London ## and were identified in terms of age and sex by plates on their coffins.

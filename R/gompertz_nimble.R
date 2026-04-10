@@ -2,18 +2,33 @@
 #'
 #' @description
 #' The Gompertz distribution and Gompertz function for internal use in
-#' \code{nimble} models
-
-#' @rdname rgomp
+#' \code{NIMBLE} models
+#'
+#' @param x x
+#' @param n n
+#' @param b b
+#' @param a a
+#' @param log log
+#' @param q q
+#' @param p p
+#' @param lower.tail lower.tail
+#' @param log.p log.p
+#'
+#' @return depending on the kind of function, either
+#'
+#' @name dgomp
 #' @export
-#' @noRd
-rgomp <- nimbleFunction(
+NULL
+
+#' @rdname dgomp
+#' @export
+rgomp <- nimble::nimbleFunction(
   run = function(n = integer(0), b = double(0), a = double(0)) {
     returnType(double(0))
 
     # Check for valid inputs
-    if (n <= 0) stop("Number of samples must be positive")
-    if (b <= 0 | a <= 0) stop("Invalid parameters for Gompertz distribution")
+    if (n <= 0) nimStop("Number of samples must be positive")
+    if (b <= 0 | a <= 0) nimStop("Invalid parameters for Gompertz distribution")
 
     # Generate a single Gompertz-distributed random value
     u <- runif(1)  # Uniform random number
@@ -25,8 +40,7 @@ rgomp <- nimbleFunction(
 
 #' @rdname dgomp
 #' @export
-#' @noRd
-dgomp <- nimbleFunction(
+dgomp <- nimble::nimbleFunction(
   run = function(x = double(0), b = double(0), a = double(0),
                  log = integer(0, default = 0)) {  # log.p is now an argument
     returnType(double(0))
@@ -40,10 +54,9 @@ dgomp <- nimbleFunction(
   }
 )
 
-#' @rdname pgomp
+#' @rdname dgomp
 #' @export
-#' @noRd
-pgomp <- nimbleFunction(
+pgomp <- nimble::nimbleFunction(
   run = function(q = double(0), b = double(0), a = double(0),
                  lower.tail = logical(0), log.p = integer(0, default = 0)) {
     returnType(double(0))
@@ -64,15 +77,13 @@ pgomp <- nimbleFunction(
 )
 
 
-#' @rdname qgomp
+#' @rdname dgomp
 #' @export
-#' @noRd
-qgomp <- nimbleFunction(
+qgomp <- nimble::nimbleFunction(
   run = function(p = double(0), b = double(0), a = double(0),
                  lower.tail = logical(0),
                  log.p = integer(0, default = 0)) {
     returnType(double(0))
-
 
     # Adjust for log.p argument
     if (log.p) {
@@ -92,7 +103,7 @@ qgomp <- nimbleFunction(
 
 
 # Register the functions in Nimble
-registerDistributions(list(
+nimble::registerDistributions(list(
   dgomp = list(
     BUGSdist = "dgomp(b, a)",  # Include log.p in BUGSdist
     Rdist = "dgomp(b, a)",    # Include log.p in Rdist

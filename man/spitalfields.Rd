@@ -27,6 +27,6 @@ available at the website of L. Konigsberg (s. link below).
 }
 \seealso{
 Other examples: 
-\code{\link{sorsum}}
+\code{\link{sorsum_as}}
 }
 \concept{examples}

@@ -1,26 +1,10 @@
-#' Bayesian Transition Analysis with NIMBLE
+#' Bayesian Transition Analysis with JAGS or NIMBLE
 
-#' @param algorithm character string. Either \code{norm} for 'simple' ordered
-#' regression or \code{mnorm} for multinormal ordered regression.
-#' @param method matrix.
-#' @param parameters parameters
-#' @param eta Cholesky
-#' @param gomp_b Gompertz
-#' @param minimum_age minimum age
-#' @param maximum_age maximum age
-#' @param burnInSteps burn-in
-#' @param nChains number of chains
-#' @param thinSteps thinning
 #' @param numSteps number of steps
-#' @param seed seed
 #'
-#' @return
-#' coda object
+#' @rdname bay.ta
 #'
 #' @export
-#'
-#' @examples
-#' NULL
 #'
 bay.ta.nimble <- function(
     algorithm,
@@ -37,13 +21,12 @@ bay.ta.nimble <- function(
     numSteps = 10000,
     seed = FALSE
 ){
-  library(nimble)
-
   n_methods = ncol(method)
   Ntotal = nrow(method)
   nYlevels <- NULL
   thresh <- NULL
-  for (i in 1:n_methods) nYlevels[i] <- as.numeric(max(na.omit(method[,i])))
+  for (i in 1:n_methods) nYlevels[i] <-
+    as.numeric(max(stats::na.omit(method[,i])))
   nthresh <- nYlevels-1
   thresh_init <- matrix(NA, n_methods, max(2,nthresh))
   for (i in 1:n_methods) {
@@ -70,7 +53,7 @@ bay.ta.nimble <- function(
   for (j in 1:n_methods) {
     for (i in 1:Ntotal) {
       k <- if (!is.na(method[i,j])) method[i,j] else y_init[i,j]
-      ystar_init[i,j] <- k - runif(1, -0.2, 0.2)
+      ystar_init[i,j] <- k - stats::runif(1, -0.2, 0.2)
     }
   }
 
@@ -90,10 +73,10 @@ bay.ta.nimble <- function(
       y = y_init - 1,
       thresh = thresh_init,
       ystar = ystar_init - 1,
-      beta = runif(n_methods, 0.5, 1),
-      beta0 = runif(n_methods, -10, -3),
-      age = runif(Ntotal, 20, 40),
-      b = runif(1, 0.02, 0.1)
+      beta = stats::runif(n_methods, 0.5, 1),
+      beta0 = stats::runif(n_methods, -10, -3),
+      age = stats::runif(Ntotal, 20, 40),
+      b = stats::runif(1, 0.02, 0.1)
     )
     if(algorithm == "mnorm") init_list[["Ustar"]] <- diag(rep(1, n_methods))
     return(init_list)
@@ -116,7 +99,7 @@ bay.ta.nimble <- function(
                   thresh_k = thresh_k
   )
 
-  bay_ta_common <- nimbleCode({
+  bay_ta_common <- nimble::nimbleCode({
     for ( i in 1:Ntotal ) {
       for (j in 1:n_methods) {
         mu[i,j] <- beta0[j] + beta[j] * log_age[i]
@@ -133,13 +116,13 @@ bay.ta.nimble <- function(
     a <- exp(gomp_a0_m * b + gomp_a0_ic)
   })
 
-  bay_ta_norm <- nimbleCode({
+  bay_ta_norm <- nimble::nimbleCode({
     for ( i in 1:Ntotal ) {
       for (j in 1:n_methods) {
       ystar[i,j] ~  dnorm( mu[i,j], 1)
     } } } )
 
-  bay_ta_mnorm <- nimbleCode({
+  bay_ta_mnorm <- nimble::nimbleCode({
     for ( i in 1:Ntotal ) {
       ystar[i,1:n_methods] ~
         dmnorm( mu[i,1:n_methods], cholesky = Ustar[1:n_methods,
@@ -148,12 +131,12 @@ bay.ta.nimble <- function(
     Ustar[1:n_methods,1:n_methods] ~ dlkj_corr_cholesky(eta, n_methods)
     } )
 
-  bay_ta_error <- nimbleCode({
+  bay_ta_error <- nimble::nimbleCode({
     for ( i in 1:Ntotal ) {
       age.s_c[i] ~ T(dnorm(age.s[i], 1/(error_sd)^2), minimum_age, maximum_age)
   }})
 
-    bay_ta_nthresh_single <- nimbleCode({
+    bay_ta_nthresh_single <- nimble::nimbleCode({
     for (m in 1 : n_methods) {
       for ( k in 2: max(2, nthresh) ) {
         thresh[m,k] ~  T(dnorm(thresh_k[m,k], 1/10^2), thresh[m,k-1], )
@@ -166,7 +149,7 @@ bay.ta.nimble <- function(
       }
     })
 
-      bay_ta_nthresh <- nimbleCode({
+      bay_ta_nthresh <- nimble::nimbleCode({
         for (m in 1 : n_methods) {
           for ( k in 2: max(2, nthresh[m]) ) {
             thresh[m,k] ~  T(dnorm(thresh_k[m,k], 1/10^2), thresh[m,k-1], )
@@ -180,23 +163,23 @@ bay.ta.nimble <- function(
 
   if(algorithm == "mnorm") {
     constantList[["eta"]] <- eta
-    bay_ta <- nimbleCode(bay_ta_common, bay_ta_mnorm)
+    bay_ta <- nimble::nimbleCode(bay_ta_common, bay_ta_mnorm)
   } else { # simple ordinal regression
-    bay_ta <- nimbleCode(bay_ta_common, bay_ta_norm)
+    bay_ta <- nimble::nimbleCode(bay_ta_common, bay_ta_norm)
   }
 
   if(length(nthresh) == 1) {
-    bay_ta <- nimbleCode(bay_ta, bay_ta_nthresh_single)
+    bay_ta <- nimble::nimbleCode(bay_ta, bay_ta_nthresh_single)
   } else {
-    bay_ta <- nimbleCode(bay_ta, bay_ta_nthresh)
+    bay_ta <- nimble::nimbleCode(bay_ta, bay_ta_nthresh)
   }
 
   if(!is.na(error_sd)) {
     constantList[["error_sd"]] <- error_sd
-    bay_ta <- nimbleCode(bay_ta, bay_ta_error)
+    bay_ta <- nimble::nimbleCode(bay_ta, bay_ta_error)
   }
 
-  samples <- nimbleMCMC(
+  samples <- nimble::nimbleMCMC(
     code = bay_ta,
     constants = constantList,
     data = dataList,
