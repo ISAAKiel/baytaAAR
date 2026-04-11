@@ -65,7 +65,7 @@ bay.ta.nimble.mnorm <- function(
     gomp_b_end <- 0.1
   }
 
-  # Generate values for Gompertz alpha if minimum age is not 15
+  # Generate values for Gompertz alpha when minimum age is not 15
   gomp_a0 <- gomp.a0(minimum_age = minimum_age)
 
   initsList <- function(){
