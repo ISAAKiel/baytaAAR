@@ -172,7 +172,8 @@ bay.ta  <- function(
       } else {
         nimble.set.seed <- FALSE
       }
-      results <- bay.ta.nimble ( # multinormal ordinal probit regression
+      if(algorithm == "norm") {
+      results <- bay.ta.nimble.norm ( # multinormal ordinal probit regression
         algorithm = algorithm,
         method = method,
         gomp_b = gomp_b,
@@ -187,6 +188,22 @@ bay.ta  <- function(
         numSteps = burnInSteps + ceiling(numSavedSteps * thinSteps / nChains),
         seed = nimble.set.seed
       )
+      } else {
+        results <- bay.ta.nimble.mnorm ( # multinormal ordinal probit regression
+          algorithm = algorithm,
+          method = method,
+          gomp_b = gomp_b,
+          error_sd = error_sd,
+          eta = eta,
+          minimum_age = minimum_age,
+          maximum_age = maximum_age,
+          parameters = parameters,
+          nChains = nChains,
+          burnInSteps = burnInSteps,
+          thinSteps = thinSteps,
+          numSteps = burnInSteps + ceiling(numSavedSteps * thinSteps / nChains),
+          seed = nimble.set.seed )
+      }
     } else { # multicore
 
     this_cluster <- parallel::makeCluster(nChains)
@@ -212,7 +229,7 @@ bay.ta  <- function(
     # Export needed functions and objects
     parallel::clusterExport(
       this_cluster,
-      varlist = c("bay.ta.nimble","dgomp", "pgomp",
+      varlist = c("bay.ta.nimble.mnorm","dgomp", "pgomp",
                   "qgomp", "rgomp","gomp.a0", "shared_args", "seed"),
       envir = environment()
     )
