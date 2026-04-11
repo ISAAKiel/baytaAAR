@@ -187,7 +187,7 @@ bay.ta.nimble <- function(
         check = TRUE
       )
 
-      cmodel <- nimble::compileNimble(model)
+      cmodel <- nimble::compileNimble(model, showCompilerOutput = TRUE)
       conf <- nimble::configureMCMC(model, monitors = parameters)
       mcmc <- nimble::buildMCMC(conf)
       cmcmc <- nimble::compileNimble(mcmc, project = model)
