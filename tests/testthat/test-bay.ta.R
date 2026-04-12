@@ -29,6 +29,7 @@ test_that("bay.ta() with NIMBLE and mnorm produced sensible output", {
   skip_on_cran()
   skip_if_not_installed("nimble")
   skip_if_testcoverage()
+  skip_if_on_ci_and_mac()
   bay.ta_compare <- readRDS(test_path("fixtures", "spitalfields_res.Rds"))
   bay.ta_output <- bay.ta(framework = "NIMBLE",
                           algorithm = "mnorm",
