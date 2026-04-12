@@ -6,7 +6,7 @@
 #' @param mcmc_list MCMC output from coda chains.
 #'
 #' @param known_age a vector of known age-at-death. NAs are allowed and those
-#' individuals will subsequently be ignored.
+#' entries will subsequently be ignored.
 #'
 #' @param mean_choice a character string of either "Mode", "Median" or "Mode".
 #' Default: "Mode".
