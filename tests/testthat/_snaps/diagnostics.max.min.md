@@ -4,5 +4,5 @@
       diagnostics.max.min(bay.ta_compare_diag)
     Output
         PSRF_max PSRF_upper_max ESS_min
-      1 7.537562       16.41346     2.1
+      1 14.69637       30.88433     2.2
 

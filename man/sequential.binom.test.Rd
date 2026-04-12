@@ -15,7 +15,7 @@ sequential.binom.test(
 \item{mcmc_list}{MCMC output from coda chains.}
 
 \item{known_age}{a vector of known age-at-death. NAs are allowed and those
-individuals will subsequently be ignored.}
+entries will subsequently be ignored.}
 
 \item{HDImass}{a numeric or a vector with the probability range.}
 

@@ -1,8 +1,8 @@
 #' Bayesian Transition Analysis with JAGS or NIMBLE
 #'
-#' [bay.ta()] is a wrapper for the functions [bay.ta.jags()] and
-#' [bay.ta.nimble()]. Both implement the Bayesian Transition Analysis with MCMC.
-#' NIMBLE allows the user to run models with multinormal ordered regression,
+#' \code{bay.ta()} is a wrapper for the functions \code{bay.ta.jags()} and
+#' \code{bay.ta.nimble()}. Both implement the Bayesian Transition Analysis with
+#' MCMC. NIMBLE allows the user to run models with multinormal ordered regression,
 #' also with parallel clusters. In this respect, however, JAGS tends to be more
 #' stable. The latter presupposes, however, that you have installed JAGS outside
 #' of R.
@@ -20,13 +20,11 @@
 #'   processing, each cluster automatically gets different seeds. If no seed is
 #'   specified, the value is set to today's date as integer.
 #' @param method matrix of integers. Ordinal trait(s) for age estimation.
-#' @param eta numeric. Prior for the Cholesky factor, must be > 0. Only used for
-#'   multinormal ordered regression for the correlation matrix. 1 implies equal
-#'   correlations, lower values assume higher correlations. Default: 1. The
-#'   correlation matrix stems from a LKJ distribution. We implemented it
-#'   according to the nimble manual
-#'   (https://r-nimble.org/manual/cha-writing-models.html#lkj-distribution-for-correlation-matrices).
-#' @param gomp_b numeric Optional prior for parameter Gompertz beta. Default:
+#' @param eta numeric. Prior for the Cholesky factor of the LKJ distribution,
+#'   must be > 0. Only used for multinormal ordered regression for the correlation
+#'   matrix. 1 implies equal correlations, lower values assume stronger
+#'   correlations. Default: 1.
+#' @param gomp_b numeric. Optional prior for parameter Gompertz beta. Default:
 #'   NA.
 #' @param error_sd numeric.
 #' @param minimum_age numeric. Minimum age for Gompertz distribution. Default:
@@ -34,53 +32,48 @@
 #' @param maximum_age numeric. Maximum age for Gompertz distribution. Default:
 #'   100.
 #' @param parameters vector of character strings. Parameters to monitor.
-#' @param eta Cholesky
 #' @param nChains integer. Number of chains. Default: 3.
-#' @param adaptSteps integer. Number of adaptation steps, ignored when framework
-#'   is set to NIMBLE. Default: 2000.
+#' @param adaptSteps integer. Number of adaptation steps, ignored when
+#'   \code{framework} is set to "NIMBLE". Default: 2000.
 #' @param burnInSteps integer. Number of steps for burn-in. Default: 3000.
-#' @param thinSteps integer. Thinning, i. e. which ith step should be saved.
-#'   Default: 1 (no thinning).
+#' @param thinSteps integer. Thinning, i. e. which \emph{i}th step should be
+#'   saved. Default: 1 (no thinning).
 #' @param numSavedSteps integer. Number of saved steps. Default: 10000. The
 #'   total number of steps equals \code{thinSteps × numSavedSteps}.
 #' @param silent.jags TRUE/FALSE Silent mode to run JAGS. Default: FALSE.
-#'   Ignored when framework is set to NIMBLE.
+#'   Ignored when \code{framework} is set to "NIMBLE".
 #' @param silent.runjags TRUE/FALSE Silent mode to run runjags. Default: FALSE.
-#'   Ignored when framework is set to NIMBLE.
+#'   Ignored when \code{framework} is set to "NIMBLE".
 #'
 #'
 #' @return A list of MCMC chains of class \code{coda::mcmc.list}.
 #'
 #' @export
 #'
-#' @examples
-#' # select Sorsum data with auricular surface after Lovejoy et al. 1985 and
-#' # convert to matrix
-#' sorsum <- as.matrix(sorsum_as[,2])
+#' @examplesIf interactive()
 #'
-#' # example with default settings
-#' \dontrun{
-#' sorsum_res <- bay.ta(method = sorsum) }
+#'   # select Sorsum data with auricular surface after Lovejoy et al. 1985 and
+#'   # convert to matrix
+#'   sorsum <- as.matrix(sorsum_as[,2])
 #'
-#' # example with framework NIMBLE
-#' \dontrun{
-#' sorsum_res <- bay.ta(framework = "NIMBLE", method = sorsum) }
+#'   # example with default settings sorsum_res <- bay.ta(method = sorsum)
 #'
-#' # example with framework JAGS and multiple cores (parallel computing)
-#' \dontrun{
-#' sorsum_res <- bay.ta(framework = "JAGS", multicore = TRUE, method = sorsum) }
+#'   # example with framework JAGS sorsum_res <- bay.ta(framework = "JAGS",
+#'   method = sorsum)
 #'
-#' # example with 100,000 saved iterations and a thinning of 100
-#' \dontrun{
-#' sorsum_res <- bay.ta(method = sorsum, numSavedSteps = 100000, thin = 100) }
+#'   # example with framework JAGS and multiple cores (parallel computing)
+#'   sorsum_res <- bay.ta(framework = "JAGS", multicore = TRUE, method = sorsum)
 #'
-#' # select Spitalfields data with multiple traits and convert to matrix
-#' spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
+#'   # example with 10,000 saved iterations and a thinning of 10 (= 100,000
+#'   # iterations)
+#'   sorsum_res <- bay.ta(method = sorsum, numSavedSteps = 10000, thin = 10)
 #'
-#' # example with multinormal likelihood
-#' \dontrun{
-#' spitalfields_res <- bay.ta(framework = "NIMBLE", algorithm = "mnorm",
-#' method = spitalfields_traits) }
+#'   # select Spitalfields data with multiple traits and convert to matrix
+#'   spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
+#'
+#'   # example with multinormal likelihood
+#'   spitalfields_res <- bay.ta(framework = "NIMBLE", algorithm = "mnorm",
+#'   method = spitalfields_traits)
 #'
 bay.ta  <- function(
     framework = "NIMBLE",
@@ -209,21 +202,23 @@ bay.ta  <- function(
       nChains = 1
     )
 
-    # Export needed functions and objects
-    parallel::clusterExport(
-      this_cluster,
-      varlist = c("bay.ta.nimble","dgomp", "pgomp",
-                  "qgomp", "rgomp","gomp.a0", "shared_args", "seed"),
-      envir = environment()
-    )
-
     # Worker function
     worker_fun <- function(i, args_nimble, seed) {
       args_nimble$seed <- seed + i
       do.call(bay.ta.nimble, args_nimble)
-      }
+    }
 
-    parallel::clusterExport(this_cluster, varlist = "worker_fun", envir = environment())
+    # Export needed functions and objects
+    parallel::clusterExport(
+      this_cluster,
+      varlist = c("bay.ta.nimble","dgomp", "pgomp",
+                  "qgomp", "rgomp","gomp.a0", "shared_args", "seed",
+                  "worker_fun"),
+      envir = environment()
+    )
+    parallel::clusterEvalQ(this_cluster, library("nimble"))
+
+    #parallel::clusterExport(this_cluster, varlist = "worker_fun", envir = environment())
 
     results <- parallel::parLapply(
       cl = this_cluster,
@@ -252,7 +247,7 @@ bay.ta  <- function(
     a <- s[, "a"]
     b <- s[, "b"]
     M <- (1 / b) * log(b / a) + minimum_age
-    coda::as.mcmc(cbind(s, M = M))
+    coda::as.mcmc(cbind(M = M, s))
   }))
   return(results)
 }

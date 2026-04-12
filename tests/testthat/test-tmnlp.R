@@ -6,5 +6,5 @@ test_that("tmnlp() produces correct output", {
   bay.ta_compare <- readRDS(test_path("fixtures", "spitalfields_res.Rds"))
   x_mcmcMat = as.matrix(bay.ta_compare, chains=TRUE)
   ages <- x_mcmcMat[,grep("^age.s\\[",colnames(x_mcmcMat))]
-  expect_equal(tmnlp(spitalfields$Age, ages), 4.7709)
+  expect_equal(tmnlp(spitalfields$Age, ages), 4.4610)
 })

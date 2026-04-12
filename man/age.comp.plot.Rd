@@ -13,7 +13,7 @@ age.comp.plot(x, age_identifier = "age.s", known_age, mean_choice = "Mode")
 select the uncalibrated or calibrated age estimates. Default: "age.s".}
 
 \item{known_age}{a vector of known age-at-death. NAs are allowed and those
-individuals will subsequently be ignored.}
+entries will subsequently be ignored.}
 
 \item{mean_choice}{a character string of either "Mode", "Median" or "Mode".
 Default: "Mode".}

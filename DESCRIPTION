@@ -4,8 +4,9 @@ Title: Bayesian Transition Analysis with MCMC
 Version: 0.1.0
 Author: c(person(given = "Nils",
                       family = "Müller-Scheeßel",
-                      role = c("aut", "cre"),
-                      email = "nils.mueller-scheessel@ufg.uni-kiel.de"))
+                      email = "nils.mueller-scheessel@ufg.uni-kiel.de",
+                      role = c("aut", "cre", "cph"),
+                      comment = c(ORCID = "0000-0001-7992-8722")))
 Maintainer: Nils Müller-Scheeßel <nils.mueller-scheessel@ufg.uni-kiel.de>
 Description: Provides Bayesian age estimation for bioarchaeological skeletal 
     data using ordinal probit regression models implemented in JAGS and NIMBLE. 

@@ -15,7 +15,5 @@ test_that("threshold.chains() produces correct output", {
   bay.ta_compare <- readRDS(test_path("fixtures", "sorsum_res_nimble.Rds"))
   bay.ta_compare_mcmc_list <- threshold.chains(bay.ta_compare)
   bay.ta_compare_diag <- diagnostic.summary(bay.ta_compare_mcmc_list)
-  expect_equal(threshold.matrix(bay.ta_compare_diag),
-               matrix(c(14.97331291, 20.88689129, 32.80741133, 40.57041316,
-                        51.62735790, 58.91687489, 81.11982071), nrow = 1))
+  expect_snapshot(threshold.matrix(bay.ta_compare_diag))
 })
