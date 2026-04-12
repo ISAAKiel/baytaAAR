@@ -4,6 +4,8 @@ test_that("bay.ta() throws an error", {
 
 test_that("bay.ta() with NIMBLE produced sensible output", {
   skip_on_cran()
+  skip_if_not_installed("nimble")
+  skip_if_testcoverage()
   bay.ta_compare <- readRDS(test_path("fixtures", "sorsum_res_nimble.Rds"))
   bay.ta_output <- bay.ta(framework = "NIMBLE",
                           method = as.matrix(sorsum_as[,2]),
@@ -25,6 +27,8 @@ test_that("bay.ta() with JAGS produced sensible output", {
 
 test_that("bay.ta() with NIMBLE and mnorm produced sensible output", {
   skip_on_cran()
+  skip_if_not_installed("nimble")
+  skip_if_testcoverage()
   bay.ta_compare <- readRDS(test_path("fixtures", "spitalfields_res.Rds"))
   bay.ta_output <- bay.ta(framework = "NIMBLE",
                           algorithm = "mnorm",
