@@ -68,6 +68,9 @@ bay.ta.nimble <- function(
   # Generate values for Gompertz alpha if minimum age is not 15
   gomp_a0 <- gomp.a0(minimum_age = minimum_age)
 
+  ones <- rep(1,Ntotal)
+  C <- 100000
+
   initsList <- function(){
     init_list <- list(
       y = y_init - 1,
@@ -91,12 +94,14 @@ bay.ta.nimble <- function(
     gomp_b_beg = gomp_b_beg,
     gomp_b_end = gomp_b_end,
     gomp_a0_m = gomp_a0[1],
-    gomp_a0_ic = gomp_a0[2]
+    gomp_a0_ic = gomp_a0[2],
+    C = C
   )
 
   dataList = list(y = method - 1,
                   thresh = thresh,
-                  thresh_k = thresh_k
+                  thresh_k = thresh_k,
+                  ones = ones
   )
 
   bay_ta_common <- nimble::nimbleCode({
@@ -105,8 +110,11 @@ bay.ta.nimble <- function(
         mu[i,j] <- beta0[j] + beta[j] * log_age[i]
       }
       log_age[i] <- log(age.s[i])
-      age[i] ~ T(dgomp(b, a), 0, maximum_age - minimum_age)
+      # age[i] ~ T(dgomp(b, a), 0, maximum_age - minimum_age)
       age.s[i] <- age[i] + minimum_age
+      age[i] ~ dunif(0, maximum_age - minimum_age)
+      spy[i] <- a * exp(b * age[i]) * exp(-a/b * (exp(b * age[i]) - 1)) / C # implementing Gompertz probability density
+      ones[i] ~ dbern( spy[i]  )
     }
     for (m in 1 : n_methods) {
       beta[m] ~ T(dnorm(0, 1/10^2), 0, )
