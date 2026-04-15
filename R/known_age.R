@@ -23,7 +23,7 @@
 #' @examples
 #'NULL
 #'
-age.comp.summarize <- function(mcmc_list,
+age.comp.summary <- function(mcmc_list,
                                known_age,
                                mean_choice = "Mode",
                                age_identifier = "age.s",
@@ -51,28 +51,17 @@ age.comp.summarize <- function(mcmc_list,
   crps_res <- mean(scoringRules::crps_sample(known_age, t(ages)) )
   rmse_res <- sqrt(mean((known_age - estimated_age)^2))
 
-  age_estimation <- data.frame(Mean_estimated = mean(estimated_age),
-                               Bias = mean(estimated_age - known_age),
+  age_estimation <- data.frame(Bias = mean(estimated_age - known_age),
                                corrPearson = corrPearson$estimate,
                                corr_p = corrPearson$p.value,
-                               Residual_age_slope =
+                               Residual_slope =
                                  Residual_model$coefficients[2],
                                Inaccuracy =
                                  mean(abs(estimated_age - known_age)),
                                RMSE = rmse_res,
                                TMNLP = tmnlp_res,
                                CRPS = crps_res)
-    HDIhigh <- x_diag_red[,"HDIhigh"]
-    HDIlow <- x_diag_red[,"HDIlow"]
-    age_estimation$Coverage <-
-      sum(ifelse(known_age >= HDIlow - 0.05 & known_age <=
-                   HDIhigh + 0.05, 1, 0)) / length(known_age) * 100
-    age_estimation$HDI_Diff_median <- stats::quantile(HDIhigh - HDIlow,
-                                                      probs = c(0.5))
-    age_estimation$HDI_Diff_quant_025 <- stats::quantile(HDIhigh - HDIlow,
-                                                         probs = c( 0.025))
-    age_estimation$HDI_Diff_quant_975 <- stats::quantile(HDIhigh - HDIlow,
-                                                         probs = c(0.975))
+  rownames(age_estimation) <- NULL
   return(age_estimation)
 }
 
@@ -101,7 +90,7 @@ tmnlp <- function(known_age, mcmcMat) {
     vec_i <- pmax(vec_i, .Machine$double.eps)
     log_vals[i] <- log(vec_i)
   }
-  tmnlp <- round(-mean(log_vals), 4)
+  tmnlp <- -mean(log_vals)
   return(tmnlp)
 }
 
@@ -113,7 +102,7 @@ tmnlp <- function(known_age, mcmcMat) {
 #'
 #' @param x output from the function `diagnostic.summary`
 #'
-#' @inheritParams age.comp.summarize
+#' @inheritParams age.comp.summary
 #'
 #' @return a ggplot object with 2 x 2 single plots, showing
 #'
@@ -201,7 +190,7 @@ age.comp.plot <- function(x,
 #'
 #' @param HDImass a numeric or a vector with the probability range.
 #'
-#' @inheritParams age.comp.summarize
+#' @inheritParams age.comp.summary
 #'
 #' @return a data.frame
 #'

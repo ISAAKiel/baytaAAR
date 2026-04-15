@@ -14,7 +14,7 @@
 #'  altogether by setting it to \code{FALSE}, too.
 #'
 #'
-#' @inheritParams age.comp.summarize
+#' @inheritParams age.comp.summary
 #' @param HDImass numeric. Value within 0 and 1. Default = 0.95.
 #' @param gelman_diag logical. If TRUE, the gelman diagnostics for computing
 #' the PSRF is invoked. Default: TRUE
@@ -156,37 +156,71 @@ diagnostics.max.min <- function(x) {
 }
 
 
-#' @title HDI median range of age estimates
+#' @title Summary of age estimates
 #'
 #'@description
 #' Median ranges
 #'
 #' @param x output from function `diagnostics.summary()`
 #'
-#' @inheritParams age.comp.summarize
+#' @inheritParams age.comp.summary
 #'
-#' @return a vector with mean, median and mode of the HDI range
+#' @return a vector with M, b, a, HDI, quantile HDI range
 #'
 #' @export
 #'
 #' @examples
 #'NULL
 #'
-hdi.agerange <- function(x, age_identifier = "age.s")
+age.estim.summary <- function(x,
+                          mean_choice = "Mode",
+                          age_identifier = "age.s")
   {
   checkmate::assertClass(x, "diagnostic_summary")
   checkmate::assertChoice(age_identifier, c("age.s", "age.s_c"))
+  checkmate::assertChoice(mean_choice, c("Mode", "Median", "Mean"))
 
   age_identifier_grep <- ifelse(age_identifier == "age.s",
                                 "^age.s\\[", "^age.s_c")
+  hdi_mass <- (1 - x["a", "HDImass"]) / 2
+  a <- x["a", mean_choice]
+  a_low <- x["a", "HDIlow"]
+  a_high <- x["a", "HDIhigh"]
+  b <- x["b", mean_choice]
+  b_low <- x["b", "HDIlow"]
+  b_high <- x["b", "HDIhigh"]
+  M <- x["M", mean_choice]
+  M_low <- x["M", "HDIlow"]
+  M_high <- x["M", "HDIhigh"]
+  x_diag_red <- x[grep(age_identifier_grep, rownames(x)),]
 
-  x_diag_red <- x[grep(age_identifier_grep,rownames(x)),]
   hdi_diff <- x_diag_red$HDIhigh - x_diag_red$HDIlow
-  hdi_mean <- mean(hdi_diff)
-  hdi_median <- stats::median(hdi_diff)
   hdi_dens <- stats::density( hdi_diff )
-  hid_mode <- hdi_dens$x[which.max(hdi_dens$y)]
-  return(c(hdi_mean, hdi_median, hid_mode))
+  age_dens <- stats::density( x_diag_red[,mean_choice] )
+
+  if (mean_choice == "Mode") {
+    hdi <- hdi_dens$x[which.max(hdi_dens$y)]
+    age_mean <- age_dens$x[which.max(age_dens$y)]
+  } else if (mean_choice == "Median") {
+    hdi <- stats::median(hdi_diff)
+    age_mean <- stats::median(x_diag_red[,mean_choice])
+  } else {
+    hdi <- mean(hdi_diff)
+    age_mean <- mean(x_diag_red[,mean_choice])
+  }
+  hdi_low <- stats::quantile(hdi_diff, probs = c( hdi_mass))
+  hdi_high <- stats::quantile(hdi_diff, probs = c( 1 - hdi_mass))
+  age_low <- stats::quantile(x_diag_red[,mean_choice], probs = c( hdi_mass))
+  age_high <- stats::quantile(x_diag_red[,mean_choice], probs = c( 1 -hdi_mass))
+
+  age_result <- data.frame(rbind(M = cbind(M, M_low, M_high),
+                                 age_mean = cbind(age_mean, age_low, age_high),
+                                 b = cbind(b, b_low, b_high),
+                                 a = cbind(a, a_low, a_high),
+                                 hdi = cbind(hdi, hdi_low, hdi_high)))
+  colnames(age_result) <- c(mean_choice, hdi_mass, 1 - hdi_mass)
+  rownames(age_result) <- c("M", "age_mean", "b", "a", "hdi_diff")
+  return(age_result)
   }
 
 
@@ -242,7 +276,7 @@ gomp.a0 <- function(
 #'@description
 #' Compute thresholds
 #'
-#' @inheritParams age.comp.summarize
+#' @inheritParams age.comp.summary
 #'
 #' @return a mcmc-list of coda chains for threshold values of traits
 #' @export
@@ -305,7 +339,7 @@ threshold.chains <- function(mcmc_list) {
 #'
 #' @param x output from function `diagnostic.summary`
 #'
-#' @inheritParams age.comp.summarize
+#' @inheritParams age.comp.summary
 #'
 #' @return a matrix with threshold values of traits
 #' @export
@@ -348,7 +382,7 @@ threshold.matrix <- function(
 #' than it seems. It involves taking the cross product from the resulting coda
 #' estimates.
 #'
-#' @inheritParams age.comp.summarize
+#' @inheritParams age.comp.summary
 #'
 #' @return a matrix with correlations between traits
 #' @export
@@ -403,7 +437,7 @@ corr.mat.mean <- function(mcmc_list) {
 #' @param mode a string specifying the resulting data.frame of summed
 #' probabilities or mean probabilities per category. Either `mean` or `summed`.
 #'
-#' @inheritParams age.comp.summarize
+#' @inheritParams age.comp.summary
 #'
 #' @return a data.frame with either probability summed by category or mean
 #' per category.

@@ -78,9 +78,12 @@ specified, the value is set to today's date as integer.}
 
 \item{method}{matrix of integers. Ordinal trait(s) for age estimation.}
 
-\item{eta}{Cholesky}
+\item{eta}{numeric. Prior for the Cholesky factor of the LKJ distribution,
+must be > 0. Only used for multinormal ordered regression for the correlation
+matrix. 1 implies equal correlations, lower values assume stronger
+correlations. Default: 1.}
 
-\item{gomp_b}{numeric Optional prior for parameter Gompertz beta. Default:
+\item{gomp_b}{numeric. Optional prior for parameter Gompertz beta. Default:
 NA.}
 
 \item{error_sd}{numeric.}
@@ -95,22 +98,22 @@ NA.}
 
 \item{nChains}{integer. Number of chains. Default: 3.}
 
-\item{adaptSteps}{integer. Number of adaptation steps, ignored when framework
-is set to NIMBLE. Default: 2000.}
+\item{adaptSteps}{integer. Number of adaptation steps, ignored when
+\code{framework} is set to "NIMBLE". Default: 2000.}
 
 \item{burnInSteps}{integer. Number of steps for burn-in. Default: 3000.}
 
-\item{thinSteps}{integer. Thinning, i. e. which ith step should be saved.
-Default: 1 (no thinning).}
+\item{thinSteps}{integer. Thinning, i. e. which \emph{i}th step should be
+saved. Default: 1 (no thinning).}
 
 \item{numSavedSteps}{integer. Number of saved steps. Default: 10000. The
 total number of steps equals \code{thinSteps × numSavedSteps}.}
 
 \item{silent.jags}{TRUE/FALSE Silent mode to run JAGS. Default: FALSE.
-Ignored when framework is set to NIMBLE.}
+Ignored when \code{framework} is set to "NIMBLE".}
 
 \item{silent.runjags}{TRUE/FALSE Silent mode to run runjags. Default: FALSE.
-Ignored when framework is set to NIMBLE.}
+Ignored when \code{framework} is set to "NIMBLE".}
 
 \item{runjagsMethod}{string. Mode to run `runjags`, options: "rjags",
 "rjparallel", "parallel". Default: "rjags".}
@@ -121,9 +124,9 @@ Ignored when framework is set to NIMBLE.}
 A list of MCMC chains of class \code{coda::mcmc.list}.
 }
 \description{
-[bay.ta()] is a wrapper for the functions [bay.ta.jags()] and
-[bay.ta.nimble()]. Both implement the Bayesian Transition Analysis with MCMC.
-NIMBLE allows the user to run models with multinormal ordered regression,
+\code{bay.ta()} is a wrapper for the functions \code{bay.ta.jags()} and
+\code{bay.ta.nimble()}. Both implement the Bayesian Transition Analysis with
+MCMC. NIMBLE allows the user to run models with multinormal ordered regression,
 also with parallel clusters. In this respect, however, JAGS tends to be more
 stable. The latter presupposes, however, that you have installed JAGS outside
 of R.
@@ -136,32 +139,30 @@ interfaces with `runjags` (##).
 blabla
 }
 \examples{
-# select Sorsum data with auricular surface after Lovejoy et al. 1985 and
-# convert to matrix
-sorsum <- as.matrix(sorsum_as[,2])
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 
-# example with default settings
-\dontrun{
-sorsum_res <- bay.ta(method = sorsum) }
+  # select Sorsum data with auricular surface after Lovejoy et al. 1985 and
+  # convert to matrix
+  sorsum <- as.matrix(sorsum_as[,2])
 
-# example with framework NIMBLE
-\dontrun{
-sorsum_res <- bay.ta(framework = "NIMBLE", method = sorsum) }
+  # example with default settings
+  sorsum_res <- bay.ta(method = sorsum)
 
-# example with framework JAGS and multiple cores (parallel computing)
-\dontrun{
-sorsum_res <- bay.ta(framework = "JAGS", multicore = TRUE, method = sorsum) }
+  # example with framework JAGS
+  sorsum_res <- bay.ta(framework = "JAGS", method = sorsum)
 
-# example with 100,000 saved iterations and a thinning of 100
-\dontrun{
-sorsum_res <- bay.ta(method = sorsum, numSavedSteps = 100000, thin = 100) }
+  # example with framework JAGS and multiple cores (parallel computing)
+  sorsum_res <- bay.ta(framework = "JAGS", multicore = TRUE, method = sorsum)
 
-# select Spitalfields data with multiple traits and convert to matrix
-spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
+  # example with 10,000 saved iterations and a thinning of 10 (= 100,000
+  # iterations)
+  sorsum_res <- bay.ta(method = sorsum, numSavedSteps = 10000, thin = 10)
 
-# example with multinormal likelihood
-\dontrun{
-spitalfields_res <- bay.ta(framework = "NIMBLE", algorithm = "mnorm",
-method = spitalfields_traits) }
+  # select Spitalfields data with multiple traits and convert to matrix
+  spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
 
+  # example with multinormal likelihood
+  spitalfields_res <- bay.ta(framework = "NIMBLE", algorithm = "mnorm",
+  method = spitalfields_traits)
+\dontshow{\}) # examplesIf}
 }

@@ -24,7 +24,7 @@ test_that("sequential.binom.test() throws an error when only NA for HDImass is s
                                   HDImass = NA))
 })
 
-test_that("sequential.binom.test() throws an error when only non-unique values for HDImass are supplied", {
+test_that("sequential.binom.test() throws an error when non-unique values for HDImass are supplied", {
   bay.ta_compare <- readRDS(test_path("fixtures", "spitalfields_res.Rds"))
   expect_error(sequential.binom.test(bay.ta_compare, known_age = spitalfields$Age,
                                      HDImass = c(0.5, 0.6, 0.5)))

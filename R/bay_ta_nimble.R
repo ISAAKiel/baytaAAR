@@ -196,7 +196,9 @@ bay.ta.nimble <- function(
       )
 
       cmodel <- nimble::compileNimble(model)
-      conf <- nimble::configureMCMC(model, monitors = parameters)
+      conf <- nimble::configureMCMC(model, monitors = parameters,
+                                    onlySlice = FALSE) # with onlySlice = TRUE,
+      # the ESS values are more similar to JAGS but it takes 3.5 times longer
       mcmc <- nimble::buildMCMC(conf)
       cmcmc <- nimble::compileNimble(mcmc, project = model)
 

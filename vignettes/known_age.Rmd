@@ -57,7 +57,7 @@ As the name suggests, the function `age.estimate.summarize` summarizes standard 
 ++
 
 ```{r spitalfields age.estimate.summarize, echo = TRUE}
-age.comp.summarize(mcmc_list = spitalfields_res,
+age.comp.summary(mcmc_list = spitalfields_res,
             known_age = spitalfields$Age,
             mean_choice = "Mode") %>% t(.) %>% round(.,2) %>%
   knitr::kable (., col.names = "value") %>%

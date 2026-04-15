@@ -56,10 +56,11 @@
 #'   # convert to matrix
 #'   sorsum <- as.matrix(sorsum_as[,2])
 #'
-#'   # example with default settings sorsum_res <- bay.ta(method = sorsum)
+#'   # example with default settings
+#'   sorsum_res <- bay.ta(method = sorsum)
 #'
-#'   # example with framework JAGS sorsum_res <- bay.ta(framework = "JAGS",
-#'   method = sorsum)
+#'   # example with framework JAGS
+#'   sorsum_res <- bay.ta(framework = "JAGS", method = sorsum)
 #'
 #'   # example with framework JAGS and multiple cores (parallel computing)
 #'   sorsum_res <- bay.ta(framework = "JAGS", multicore = TRUE, method = sorsum)
@@ -217,8 +218,6 @@ bay.ta  <- function(
       envir = environment()
     )
     parallel::clusterEvalQ(this_cluster, library("nimble"))
-
-    #parallel::clusterExport(this_cluster, varlist = "worker_fun", envir = environment())
 
     results <- parallel::parLapply(
       cl = this_cluster,

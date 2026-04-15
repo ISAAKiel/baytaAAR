@@ -114,7 +114,7 @@ draws_df[,c(1:7)] %>%
 Plots of the thresholds.
 
 ```{r sorsum agerange, echo = TRUE}
-round(hdi.agerange(sorsum_as_res_diag), 1)
+round(age.estim.summary(sorsum_as_res_diag), 4)
 ```
 
 The age ranges
