@@ -11,14 +11,26 @@ diagnostic.summary(mcmc_list, HDImass = 0.95, gelman_diag = TRUE)
 
 \item{HDImass}{numeric. Value within 0 and 1. Default = 0.95.}
 
-\item{gelman_diag}{logical. If TRUE, the gelman diagnostics for computing
-the PSRF is invoked. Default: TRUE}
+\item{gelman_diag}{logical. If TRUE, the Gelman-Rubin diagnostics for computing
+the PSRF is invoked. Default: TRUE.}
 }
 \value{
-A data.frame of class `diagnostic_summary`.
-
-Columns: PSRF Point est.,PSRF Upper C.I., Mean, Median, Mode, ESS, MCSE,
-HDImass, HDIlow, HDIhigh.
+A data.frame of class \code{diagnostic_summary} with the row names according to
+the parameters to be monitored and the following numeric columns:
+\itemize{
+\item{ \code{PSRF Point est.} “potential scale reduction factor” (= Gelman-
+Rubin statistic), a measure of the mixing of chains. }
+\item{ \code{PSRF Upper C.I.} the upper limit of the 0.95-confidence interval
+of the PSRF.}
+\item{ \code{Mean} arithmetic mean of the estimates. }
+\item{ \code{Median} median of the estimates. }
+\item{ \code{Mode} mode of the estimates. }
+\item{ \code{ESS} "effective sample size", a control of autocorrelation.}
+\item{ \code{MCSE} "Monte Carlo standard error".}
+\item{ \code{HDImass} credibility level of the highest density interval.}
+\item{ \code{HDIlow} start of the highest density interval.}
+\item{ \code{HDIhigh} end of the highest density interval.}
+}
 }
 \description{
 Summarising diagnostics partly derived from
@@ -27,22 +39,23 @@ Summarising diagnostics partly derived from
  diagnostics.
 }
 \details{
-Because the first threshold is always fixed, the gelman multivariate PSRF
- will always throw an error, this is automatically set to \code{FALSE}. If
+Because the first threshold is fixed, the Gelman-Rubin multivariate PSRF
+ will always throw an error, so this is automatically set to \code{FALSE}. If
  the gelman diagnostics still produce an error, deactivate \code{gelman_diag}
  altogether by setting it to \code{FALSE}, too.
 }
 \examples{
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 # select Sorsum data with auricular surface after Lovejoy et al. 1985 and
 # convert to matrix
 sorsum <- as.matrix(sorsum_as[,2])
 
-# example with default settings
+# example with default settings, please be a little bit patient
 sorsum_res <- bay.ta(method = sorsum)
 
 sorsum_diag <- diagnostic.summary(sorsum_res)
 
 # show first rows
 head(sorsum_diag)
-
+\dontshow{\}) # examplesIf}
 }

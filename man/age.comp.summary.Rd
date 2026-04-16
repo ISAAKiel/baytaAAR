@@ -28,8 +28,8 @@ select the uncalibrated or calibrated age estimates. Default: "age.s".}
   Arguments passed on to \code{\link[=diagnostic.summary]{diagnostic.summary}}
   \describe{
     \item{\code{HDImass}}{numeric. Value within 0 and 1. Default = 0.95.}
-    \item{\code{gelman_diag}}{logical. If TRUE, the gelman diagnostics for computing
-the PSRF is invoked. Default: TRUE}
+    \item{\code{gelman_diag}}{logical. If TRUE, the Gelman-Rubin diagnostics for computing
+the PSRF is invoked. Default: TRUE.}
   }}
 }
 \value{

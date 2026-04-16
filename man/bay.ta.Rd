@@ -121,7 +121,7 @@ Ignored when \code{framework} is set to "NIMBLE".}
 \item{numSteps}{number of steps}
 }
 \value{
-A list of MCMC chains of class \code{coda::mcmc.list}.
+A list of MCMC chains of class \code{coda::mcmc.list}
 }
 \description{
 \code{bay.ta()} is a wrapper for the functions \code{bay.ta.jags()} and

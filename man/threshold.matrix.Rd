@@ -7,18 +7,37 @@
 threshold.matrix(x, mean_choice = "Mode")
 }
 \arguments{
-\item{x}{output from function `diagnostic.summary`}
+\item{x}{output from function \code{diagnostic.summary()}}
 
 \item{mean_choice}{a character string of either "Mode", "Median" or "Mode".
 Default: "Mode".}
 }
 \value{
-a matrix with threshold values of traits
+a matrix with threshold values of traits. The number of rows
+corresponds to the number of traits, and the number of columns to the
+maximum number of levels of one of the traits.
 }
 \description{
-Extract thresholds
+A convenience function to extract mean thresholds values from the output of
+\code{diagnostic.summary()} which in turn was derived from a
+\code{coda::mcmc.list} computed with \code{threshold.chains()}
 }
 \examples{
-NULL
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
+# select Sorsum data with auricular surface after Lovejoy et al. 1985 and
+# convert to matrix
+sorsum <- as.matrix(sorsum_as[,2])
 
+# example with default settings, please be a little bit patient
+sorsum_res <- bay.ta(method = sorsum)
+
+# compute threshold chains
+threshold_chains <- threshold.chains(sorsum_res)
+
+# compute summary diagnostics
+threshold_diag <- diagnostic.summary(threshold_chains)
+
+# extract threshold matrix (for sorsum only 1 row)
+threshold.matrix(threshold_diag)
+\dontshow{\}) # examplesIf}
 }

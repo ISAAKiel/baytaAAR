@@ -11,6 +11,13 @@ test_that("threshold.matrix() throws an error when x not of class
             expect_error(threshold.matrix(bay.ta_compare_diag))
           })
 
+test_that("threshold.matrix() throws an error if not correct rownames", {
+  test_df <- data.frame(rbind(row1 = c(col1 = 10, col2 = 2),
+                              row2 = c(col1 = 32, col2 = 12)))
+  class(test_df) <- "diagnostic_summary"
+  expect_error(threshold.matrix(test_df))
+})
+
 test_that("threshold.chains() produces correct output", {
   bay.ta_compare <- readRDS(test_path("fixtures", "sorsum_res_nimble.Rds"))
   bay.ta_compare_mcmc_list <- threshold.chains(bay.ta_compare)

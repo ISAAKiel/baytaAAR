@@ -10,7 +10,8 @@ corr.mat.mean(mcmc_list)
 \item{mcmc_list}{MCMC output from coda chains.}
 }
 \value{
-a matrix with correlations between traits
+a symmetric matrix with correlations between traits. The number of
+rows and columns corresponds to the number of traits.
 }
 \description{
 As the LKJ prior uses the Cholesky decomposition of the correlation matrix,
@@ -19,6 +20,16 @@ than it seems. It involves taking the cross product from the resulting coda
 estimates.
 }
 \examples{
-NULL
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 
+  # select Spitalfields data with multiple traits and convert to matrix
+  spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
+
+  # example with multinormal likelihood, please be patient
+  spitalfields_res <- bay.ta(framework = "NIMBLE", algorithm = "mnorm",
+  method = spitalfields_traits)
+
+  # compute correlation matrix
+  corr.mat.mean(spitalfields_res)
+\dontshow{\}) # examplesIf}
 }

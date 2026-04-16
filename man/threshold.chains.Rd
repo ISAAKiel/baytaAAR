@@ -10,12 +10,24 @@ threshold.chains(mcmc_list)
 \item{mcmc_list}{MCMC output from coda chains.}
 }
 \value{
-a mcmc-list of coda chains for threshold values of traits
+a \code{coda::mcmc.list} for threshold values of traits on the
+age scale.
 }
 \description{
-Compute thresholds
+The computation of the thresholds on the log- and the age-scale is done
+outside of the MCMC simulation to spare the computation cost and the memory.
+The function returns a \code{coda::mcmc.list} which can be further processed.
 }
 \examples{
-NULL
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
+# select Sorsum data with auricular surface after Lovejoy et al. 1985 and
+# convert to matrix
+sorsum <- as.matrix(sorsum_as[,2])
 
+# example with default settings, please be a little bit patient
+sorsum_res <- bay.ta(method = sorsum)
+
+# compute threshold chains
+threshold_chains <- threshold.chains(sorsum_res)
+\dontshow{\}) # examplesIf}
 }

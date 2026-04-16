@@ -20,19 +20,37 @@ select the uncalibrated or calibrated age estimates. Default: "age.s".}
 
 \item{df_orig}{a data.frame of the original raw data}
 
-\item{group_col}{a string specifying the grouping category in `df_orig`.}
+\item{group_col}{a string specifying the grouping category in \code{df_orig}.}
 
 \item{mode}{a string specifying the resulting data.frame of summed
-probabilities or mean probabilities per category. Either `mean` or `summed`.}
+probabilities or mean probabilities per category. Either \code{mean} or
+\code{summed}.}
 }
 \value{
 a data.frame with either probability summed by category or mean
 per category.
 }
 \description{
-Summing or averaging probability densities per category.
+Summing or averaging probability densities per category. The resulting
+data.frames can be used, for example, to produce illustrative diagrams. See
+the vignettes for some examples.
 }
 \examples{
-NULL
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 
+  # select Spitalfields data with multiple traits and convert to matrix
+  spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
+
+  # example with multinormal likelihood, please be patient
+  spitalfields_res <- bay.ta(framework = "NIMBLE", algorithm = "mnorm",
+  method = spitalfields_traits)
+
+  # compute averaging probabilities per category Age
+  prob_cat_mean <- prob.cat(spitalfields_res, df_orig = spitalfields,
+  group_col = "Age", mode = "mean")
+
+  # compute summed probabilities per category Sex
+  prob_cat_summed <- prob.cat(spitalfields_res, df_orig = spitalfields,
+  group_col = "Sex", mode = "summed")
+\dontshow{\}) # examplesIf}
 }

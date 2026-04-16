@@ -7,7 +7,7 @@
 age.estim.summary(x, mean_choice = "Mode", age_identifier = "age.s")
 }
 \arguments{
-\item{x}{output from function `diagnostics.summary()`}
+\item{x}{output from function \code{diagnostics.summary()}}
 
 \item{mean_choice}{a character string of either "Mode", "Median" or "Mode".
 Default: "Mode".}
@@ -16,12 +16,35 @@ Default: "Mode".}
 select the uncalibrated or calibrated age estimates. Default: "age.s".}
 }
 \value{
-a vector with M, b, a, HDI, quantile HDI range
+a data.frame with the chosen mean measure and the HDI ranges as
+specified in the output of \code{diagnostics.summary()} as columns and the
+following rows:
+\itemize{
+\item{ \code{M} the modal age, derived from the arithmetic mean of the
+Gompertz parameters \eqn{\alpha} and \eqn{\beta} according to the equation
+(1 / \eqn{\beta}) * log(\eqn{\beta} / \eqn{\alpha}) + minimum_age. }
+\item{ \code{age_mean} the mean of the mean ages.}
+\item{ \code{b} mean of the Gompertz parameter \eqn{\beta}. }
+\item{ \code{a} mean of the Gompertz parameter \eqn{\alpha}. }
+\item{ \code{hdi_diff} mean of the highest density intervals. }
+}
 }
 \description{
-Median ranges
+Convenience function to quickly extract the age-related estimates from the
+result of the function \code{diagnostics.summary()}.
 }
 \examples{
-NULL
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
+# select Sorsum data with auricular surface after Lovejoy et al. 1985 and
+# convert to matrix
+sorsum <- as.matrix(sorsum_as[,2])
 
+# example with default settings, please be a little bit patient
+sorsum_res <- bay.ta(method = sorsum)
+
+sorsum_diag <- diagnostic.summary(sorsum_res)
+
+# show summary of age-related estimates
+age.estim.summary(sorsum_diag)
+\dontshow{\}) # examplesIf}
 }

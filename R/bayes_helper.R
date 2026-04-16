@@ -8,32 +8,44 @@
 #'
 #'
 #' @details
-#'  Because the first threshold is always fixed, the gelman multivariate PSRF
-#'  will always throw an error, this is automatically set to \code{FALSE}. If
+#'  Because the first threshold is fixed, the Gelman-Rubin multivariate PSRF
+#'  will always throw an error, so this is automatically set to \code{FALSE}. If
 #'  the gelman diagnostics still produce an error, deactivate \code{gelman_diag}
 #'  altogether by setting it to \code{FALSE}, too.
 #'
 #'
 #' @inheritParams age.comp.summary
 #' @param HDImass numeric. Value within 0 and 1. Default = 0.95.
-#' @param gelman_diag logical. If TRUE, the gelman diagnostics for computing
-#' the PSRF is invoked. Default: TRUE
+#' @param gelman_diag logical. If TRUE, the Gelman-Rubin diagnostics for computing
+#' the PSRF is invoked. Default: TRUE.
 #'
 #' @return
-#' A data.frame of class `diagnostic_summary`.
-#'
-#' Columns: PSRF Point est.,PSRF Upper C.I., Mean, Median, Mode, ESS, MCSE,
-#' HDImass, HDIlow, HDIhigh.
+#' A data.frame of class \code{diagnostic_summary} with the row names according to
+#' the parameters to be monitored and the following numeric columns:
+#' \itemize{
+#' \item{ \code{PSRF Point est.} “potential scale reduction factor” (= Gelman-
+#' Rubin statistic), a measure of the mixing of chains. }
+#' \item{ \code{PSRF Upper C.I.} the upper limit of the 0.95-confidence interval
+#' of the PSRF.}
+#' \item{ \code{Mean} arithmetic mean of the estimates. }
+#' \item{ \code{Median} median of the estimates. }
+#' \item{ \code{Mode} mode of the estimates. }
+#' \item{ \code{ESS} "effective sample size", a control of autocorrelation.}
+#' \item{ \code{MCSE} "Monte Carlo standard error".}
+#' \item{ \code{HDImass} credibility level of the highest density interval.}
+#' \item{ \code{HDIlow} start of the highest density interval.}
+#' \item{ \code{HDIhigh} end of the highest density interval.}
+#' }
 #'
 #' @rdname diagnostic.summary
 #' @export
 #'
-#' @examples
+#' @examplesIf interactive()
 #' # select Sorsum data with auricular surface after Lovejoy et al. 1985 and
 #' # convert to matrix
 #' sorsum <- as.matrix(sorsum_as[,2])
 #'
-#' # example with default settings
+#' # example with default settings, please be a little bit patient
 #' sorsum_res <- bay.ta(method = sorsum)
 #'
 #' sorsum_diag <- diagnostic.summary(sorsum_res)
@@ -134,15 +146,39 @@ HDIofMCMC = function(
 #' @title Maximum and minimum diagnostic values
 #'
 #' @description
-#' max. and min diagnostics values
+#' Convenience function to quickly extract maximum and mininum diagnostics
+#' values of the function \code{diagnostics.summary()} over all parameters. The
+#' maximum values of the PSRF should be below 1.1 while the minumum ESS should
+#' be above 10,000. If either of this is not the case, consider to increase the
+#' length of the chains, i. e. the number of iterations.
 #'
-#' @param x output from function `diagnostics.summary()`
+#' @param x output from function \code{diagnostics.summary()}
+#'
+#' @return
+#' A data.frame with one row and the following numeric columns:
+#' \itemize{
+#' \item{ \code{PSRF_max} the maximum value of the “potential scale reduction
+#' factor”. }
+#' \item{ \code{PSRF_upper_max} the maximum value of the upper limit of the
+#' 0.95-confidence interval of the PSRF.}
+#' \item{ \code{ESS_min} minimum of the "effective sample size". }
+#' }
 #'
 #' @rdname diagnostics.max.min
 #' @export
 #'
-#' @examples
-#' NULL
+#' @examplesIf interactive()
+#' # select Sorsum data with auricular surface after Lovejoy et al. 1985 and
+#' # convert to matrix
+#' sorsum <- as.matrix(sorsum_as[,2])
+#'
+#' # example with default settings, please be a little bit patient
+#' sorsum_res <- bay.ta(method = sorsum)
+#'
+#' sorsum_diag <- diagnostic.summary(sorsum_res)
+#'
+#' # show maximum and minimum values.
+#' diagnostics.max.min(sorsum_diag)
 #'
 diagnostics.max.min <- function(x) {
   checkmate::assertClass(x, "diagnostic_summary")
@@ -159,18 +195,40 @@ diagnostics.max.min <- function(x) {
 #' @title Summary of age estimates
 #'
 #'@description
-#' Median ranges
+#' Convenience function to quickly extract the age-related estimates from the
+#' result of the function \code{diagnostics.summary()}.
 #'
-#' @param x output from function `diagnostics.summary()`
+#' @param x output from function \code{diagnostics.summary()}
 #'
 #' @inheritParams age.comp.summary
 #'
-#' @return a vector with M, b, a, HDI, quantile HDI range
+#' @return a data.frame with the chosen mean measure and the HDI ranges as
+#' specified in the output of \code{diagnostics.summary()} as columns and the
+#' following rows:
+#' \itemize{
+#' \item{ \code{M} the modal age, derived from the arithmetic mean of the
+#' Gompertz parameters \eqn{\alpha} and \eqn{\beta} according to the equation
+#' (1 / \eqn{\beta}) * log(\eqn{\beta} / \eqn{\alpha}) + minimum_age. }
+#' \item{ \code{age_mean} the mean of the mean ages.}
+#' \item{ \code{b} mean of the Gompertz parameter \eqn{\beta}. }
+#' \item{ \code{a} mean of the Gompertz parameter \eqn{\alpha}. }
+#' \item{ \code{hdi_diff} mean of the highest density intervals. }
+#' }
 #'
 #' @export
 #'
-#' @examples
-#'NULL
+#' @examplesIf interactive()
+#' # select Sorsum data with auricular surface after Lovejoy et al. 1985 and
+#' # convert to matrix
+#' sorsum <- as.matrix(sorsum_as[,2])
+#'
+#' # example with default settings, please be a little bit patient
+#' sorsum_res <- bay.ta(method = sorsum)
+#'
+#' sorsum_diag <- diagnostic.summary(sorsum_res)
+#'
+#' # show summary of age-related estimates
+#' age.estim.summary(sorsum_diag)
 #'
 age.estim.summary <- function(x,
                           mean_choice = "Mode",
@@ -229,15 +287,15 @@ age.estim.summary <- function(x,
 #' @description
 #' Internal function for generating starting values for the Gompertz model if
 #' the starting age is not 15 years. Not run if the minimum age is actually 15.
-#' The original forumula derives from ##.
+#' The original formula derives from ##.
 #'
 #' @param sampling integer. Number of sampling steps. Default: 100000.
-#' @param b_min numeric. Minimum of Gompertz beta parameter. Default: 0.02.
-#' @param b_max numeric. Maximum of Gompertz beta parameter. Default: 0.1.
+#' @param b_min numeric. Minimum of Gompertz \eqn{\beta} parameter. Default: 0.02.
+#' @param b_max numeric. Maximum of Gompertz \eqn{\beta} parameter. Default: 0.1.
 #' @param minimum_age numeric. Minimum age in years. Default: 15.
 #'
-#' @return vector with coefficients for generating alpha and beta parameters
-#' for Gompertz function.
+#' @return vector with coefficients for generating \eqn{\alpha} and \eqn{\beta}
+#' parameters for Gompertz function.
 #'
 #' @noRd
 #' @examples
@@ -274,15 +332,26 @@ gomp.a0 <- function(
 #' @title Compute thresholds for chains
 #'
 #'@description
-#' Compute thresholds
+#' The computation of the thresholds on the log- and the age-scale is done
+#' outside of the MCMC simulation to spare the computation cost and the memory.
+#' The function returns a \code{coda::mcmc.list} which can be further processed.
 #'
 #' @inheritParams age.comp.summary
 #'
-#' @return a mcmc-list of coda chains for threshold values of traits
+#' @return a \code{coda::mcmc.list} for threshold values of traits on the
+#' age scale.
 #' @export
 #'
-#' @examples
-#'NULL
+#' @examplesIf interactive()
+#' # select Sorsum data with auricular surface after Lovejoy et al. 1985 and
+#' # convert to matrix
+#' sorsum <- as.matrix(sorsum_as[,2])
+#'
+#' # example with default settings, please be a little bit patient
+#' sorsum_res <- bay.ta(method = sorsum)
+#'
+#' # compute threshold chains
+#' threshold_chains <- threshold.chains(sorsum_res)
 #'
 threshold.chains <- function(mcmc_list) {
   checkmate::assertClass(mcmc_list, "mcmc.list")
@@ -300,8 +369,12 @@ threshold.chains <- function(mcmc_list) {
       beta0_cols <- "beta0"
     }
 
-    n_thresh  <- length(thresh_cols)
     n_methods <- length(beta_cols)
+
+    # extract indices from thresh[i,j]
+    thresh_idx <- do.call(rbind, regmatches(thresh_cols,
+                                            gregexpr("\\d+", thresh_cols)))
+    thresh_idx <- matrix(as.integer(thresh_idx), ncol = 2)
 
     thresholds_list <- vector("list", n_methods)
 
@@ -310,9 +383,24 @@ threshold.chains <- function(mcmc_list) {
       beta0 <- s[, beta0_cols[m]]
       beta  <- s[, beta_cols[m]]
 
-      # fully vectorized (faster than sapply)
-      thresholds_m <- exp((s[, thresh_cols] - beta0) / beta)
+      # select ALL thresholds for method m
+      cols_m <- thresh_cols[thresh_idx[,1] == m]
 
+      if (length(cols_m) == 0) next
+
+      thresh_m <- s[, cols_m, drop = FALSE]
+
+      # drop NA-only thresholds (ragged structure cleanup)
+      keep <- !is.na(thresh_m[1, ])
+      thresh_m <- thresh_m[, keep, drop = FALSE]
+
+      if (ncol(thresh_m) == 0) next
+
+      # vectorized transform
+      thresholds_m <- exp((thresh_m - beta0) / beta)
+
+      # naming
+      n_thresh <- ncol(thresholds_m)
       colnames(thresholds_m) <-
         paste0("thresh_age[", m, ",", seq_len(n_thresh), "]")
 
@@ -321,11 +409,12 @@ threshold.chains <- function(mcmc_list) {
 
     thresholds_mat <- do.call(cbind, thresholds_list)
 
-    # return as mcmc object (preserve iteration + thinning)
-    coda::as.mcmc(thresholds_mat,
-                  start = stats::start(chain),
-                  end   = stats::end(chain),
-                  thin  = coda::thin(chain))
+    coda::as.mcmc(
+      thresholds_mat,
+      start = stats::start(chain),
+      end   = stats::end(chain),
+      thin  = coda::thin(chain)
+    )
   })
 
   return(coda::as.mcmc.list(out))
@@ -335,17 +424,36 @@ threshold.chains <- function(mcmc_list) {
 #' @title Extract thresholds
 #'
 #'@description
-#' Extract thresholds
+#' A convenience function to extract mean thresholds values from the output of
+#' \code{diagnostic.summary()} which in turn was derived from a
+#' \code{coda::mcmc.list} computed with \code{threshold.chains()}
 #'
-#' @param x output from function `diagnostic.summary`
+#' @param x output from function \code{diagnostic.summary()}
 #'
 #' @inheritParams age.comp.summary
 #'
-#' @return a matrix with threshold values of traits
+#' @return a matrix with threshold values of traits. The number of rows
+#' corresponds to the number of traits, and the number of columns to the
+#' maximum number of levels of one of the traits.
+#'
 #' @export
 #'
-#' @examples
-#'NULL
+#' @examplesIf interactive()
+#' # select Sorsum data with auricular surface after Lovejoy et al. 1985 and
+#' # convert to matrix
+#' sorsum <- as.matrix(sorsum_as[,2])
+#'
+#' # example with default settings, please be a little bit patient
+#' sorsum_res <- bay.ta(method = sorsum)
+#'
+#' # compute threshold chains
+#' threshold_chains <- threshold.chains(sorsum_res)
+#'
+#' # compute summary diagnostics
+#' threshold_diag <- diagnostic.summary(threshold_chains)
+#'
+#' # extract threshold matrix (for sorsum only 1 row)
+#' threshold.matrix(threshold_diag)
 #'
 threshold.matrix <- function(
     x,
@@ -353,6 +461,8 @@ threshold.matrix <- function(
   {
   checkmate::assertClass(x, "diagnostic_summary")
   checkmate::assertChoice(mean_choice, c("Mode", "Median", "Mean"))
+  rownames_x <- substr(rownames(x), 1, 10)
+  checkmate::assert_names(rownames_x, must.include = "thresh_age")
 
   rn <- rownames(x)
   sel <- grepl("^thresh_age\\[", rn)
@@ -384,11 +494,22 @@ threshold.matrix <- function(
 #'
 #' @inheritParams age.comp.summary
 #'
-#' @return a matrix with correlations between traits
+#' @return a symmetric matrix with correlations between traits. The number of
+#' rows and columns corresponds to the number of traits.
+#'
 #' @export
 #'
-#' @examples
-#'NULL
+#' @examplesIf interactive()
+#'
+#'   # select Spitalfields data with multiple traits and convert to matrix
+#'   spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
+#'
+#'   # example with multinormal likelihood, please be patient
+#'   spitalfields_res <- bay.ta(framework = "NIMBLE", algorithm = "mnorm",
+#'   method = spitalfields_traits)
+#'
+#'   # compute correlation matrix
+#'   corr.mat.mean(spitalfields_res)
 #'
 corr.mat.mean <- function(mcmc_list) {
   checkmate::assertClass(mcmc_list, "mcmc.list")
@@ -428,14 +549,17 @@ corr.mat.mean <- function(mcmc_list) {
 #' @title Summed or mean probability densities per category
 #'
 #'@description
-#' Summing or averaging probability densities per category.
+#' Summing or averaging probability densities per category. The resulting
+#' data.frames can be used, for example, to produce illustrative diagrams. See
+#' the vignettes for some examples.
 #'
 #' @param df_orig a data.frame of the original raw data
 #'
-#' @param group_col a string specifying the grouping category in `df_orig`.
+#' @param group_col a string specifying the grouping category in \code{df_orig}.
 #'
 #' @param mode a string specifying the resulting data.frame of summed
-#' probabilities or mean probabilities per category. Either `mean` or `summed`.
+#' probabilities or mean probabilities per category. Either \code{mean} or
+#' \code{summed}.
 #'
 #' @inheritParams age.comp.summary
 #'
@@ -444,8 +568,22 @@ corr.mat.mean <- function(mcmc_list) {
 #'
 #' @export
 #'
-#' @examples
-#'NULL
+#' @examplesIf interactive()
+#'
+#'   # select Spitalfields data with multiple traits and convert to matrix
+#'   spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
+#'
+#'   # example with multinormal likelihood, please be patient
+#'   spitalfields_res <- bay.ta(framework = "NIMBLE", algorithm = "mnorm",
+#'   method = spitalfields_traits)
+#'
+#'   # compute averaging probabilities per category Age
+#'   prob_cat_mean <- prob.cat(spitalfields_res, df_orig = spitalfields,
+#'   group_col = "Age", mode = "mean")
+#'
+#'   # compute summed probabilities per category Sex
+#'   prob_cat_summed <- prob.cat(spitalfields_res, df_orig = spitalfields,
+#'   group_col = "Sex", mode = "summed")
 #'
 prob.cat <- function(
     mcmc_list,

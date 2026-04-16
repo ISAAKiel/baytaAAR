@@ -46,7 +46,7 @@
 #'   Ignored when \code{framework} is set to "NIMBLE".
 #'
 #'
-#' @return A list of MCMC chains of class \code{coda::mcmc.list}.
+#' @return A list of MCMC chains of class \code{coda::mcmc.list}
 #'
 #' @export
 #'

@@ -7,12 +7,37 @@
 diagnostics.max.min(x)
 }
 \arguments{
-\item{x}{output from function `diagnostics.summary()`}
+\item{x}{output from function \code{diagnostics.summary()}}
+}
+\value{
+A data.frame with one row and the following numeric columns:
+\itemize{
+\item{ \code{PSRF_max} the maximum value of the “potential scale reduction
+factor”. }
+\item{ \code{PSRF_upper_max} the maximum value of the upper limit of the
+0.95-confidence interval of the PSRF.}
+\item{ \code{ESS_min} minimum of the "effective sample size". }
+}
 }
 \description{
-max. and min diagnostics values
+Convenience function to quickly extract maximum and mininum diagnostics
+values of the function \code{diagnostics.summary()} over all parameters. The
+maximum values of the PSRF should be below 1.1 while the minumum ESS should
+be above 10,000. If either of this is not the case, consider to increase the
+length of the chains, i. e. the number of iterations.
 }
 \examples{
-NULL
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
+# select Sorsum data with auricular surface after Lovejoy et al. 1985 and
+# convert to matrix
+sorsum <- as.matrix(sorsum_as[,2])
 
+# example with default settings, please be a little bit patient
+sorsum_res <- bay.ta(method = sorsum)
+
+sorsum_diag <- diagnostic.summary(sorsum_res)
+
+# show maximum and minimum values.
+diagnostics.max.min(sorsum_diag)
+\dontshow{\}) # examplesIf}
 }
