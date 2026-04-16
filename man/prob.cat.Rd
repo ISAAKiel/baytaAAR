@@ -7,8 +7,7 @@
 prob.cat(
   mcmc_list,
   age_identifier = "age.s",
-  df_orig,
-  group_col,
+  group_vec,
   mode = c("mean", "summed")
 )
 }
@@ -18,16 +17,14 @@ prob.cat(
 \item{age_identifier}{a character string of either "age.s" or "age.s_c" to
 select the uncalibrated or calibrated age estimates. Default: "age.s".}
 
-\item{df_orig}{a data.frame of the original raw data}
-
-\item{group_col}{a string specifying the grouping category in \code{df_orig}.}
+\item{group_vec}{a vector specifying the grouping category.}
 
 \item{mode}{a string specifying the resulting data.frame of summed
 probabilities or mean probabilities per category. Either \code{mean} or
 \code{summed}.}
 }
 \value{
-a data.frame with either probability summed by category or mean
+A data.frame with either probability summed by category or mean
 per category.
 }
 \description{
@@ -45,12 +42,12 @@ the vignettes for some examples.
   spitalfields_res <- bay.ta(framework = "NIMBLE", algorithm = "mnorm",
   method = spitalfields_traits)
 
-  # compute averaging probabilities per category Age
-  prob_cat_mean <- prob.cat(spitalfields_res, df_orig = spitalfields,
-  group_col = "Age", mode = "mean")
+  # compute averaging probabilities per category Sex
+  prob_cat_mean <- prob.cat(spitalfields_res, group_vec = spitalfields$Sex,
+  mode = "mean")
 
   # compute summed probabilities per category Sex
-  prob_cat_summed <- prob.cat(spitalfields_res, df_orig = spitalfields,
-  group_col = "Sex", mode = "summed")
+  prob_cat_summed <- prob.cat(spitalfields_res, group_vec = spitalfields$Sex,
+  mode = "summed")
 \dontshow{\}) # examplesIf}
 }

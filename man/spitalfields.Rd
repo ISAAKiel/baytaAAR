@@ -2,17 +2,17 @@
 % Please edit documentation in R/data.R
 \name{spitalfields}
 \alias{spitalfields}
-\title{Spitalfields}
+\title{Spitalfields: Example dataset}
 \format{
 A data frame with 180 rows and 7 columns:
 \itemize{
-  \item \bold{Age:} Known age-at-death
-  \item \bold{TO:} trait 'Transverse organization'
-  \item \bold{ST:} trait 'Surface texture'
-  \item \bold{MI:} trait 'Microporosity'
-  \item \bold{MA:} trait 'Macroporosity'
-  \item \bold{AP:} trait 'Apical changes'
-  \item \bold{Sex:} Known sex
+  \item \code{Age} known age-at-death
+  \item \code{TO} trait 'Transverse organization'
+  \item \code{ST} trait 'Surface texture'
+  \item \code{MI} trait 'Microporosity'
+  \item \code{MA} trait 'Macroporosity'
+  \item \code{AP} trait 'Apical changes'
+  \item \code{Sex} known sex
 }
 }
 \source{

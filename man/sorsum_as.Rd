@@ -2,17 +2,17 @@
 % Please edit documentation in R/data.R
 \name{sorsum_as}
 \alias{sorsum_as}
-\title{Sorsum}
+\title{Sorsum: Example dataset}
 \format{
 A data frame with 38 rows and 2 columns:
 \itemize{
-  \item \bold{id:} individual id
-  \item \bold{auricular_surface:} auricular surface after Lovejoy et al. 1985
+  \item \code{id} individual id
+  \item \code{auricular_surface} auricular surface after Lovejoy et al. 1985
 }
 }
 \description{
 Neolithic population from a gallery grave in Hessen/Germany. From the
-published raw data, only the trait which was possible to assess most often
+published raw data, only the trait that was possible to assess most often
 (auricular surface after Lovejoy et al. 1985) is included. It is taken from
 Moser et al. 2025, table S69.
 }

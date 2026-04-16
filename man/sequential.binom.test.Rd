@@ -2,7 +2,7 @@
 % Please edit documentation in R/known_age.R
 \name{sequential.binom.test}
 \alias{sequential.binom.test}
-\title{Sequential output of cumulative binomial test}
+\title{Sequential cumulative binomial test}
 \usage{
 sequential.binom.test(
   mcmc_list,
@@ -23,12 +23,41 @@ entries will subsequently be ignored.}
 select the uncalibrated or calibrated age estimates. Default: "age.s".}
 }
 \value{
-a data.frame
+A dataframe with the number of rows equaling the length of the
+parameter \code{HDImass} and six columns as follows:
+\itemize{
+\item{ \code{coverage} Expected coverage. }
+\item{ \code{n_in} Absolute number of known ages within the
+\emph{highest density intervals}.}
+\item{ \code{perc} Realized coverage. }
+\item{ \code{CI_low} Lower limit of the confidence interval for the
+realized coverage. }
+\item{ \code{CI_up}  Upper limit of the confidence interval for the
+realized coverage. }
+\item{ \code{p_value} p-value of the binomial test. If significant, the
+expected coverage is outside of the confidence intervals of the realized
+coverage.}
+}
 }
 \description{
-Sequential output of cumulative binomial test
+The \emph{cumulative binomial} test asserts if the expected coverage, i.e. the
+percentage of known ages within the \emph{highest density intervals}, is
+within the confidence interval of the realized coverage. This wrapper
+function allows to run this test sequentially, i.e. with a sequence of
+expected coverage levels, at a confidence level of 0.95.
 }
 \examples{
-NULL
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 
+  # select Spitalfields data with multiple traits and convert to matrix
+  spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
+
+  # example with multinormal likelihood, please be patient
+  spitalfields_res <- bay.ta(algorithm = "mnorm", method = spitalfields_traits)
+
+  # compute sequential binomial tests at expected probability levels 0.75
+  # and 0.95
+  sequential.binom.test(spitalfields_res, known_age = spitalfields$Age,
+  HDImass = c(0.75, 0.95))
+\dontshow{\}) # examplesIf}
 }

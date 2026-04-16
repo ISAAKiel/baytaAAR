@@ -9,44 +9,45 @@
 #'
 #' @details blabla
 #'
-#' @param framework character string. Either \code{JAGS} \code{NIMBLE}. Default:
-#'   \code{NIMBLE}.
+#' @param framework character string. Either \code{JAGS} or \code{NIMBLE}.
+#'  Default: \code{NIMBLE}.
 #' @param algorithm character string. Either \code{norm} for 'simple' ordered
 #'   regression or \code{mnorm} for multinormal ordered regression. Default:
 #'   \code{norm}.
-#' @param multicore TRUE/FALSE. If TRUE each chain is assigned to a dedicated
-#'   core. Default: FALSE.
+#' @param multicore \code{TRUE/FALSE}. If \code{TRUE} each chain is assigned to
+#'  a dedicated core. Default: \code{FALSE}.
 #' @param seed integer. Random number for reproducibility. In parallel
 #'   processing, each cluster automatically gets different seeds. If no seed is
 #'   specified, the value is set to today's date as integer.
 #' @param method matrix of integers. Ordinal trait(s) for age estimation.
-#' @param eta numeric. Prior for the Cholesky factor of the LKJ distribution,
-#'   must be > 0. Only used for multinormal ordered regression for the correlation
-#'   matrix. 1 implies equal correlations, lower values assume stronger
-#'   correlations. Default: 1.
+#' @param eta numeric. Parameter for the LKJ distribution, must be > 0. Only
+#'  used for multinormal ordered regression for the correlation matrix.
+#'  \code{1} implies equal correlations, lower values assume stronger
+#'   correlations. Default: \code{1}.
 #' @param gomp_b numeric. Optional prior for parameter Gompertz beta. Default:
-#'   NA.
-#' @param error_sd numeric.
+#'   \code{NA}.
+#' @param error_sd numeric. Optional error parameter for age estimates. Default:
+#'   \code{NA}.
 #' @param minimum_age numeric. Minimum age for Gompertz distribution. Default:
-#'   15.
+#'   \code{15}.
 #' @param maximum_age numeric. Maximum age for Gompertz distribution. Default:
-#'   100.
+#'   \code{100}.
 #' @param parameters vector of character strings. Parameters to monitor.
-#' @param nChains integer. Number of chains. Default: 3.
+#' @param nChains integer. Number of chains. Default: \code{3}.
 #' @param adaptSteps integer. Number of adaptation steps, ignored when
-#'   \code{framework} is set to "NIMBLE". Default: 2000.
-#' @param burnInSteps integer. Number of steps for burn-in. Default: 3000.
+#'   \code{framework} is set to \code{NIMBLE}. Default: \code{2000}.
+#' @param burnInSteps integer. Number of steps for burn-in. Default: \code{3000}.
 #' @param thinSteps integer. Thinning, i. e. which \emph{i}th step should be
-#'   saved. Default: 1 (no thinning).
-#' @param numSavedSteps integer. Number of saved steps. Default: 10000. The
-#'   total number of steps equals \code{thinSteps × numSavedSteps}.
-#' @param silent.jags TRUE/FALSE Silent mode to run JAGS. Default: FALSE.
-#'   Ignored when \code{framework} is set to "NIMBLE".
-#' @param silent.runjags TRUE/FALSE Silent mode to run runjags. Default: FALSE.
-#'   Ignored when \code{framework} is set to "NIMBLE".
+#'   saved. Default: \code{1} (no thinning).
+#' @param numSavedSteps integer. Number of saved steps. Default: \code{10000}.
+#'  The total number of steps equals \code{thinSteps × numSavedSteps}.
+#' @param silent.jags TRUE/FALSE Silent mode to run JAGS. Default: \code{FALSE}.
+#'   Ignored when \code{framework} is set to \code{NIMBLE}.
+#' @param silent.runjags TRUE/FALSE Silent mode to run runjags. Default:
+#'  \code{FALSE}. Ignored when \code{framework} is set to \code{NIMBLE}.
 #'
 #'
-#' @return A list of MCMC chains of class \code{coda::mcmc.list}
+#' @return A list of MCMC chains of class \code{coda::mcmc.list}.
 #'
 #' @export
 #'
@@ -72,8 +73,8 @@
 #'   # select Spitalfields data with multiple traits and convert to matrix
 #'   spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
 #'
-#'   # example with multinormal likelihood
-#'   spitalfields_res <- bay.ta(framework = "NIMBLE", algorithm = "mnorm",
+#'   # example with multinormal likelihood, please be patient
+#'   spitalfields_res <- bay.ta(falgorithm = "mnorm",
 #'   method = spitalfields_traits)
 #'
 bay.ta  <- function(
@@ -212,9 +213,8 @@ bay.ta  <- function(
     # Export needed functions and objects
     parallel::clusterExport(
       this_cluster,
-      varlist = c("bay.ta.nimble","dgomp", "pgomp",
-                  "qgomp", "rgomp","gomp.a0", "shared_args", "seed",
-                  "worker_fun"),
+      varlist = c("bay.ta.nimble", "gomp.a0", "shared_args", "seed",
+                  "worker_fun"), #"dgomp", "pgomp", "qgomp", "rgomp"
       envir = environment()
     )
     parallel::clusterEvalQ(this_cluster, library("nimble"))

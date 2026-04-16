@@ -9,24 +9,24 @@ age.estim.summary(x, mean_choice = "Mode", age_identifier = "age.s")
 \arguments{
 \item{x}{output from function \code{diagnostics.summary()}}
 
-\item{mean_choice}{a character string of either "Mode", "Median" or "Mode".
+\item{mean_choice}{a character string of either "Mean", "Median" or "Mode".
 Default: "Mode".}
 
 \item{age_identifier}{a character string of either "age.s" or "age.s_c" to
 select the uncalibrated or calibrated age estimates. Default: "age.s".}
 }
 \value{
-a data.frame with the chosen mean measure and the HDI ranges as
+A data.frame with the chosen mean measure and the HDI ranges as
 specified in the output of \code{diagnostics.summary()} as columns and the
 following rows:
 \itemize{
-\item{ \code{M} the modal age, derived from the arithmetic mean of the
-Gompertz parameters \eqn{\alpha} and \eqn{\beta} according to the equation
+\item{ \code{M} Modal age, derived from the Gompertz parameters
+\eqn{\alpha} and \eqn{\beta} according to the equation
 (1 / \eqn{\beta}) * log(\eqn{\beta} / \eqn{\alpha}) + minimum_age. }
-\item{ \code{age_mean} the mean of the mean ages.}
-\item{ \code{b} mean of the Gompertz parameter \eqn{\beta}. }
-\item{ \code{a} mean of the Gompertz parameter \eqn{\alpha}. }
-\item{ \code{hdi_diff} mean of the highest density intervals. }
+\item{ \code{age_mean} Mean of the mean ages.}
+\item{ \code{b} Mean of the Gompertz parameter \eqn{\beta}. }
+\item{ \code{a} Mean of the Gompertz parameter \eqn{\alpha}. }
+\item{ \code{hdi_diff} Mean of the \emph{highest density intervals}. }
 }
 }
 \description{

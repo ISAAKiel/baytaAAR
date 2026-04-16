@@ -1,11 +1,9 @@
 #' @title Diagnostic summary of MCMC samples
 #'
 #' @description
-#' Summarising diagnostics partly derived from
+#' Summarising diagnostics from a \code{coda::mcmc.list}, partly derived from
 #'  \href{https://jkkweb.sitehost.iu.edu/DoingBayesianDataAnalysis/}{Kruschke
-#'  (2015)}. Enter a codaMCMClist and receive a dataframe with summarising
-#'  diagnostics.
-#'
+#'  (2015)}.
 #'
 #' @details
 #'  Because the first threshold is fixed, the Gelman-Rubin multivariate PSRF
@@ -13,28 +11,28 @@
 #'  the gelman diagnostics still produce an error, deactivate \code{gelman_diag}
 #'  altogether by setting it to \code{FALSE}, too.
 #'
-#'
 #' @inheritParams age.comp.summary
 #' @param HDImass numeric. Value within 0 and 1. Default = 0.95.
 #' @param gelman_diag logical. If TRUE, the Gelman-Rubin diagnostics for computing
 #' the PSRF is invoked. Default: TRUE.
 #'
 #' @return
-#' A data.frame of class \code{diagnostic_summary} with the row names according to
-#' the parameters to be monitored and the following numeric columns:
+#' A data.frame of class \code{diagnostic_summary} with the row names according
+#' to the parameters to be monitored and the following numeric columns:
 #' \itemize{
-#' \item{ \code{PSRF Point est.} “potential scale reduction factor” (= Gelman-
-#' Rubin statistic), a measure of the mixing of chains. }
-#' \item{ \code{PSRF Upper C.I.} the upper limit of the 0.95-confidence interval
+#' \item{ \code{PSRF Point est.} \emph{Potential scale reduction factor}
+#' (= Gelman-Rubin statistic), a measure of the mixing of chains. }
+#' \item{ \code{PSRF Upper C.I.} The upper limit of the 0.95-confidence interval
 #' of the PSRF.}
-#' \item{ \code{Mean} arithmetic mean of the estimates. }
-#' \item{ \code{Median} median of the estimates. }
-#' \item{ \code{Mode} mode of the estimates. }
-#' \item{ \code{ESS} "effective sample size", a control of autocorrelation.}
-#' \item{ \code{MCSE} "Monte Carlo standard error".}
-#' \item{ \code{HDImass} credibility level of the highest density interval.}
-#' \item{ \code{HDIlow} start of the highest density interval.}
-#' \item{ \code{HDIhigh} end of the highest density interval.}
+#' \item{ \code{Mean} Arithmetic mean of the estimates. }
+#' \item{ \code{Median} Median of the estimates. }
+#' \item{ \code{Mode} Mode of the estimates. }
+#' \item{ \code{ESS} \emph{Effective sample size}, a control of autocorrelation.}
+#' \item{ \code{MCSE} \emph{Monte Carlo standard error}.}
+#' \item{ \code{HDImass} Credibility level of the \emph{highest density
+#' interval}.}
+#' \item{ \code{HDIlow} sStart of the \emph{highest density interval}.}
+#' \item{ \code{HDIhigh} End of the \emph{highest density interval}.}
 #' }
 #'
 #' @rdname diagnostic.summary
@@ -45,9 +43,10 @@
 #' # convert to matrix
 #' sorsum <- as.matrix(sorsum_as[,2])
 #'
-#' # example with default settings, please be a little bit patient
+#' # example with default settings, please be patient
 #' sorsum_res <- bay.ta(method = sorsum)
 #'
+#' # compute diagnostics of the MCMC samples
 #' sorsum_diag <- diagnostic.summary(sorsum_res)
 #'
 #' # show first rows
@@ -157,11 +156,11 @@ HDIofMCMC = function(
 #' @return
 #' A data.frame with one row and the following numeric columns:
 #' \itemize{
-#' \item{ \code{PSRF_max} the maximum value of the “potential scale reduction
-#' factor”. }
-#' \item{ \code{PSRF_upper_max} the maximum value of the upper limit of the
+#' \item{ \code{PSRF_max} Maximum value of the \emph{potential scale reduction
+#' factor}. }
+#' \item{ \code{PSRF_upper_max} Mximum value of the upper limit of the
 #' 0.95-confidence interval of the PSRF.}
-#' \item{ \code{ESS_min} minimum of the "effective sample size". }
+#' \item{ \code{ESS_min} Minimum of the \emph{effective sample size}. }
 #' }
 #'
 #' @rdname diagnostics.max.min
@@ -172,12 +171,13 @@ HDIofMCMC = function(
 #' # convert to matrix
 #' sorsum <- as.matrix(sorsum_as[,2])
 #'
-#' # example with default settings, please be a little bit patient
+#' # example with default settings, please be atient
 #' sorsum_res <- bay.ta(method = sorsum)
 #'
+#' # compute diagnostics of the MCMC samples
 #' sorsum_diag <- diagnostic.summary(sorsum_res)
 #'
-#' # show maximum and minimum values.
+#' # show maximum and minimum values
 #' diagnostics.max.min(sorsum_diag)
 #'
 diagnostics.max.min <- function(x) {
@@ -202,17 +202,17 @@ diagnostics.max.min <- function(x) {
 #'
 #' @inheritParams age.comp.summary
 #'
-#' @return a data.frame with the chosen mean measure and the HDI ranges as
+#' @return A data.frame with the chosen mean measure and the HDI ranges as
 #' specified in the output of \code{diagnostics.summary()} as columns and the
 #' following rows:
 #' \itemize{
-#' \item{ \code{M} the modal age, derived from the arithmetic mean of the
-#' Gompertz parameters \eqn{\alpha} and \eqn{\beta} according to the equation
+#' \item{ \code{M} Modal age, derived from the Gompertz parameters
+#' \eqn{\alpha} and \eqn{\beta} according to the equation
 #' (1 / \eqn{\beta}) * log(\eqn{\beta} / \eqn{\alpha}) + minimum_age. }
-#' \item{ \code{age_mean} the mean of the mean ages.}
-#' \item{ \code{b} mean of the Gompertz parameter \eqn{\beta}. }
-#' \item{ \code{a} mean of the Gompertz parameter \eqn{\alpha}. }
-#' \item{ \code{hdi_diff} mean of the highest density intervals. }
+#' \item{ \code{age_mean} Mean of the mean ages.}
+#' \item{ \code{b} Mean of the Gompertz parameter \eqn{\beta}. }
+#' \item{ \code{a} Mean of the Gompertz parameter \eqn{\alpha}. }
+#' \item{ \code{hdi_diff} Mean of the \emph{highest density intervals}. }
 #' }
 #'
 #' @export
@@ -231,8 +231,8 @@ diagnostics.max.min <- function(x) {
 #' age.estim.summary(sorsum_diag)
 #'
 age.estim.summary <- function(x,
-                          mean_choice = "Mode",
-                          age_identifier = "age.s")
+                              mean_choice = "Mode",
+                              age_identifier = "age.s")
   {
   checkmate::assertClass(x, "diagnostic_summary")
   checkmate::assertChoice(age_identifier, c("age.s", "age.s_c"))
@@ -338,7 +338,7 @@ gomp.a0 <- function(
 #'
 #' @inheritParams age.comp.summary
 #'
-#' @return a \code{coda::mcmc.list} for threshold values of traits on the
+#' @return A \code{coda::mcmc.list} for threshold values of traits on the
 #' age scale.
 #' @export
 #'
@@ -347,7 +347,7 @@ gomp.a0 <- function(
 #' # convert to matrix
 #' sorsum <- as.matrix(sorsum_as[,2])
 #'
-#' # example with default settings, please be a little bit patient
+#' # example with default settings, please be patient
 #' sorsum_res <- bay.ta(method = sorsum)
 #'
 #' # compute threshold chains
@@ -432,7 +432,7 @@ threshold.chains <- function(mcmc_list) {
 #'
 #' @inheritParams age.comp.summary
 #'
-#' @return a matrix with threshold values of traits. The number of rows
+#' @return A matrix with threshold values of traits. The number of rows
 #' corresponds to the number of traits, and the number of columns to the
 #' maximum number of levels of one of the traits.
 #'
@@ -443,7 +443,7 @@ threshold.chains <- function(mcmc_list) {
 #' # convert to matrix
 #' sorsum <- as.matrix(sorsum_as[,2])
 #'
-#' # example with default settings, please be a little bit patient
+#' # example with default settings, please be patient
 #' sorsum_res <- bay.ta(method = sorsum)
 #'
 #' # compute threshold chains
@@ -487,14 +487,14 @@ threshold.matrix <- function(
 #' @title Extract correlation matrix from Cholesky factor
 #'
 #'@description
-#' As the LKJ prior uses the Cholesky decomposition of the correlation matrix,
-#' getting the correlation indices from the coda chains is less straightforward
-#' than it seems. It involves taking the cross product from the resulting coda
-#' estimates.
+#' As the LKJ prior for the correlation matrix uses the Cholesky decomposition
+#' of the correlation matrix, getting the correlation indices from the coda
+#' chains is less straightforward than it seems. It involves taking the cross
+#' product from the resulting coda estimates.
 #'
 #' @inheritParams age.comp.summary
 #'
-#' @return a symmetric matrix with correlations between traits. The number of
+#' @return A symmetric matrix with correlations between traits. The number of
 #' rows and columns corresponds to the number of traits.
 #'
 #' @export
@@ -505,7 +505,7 @@ threshold.matrix <- function(
 #'   spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
 #'
 #'   # example with multinormal likelihood, please be patient
-#'   spitalfields_res <- bay.ta(framework = "NIMBLE", algorithm = "mnorm",
+#'   spitalfields_res <- bay.ta(algorithm = "mnorm",
 #'   method = spitalfields_traits)
 #'
 #'   # compute correlation matrix
@@ -553,9 +553,7 @@ corr.mat.mean <- function(mcmc_list) {
 #' data.frames can be used, for example, to produce illustrative diagrams. See
 #' the vignettes for some examples.
 #'
-#' @param df_orig a data.frame of the original raw data
-#'
-#' @param group_col a string specifying the grouping category in \code{df_orig}.
+#' @param group_vec a vector specifying the grouping category.
 #'
 #' @param mode a string specifying the resulting data.frame of summed
 #' probabilities or mean probabilities per category. Either \code{mean} or
@@ -563,7 +561,7 @@ corr.mat.mean <- function(mcmc_list) {
 #'
 #' @inheritParams age.comp.summary
 #'
-#' @return a data.frame with either probability summed by category or mean
+#' @return A data.frame with either probability summed by category or mean
 #' per category.
 #'
 #' @export
@@ -577,37 +575,34 @@ corr.mat.mean <- function(mcmc_list) {
 #'   spitalfields_res <- bay.ta(framework = "NIMBLE", algorithm = "mnorm",
 #'   method = spitalfields_traits)
 #'
-#'   # compute averaging probabilities per category Age
-#'   prob_cat_mean <- prob.cat(spitalfields_res, df_orig = spitalfields,
-#'   group_col = "Age", mode = "mean")
+#'   # compute averaging probabilities per category Sex
+#'   prob_cat_mean <- prob.cat(spitalfields_res, group_vec = spitalfields$Sex,
+#'   mode = "mean")
 #'
 #'   # compute summed probabilities per category Sex
-#'   prob_cat_summed <- prob.cat(spitalfields_res, df_orig = spitalfields,
-#'   group_col = "Sex", mode = "summed")
+#'   prob_cat_summed <- prob.cat(spitalfields_res, group_vec = spitalfields$Sex,
+#'   mode = "summed")
 #'
 prob.cat <- function(
     mcmc_list,
     age_identifier = "age.s",
-    df_orig,
-    group_col,
+    group_vec,
     mode = c("mean", "summed")
 ) {
   checkmate::assertClass(mcmc_list, "mcmc.list")
   checkmate::assertChoice(age_identifier, c("age.s", "age.s_c"))
-  checkmate::assertClass(df_orig, "data.frame")
-  checkmate::assertScalar(group_col)
+  checkmate::assertVector(group_vec)
   checkmate::assertChoice(mode, c("mean", "summed"))
 
   mode <- match.arg(mode)
   nChain <- length(mcmc_list)
-  t_length <- nrow(df_orig)
+  t_length <- length(group_vec)
   age_identifier_grep <- ifelse(age_identifier == "age.s",
                                 "age.s[", "age.s_c[")
 
-  group_factor <- droplevels(as.factor(df_orig[, group_col]))
-  df_orig$group_factor <- group_factor
-  df_orig$factor_cat <- as.numeric(df_orig$group_factor)
-  levels_cat <- sort(unique(df_orig$factor_cat))
+  group_factor <- droplevels(factor(group_vec))
+  factor_cat <- as.numeric(group_factor)
+  levels_cat <- sort(unique(factor_cat))
 
   if (mode == "mean") {
 
@@ -621,7 +616,7 @@ prob.cat <- function(
         chain_samples <- NULL
 
         for (t in 1:t_length) {
-          if (cLevels == df_orig$factor_cat[t]) {
+          if (cLevels == factor_cat[t]) {
             param_name <- paste0(age_identifier_grep, t, "]")
             chain_samples <- cbind(chain_samples,
                                    mcmc_list[, param_name][[cIdx]])
@@ -635,9 +630,9 @@ prob.cat <- function(
     }
 
     dense_xy <- data.frame(
-      category = factor(rep(levels(df_orig$group_factor),
+      category = factor(rep(levels(group_factor),
                             each = length(cat_post[[1]])),
-                        levels = levels(df_orig$group_factor)),
+                        levels = levels(group_factor)),
       value = unlist(cat_post)
     )
   } else {
@@ -650,7 +645,7 @@ prob.cat <- function(
       coda_object_simplified <- NULL
 
       for (t in 1:t_length) {
-        if (cLevels == df_orig$factor_cat[t]) {
+        if (cLevels == factor_cat[t]) {
           for (cIdx in 1:nChain) {
             param_name <- paste0(age_identifier_grep, t, "]")
             onecolumn <- mcmc_list[, param_name][[cIdx]]
@@ -670,16 +665,19 @@ prob.cat <- function(
                                      values_to = "value")
     yMat_melt <- tidyr::pivot_longer(as.data.frame(yMat),
                                      cols = tidyr::everything(),
-                                      names_to = "variable",
-                                      values_to = "value")
+                                     names_to = "variable",
+                                     values_to = "value")
     dense_xy <- cbind(xMat_melt, yMat_melt[, 2])
     colnames(dense_xy) <- c("category", "x", "y")
 
-    levels(dense_xy$category) <- levels(df_orig$group_factor)
+    dense_xy$category <- as.factor(dense_xy$category)
+    levels(dense_xy$category) <- levels(group_factor)
+    cat_counts <- as.matrix(table(group_factor))
 
-    df_orig_cat_n <- df_orig |>
-      dplyr::group_by(group_factor) |>
-      dplyr::summarize(n = dplyr::n(), .groups = "drop")
+    df_orig_cat_n <- as.data.frame(cat_counts)
+    df_orig_cat_n$group_factor <- rownames(df_orig_cat_n)
+    df_orig_cat_n <- df_orig_cat_n[,c(2,1)]
+    colnames(df_orig_cat_n) <- c("group_factor", "n")
 
     dense_xy$y_prop <- NULL
     for (i in 1:length(dense_xy$y)) {
@@ -690,3 +688,4 @@ prob.cat <- function(
   }
   return(dense_xy)
 }
+

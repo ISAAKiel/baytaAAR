@@ -1,6 +1,5 @@
 utils::globalVariables(c("beta0", "age", "gomp_a0_m", "gomp_a0_ic", "b", "a",
-                         "HDIlow", "HDIhigh", "id", "y", "chosen_mean",
-                         "runif","nimStop") )
+                          "id", "y", "chosen_mean", "HDIhigh", "HDIlow") )
 
 #' @import nimble
 NULL

@@ -1,14 +1,16 @@
 #' @title Quality measures of age estimation
 #'
 #'@description
-#' Comparison of estimated age with known age-at-death.
+#' Comparison of estimated age and known age-at-death with the help of several
+#' Goodness-of-fit measures. For most of the measures smaller is better. The only
+#' exception is \emph{corrPearson} where larger is better.
 #'
 #' @param mcmc_list MCMC output from coda chains.
 #'
 #' @param known_age a vector of known age-at-death. NAs are allowed and those
 #' entries will subsequently be ignored.
 #'
-#' @param mean_choice a character string of either "Mode", "Median" or "Mode".
+#' @param mean_choice a character string of either "Mean", "Median" or "Mode".
 #' Default: "Mode".
 #'
 #' @param age_identifier a character string of either "age.s" or "age.s_c" to
@@ -16,12 +18,37 @@
 #'
 #' @inheritDotParams diagnostic.summary HDImass gelman_diag
 #'
-#' @return a dataframe with age estimation quality parameters
+#' @return A data.frame with one row and eight columns with age estimation
+#' quality parameters as follows:
+#' \itemize{
+#' \item{ \code{Bias} Arithmetic mean of the difference between known and
+#' estimated age. }
+#' \item{ \code{corrPearson} Correlation of known and estimated age.}
+#' \item{ \code{corr_p} p-value of the correlation of known and estimated age. }
+#' \item{ \code{Residual_slope} Slope of the regression line of the difference
+#' between known and estimated age. }
+#' \item{ \code{Inaccuracy} Arithmetic mean of the absolute difference between
+#' known and estimated age. }
+#' \item{ \code{RMSE} \emph{Root mean square error} of known and estimated age.}
+#' \item{ \code{TMNLP} \emph{Test mean log posterior}, a local evaluation of the
+#' probability density at the point of known age. }
+#' \item{ \code{CRPS} \emph{Continuous ranked probability score}, a global
+#' evaluation of the probability density at the point of known age. }
+#' }
 #'
 #' @export
 #'
-#' @examples
-#'NULL
+#' @examplesIf interactive()
+#'
+#'   # select Spitalfields data with multiple traits and convert to matrix
+#'   spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
+#'
+#'   # example with multinormal likelihood, please be patient
+#'   spitalfields_res <- bay.ta(framework = "NIMBLE", algorithm = "mnorm",
+#'   method = spitalfields_traits)
+#'
+#'   # compute age summary statistics
+#'   age.comp.summary(spitalfields_res, known_age = spitalfields$Age)
 #'
 age.comp.summary <- function(mcmc_list,
                                known_age,
@@ -98,18 +125,41 @@ tmnlp <- function(known_age, mcmcMat) {
 #' @title Plots of quality measures of age estimation
 #'
 #'@description
-#' Comparison of estimated age with known age-at-death.
+#' Visualisation of the difference between estimated and known age with the
+#' help of a combination of plots.
 #'
-#' @param x output from the function `diagnostic.summary`
+#' @param x output from the function \code{diagnostic.summary()}.
 #'
 #' @inheritParams age.comp.summary
 #'
-#' @return a ggplot object with 2 x 2 single plots, showing
+#' @return A ggplot object with 2 x 2 single plots, showing:
+#' \describe{
+#'   \item{Top left}{Comparison of estimated \emph{highest density intervals}
+#'   with known ages, green = age within HDI, red = age outside HDI,
+#'   individuals ordered according to known age-at-death. }
+#'   \item{Top right}{Comparison of the density of known ages with a Gompertz
+#'   function derived from the arithmetic mean of the estimated population
+#'   parameters \eqn{\alpha} and \eqn{\beta}.}
+#'   \item{Bottom left}{Scatter plot of known and estimated ages with dotted
+#'   regression line.}
+#'   \item{Bottom right}{Slope of the regression line from the left bottom image
+#'   (cf. goodness-of-fit measure \code{Residual_slope} from the function
+#'   \code{age.comp.summary()}).}
+#' }
 #'
 #' @export
 #'
-#' @examples
-#'NULL
+#' @examplesIf interactive()
+#'
+#'   # select Spitalfields data with multiple traits and convert to matrix
+#'   spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
+#'
+#'   # example with multinormal likelihood, please be patient
+#'   spitalfields_res <- bay.ta(algorithm = "mnorm",
+#'   method = spitalfields_traits)
+#'
+#'   # compute age summary statistics
+#'   age.comp.plot(spitalfields_res, known_age = spitalfields$Age)
 #'
 age.comp.plot <- function(x,
                         age_identifier = "age.s",
@@ -183,25 +233,51 @@ age.comp.plot <- function(x,
    return(plot_result)
 }
 
-#' @title Sequential output of cumulative binomial test
+#' @title Sequential cumulative binomial test
 #'
 #'@description
-#' Sequential output of cumulative binomial test
+#' The \emph{cumulative binomial} test asserts if the expected coverage, i.e. the
+#' percentage of known ages within the \emph{highest density intervals}, is
+#' within the confidence interval of the realized coverage. This wrapper
+#' function allows to run this test sequentially, i.e. with a sequence of
+#' expected coverage levels, at a confidence level of 0.95.
 #'
 #' @param HDImass a numeric or a vector with the probability range.
 #'
 #' @inheritParams age.comp.summary
 #'
-#' @return a data.frame
+#' @return A dataframe with the number of rows equaling the length of the
+#' parameter \code{HDImass} and six columns as follows:
+#' \itemize{
+#' \item{ \code{coverage} Expected coverage. }
+#' \item{ \code{n_in} Absolute number of known ages within the
+#' \emph{highest density intervals}.}
+#' \item{ \code{perc} Realized coverage. }
+#' \item{ \code{CI_low} Lower limit of the confidence interval for the
+#' realized coverage. }
+#' \item{ \code{CI_up}  Upper limit of the confidence interval for the
+#' realized coverage. }
+#' \item{ \code{p_value} p-value of the binomial test. If significant, the
+#' expected coverage is outside of the confidence intervals of the realized
+#' coverage.}
+#' }
 #'
 #' @export
 #'
-#' @examples
-#'NULL
+#' @examplesIf interactive()
 #'
-sequential.binom.test <- function(mcmc_list,
-                                  known_age,
-                                  HDImass = 0.95,
+#'   # select Spitalfields data with multiple traits and convert to matrix
+#'   spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
+#'
+#'   # example with multinormal likelihood, please be patient
+#'   spitalfields_res <- bay.ta(algorithm = "mnorm", method = spitalfields_traits)
+#'
+#'   # compute sequential binomial tests at expected probability levels 0.75
+#'   # and 0.95
+#'   sequential.binom.test(spitalfields_res, known_age = spitalfields$Age,
+#'   HDImass = c(0.75, 0.95))
+#'
+sequential.binom.test <- function(mcmc_list, known_age, HDImass = 0.95,
                                   age_identifier = "age.s") {
   checkmate::assertClass(mcmc_list, "mcmc.list")
   checkmate::assertAtomic(known_age, all.missing = FALSE)

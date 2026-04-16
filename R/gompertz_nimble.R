@@ -16,12 +16,11 @@
 #'
 #' @return depending on the kind of function, either
 #'
-#' @name dgomp
-#' @export
+#' @noRd
 NULL
 
-#' @rdname dgomp
-#' @export
+#' rgomp
+#' @noRd
 rgomp <- nimble::nimbleFunction(
   run = function(n = integer(0), b = double(0), a = double(0)) {
     returnType(double(0))
@@ -31,15 +30,15 @@ rgomp <- nimble::nimbleFunction(
     if (b <= 0 | a <= 0) nimStop("Invalid parameters for Gompertz distribution")
 
     # Generate a single Gompertz-distributed random value
-    u <- runif(1)  # Uniform random number
+    u <- stats::runif(1)  # Uniform random number
     x <- (1 / b) * log(1 - (b / a) * log(1 - u))  # Inverse CDF sampling
 
     return(x)
   }
 )
 
-#' @rdname dgomp
-#' @export
+#' dgomp
+#' @noRd
 dgomp <- nimble::nimbleFunction(
   run = function(x = double(0), b = double(0), a = double(0),
                  log = integer(0, default = 0)) {  # log.p is now an argument
@@ -54,8 +53,8 @@ dgomp <- nimble::nimbleFunction(
   }
 )
 
-#' @rdname dgomp
-#' @export
+#' pgomp
+#' @noRd
 pgomp <- nimble::nimbleFunction(
   run = function(q = double(0), b = double(0), a = double(0),
                  lower.tail = logical(0), log.p = integer(0, default = 0)) {
@@ -77,8 +76,8 @@ pgomp <- nimble::nimbleFunction(
 )
 
 
-#' @rdname dgomp
-#' @export
+#' qgomp
+#' @noRd
 qgomp <- nimble::nimbleFunction(
   run = function(p = double(0), b = double(0), a = double(0),
                  lower.tail = logical(0),

@@ -12,11 +12,11 @@ diagnostics.max.min(x)
 \value{
 A data.frame with one row and the following numeric columns:
 \itemize{
-\item{ \code{PSRF_max} the maximum value of the “potential scale reduction
-factor”. }
-\item{ \code{PSRF_upper_max} the maximum value of the upper limit of the
+\item{ \code{PSRF_max} Maximum value of the \emph{potential scale reduction
+factor}. }
+\item{ \code{PSRF_upper_max} Mximum value of the upper limit of the
 0.95-confidence interval of the PSRF.}
-\item{ \code{ESS_min} minimum of the "effective sample size". }
+\item{ \code{ESS_min} Minimum of the \emph{effective sample size}. }
 }
 }
 \description{
@@ -32,12 +32,13 @@ length of the chains, i. e. the number of iterations.
 # convert to matrix
 sorsum <- as.matrix(sorsum_as[,2])
 
-# example with default settings, please be a little bit patient
+# example with default settings, please be atient
 sorsum_res <- bay.ta(method = sorsum)
 
+# compute diagnostics of the MCMC samples
 sorsum_diag <- diagnostic.summary(sorsum_res)
 
-# show maximum and minimum values.
+# show maximum and minimum values
 diagnostics.max.min(sorsum_diag)
 \dontshow{\}) # examplesIf}
 }

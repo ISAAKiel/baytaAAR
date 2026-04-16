@@ -18,7 +18,7 @@ age.comp.summary(
 \item{known_age}{a vector of known age-at-death. NAs are allowed and those
 entries will subsequently be ignored.}
 
-\item{mean_choice}{a character string of either "Mode", "Median" or "Mode".
+\item{mean_choice}{a character string of either "Mean", "Median" or "Mode".
 Default: "Mode".}
 
 \item{age_identifier}{a character string of either "age.s" or "age.s_c" to
@@ -33,12 +33,40 @@ the PSRF is invoked. Default: TRUE.}
   }}
 }
 \value{
-a dataframe with age estimation quality parameters
+A data.frame with one row and eight columns with age estimation
+quality parameters as follows:
+\itemize{
+\item{ \code{Bias} Arithmetic mean of the difference between known and
+estimated age. }
+\item{ \code{corrPearson} Correlation of known and estimated age.}
+\item{ \code{corr_p} p-value of the correlation of known and estimated age. }
+\item{ \code{Residual_slope} Slope of the regression line of the difference
+between known and estimated age. }
+\item{ \code{Inaccuracy} Arithmetic mean of the absolute difference between
+known and estimated age. }
+\item{ \code{RMSE} \emph{Root mean square error} of known and estimated age.}
+\item{ \code{TMNLP} \emph{Test mean log posterior}, a local evaluation of the
+probability density at the point of known age. }
+\item{ \code{CRPS} \emph{Continuous ranked probability score}, a global
+evaluation of the probability density at the point of known age. }
+}
 }
 \description{
-Comparison of estimated age with known age-at-death.
+Comparison of estimated age and known age-at-death with the help of several
+Goodness-of-fit measures. For most of the measures smaller is better. The only
+exception is \emph{corrPearson} where larger is better.
 }
 \examples{
-NULL
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 
+  # select Spitalfields data with multiple traits and convert to matrix
+  spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
+
+  # example with multinormal likelihood, please be patient
+  spitalfields_res <- bay.ta(framework = "NIMBLE", algorithm = "mnorm",
+  method = spitalfields_traits)
+
+  # compute age summary statistics
+  age.comp.summary(spitalfields_res, known_age = spitalfields$Age)
+\dontshow{\}) # examplesIf}
 }

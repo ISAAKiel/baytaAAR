@@ -9,11 +9,11 @@ threshold.matrix(x, mean_choice = "Mode")
 \arguments{
 \item{x}{output from function \code{diagnostic.summary()}}
 
-\item{mean_choice}{a character string of either "Mode", "Median" or "Mode".
+\item{mean_choice}{a character string of either "Mean", "Median" or "Mode".
 Default: "Mode".}
 }
 \value{
-a matrix with threshold values of traits. The number of rows
+A matrix with threshold values of traits. The number of rows
 corresponds to the number of traits, and the number of columns to the
 maximum number of levels of one of the traits.
 }
@@ -28,7 +28,7 @@ A convenience function to extract mean thresholds values from the output of
 # convert to matrix
 sorsum <- as.matrix(sorsum_as[,2])
 
-# example with default settings, please be a little bit patient
+# example with default settings, please be patient
 sorsum_res <- bay.ta(method = sorsum)
 
 # compute threshold chains

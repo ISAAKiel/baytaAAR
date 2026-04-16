@@ -1,15 +1,24 @@
-#' Bayesian Transition Analysis with JAGS or NIMBLE
-#'
-#' This function implements a version of the Bayesian Transition Analysis with
-#' MCMCM with JAGS. It presupposes an installed version of JAGS which it
-#' interfaces with `runjags` (##).
+#' Bayesian Transition Analysis with JAGS
 #'
 #' @param runjagsMethod string. Mode to run `runjags`, options: "rjags",
 #' "rjparallel", "parallel". Default: "rjags".
+#' @inheritParams bay.ta
 #'
-#' @rdname bay.ta
+#' @return A list of MCMC chains of class \code{coda::mcmc.list}.
+#'
+#' @rdname bay.ta.jags
 #'
 #' @export
+#' @keywords internal
+#'
+#' @examplesIf interactive()
+#'
+#'   # select Sorsum data with auricular surface after Lovejoy et al. 1985 and
+#'   # convert to matrix
+#'   sorsum <- as.matrix(sorsum_as[,2])
+#'
+#'   # example with framework JAGS
+#'   sorsum_res <- bay.ta(framework = "JAGS", method = sorsum)
 
 bay.ta.jags <- function(
     method,

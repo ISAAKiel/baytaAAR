@@ -10,7 +10,7 @@ threshold.chains(mcmc_list)
 \item{mcmc_list}{MCMC output from coda chains.}
 }
 \value{
-a \code{coda::mcmc.list} for threshold values of traits on the
+A \code{coda::mcmc.list} for threshold values of traits on the
 age scale.
 }
 \description{
@@ -24,7 +24,7 @@ The function returns a \code{coda::mcmc.list} which can be further processed.
 # convert to matrix
 sorsum <- as.matrix(sorsum_as[,2])
 
-# example with default settings, please be a little bit patient
+# example with default settings, please be patient
 sorsum_res <- bay.ta(method = sorsum)
 
 # compute threshold chains

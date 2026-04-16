@@ -15,28 +15,28 @@ diagnostic.summary(mcmc_list, HDImass = 0.95, gelman_diag = TRUE)
 the PSRF is invoked. Default: TRUE.}
 }
 \value{
-A data.frame of class \code{diagnostic_summary} with the row names according to
-the parameters to be monitored and the following numeric columns:
+A data.frame of class \code{diagnostic_summary} with the row names according
+to the parameters to be monitored and the following numeric columns:
 \itemize{
-\item{ \code{PSRF Point est.} “potential scale reduction factor” (= Gelman-
-Rubin statistic), a measure of the mixing of chains. }
-\item{ \code{PSRF Upper C.I.} the upper limit of the 0.95-confidence interval
+\item{ \code{PSRF Point est.} \emph{Potential scale reduction factor}
+(= Gelman-Rubin statistic), a measure of the mixing of chains. }
+\item{ \code{PSRF Upper C.I.} The upper limit of the 0.95-confidence interval
 of the PSRF.}
-\item{ \code{Mean} arithmetic mean of the estimates. }
-\item{ \code{Median} median of the estimates. }
-\item{ \code{Mode} mode of the estimates. }
-\item{ \code{ESS} "effective sample size", a control of autocorrelation.}
-\item{ \code{MCSE} "Monte Carlo standard error".}
-\item{ \code{HDImass} credibility level of the highest density interval.}
-\item{ \code{HDIlow} start of the highest density interval.}
-\item{ \code{HDIhigh} end of the highest density interval.}
+\item{ \code{Mean} Arithmetic mean of the estimates. }
+\item{ \code{Median} Median of the estimates. }
+\item{ \code{Mode} Mode of the estimates. }
+\item{ \code{ESS} \emph{Effective sample size}, a control of autocorrelation.}
+\item{ \code{MCSE} \emph{Monte Carlo standard error}.}
+\item{ \code{HDImass} Credibility level of the \emph{highest density
+interval}.}
+\item{ \code{HDIlow} sStart of the \emph{highest density interval}.}
+\item{ \code{HDIhigh} End of the \emph{highest density interval}.}
 }
 }
 \description{
-Summarising diagnostics partly derived from
+Summarising diagnostics from a \code{coda::mcmc.list}, partly derived from
  \href{https://jkkweb.sitehost.iu.edu/DoingBayesianDataAnalysis/}{Kruschke
- (2015)}. Enter a codaMCMClist and receive a dataframe with summarising
- diagnostics.
+ (2015)}.
 }
 \details{
 Because the first threshold is fixed, the Gelman-Rubin multivariate PSRF
@@ -50,9 +50,10 @@ Because the first threshold is fixed, the Gelman-Rubin multivariate PSRF
 # convert to matrix
 sorsum <- as.matrix(sorsum_as[,2])
 
-# example with default settings, please be a little bit patient
+# example with default settings, please be patient
 sorsum_res <- bay.ta(method = sorsum)
 
+# compute diagnostics of the MCMC samples
 sorsum_diag <- diagnostic.summary(sorsum_res)
 
 # show first rows

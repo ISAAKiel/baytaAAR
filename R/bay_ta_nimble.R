@@ -1,10 +1,23 @@
-#' Bayesian Transition Analysis with JAGS or NIMBLE
+#' Bayesian Transition Analysis with NIMBLE
 
 #' @param numSteps number of steps
+#' @inheritParams bay.ta
 #'
-#' @rdname bay.ta
+#' @return A list of MCMC chains of class \code{coda::mcmc.list}.
+#'
+#' @rdname bay.ta.nimble
 #'
 #' @export
+#' @keywords internal
+#'
+#' @examplesIf interactive()
+#'
+#'   # select Sorsum data with auricular surface after Lovejoy et al. 1985 and
+#'   # convert to matrix
+#'   sorsum <- as.matrix(sorsum_as[,2])
+#'
+#'   # example with default settings
+#'   sorsum_res <- bay.ta(method = sorsum)
 #'
 bay.ta.nimble <- function(
     algorithm,
