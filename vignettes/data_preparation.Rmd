@@ -16,16 +16,32 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r setup, echo = F, message=FALSE}
 library(baytaAAR)
 ```
 
-Possible data structure
+As input, `baytaAAR` assumes a `matrix` of trait expressions. In its simplest form, this may contain only one column with a single trait as in the following example ("auricular surface").
 
-Data input must be a matrix. 
+```{r sorsum data, echo = F}
+data(sorsum_as, package = "baytaAAR")
+head(sorsum_as)
+```
 
-The levels should start at 1. Binary data is possible.
+In this case, the data is stored as `data.frame` and must be converted to a `matrix`. This is necessary even if -- as here -- there is only one trait. The function `bay.ta()` will throw an error if this is not done.
 
-Mixed levels should be an absolute no-go.
+```{r sorsum data.frame error, echo = T, error = TRUE}
+bay.ta(method = sorsum_as$auricular_surface)
+```
 
-The nodes (= rows of the matrix) do not have to be fully observed.
+Conversion to a `matrix` is accomplished easily, however.
+
+```{r sorsum matrix, echo = T}
+# convert to matrix
+sorsum <- as.matrix(sorsum_as[,2])
+```
+
+NAs are allowed but neither must all entries in any of the rows be `NA` nor can this be the case for one or several of the columns. `bay.ta` will reject to run in such cases, and the offending rows or columns need to be removed from analysis. Please see the article on Chelsea 'Old church' for an example how this can be accomplished.
+
+The levels of all traits must start at `1`. Binary traits are possible. Mixed levels like `1.5` as short-cut for a trait-expression between `1` and `2`, however, should be an absolute no-go as this would violate basic principles of ordinal scaling. Thus, for such cases a decision for one of the neighbouring levels has to be made or they need to be set to `NA`.
+
+The nodes (= rows of the matrix) do not have to be fully observed for the multinormal model to run because with [NIMBLE vers. 1.4.1.](https://r-nimble.org/release-notes.html#february-14-2026-weve-released-version-1.4.1), the NIMBLE team introduced a sampler for only partly observed multivariate normal random variables.

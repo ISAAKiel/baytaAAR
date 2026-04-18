@@ -30,7 +30,7 @@ rgomp <- nimble::nimbleFunction(
     if (b <= 0 | a <= 0) nimStop("Invalid parameters for Gompertz distribution")
 
     # Generate a single Gompertz-distributed random value
-    u <- stats::runif(1)  # Uniform random number
+    u <- runif(1)  # Uniform random number
     x <- (1 / b) * log(1 - (b / a) * log(1 - u))  # Inverse CDF sampling
 
     return(x)

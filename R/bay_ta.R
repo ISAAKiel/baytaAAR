@@ -1,13 +1,36 @@
 #' Bayesian Transition Analysis with JAGS or NIMBLE
 #'
+#' \code{bay.ta()} implements latent trait analysis within a Bayesian Markov
+#' Chain Monte Carlo (MCMC) framework. It is intended to estimate the
+#' age-of-death of adult individuals for whom one or several ordinal traits
+#' have been assessed. It produces probability densities for the individual
+#' ages but also for the respective population as a whole. \code{bay.ta()} has
+#' been introduced and tested in the paper ###.
 #' \code{bay.ta()} is a wrapper for the functions \code{bay.ta.jags()} and
-#' \code{bay.ta.nimble()}. Both implement the Bayesian Transition Analysis with
-#' MCMC. NIMBLE allows the user to run models with multinormal ordered regression,
-#' also with parallel clusters. In this respect, however, JAGS tends to be more
-#' stable. The latter presupposes, however, that you have installed JAGS outside
-#' of R.
+#' \code{bay.ta.nimble()}. NIMBLE allows the user to run models with multinormal
+#' ordered regression, also with parallel clusters. In this respect, however,
+#' JAGS tends to be more stable. The latter presupposes, however, that you have
+#' installed JAGS outside of R.
 #'
-#' @details blabla
+#' @section Data requirements:
+#' As input, \code{bay.ta()} assumes a \code{matrix} of trait expressions. In
+#' its simplest form, this may contain only one column with a single trait. NAs
+#' are allowed but neither must all entries in any of the rows be \code{NA} nor
+#' can this be the case for one or several of the columns. \code{bay.ta} will
+#' reject to run in such cases, and the offending rows or columns need to be
+#' removed from analysis. Please see the article on Chelsea 'Old church' for an
+#' example how this can be accomplished.
+#' The levels of all traits must start at \code{1}. Binary traits are possible.
+#' Mixing of levels like \code{1.5} as short-cut for a trait-expression between
+#' \code{1} and \code{2}, however, should be an absolute no-go as this would
+#' violate basic principles of ordinal scaling. Thus, for such cases a decision
+#' for one of the neighboring levels has to be made or they need to be set to
+#' \code{NA}.
+#' The nodes (= rows of the matrix) do not have to be fully observed for the
+#' multinormal model to run because with
+#' \href{https://r-nimble.org/release-notes.html#february-14-2026-weve-released-version-1.4.1}{NIMBLE vers. 1.4.1.},
+#' the NIMBLE team introduced a sampler for only partly observed multivariate
+#' normal random variables.
 #'
 #' @param framework character string. Either \code{JAGS} or \code{NIMBLE}.
 #'  Default: \code{NIMBLE}.
@@ -89,7 +112,7 @@ bay.ta  <- function(
     minimum_age = 15,
     maximum_age = 100,
     parameters = c("b", "a", "beta0", "beta", "thresh", "age.s"),
-    nChains = 3L,
+    nChains = 3,
     adaptSteps = 2000,
     burnInSteps = 3000,
     thinSteps = 1,
@@ -100,6 +123,10 @@ bay.ta  <- function(
   checkmate::assertChoice(framework, c("JAGS", "NIMBLE"))
   checkmate::assertChoice(algorithm, c("norm", "mnorm"))
   checkmate::assertMatrix(method)
+  for (i in 1:ncol(method)) {
+    checkmate::assertIntegerish(method[,i], all.missing = FALSE, lower = 1) }
+  for (i in 1:nrow(method)) {
+    checkmate::assertIntegerish(method[i,], all.missing = FALSE, lower = 1) }
   checkmate::assertLogical(multicore)
   checkmate::assertCount(seed)
   checkmate::assertNumeric(eta, lower = 0)
@@ -111,10 +138,10 @@ bay.ta  <- function(
                           choices = c("b", "a", "beta0", "beta",
                                       "thresh", "age.s", "age.s_c", "Ustar"))
   checkmate::assertCount(nChains, positive = TRUE)
-  checkmate::assertNumeric(adaptSteps, lower = 0 )
-  checkmate::assertNumeric(burnInSteps, lower = 0 )
-  checkmate::assertNumeric(thinSteps, lower = 1)
-  checkmate::assertNumeric(numSavedSteps)
+  checkmate::assertCount(adaptSteps )
+  checkmate::assertCount(burnInSteps)
+  checkmate::assertCount(thinSteps, positive = TRUE)
+  checkmate::assertCount(numSavedSteps)
   checkmate::assertLogical(silent.jags)
   checkmate::assertLogical(silent.runjags)
   available_cores <- parallel::detectCores(logical = FALSE)

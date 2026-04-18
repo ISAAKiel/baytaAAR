@@ -20,13 +20,13 @@ A data.frame with the chosen mean measure and the HDI ranges as
 specified in the output of \code{diagnostics.summary()} as columns and the
 following rows:
 \itemize{
+\item{ \code{age_mean} Mean of the mean ages.}
+\item{ \code{hdi_diff} Mean of the \emph{highest density intervals}.}
+\item{ \code{b} Mean of the Gompertz parameter \eqn{\beta}. }
+\item{ \code{a} Mean of the Gompertz parameter \eqn{\alpha}. }
 \item{ \code{M} Modal age, derived from the Gompertz parameters
 \eqn{\alpha} and \eqn{\beta} according to the equation
 (1 / \eqn{\beta}) * log(\eqn{\beta} / \eqn{\alpha}) + minimum_age. }
-\item{ \code{age_mean} Mean of the mean ages.}
-\item{ \code{b} Mean of the Gompertz parameter \eqn{\beta}. }
-\item{ \code{a} Mean of the Gompertz parameter \eqn{\alpha}. }
-\item{ \code{hdi_diff} Mean of the \emph{highest density intervals}. }
 }
 }
 \description{

@@ -32,12 +32,12 @@ library(flexsurv)
 
 ## Introduction
 
-**baytaAAR** implements latent trait analysis within a Bayesian Markov Chain Monte Carlo (MCMC) framework. It is intended to estimate the age-of-death of adult individuals for whom one or several ordinal traits have been assessed. It produces probability densities for the individual ages but also for the respective population as a whole. `baytaAAR` has been introduced and tested in the paper ###. More in-depth information on the background of and the rationale behind `baytaAAR` can be found in the vignettes. A further use-case discusses a real-life use-case with partly known age-at-death.
+**baytaAAR** implements latent trait analysis within a Bayesian Markov Chain Monte Carlo (MCMC) framework. It is intended to estimate the age-of-death of adult individuals for whom one or several ordinal traits have been assessed. It produces probability densities for the individual ages but also for the respective population as a whole. `baytaAAR` has been introduced and tested in the paper ###. More in-depth information on the background of and the rationale behind `baytaAAR` can be found in the vignettes. A further use-case discusses a real-life use-case with partly known ages-at-death.
 
 
 ## Data layout
 
-As input, `baytaAAR` assumes a `matrix` of trait expressions. In its simplest form, this may contain only one column with a single trait as in the following example ("auricular surface").
+As input, the function `bay.ta()` assumes a `matrix` of trait expressions. In its simplest form, this may contain only one column with a single trait as in the following example ("auricular surface").
 
 ```{r sorsum data, echo = F}
 data(sorsum_as, package = "baytaAAR")
@@ -56,7 +56,7 @@ Level 5 is the most numerous while levels 1 and 2 are only present once each.
 
 ## Running a first analysis
 
-We will now run a first analysis with `baytaAAR` with the Sorsum data. We will leave most parameters at the default values and only change the minimum age to `18` and the amount of saved steps to `1,000,000`. This number is divided by the number of chains (default = 3) to get at the total number of iterations, minus the number of iterations used for adaptation and burning-in.
+We will now run a first analysis with `bay.ta()` with the Sorsum data. We will leave most parameters at the default values and only change the minimum age to `18` and the amount of saved steps to `1,000,000`. This number is divided by the number of chains (default = 3) to get at the total number of iterations, minus the number of iterations used for burning-in.
 
 ```{r sorsum analysis, echo = TRUE}
 sorsum_as_res <- bay.ta(
@@ -72,28 +72,29 @@ The analysis takes about 1 minute, depending on the computer power. The model ou
 sorsum_as_res_diag <- diagnostic.summary(sorsum_as_res)
 ```
 
-The output can be processed with any function able to deal with `coda` mcmc.lists but `baytaAAR provides some functions for convenience to quickly achieve results. One of them is the function `diagnostic.summary` which exactly does what the name suggests: a summary of diagnostic measures of the parameters.
+The output can be processed with any function able to deal with `coda` mcmc.lists but `baytaAAR` provides some functions for convenience to quickly achieve diagnostic results. One of them is the function `diagnostic.summary` which exactly does what the name suggests: a summary of diagnostic measures of the parameters.
 
 ```{r sorsum diagnostics table head, echo = FALSE}
 sorsum_as_res_diag %>% head(., 20) %>% knitr::kable(., digits = 4)
 ```
 
-A diagnostic table gives a first impression of the result. 
+A diagnostic table gives a first impression of the result. `diagnostics.max.min()`, a further convenience function, displays minimum/maximum values of the two quality measures `Potential scale reduction factor` (PSRF, also called Gelman-Rubin statistic), a measure of the mixing of chains and the `Effective sample size` (ESS), a control of autocorrelation. The `psrf` value should be below `1.1`, and the ESS value larger than `10,000` [@ref_77051, §§].
 
 ```{r sorsum diagnostic table, echo = T}
 diagnostics.max.min(sorsum_as_res_diag)
 ```
 
-Quality measures ...
+From the output of `diagnostics.max.min()` it is clear that these values are not yet reached and that therefore more iterations would be necessary. From the minimum ESS value, it can be surmised that at least 250 times more iterations need to be run to get to a value of 10,000. This would also take 250 times longer, so 200--250 minutes, equaling about 4 hours. However, because the resulting file would also be 250 times larger, a certain thinning is necessary, so saving only, say, every 100th step (= thinning of 100). This in turn might increase autocorrelation which in turn will force you to run the model even longer.
+
+In the current vignettte, we forego this step at the moment. Instead, we inspect the seven thresholds between the eight levels (the number of thresholds is always the number of levels minus one). For this, we use the function `threshold.chains()` to compute the threshold values for each iteration. The computation of the thresholds on the age-scale is done outside of the MCMC simulation to spare the computation cost and the memory. The function returns a `coda::mcmc.list` which is further processed with first `diagnostic.summary()` and then `threshold.matrix()`. The latter is again a convenience function to extract mean thresholds values from the output of `diagnostic.summary()` which is particularly handy when dealing with several traits.
 
 ```{r sorsum thresholds, echo = TRUE}
 thresholds <- threshold.chains(sorsum_as_res)
 thresh_diag <- diagnostic.summary(thresholds)
-threshold.matrix(thresh_diag, mean_choice = "Mode") %>% data.frame(.) %>%
-  knitr::kable(., digits = 4)
+threshold.matrix(thresh_diag)  |> data.frame() |> knitr::kable(digits = 1)
 ```
 
-The thresholds of this traits.
+The thresholds of this trait (auricular surface) are unevenly spaced within the age range of 18 and 100 years. The probability distribution of the thresholds can conveniently visualised with a workflow combining the functions `as_draws_array` and `as_draws_df` from the R-package `posterior` (§§) as well as functionality from the R-package `tidybayes` for ggplot plots.
 
 ```{r thresholds plot, echo = TRUE, warning=F, fig.width=5, fig.height=6, fig.align = 'center' }
 mcmc_array <- posterior::as_draws_array(thresholds)
@@ -104,20 +105,19 @@ draws_df[,c(1:7)] %>%
   ggplot(aes(x = value, y = parameter)) +
   tidybayes::stat_halfeye(.width = 0.95, point_interval = mode_hdi, 
                           fill = "lightgrey") + 
-  scale_x_continuous(breaks = seq(10,100,10), limits = c(15, 100)) +
+  scale_x_continuous(breaks = seq(10,100,10), limits = c(18, 100)) +
   labs(
     x = "\nModal age-at-death (years)",
     y = NULL
   ) + theme_light() + theme(panel.grid.minor.x = element_blank())
 ```
-
-Plots of the thresholds.
+The resulting plot shows impressively the considerable overlap between the thresholds but also that these are not evenly spaced. Interesting would be a comparison with the thresholds of this trait computed for other populations, keeping in mind that the current values are not reliable as the quality measures were not yet met.
 
 ```{r sorsum agerange, echo = TRUE}
-round(age.estim.summary(sorsum_as_res_diag), 4)
+age.estim.summary(sorsum_as_res_diag) |> knitr::kable(digits = 3)
 ```
 
-The age ranges
+The function `age.estim.summary()` conveniently provides summaries of age-related measures like the mean estimated age, the mean of the highest density interval of the estimated ages as well as the parameters $\alpha$, $\beta$, and - derived from these two -- the modal age M. It makes a difference if you choose `Mean`, `Median` or `Mode` as the measure of the mean. To illustrate the spread of the ages, it is useful to rely again on the functionality of the R-packages `posterior` and `tidybayes`.
 
 ```{r sorsum ages, echo = TRUE, warning=F, fig.width=5, fig.height=6, fig.align = 'center' }
 mcmc_array <- as_draws_array(sorsum_as_res)
@@ -126,25 +126,27 @@ draws_df[,grep("^age.s\\[", colnames(draws_df))][,c(1:8)] %>%
   tidyr::pivot_longer(cols = everything(), names_to = "parameter", values_to = "value") %>%
   ggplot(aes(x = value, y = parameter)) +
   stat_halfeye(.width = 0.95, point_interval = mode_hdi, fill = "lightgrey") +
-  scale_x_continuous(breaks = seq(10,100,10), limits = c(15, 100)) +
+  scale_x_continuous(breaks = seq(10,100,10), limits = c(18, 100)) +
   labs(
     x = "\nModal age-at-death (years)",
     y = NULL
   ) + theme_light() + theme(panel.grid.minor.x = element_blank())
 ```
 
-The plots of the first eight age estimates look similar to the threshold plots.
+The plots of the first eight age estimates look similar to the threshold plots and allow to immediately grasp the spread of the probability distribution of the age estimates. So, for example, for the first individual ('age.s[1]') with stage 4 of the auricular surface, the age mode is at about 37 years, but the 95%-credibility range is between about 24 to 71 years.
+
+Together with the individual age-at-death estimates, `bay.ta()` also estimates the parameters of the underlying Gompertz function, $\alpha$ and $\beta$.
 
 ```{r sorsum Gompertz plot, echo = TRUE, fig.width=4, fig.height=3, fig.align = 'center' }
 ggplot() + ylab("density\n") + 
   geom_function(fun = function(x) flexsurv::dgompertz(x - 18,
-                                                      sorsum_as_res_diag[1,3], 
-                                                      sorsum_as_res_diag[2,3])) +
-    xlab("\nGompertz distribution") + theme_light() +
-  scale_x_continuous(breaks = seq(10,100,10), limits = c(18, 100)) + theme(panel.grid.minor.x = element_blank())
+                                                      sorsum_as_res_diag["b",3], sorsum_as_res_diag["a",3])) +
+  xlab("\nGompertz distribution") + theme_light() +
+  scale_x_continuous(breaks = seq(10,100,10), limits = c(18, 100)) +
+  theme(panel.grid.minor.x = element_blank())
 ```
 
-Gompertz distribution.
+The Gompertz function allows a completely different view on the mortality structure of the population studied as it is not dependent on individual point estimates of ages like, for example, Kaplan-Meier-diagrams (§§).
 
 
 ## Going further

@@ -140,8 +140,8 @@ tmnlp <- function(known_age, mcmcMat) {
 #'   \item{Top right}{Comparison of the density of known ages with a Gompertz
 #'   function derived from the arithmetic mean of the estimated population
 #'   parameters \eqn{\alpha} and \eqn{\beta}.}
-#'   \item{Bottom left}{Scatter plot of known and estimated ages with dotted
-#'   regression line.}
+#'   \item{Bottom left}{Scatter plot of known and estimated ages with
+#'   regression line in blue. The dotted line marks perfect equivalence.}
 #'   \item{Bottom right}{Slope of the regression line from the left bottom image
 #'   (cf. goodness-of-fit measure \code{Residual_slope} from the function
 #'   \code{age.comp.summary()}).}

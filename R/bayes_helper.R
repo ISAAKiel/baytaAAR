@@ -206,13 +206,13 @@ diagnostics.max.min <- function(x) {
 #' specified in the output of \code{diagnostics.summary()} as columns and the
 #' following rows:
 #' \itemize{
+#' \item{ \code{age_mean} Mean of the mean ages.}
+#' \item{ \code{hdi_diff} Mean of the \emph{highest density intervals}.}
+#' \item{ \code{b} Mean of the Gompertz parameter \eqn{\beta}. }
+#' \item{ \code{a} Mean of the Gompertz parameter \eqn{\alpha}. }
 #' \item{ \code{M} Modal age, derived from the Gompertz parameters
 #' \eqn{\alpha} and \eqn{\beta} according to the equation
 #' (1 / \eqn{\beta}) * log(\eqn{\beta} / \eqn{\alpha}) + minimum_age. }
-#' \item{ \code{age_mean} Mean of the mean ages.}
-#' \item{ \code{b} Mean of the Gompertz parameter \eqn{\beta}. }
-#' \item{ \code{a} Mean of the Gompertz parameter \eqn{\alpha}. }
-#' \item{ \code{hdi_diff} Mean of the \emph{highest density intervals}. }
 #' }
 #'
 #' @export
@@ -277,7 +277,7 @@ age.estim.summary <- function(x,
                                  a = cbind(a, a_low, a_high),
                                  hdi = cbind(hdi, hdi_low, hdi_high)))
   colnames(age_result) <- c(mean_choice, hdi_mass, 1 - hdi_mass)
-  rownames(age_result) <- c("M", "age_mean", "b", "a", "hdi_diff")
+  rownames(age_result) <- c("age_mean", "hdi_diff", "b", "a", "M")
   return(age_result)
   }
 

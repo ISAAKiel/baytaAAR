@@ -1,11 +1,9 @@
 ---
 title: "Spitalfields: Comparison with known age-at-deah"
-author: "Nils Müller-Scheeßel"
-date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 bibliography: ../inst/REFERENCES.bib
 vignette: >
-  %\VignetteIndexEntry{known_age}
+  %\VignetteIndexEntry{Spitalfields: Comparison with known age-at-deah}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -17,7 +15,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup, echo = F}
+```{r setup, message = F}
 library(baytaAAR)
 library(nimble)
 library(dplyr)
@@ -25,16 +23,16 @@ library(ggplot2)
 library(kableExtra)
 ```
 
-To show how the age estimations of `baytaAAR` can be compared with known age-at-death, we use the dataset of Spitalfields [@ref_263525]. The individuals come from a crypt at London ## and were identified in terms of age and sex by plates on their coffins.
+To show how the age estimations of `baytaAAR` can be compared with known age-at-death, we use the data set of Spitalfields [@ref_263525]. The individuals come from a crypt at Christ Church, Spitalfields, London and were identified in terms of age and sex by plates on their coffins.
 
-```{r spitalfields data, echo = F}
+```{r spitalfields data, echo = T}
 data(spitalfields, package = "baytaAAR")
 head(spitalfields)
 ```
 
-Buckberry and Chamberlain introduced a new scoring system of the ## and thereby changed a single score with multiple levels to several traits with fewer levels each.
+Buckberry and Chamberlain introduced a new scoring system of the *pubic symphysis* and thereby changed a single score with multiple levels to several traits with fewer levels each.
 
-For running the model, with use NIMBLE and the multinorm likelihood (`mnorm`). `multicore` is set to `TRUE` to reduce computation time. Still, even on modern hardware, the model will run for several days until the usual quality criteria are met.
+For running the model, we use NIMBLE and the multinorm likelihood (`mnorm`). `multicore` should be set to `TRUE` to reduce computation time. Still, even on modern hardware, the model will run for several weeks until the usual quality criteria are met. However, already a shorter run demonstrates the principle [for the full run see the results in §§§].
 
 ```{r spitalfields bayta, echo = TRUE}
 spitalfields_res <- bay.ta(
@@ -45,47 +43,73 @@ spitalfields_res <- bay.ta(
   minimum_age = 16,
   parameters = c("b", "a", "beta0", "beta", "thresh", "age.s", "Ustar"),
   thinSteps = 1,
-  numSavedSteps = 10000,
-  seed = 233
+  numSavedSteps = 100000,
+  seed = 331
 )
 ```
 
-For once, we ignore the inspection of the diagnostics and go straight to the comparison with known age-at-death. For this, `bataAAR` provides several custom functions which essentially work as wrappers of other R-functions for convenience.
+For once, we ignore the inspection of the diagnostics and go straight to the comparison with known age-at-death. For this, `baytaAAR` provides several custom functions which essentially work as wrappers of other R-functions for convenience.
 
-As the name suggests, the function `age.estimate.summarize` summarizes standard frequentist and Bayesian quality measures. It can make quite a difference which mean is chosen for the point estimate. These fall into three groups:
+As the name suggests, the function `age.estimate.summary()` summarizes standard quality measures. These fall into two groups:
 
-++
+1. Frequentist point estimates
+- `Bias` - Arithmetic mean of the difference between known and estimated age.
+- `corrPearson` -- Correlation of known and estimated age with
+- `p_value` -- p-value of the correlation of known and estimated age and
+- `Residual_slope` -- Slope of the regression line of the difference between known and estimated age.
+- `Inaccuracy` -- Arithmetic mean of the absolute difference between known and estimated age.
+- `RMSE` -- *Root mean square error* of known and estimated age.
 
-```{r spitalfields age.estimate.summarize, echo = TRUE}
-age.comp.summary(mcmc_list = spitalfields_res,
-            known_age = spitalfields$Age,
-            mean_choice = "Mode") %>% t(.) %>% round(.,2) %>%
-  knitr::kable (., col.names = "value") %>%
+2. Bayesian density estimates
+- `TMNLP` -- *Test mean log posterior*, a local evaluation of the probability density at the point of known age [@stull_et_al_2022].
+- `CRPS` -- *Continuous ranked probability score*, a global evaluation of the probability density at the point of known age [@gneiting_et_al_2007].
+
+For nearly all measures, lower is better. The only exception is `corrPearson` where larger is better.
+
+```{r spitalfields age.estimate.summary, echo = TRUE}
+summary_list <- lapply(c("Mode", "Median", "Mean"), function(choice) {
+  age.comp.summary(mcmc_list = spitalfields_res, 
+                   known_age = spitalfields$Age,
+                   mean_choice = choice)})
+summary_mat <- do.call(rbind, summary_list)
+rownames(summary_mat) <- c("Mode", "Median", "Mean")
+summary_mat |>
+  knitr::kable(digits = 2) |>
   kableExtra::kable_styling(latex_options = c("HOLD_position"))
 ```
 
-The age estimates are off
+As the above table shows, it can make quite a difference which of the mean measures `Mean` (= arithnmetic mean), `Median` or `Mode` is chosen for the frequentist point estimate. In this case, the differences are even exaggerated because there are not enough iterations for stable estimates. On the other hand, the Bayesian estimates are not influenced by the choice of the mean measure because they are based on the probability density. Because the differences are squared with the `RMSE`, outliers influence this measure more strongly than this is the case for `Inaccuracy`, and therefore, the former tends always to be higher than the latter. A similar relationship exist between `CRPS` and `TMNLP`. Overall, Müller-Scheeßel et al. found that the `CRPS` tends to be more informative than the `TMNLP` and, therefore, the `CRPS` is probably the most informative single best measure to compare the results between different age estimation methods in terms of their quality to 'predict' age-at-death.
 
-To test the deviation formally, in the literature the binomial test is usually invoked ##. The wrapper `sequential.binom.test` calculates this test for several given credibility levels.
+Age estimation methods usually also supply minimum and maximum values for their estimates, so a range where the true age-at-death should fall into. Ideally, this range should adapt to the credibility/confidence level chosen, and the percentage of the true cases, the so-called *coverage* should be close to the chosen level. To test *coverage* formally, in the literature the *cumulative binomial test* has been proposed [@konigsberg_et_al_2008]. The wrapper `sequential.binom.test()` calculates this test for several given credibility levels.
 
 ```{r spitalfields binom test}
 sequential.binom.test(spitalfields_res,
                       HDImass = c(seq(0.5, 0.9, 0.1), 0.95),
-                      known_age = spitalfields$Age) %>%
-  knitr::kable (.) %>%
+                      known_age = spitalfields$Age) |>
+  knitr::kable(digits = 3) |>
   kableExtra::kable_styling(latex_options = c("HOLD_position"))
 ```
 
-The result suggests that.
+For all levels, the confidence intervals of the observed *coverage*, that is the number of times the *highest density intervals* of the estimated ages encapsulate the true ages-at-death, include the expected *coverage*. Thus, this result suggests that the model is able to to 'predict' age-at-death with the correct level of confidence.
 
-Finally, `age.comp.plot` shows the relationship between estimated and known age-at-death graphically. It can make quite a difference which mean is chosen for the point estimate.
+Finally, `age.comp.plot()` shows the relationship between estimated and known ages-at-death graphically. Its four plots convey the following information:
 
-```{r spitalfields plot, fig.width=8, fig.height=6, fig.align = 'center' }
-spitalfields_diag <- diagnostic.summary(spitalfields_res)
-age.comp.plot(spitalfields_diag, known_age = spitalfields$Age)
+- **Top left**: Comparison of estimated *highest density intervals* with known ages (green = age within HDI, red = age outside HDI, individuals ordered according to known age-at-death).
+
+- **Top right**: Comparison of the density of known ages with a Gompertz function derived from the arithmetic mean of the estimated population parameters $\alpha$ and $\beta$.
+
+- **Bottom left**: Scatter plot of known and estimated ages with regression line in blue. The dotted line marks perfect equivalence.
+
+- **Bottom right**: Slope of the regression line from the left bottom image (cf. goodness-of-fit measure `Residual_slope` from the function `age.comp.summary()`).
+
+Again, it can make quite a difference which mean measure is chosen for the point estimate for the two lower plots. The left top plot is not affected because the *highest density intervals* derive from the density distribution of the age estimates. For the right top plot, the Gompertz parameters are always taken from the arithmetic mean because only then the deterministic relationship between $\alpha$ and $\beta$ holds.
+
+```{r spitalfields plot, fig.width=8, fig.height=6, fig.align = 'center', warning=FALSE}
+diagnostic.summary(spitalfields_res) |>
+  age.comp.plot(known_age = spitalfields$Age)
 ```
 
-The plot demonstrate that
+The top left plot visualizes the result of the bottom line of the last table: Only eleven estimates, marked in red, do not encapsulate the true age-at-death at the default credibility level, which is 0.95. The top right plot illustrates the good agreement of the estimated Gompertz parameters fuelled into a Gompertz function with the density of the true ages-at-death. The bottom left plot is related to the correlation expressed in `corrPearson`, of course. The plot on the bottom right shows the same relationship, relative to the dotted line in the bottom left plot which is equivalent to the zero-line on the bottom right. The regression line in blue on the bottom right is nothing else than the quality measure `Residual_slope`. Furthermore, this plot also visualizes the spread of the difference between true and estimated age-at-death.
 
 ---
 
