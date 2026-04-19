@@ -150,6 +150,107 @@ $$
 
 The Gompertz distribution is implemented in NIMBLE and JAGS with the so-called "ones"-trick, which is a simple, convenient way to implement custom distributions [@ref_77051, 214--215]. Theoretically, NIMBLE allows to add custom functions as `nimble functions` compiled at runtime but we wanted to make sure that the results of the two frameworks are as similar as possible.
 
+
+## Mathematical notation
+
+The observed data are written as $y_{i,j}$ where \emph{i} indexes individuals from \emph{1 to N} and \emph{j} indexes traits (skeletal age “indicators”) from \emph{1 to J}. Because the data are recorded for ordinal categorical traits the values for each trait are in the form of positive integers. The number of states per trait is given as $K_j$. With $K_j$ states per trait $j$ there are $K_j - 1$ thresholds for each trait. 
+
+$$
+i = 1,\dots,N, \qquad
+j = 1,\dots,J, \qquad
+k = 1,\dots,K_j
+$$
+
+As stated above, the Gompertz model has two parameters $\alpha$ and $\beta$. The prior for $\beta$ is:
+
+$$
+\beta \sim \textit{U}(a = 0.02,\; b = 0.1)
+$$
+where \emph{U(a, b)} is a uniform distribution with the density function having a value of `1/(b - a)` between `a` and `b`. Simplifying the above equation of Sasaki and Kondo above, $\alpha$ is given deterministically as:
+
+$$
+\alpha = \exp(-66.77 \times \beta - 2.325)
+$$
+
+The prior for individual ages $t_i$, where $t$ is the age-at-death, is
+
+$$
+t_i \sim \textit{Gompertz}(\alpha,\; \beta)
+$$
+The starting age $t_0$ is usually at 15 years, and the distribution is truncated at `100 years - starting age`, reflecting a maximally expected life span of 100 years.
+
+The thresholds within each trait are represented using the symbol $\gamma$, so that for a trait with five stages, the thresholds are $\gamma_{k_1 = 1} < \gamma_{k_1 = 2} < \gamma_{k_1 = 3} < \gamma_{k_1 = 4}$. So that the model is identifiable, all $\gamma_{k_j = 1} = 1.5$.
+
+The priors within each trait $j$ for the thresholds with more than two states are:
+
+$$
+\gamma_{k=2,…,K_j} \sim \textit{TN}(
+\mu = k + 0.5,\;
+\sigma = 10,\;
+a,\;
+b = \infty)
+$$
+
+where \emph{TN()} is a truncated normal distribution with left truncation at `a` and right truncation at `b`. Because the thresholds must be ordered, for the JAGS-model, $a = 1.5$, and the simulated thresholds are sorted in ascending order. NIMBLE does not have a sort-function, so there $a = \gamma_{k-1}$.
+
+For each individual there is a vector of latent traits $z_i$ of length $J$ (number of traits). For the simple probit model with conditional independence, the elements of these vectors are modeled separately with normal distributions:
+
+$$
+z_{i,j} \sim \mathcal{N}(\mu_{i,j},\; \sigma = 1)
+$$
+
+For identifiability, $\sigma$ is fixed at \emph{unity} (1). 
+
+For the complex probit model, these vectors have a multivariate normal distribution:
+
+$$
+\boldsymbol{z}_i \sim \mathcal{MVN}(
+{\mu}_{i,j},\; 
+\mathbf{R}),
+$$
+
+where there is a “flat” prior by Lewandowski, Kurowicka, & Joe [-@ref_54568] for the correlation matrix:
+
+$$
+\mathbf{R} \sim \textit{LKJ}(\eta = 1)
+$$
+
+For $\eta = 1$, this prior is uniform over the space of correlation matrices.
+
+The terms in the vector $\mu_{i}$ are:
+
+$$
+\mu_{i,j} = \textit{beta}_{0_j} + \textit{beta}_j \times \ln(t_i)
+$$
+
+with the priors for the $beta_0$ and $beta$ parameters within each trait $j$ being:
+
+$$
+\textit{beta}_{0_j} \sim \textit{TN}(\mu = 0,\; \sigma = 10,\; 
+a = -\infty,\; b = 0)
+$$
+
+$$
+\textit{beta}_{j} \sim \textit{TN}(\mu = 0,\; \sigma = 10,\; 
+a = 0,\; b = \infty)
+$$
+
+JAGS and NIMBLE both have the distribution `dinterval` which is difficult to write in a succinct format:
+
+$$
+y_{i,j} =
+\begin{cases}
+1, & \text{if } z_{i,j} \le 1.5, \\[6pt]
+k_j, & \text{if } \gamma_{j,k_j-1} < z_{i,j} \le \gamma_{j,k_j},
+\quad k_j=2,\dots,K_j-1, \\[6pt]
+K_j, & \text{if } \gamma_{j,K_j-1} < z_{i,j} 
+\end{cases}
+$$
+
+Because `dinterval` indexes categories from `zero` instead of `one`, the observed trait levels and thresholds are internally shifted by one unit.
+
+The proper initialisation of the chains is of eminent importance in probit regression. Each chain starts with different parameter values to enhance mixing, and most parameters pick random values from uniform distributions. For Gompertz $\beta$ the init value is in the range `0.02–0.1`, for $beta$ the range is `0.5–1`, and for $beta_0$ `–10––3`. The init value for age $t_i$ is `20–40`, assuming that the starting age is `0`. The correlation matrix is for all chains initialised with an identity matrix (ones in the diagonal and zeros otherwise). The thresholds  are initialized with `k + 0.5` and the vector of latent traits $z_i$ with $y_{i,j} - \textit{U}(-0.2, 0.2)$.
+
 ---
 
 ## References

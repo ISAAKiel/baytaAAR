@@ -24,7 +24,172 @@ library(ggplot2)
 
 ## Introduction
 
-**baytaAAR** implements latent trait analysis within a Bayesian Markov Chain Monte Carlo (MCMC) framework. It is intended to estimate the age-of-death of adult individuals for whom one or several ordinal traits have been assessed. It produces probability densities for the individual ages but also for the respective population as a whole. `baytaAAR` has been introduced and tested in the paper ###. More in-depth information on the background of and the rationale behind `baytaAAR` can be found in the vignettes. A further use-case discusses a real-life use-case with partly known ages-at-death.
+**baytaAAR** implements latent trait analysis within a Bayesian Markov Chain Monte Carlo (MCMC) framework. It is intended to estimate the age-of-death of adult individuals for whom one or several ordinal traits have been assessed. It produces probability densities for the individual ages but also for the respective population as a whole. `baytaAAR` has been introduced and tested in the paper ###. The basic idea is epitomized in the following figure taken from §§.
+
+```{r ordered probit regression, echo = TRUE, fig.width=6, fig.height=4, fig.align = 'center' }
+library(flexsurv)
+
+# Thresholds and trait labels
+trans <- c(0.5, 1.5, 2.5, 3.5)
+trait_stages <- data.frame(
+  stage = 1:5,
+  trait = c("first", "second", "third", "fourth", "fifth")
+)
+
+# Model params
+beta <- 2
+beta0 <- -0.5 - beta * log(10)  # So that red line starts at (10, -0.5)
+sigma <- 0.5
+k <- 3
+
+# Compute exact ages for thresholds
+ages <- exp((trans - beta0) / beta)
+
+# Compute true means at those ages using the red regression line
+mu_vals <- beta0 + beta * log(ages)
+
+# Function to create closed polygon paths for green Gaussians
+make_gaussian_polygon <- function(x0, mu_y, clip_to_x_axis = FALSE) {
+
+  x_seq <- seq(-k * sigma, k * sigma, length.out = 100)
+  y_vals <- dnorm(x_seq, 0, sigma)
+  y_scaled <- y_vals / max(y_vals) * 3
+
+  x_vals <- x0 + y_scaled
+  y_vals_shifted <- mu_y + x_seq
+
+  if (clip_to_x_axis) {
+
+    keep <- y_vals_shifted >= -0.5
+
+    x_vals <- x_vals[keep]
+    y_vals_shifted <- y_vals_shifted[keep]
+
+    base_y <- -0.5
+
+  } else {
+
+    base_y <- mu_y - k * sigma
+
+  }
+
+  data.frame(
+    x = c(x_vals, x0),
+    y = c(y_vals_shifted, base_y),
+    group = x0
+  )
+}
+
+# Create green polygon data
+paths_list <- mapply(function(x0, mu_y) {
+  clip <- x0 == min(ages)
+  make_gaussian_polygon(x0, mu_y, clip_to_x_axis = clip)
+}, x0 = ages, mu_y = mu_vals, SIMPLIFY = FALSE)
+paths <- do.call(rbind, paths_list)
+
+# Latent trait density polygon (shifted down by 0.5)
+latent_z <- seq(0, 5.5, length.out = 300)
+latent_density <- dnorm(latent_z, mean = 2.5, sd = 1.2)
+latent_x <- 10 - latent_density * 25
+latent <- data.frame(
+  x = c(latent_x, 10),
+  y = c(latent_z - 0.5, min(latent_z - 0.5)),
+  group = 1
+)
+
+# Gompertz curve (shifted down by 0.5)
+age_seq <- seq(10, 100, length.out = 400)
+gompertz_density <- flexsurv::dgompertz(age_seq - 10, shape = 0.06, rate = 0.002)
+gompertz_density_scaled <- gompertz_density / max(gompertz_density) * 2
+gompertz <- data.frame(
+  x = c(age_seq, rev(age_seq)),
+  y = c(-gompertz_density_scaled - 0.4, rep(-0.5, length(age_seq))),
+  group = 1
+)
+
+# Axes (x-axis now at y = -0.5)
+x_axis <- data.frame(x = c(10, 100), y = c(-0.5, -0.5))
+y_axis <- data.frame(x = c(10, 10), y = c(-2.5, 5.5))
+
+# Arrow for equation label
+arrow_x <- 50
+arrow_y <- beta0 + beta * log(arrow_x)
+arrow_df <- data.frame(
+  x = c(arrow_x, arrow_x),
+  y = c(-0.5, arrow_y),
+  xend = c(arrow_x, 10),
+  yend = c(arrow_y, arrow_y)
+)
+
+# Threshold lines
+thresholds <- data.frame(y = trans)
+
+age_seq <- seq(10, 100, length.out = 400)
+
+reg_df <- data.frame(
+  x = age_seq,
+  y = beta0 + beta * log(age_seq)
+)
+
+x_breaks <- seq(20, 90, by = 10)
+
+tick_df <- data.frame(
+  x = x_breaks,
+  xend = x_breaks,
+  y = -0.5,
+  yend = -0.6   # small downward ticks
+)
+
+# Plot
+  ggplot() +
+  geom_line(data = reg_df,
+            aes(x = x, y = y),
+            color = "grey",
+            linewidth = 1) +
+  geom_hline(data = thresholds, aes(yintercept = y), linetype = "dashed", color = "grey50") +
+  annotate("text", x = 1, y = c(trans, 4.5) - 0.5, label = trait_stages$trait, hjust = 0, size = 4) +
+
+  geom_polygon(data = paths, aes(x = x, y = y, group = group), fill = "darkgreen", alpha = 0.4) +
+  geom_polygon(data = latent, aes(x = x, y = y, group = group), fill = "steelblue", alpha = 0.4) +
+  geom_polygon(data = gompertz, aes(x = x, y = y), fill = "lightgrey") +
+
+  #geom_segment(data = x_axis, aes(x = x[1], y = y[1], xend = x[2], yend = y[2]), linewidth = 0.5) +
+  #geom_segment(data = y_axis, aes(x = x[1], y = -0.5, xend = x[2], yend = y[2]), linewidth = 0.5) +
+  annotate("segment", x = 10, xend = 100, y = -0.5, yend = -0.5) +
+  annotate("segment", x = 10, xend = 10, y = -0.5, yend = 5.5) +
+  geom_segment(data = arrow_df, aes(x = x, y = y, xend = xend, yend = yend),
+               arrow = arrow(length = unit(0.2, "cm")), linewidth = 0.4) +
+
+  annotate("text", x = arrow_x - 20, y = arrow_y + 0.3,
+           label = expression(mu == beta[0] + beta[1]*log(age)), size = 5) +
+
+  xlab("Age-at-death (years)") + ylab("Latent trait variable") +
+  coord_cartesian(xlim = c(5, 90), ylim = c(-2.5, 4.25)) +
+   # coord_cartesian(xlim = c(5, 90), ylim = c(-0.5, 4.25)) +
+    geom_segment(data = tick_df,
+                 aes(x = x, xend = xend, y = y, yend = yend),
+                 linewidth = 0.4) +
+    geom_text(data = data.frame(x = x_breaks),
+              aes(x = x, y = -0.75, label = x),
+              size = 4) +
+    annotate("text",
+             x = mean(range(x_breaks)),
+             y = -1.2,
+             label = "Age-at-death (years)",
+             size = 5) +
+  theme_minimal(base_size = 14) +
+  theme(
+    axis.text.y = element_blank(),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0), hjust = 0.7),
+    axis.text.x  = element_blank(),
+    axis.title.x = element_blank(),
+    axis.ticks.x = element_blank()
+  )
+```
+
+The figure visualize the ordered probit regression as latent trait approach with age-at-death estimated from a Gompertz distribution (grey area) schematically. The green Gaussian distributions symbolize the transitions between the trait stages (here, arbitrarily, 5 stages, therefore 4 transitions). The regression line with its parameters intercept ($\beta_0$) and slope ($\beta_1$) determines the position of the latent trait variable. Please note that age is scaled logarithmically and that the line is therefore bending. In real-life applications, the latent trait variable does not need to be centered as it is here and the transitions will almost certainly not be as regularly spaced as they are here. More in-depth information on the background of and the rationale behind `baytaAAR` can be found in the vignettes. A further use-case discusses a real-life use-case with partly known ages-at-death.
 
 
 ## Data layout
@@ -138,7 +303,6 @@ The plots of the first eight age estimates look similar to the threshold plots a
 Together with the individual age-at-death estimates, `bay.ta()` also estimates the parameters of the underlying Gompertz function, $\alpha$ and $\beta$.
 
 ```{r sorsum Gompertz plot, echo = TRUE, fig.width=6, fig.height=4, fig.align = 'center' }
-library(flexsurv)
 ggplot() + ylab("density\n") + 
   geom_function(fun = 
                   function(x) flexsurv::dgompertz(x - 18,
@@ -173,7 +337,7 @@ diagnostic.summary(sorsum_as_res) |> diagnostics.max.min()
 
 ## Going further
 
-More vignettes explain framework decisions (`vignette("computation_framework")`), detail the model in mathematical terms (`vignette("gompertz_distribtuion")`), demonstrate how data sets with known age-at-death can be dealt with (`vignette("known_age")`) and provide a thoroughly worked example (`vignette("worked_example")`).
+More vignettes explain framework decisions (`vignette("computation_framework")`), detail the model in mathematical terms (`vignette("mathematical_background")`), demonstrate how data sets with known age-at-death can be dealt with (`vignette("known_age")`) and provide a thoroughly worked example (`vignette("worked_example")`).
 
 ---
 

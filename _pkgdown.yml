@@ -8,10 +8,9 @@ articles:
   navbar: ~
   contents:
   - computation_framework
+  - mathematical_background
   - data_preparation
   - known_age
-  - mathematical_notation
-  - gompertz_distribution
   - worked_example
 
 reference:
