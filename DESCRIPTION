@@ -9,11 +9,12 @@ Author: c(person(given = "Nils",
                       comment = c(ORCID = "0000-0001-7992-8722")))
 Maintainer: Nils Müller-Scheeßel <nils.mueller-scheessel@ufg.uni-kiel.de>
 Description: Provides Bayesian age estimation for bioarchaeological skeletal 
-    data using ordinal probit regression models implemented in JAGS and NIMBLE. 
+    data using ordinal probit regression models implemented in 'JAGS' and 'NIMBLE'. 
     The package is designed to handle multiple ordinal traits of adult individuals
-    and incorporates a Gompertz prior on age to reflect population-level mortality 
-    trends. It accounts for estimation uncertainties and supports full 
-    customization of model parameters and MCMC settings.
+    and incorporates a Gompertz prior on age to reflect population-level mortality. 
+    It accounts for estimation uncertainties and supports full customization of 
+    model parameters and Markov Chain Monte Carlo settings. The underlying 
+    method was introduced in Müller-Scheeßel et al. (2026) <doi:###>.
 License: GPL-3 | file LICENSE
 Encoding: UTF-8
 LazyData: true

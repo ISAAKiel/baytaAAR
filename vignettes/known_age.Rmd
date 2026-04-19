@@ -17,10 +17,6 @@ knitr::opts_chunk$set(
 
 ```{r setup, message = F}
 library(baytaAAR)
-library(nimble)
-library(dplyr)
-library(ggplot2)
-library(kableExtra)
 ```
 
 To show how the age estimations of `baytaAAR` can be compared with known age-at-death, we use the data set of Spitalfields [@ref_263525]. The individuals come from a crypt at Christ Church, Spitalfields, London and were identified in terms of age and sex by plates on their coffins.
@@ -67,6 +63,7 @@ As the name suggests, the function `age.estimate.summary()` summarizes standard 
 For nearly all measures, lower is better. The only exception is `corrPearson` where larger is better.
 
 ```{r spitalfields age.estimate.summary, echo = TRUE}
+library(kableExtra)
 summary_list <- lapply(c("Mode", "Median", "Mean"), function(choice) {
   age.comp.summary(mcmc_list = spitalfields_res, 
                    known_age = spitalfields$Age,
@@ -90,7 +87,7 @@ sequential.binom.test(spitalfields_res,
   kableExtra::kable_styling(latex_options = c("HOLD_position"))
 ```
 
-For all levels, the confidence intervals of the observed *coverage*, that is the number of times the *highest density intervals* of the estimated ages encapsulate the true ages-at-death, include the expected *coverage*. Thus, this result suggests that the model is able to to 'predict' age-at-death with the correct level of confidence.
+In the table above, the confidence intervals of the observed *coverage*, that is the number of times the *highest density intervals* of the estimated ages encapsulate the true ages-at-death, include the expected *coverage*  for all levels. Thus, this result suggests that the model is able to to 'predict' age-at-death with the correct level of confidence.
 
 Finally, `age.comp.plot()` shows the relationship between estimated and known ages-at-death graphically. Its four plots convey the following information:
 

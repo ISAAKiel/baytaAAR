@@ -1,7 +1,5 @@
 ---
 title: "Introduction to baytaAAR"
-author: "Nils Müller-Scheeßel"
-date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 bibliography: ../inst/REFERENCES.bib
 vignette: >
@@ -19,15 +17,9 @@ knitr::opts_chunk$set(
 
 ## Load libraries
 
-```{r, message=FALSE}
-library(ggplot2)
+```{r, echo = T, message=FALSE}
 library(baytaAAR)
-library(nimble)
-library(dplyr)
-library(posterior)
-library(tidybayes)
-library(tidyr)
-library(flexsurv)
+library(ggplot2)
 ```
 
 ## Introduction
@@ -39,7 +31,7 @@ library(flexsurv)
 
 As input, the function `bay.ta()` assumes a `matrix` of trait expressions. In its simplest form, this may contain only one column with a single trait as in the following example ("auricular surface").
 
-```{r sorsum data, echo = F}
+```{r sorsum data, echo = T}
 data(sorsum_as, package = "baytaAAR")
 head(sorsum_as)
 ```
@@ -47,11 +39,13 @@ head(sorsum_as)
 The example stems from the neolithic gallery grave Sorsum in Hessen/Germany. The auricular surface was the trait which was possible to assess most often [data from @ref_128246, table S69], and it was assessed according to the method by Lovejoy et al [-@ref_65832] which comprises eight levels. An overview of the distribution of the levels give the following plot:
 
 ```{r sorsum plot, echo = F, fig.width=4, fig.height=3, fig.align = 'center' }
-ggplot(sorsum_as, aes(x =auricular_surface)) + geom_histogram(binwidth = 0.5) + theme_light() +
-  scale_x_continuous(breaks=seq(1,8,1),minor_breaks=NULL) + xlab("\nauricular surface") + ylab("count\n")
+ggplot(sorsum_as, aes(x =auricular_surface)) + geom_histogram(binwidth = 0.5) + 
+  theme_light() +
+  scale_x_continuous(breaks=seq(1,8,1),minor_breaks=NULL) + 
+  xlab("\nauricular surface") + ylab("count\n")
 ```
 
-Level 5 is the most numerous while levels 1 and 2 are only present once each.
+Level 5 is the most numerous while levels 1 and 2 are only present once each. More on data preparation can be found in the `vignette("data_preparation")`.
 
 
 ## Running a first analysis
@@ -66,7 +60,7 @@ sorsum_as_res <- bay.ta(
 )
 ```
 
-The analysis takes about 1 minute, depending on the computer power. The model output (`sorsum_as_res` in this case) is a matrix with the number of chains (three in the default case).
+The analysis takes about 1 minute, depending on the computer power. The console output informs about the monitored parameters (`a`, `age.s`, `b`, `beta`, `beta0`, `thresh`), the sampled nodes (`age`, `beta`, `beta0`, `b`, `thresh` and `ystar`), their number and the used sampler which is `RW`. The model output (`sorsum_as_res` in this case) is a matrix with the number of chains (three in the default case).
 
 ```{r sorsum diagnostics, echo = TRUE}
 sorsum_as_res_diag <- diagnostic.summary(sorsum_as_res)
@@ -75,10 +69,10 @@ sorsum_as_res_diag <- diagnostic.summary(sorsum_as_res)
 The output can be processed with any function able to deal with `coda` mcmc.lists but `baytaAAR` provides some functions for convenience to quickly achieve diagnostic results. One of them is the function `diagnostic.summary` which exactly does what the name suggests: a summary of diagnostic measures of the parameters.
 
 ```{r sorsum diagnostics table head, echo = FALSE}
-sorsum_as_res_diag %>% head(., 20) %>% knitr::kable(., digits = 4)
+sorsum_as_res_diag |> head(20) |> knitr::kable(digits = 4)
 ```
 
-A diagnostic table gives a first impression of the result. `diagnostics.max.min()`, a further convenience function, displays minimum/maximum values of the two quality measures `Potential scale reduction factor` (PSRF, also called Gelman-Rubin statistic), a measure of the mixing of chains and the `Effective sample size` (ESS), a control of autocorrelation. The `psrf` value should be below `1.1`, and the ESS value larger than `10,000` [@ref_77051, §§].
+A diagnostic table gives a first impression of the result, above the first 20 rows are shown. `diagnostics.max.min()`, a further convenience function, displays minimum/maximum values of the two quality measures `Potential scale reduction factor` (PSRF, also called Gelman-Rubin statistic), a measure of the mixing of chains and the `Effective sample size` (ESS), a control of autocorrelation. The `PSRF` value should be below `1.1`, and the ESS value larger than `10,000` [@ref_77051, §§].
 
 ```{r sorsum diagnostic table, echo = T}
 diagnostics.max.min(sorsum_as_res_diag)
@@ -97,11 +91,16 @@ threshold.matrix(thresh_diag)  |> data.frame() |> knitr::kable(digits = 1)
 The thresholds of this trait (auricular surface) are unevenly spaced within the age range of 18 and 100 years. The probability distribution of the thresholds can conveniently visualised with a workflow combining the functions `as_draws_array` and `as_draws_df` from the R-package `posterior` (§§) as well as functionality from the R-package `tidybayes` for ggplot plots.
 
 ```{r thresholds plot, echo = TRUE, warning=F, fig.width=5, fig.height=6, fig.align = 'center' }
+library(posterior)
+library(tidybayes)
+library(ggplot2)
+library(tidyr)
 mcmc_array <- posterior::as_draws_array(thresholds)
 draws_df <- posterior::as_draws_df(mcmc_array)
 
-draws_df[,c(1:7)] %>%
-  tidyr::pivot_longer(cols = everything(), names_to = "parameter", values_to = "value") %>%
+draws_df[,c(1:7)] |>
+  tidyr::pivot_longer(cols = everything(), names_to = "parameter", 
+                      values_to = "value") |>
   ggplot(aes(x = value, y = parameter)) +
   tidybayes::stat_halfeye(.width = 0.95, point_interval = mode_hdi, 
                           fill = "lightgrey") + 
@@ -123,7 +122,8 @@ The function `age.estim.summary()` conveniently provides summaries of age-relate
 mcmc_array <- as_draws_array(sorsum_as_res)
 draws_df <- as_draws_df(mcmc_array)
 draws_df[,grep("^age.s\\[", colnames(draws_df))][,c(1:8)] %>%
-  tidyr::pivot_longer(cols = everything(), names_to = "parameter", values_to = "value") %>%
+  tidyr::pivot_longer(cols = everything(), names_to = "parameter", 
+                      values_to = "value") |>
   ggplot(aes(x = value, y = parameter)) +
   stat_halfeye(.width = 0.95, point_interval = mode_hdi, fill = "lightgrey") +
   scale_x_continuous(breaks = seq(10,100,10), limits = c(18, 100)) +
@@ -137,10 +137,12 @@ The plots of the first eight age estimates look similar to the threshold plots a
 
 Together with the individual age-at-death estimates, `bay.ta()` also estimates the parameters of the underlying Gompertz function, $\alpha$ and $\beta$.
 
-```{r sorsum Gompertz plot, echo = TRUE, fig.width=4, fig.height=3, fig.align = 'center' }
+```{r sorsum Gompertz plot, echo = TRUE, fig.width=6, fig.height=4, fig.align = 'center' }
+library(flexsurv)
 ggplot() + ylab("density\n") + 
-  geom_function(fun = function(x) flexsurv::dgompertz(x - 18,
-                                                      sorsum_as_res_diag["b",3], sorsum_as_res_diag["a",3])) +
+  geom_function(fun = 
+                  function(x) flexsurv::dgompertz(x - 18,
+                                                  sorsum_as_res_diag["b",3], sorsum_as_res_diag["a",3])) +
   xlab("\nGompertz distribution") + theme_light() +
   scale_x_continuous(breaks = seq(10,100,10), limits = c(18, 100)) +
   theme(panel.grid.minor.x = element_blank())
@@ -149,9 +151,29 @@ ggplot() + ylab("density\n") +
 The Gompertz function allows a completely different view on the mortality structure of the population studied as it is not dependent on individual point estimates of ages like, for example, Kaplan-Meier-diagrams (§§).
 
 
+## Running the analysis with JAGS
+
+Provided [JAGS](https://mcmc-jags.sourceforge.io) is installed, `bay.ta()` can also be run with JAGS. For this, we only have to set the parameter `framework` to `JAGS`. Everything else we leave as before.
+
+```{r sorsum analysis jags, echo = TRUE}
+sorsum_as_res <- bay.ta(
+  framework = "JAGS",
+  method = as.matrix(sorsum_as[,2]),
+  minimum_age = 18,
+  numSavedSteps = 1000000
+)
+```
+
+The JAGS model needs a little bit longer than the NIMBLE model but the diagnostics indicate that the overall performance is superior.
+
+```{r sorsum diagnostic table jags, echo = T}
+diagnostic.summary(sorsum_as_res) |> diagnostics.max.min()
+```
+
+
 ## Going further
 
-More vignettes are dedicated to ...
+More vignettes explain framework decisions (`vignette("computation_framework")`), detail the model in mathematical terms (`vignette("gompertz_distribtuion")`), demonstrate how data sets with known age-at-death can be dealt with (`vignette("known_age")`) and provide a thoroughly worked example (`vignette("worked_example")`).
 
 ---
 

@@ -2,8 +2,7 @@
 #'
 #' @description
 #' Summarising diagnostics from a \code{coda::mcmc.list}, partly derived from
-#'  \href{https://jkkweb.sitehost.iu.edu/DoingBayesianDataAnalysis/}{Kruschke
-#'  (2015)}.
+#'  \emph{Kruschke 2015}.
 #'
 #' @details
 #'  Because the first threshold is fixed, the Gelman-Rubin multivariate PSRF
@@ -15,6 +14,9 @@
 #' @param HDImass numeric. Value within 0 and 1. Default = 0.95.
 #' @param gelman_diag logical. If TRUE, the Gelman-Rubin diagnostics for computing
 #' the PSRF is invoked. Default: TRUE.
+#'
+#' @references
+#' \insertRef{ref_77051}{baytaAAR}
 #'
 #' @return
 #' A data.frame of class \code{diagnostic_summary} with the row names according
@@ -31,7 +33,7 @@
 #' \item{ \code{MCSE} \emph{Monte Carlo standard error}.}
 #' \item{ \code{HDImass} Credibility level of the \emph{highest density
 #' interval}.}
-#' \item{ \code{HDIlow} sStart of the \emph{highest density interval}.}
+#' \item{ \code{HDIlow} Start of the \emph{highest density interval}.}
 #' \item{ \code{HDIhigh} End of the \emph{highest density interval}.}
 #' }
 #'
@@ -52,8 +54,10 @@
 #' # show first rows
 #' head(sorsum_diag)
 #'
-diagnostic.summary <- function(mcmc_list, HDImass = 0.95, gelman_diag = TRUE)
-  {
+diagnostic.summary <- function(
+    mcmc_list,
+    HDImass = 0.95,
+    gelman_diag = TRUE) {
   checkmate::assertClass(mcmc_list, "mcmc.list")
   checkmate::assertNumeric(HDImass, lower = 0, upper = 1, len = 1)
   checkmate::assertLogical(gelman_diag)
@@ -287,20 +291,23 @@ age.estim.summary <- function(x,
 #' @description
 #' Internal function for generating starting values for the Gompertz model if
 #' the starting age is not 15 years. Not run if the minimum age is actually 15.
-#' The original formula derives from ##.
+#' The original formula derives from \emph{Sasaki and Kondo 2016}.
 #'
 #' @param sampling integer. Number of sampling steps. Default: 100000.
 #' @param b_min numeric. Minimum of Gompertz \eqn{\beta} parameter. Default: 0.02.
 #' @param b_max numeric. Maximum of Gompertz \eqn{\beta} parameter. Default: 0.1.
 #' @param minimum_age numeric. Minimum age in years. Default: 15.
 #'
-#' @return vector with coefficients for generating \eqn{\alpha} and \eqn{\beta}
-#' parameters for Gompertz function.
+#' @return A vector with coefficients for generating \eqn{\alpha} from
+#' \eqn{\beta}, the parameters of the Gompertz function.
 #'
-#' @noRd
+#' @references
+#' \insertRef{91048}{baytaAAR}
+#'
 #' @examples
-#'
 #' gomp.a0()
+#'
+#' @keywords internal
 #'
 gomp.a0 <- function(
     sampling = 100000,

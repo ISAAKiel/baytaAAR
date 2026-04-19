@@ -1,4 +1,38 @@
 url: ~
 template:
   bootstrap: 5
+  light-switch: true
 
+articles:
+- title: Articles
+  navbar: ~
+  contents:
+  - computation_framework
+  - data_preparation
+  - known_age
+  - mathematical_notation
+  - gompertz_distribution
+  - worked_example
+
+reference:
+- title: "Running bay.ta"
+  contents:
+  - bay.ta
+- title: "Postprocessing"
+  contents:
+  - diagnostic.summary
+  - diagnostics.max.min
+  - age.estim.summary
+  - threshold.chains
+  - threshold.matrix
+  - corr.mat.mean
+  - prob.cat
+- title: "Known age-at-death"
+  contents:
+  - age.comp.summary
+  - age.comp.plot
+  - sequential.binom.test
+- title: "Data sets"
+  contents:
+  - sorsum_as
+  - spitalfields

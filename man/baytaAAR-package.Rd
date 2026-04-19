@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Provides Bayesian age estimation for bioarchaeological skeletal data using ordinal probit regression models implemented in JAGS and NIMBLE. The package is designed to handle multiple ordinal traits of adult individuals and incorporates a Gompertz prior on age to reflect population-level mortality trends. It accounts for estimation uncertainties and supports full customization of model parameters and MCMC settings.
+Provides Bayesian age estimation for bioarchaeological skeletal data using ordinal probit regression models implemented in 'JAGS' and 'NIMBLE'. The package is designed to handle multiple ordinal traits of adult individuals and incorporates a Gompertz prior on age to reflect population-level mortality. It accounts for estimation uncertainties and supports full customization of model parameters and Markov Chain Monte Carlo settings. The underlying method was introduced in Müller-Scheeßel et al. (2026) \doi{###}.
 }
 \seealso{
 Useful links:

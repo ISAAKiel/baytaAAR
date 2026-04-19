@@ -1,7 +1,5 @@
 ---
 title: "Chelsea 'Old Church': A worked example with `baytaAAR`"
-author: "Nils Müller-Scheeßel"
-date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 bibliography: ../inst/REFERENCES.bib
 vignette: >

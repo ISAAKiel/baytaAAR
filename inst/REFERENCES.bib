@@ -11,6 +11,25 @@ abstract = {A revised method for estimating adult age at death using the auricul
 location = {Department of Archaeology and Prehistory, University of Sheffield, Sheffield S1 4ET, UK. J.Buckberry@Sheffield.ac.uk},
 keywords = {}}
 
+@Misc{buerkner_et_al_2026,
+    title = {posterior: Tools for Working with Posterior Distributions},
+    author = {Paul-Christian Bürkner and Jonah Gabry and Matthew Kay and Aki Vehtari},
+    year = {2026},
+    note = {R package version 1.7.0},
+    url = {https://mc-stan.org/posterior/},
+  }
+
+@Article{derwood_2016,
+    title = {{runjags}: An {R} Package Providing Interface Utilities, Model Templates, Parallel Computing Methods and Additional Distributions for {MCMC} Models in {JAGS}},
+    author = {Matthew J. Denwood},
+    journal = {Journal of Statistical Software},
+    year = {2016},
+    volume = {71},
+    number = {9},
+    pages = {1--25},
+    doi = {10.18637/jss.v071.i09}
+  }
+
 @Article{gneiting_et_al_2007,
 author = {Gneiting, Tilmann and Balabdaoui, Fadoua and Raftery, Adrian E.},
 title = {Probabilistic forecasts, calibration and sharpness},
@@ -32,6 +51,15 @@ year = {1825},
 abstract = {},
 location = {},
 keywords = {}}
+
+@Manual{kay_2024,
+    title = {{tidybayes}: Tidy Data and Geoms for {Bayesian} Models},
+    author = {Matthew Kay},
+    year = {2024},
+    note = {R package version 3.0.7},
+    url = {http://mjskay.github.io/tidybayes/},
+    doi = {10.5281/zenodo.1308151},
+  }
 
 @Article{konigsberg_et_al_2008,
 author = {Konigsberg, Lyle W. and Herrmann, Nicholas P. and Wescott, Daniel J. and Kimmerle, Erin H.},
@@ -68,6 +96,15 @@ abstract = {Abstract A new method for the determination of adult skeletal age at
 location = {},
 keywords = {Auricular; Ilium; Forensic; Age-determination; Demography; Sacroiliac}}
 
+@Article{missov_et_al_2015,
+author = {Missov, Trifon I. and Lenart, Adam and Nemeth, Laszlo and Canudas-Romo, Vladimir and Vaupel, James W.},
+title = {The Gompertz force of mortality in terms of the modal age at death},
+journal = {Demographic Research},
+volume = {32},
+pages = {1031--1048},
+year = {2015},
+abstract = {The Gompertz force of mortality (hazard function) is usually expressed in terms of a, the initial level of mortality, and b, the rate at which mortality increases with age. <b>Objective</b>: We express the Gompertz force of mortality in terms of b and the old-age modal age at death M, and present similar relationships for other widely-used mortality models. Our objective is to explain the advantages of using the parameterization in terms of M. <b>Methods</b>: Using relationships among life table functions at the modal age at death, we express the Gompertz force of mortality as a function of the old-age mode. We estimate the correlation between the estimators of old (a and b) and new (M and b) parameters from simulated data. <b>Results</b>: When the Gompertz parameters are statistically estimated from simulated data, the correlation between estimated values of b and M is much less than the correlation between estimated values of a and b. For the populations in the Human Mortality Database, there is a negative association between a and b and a positive association between M and b. <b>Conclusions</b>: Using M, the old-age mode, instead of a, the level of mortality at the starting age, has two major advantages. First, statistical estimation is facilitated by the lower correlation between the estimators of model parameters. Second, estimated values of M are more easily comprehended and interpreted than estimated values of a.}, }
+
 @Article{ref_128246,
 author = {Moser, Daria and Pichler, Sandra L. and Santos, Ana Luisa and Klimscha, Florian and Fuchs, Katharina},
 title = {{The uncertain death. Estimating mortality structure by random sampling}},
@@ -94,6 +131,28 @@ abstract = {Abstract Objectives The present paper highlights the potential of os
 location = {},
 keywords = {adult mortality; Bayesian modeling; Gompertz distribution; London; palaeodemography; simulation}}
 
+@Incollection{plummer_2003,
+author = {Plummer, Martyn},
+title = {JAGS: A Program for Analysis of Bayesian Graphical Models Using Gibbs Sampling},
+booktitle = {Proceedings of the 3rd International Workshop on Distributed Statistical Computing (DSC 2003), Vienna, 20-22 March 2003},
+editor = {Hornik, Kurt and Leisch, Friedrich and Zeileis, Achim},
+publisher = {Technische Universität Wien},
+address = {Wien},
+pages = {1-10},
+year = {2003} }
+
+  @Article{plummer_et_al_2006,
+    title = {CODA: Convergence Diagnosis and Output Analysis for MCMC},
+    author = {Martyn Plummer and Nicky Best and Kate Cowles and Karen Vines},
+    journal = {R News},
+    year = {2006},
+    volume = {6},
+    number = {1},
+    pages = {7--11},
+    url = {https://journal.r-project.org/archive/},
+    pdf = {https://www.r-project.org/doc/Rnews/Rnews_2006-1.pdf},
+  }
+
 @Article{91048,
 author = {Sasaki, Tomohiko and Kondo, Osamu},
 title = {An informative prior probability distribution of the gompertz parameters for bayesian approaches in paleodemography},
@@ -105,6 +164,15 @@ year = {2016},
 abstract = {ABSTRACT Objectives In paleodemography, the Bayesian approach has been suggested to provide an effective means by which mortality profiles of past populations can be adequately estimated, and thus avoid problems of ?age-mimicry? inherent in conventional approaches. In this study, we propose an application of the Gompertz model using an ?informative? prior probability distribution by revising a recent example of the Bayesian approach based on an ?uninformative? distribution. Methods Life-table data of 134 human populations including those of contemporary hunter-gatherers were used to determine the Gompertz parameters of each population. In each population, we used both raw life-table data and the Gompertz parameters to calculate some demographic values such as the mean life-span, to confirm representativeness of the model. Then, the correlation between the two Gompertz parameters (the Strehler?Mildvan correlation) was re-established. We incorporated the correlation into the Bayesian approach as an ?informative? prior probability distribution, and tested its effectiveness using simulated data. Results Our analyses showed that the mean life-span (≥ age 15) and the proportion of living persons aging over 45 were well-reproduced by the Gompertz model. The simulation showed that using the correlation as an informative prior provides a narrower estimation range in the Bayesian approach than does the uninformative prior. Conclusions The Gompertz model can be assumed to accurately estimate the mean life-span and/or the proportion of old people in a population. We suggest that the Strehler?Mildvan correlation can be used as a useful constraint in demographic reconstructions of past human populations. Am J Phys Anthropol 159:523?533, 2016. ? 2015 Wiley Periodicals, Inc.},
 keywords = {Strehler–Mildvan correlation; Gompertz hazard model; life table; age mimicry},}
 
+@Article{strehler_mildvan_1960,
+author = {Strehler, Bernard L. and Mildvan, Albert S.},
+title = {General Theory of Mortality and Aging},
+journal = {Science},
+volume = {132},
+number = {3418},
+pages = {14--21},
+year = {1960}, }
+
 @Article{stull_et_al_2022,
 author = {Stull, Kyra E. and Chu, Elaine Y. and Corron, Louise K. and Price, Michael H.},
 title = {Subadult Age Estimation Using the Mixed Cumulative Probit and a Contemporary United States Population},
@@ -115,3 +183,24 @@ pages = {741--779},
 year = {2022},
 abstract = {The mixed cumulative probit (MCP), a new, flexible algorithm that accommodates a variety of mean and shape parameters in univariate models and conditional dependence/independence in multivariate models, was used to develop subadult age estimation models. Sixty-two variables were collected on computed tomography (CT) images of 1317 individuals (537 females and 780 males) aged between birth and 21 years from the United States sample in the Subadult Virtual Anthropology Database (SVAD). Long bone measurements (n = 18), stages of epiphyseal fusion and ossification (n = 28), and stages of dental development of permanent teeth (n = 16) were used in univariate, multivariate, and mixed models and compared using test mean log posterior (TMNLP), root mean squared error (RMSE), and percent accuracy on an independent test sample. Out of the six possible parameter combinations, all combinations were accounted for at least once in the data and conditionally dependent models outperformed the conditionally independent models. Overall, multivariate models exhibited smaller TMNLP and RMSE, and an overall greater stability in the age estimations compared to univariate models across all ages and independent of indicator type. Pre-optimized subadult age estimation models are freely available for immediate application through MCP-S-Age, a graphical user interface.}, }
 
+@Article{valpine_et_al_2017,
+    title = {Programming with models: writing statistical algorithms for general model structures with {NIMBLE}},
+    journal = {Journal of Computational and Graphical Statistics},
+    volume = {26},
+    issue = {2},
+    pages = {403-413},
+    year = {2017},
+    author = {Perry {de Valpine} and Daniel Turek and Christopher Paciorek and Cliff Anderson-Bergman and Duncan {Temple Lang} and Ras Bodik},
+    doi = {10.1080/10618600.2016.1172487},
+  }
+
+@Incollection{wood_et_al_2002,
+author = {Wood, James W. and Holman, Darryl J. and O'Connor, Kathleen A. and Ferrell, Rebecca J.},
+title = {Mortality models for paleodemography},
+booktitle = {Paleodemography: Age Distributions from Skeletal Samples},
+editor = {Hoppa, Robert D. and Vaupel, James W.},
+publisher = {Cambridge University Press},
+address = {Cambridge},
+pages = {129-168},
+year = {2002},
+keywords = {Paläoanthropologie; Paläodemographie},}

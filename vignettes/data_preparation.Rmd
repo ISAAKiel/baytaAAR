@@ -1,8 +1,6 @@
 ---
 title: "Data input"
 output: rmarkdown::html_vignette
-author: "Nils Müller-Scheeßel"
-date: "`r Sys.Date()`"
 vignette: >
   %\VignetteIndexEntry{Data input}
   %\VignetteEngine{knitr::rmarkdown}
@@ -20,9 +18,9 @@ knitr::opts_chunk$set(
 library(baytaAAR)
 ```
 
-As input, `baytaAAR` assumes a `matrix` of trait expressions. In its simplest form, this may contain only one column with a single trait as in the following example ("auricular surface").
+As input, `baytaAAR` assumes a `matrix` of trait expressions. In its simplest form, this may contain only one column with a single trait as in the following example from the neolithic gallery grave from Sorsum/Germany ("auricular surface").
 
-```{r sorsum data, echo = F}
+```{r sorsum data, echo = T}
 data(sorsum_as, package = "baytaAAR")
 head(sorsum_as)
 ```
@@ -40,7 +38,14 @@ Conversion to a `matrix` is accomplished easily, however.
 sorsum <- as.matrix(sorsum_as[,2])
 ```
 
-NAs are allowed but neither must all entries in any of the rows be `NA` nor can this be the case for one or several of the columns. `bay.ta` will reject to run in such cases, and the offending rows or columns need to be removed from analysis. Please see the article on Chelsea 'Old church' for an example how this can be accomplished.
+Another example is provided with the data from Spitalfields which -- among others -- contains five columns with traits.
+
+```{r spitalfields matrix, echo = T}
+data(spitalfields, package = "baytaAAR")
+head(spitalfields[,2:6])
+```
+
+NAs are allowed but neither must all entries in any of the rows be `NA` nor can this be the case for one or several of the columns. `bay.ta` will reject to run in such cases, and the offending rows or columns need to be removed from analysis. Please see the `vignette("worked_example")` on Chelsea 'Old church' for an example how this can be accomplished.
 
 The levels of all traits must start at `1`. Binary traits are possible. Mixed levels like `1.5` as short-cut for a trait-expression between `1` and `2`, however, should be an absolute no-go as this would violate basic principles of ordinal scaling. Thus, for such cases a decision for one of the neighbouring levels has to be made or they need to be set to `NA`.
 

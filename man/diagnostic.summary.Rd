@@ -29,14 +29,13 @@ of the PSRF.}
 \item{ \code{MCSE} \emph{Monte Carlo standard error}.}
 \item{ \code{HDImass} Credibility level of the \emph{highest density
 interval}.}
-\item{ \code{HDIlow} sStart of the \emph{highest density interval}.}
+\item{ \code{HDIlow} Start of the \emph{highest density interval}.}
 \item{ \code{HDIhigh} End of the \emph{highest density interval}.}
 }
 }
 \description{
 Summarising diagnostics from a \code{coda::mcmc.list}, partly derived from
- \href{https://jkkweb.sitehost.iu.edu/DoingBayesianDataAnalysis/}{Kruschke
- (2015)}.
+ \emph{Kruschke 2015}.
 }
 \details{
 Because the first threshold is fixed, the Gelman-Rubin multivariate PSRF
@@ -59,4 +58,7 @@ sorsum_diag <- diagnostic.summary(sorsum_res)
 # show first rows
 head(sorsum_diag)
 \dontshow{\}) # examplesIf}
+}
+\references{
+\insertRef{ref_77051}{baytaAAR}
 }
