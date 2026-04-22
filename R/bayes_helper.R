@@ -206,17 +206,17 @@ diagnostics.max.min <- function(x) {
 #'
 #' @inheritParams age.comp.summary
 #'
-#' @return A data.frame with the chosen mean measure and the HDI ranges as
+#' @return A data.frame with mean, median and mode as well as the HDI ranges as
 #' specified in the output of \code{diagnostics.summary()} as columns and the
 #' following rows:
 #' \itemize{
-#' \item{ \code{age_mean} Mean of the mean ages.}
-#' \item{ \code{hdi_diff} Mean of the \emph{highest density intervals}.}
-#' \item{ \code{b} Mean of the Gompertz parameter \eqn{\beta}. }
-#' \item{ \code{a} Mean of the Gompertz parameter \eqn{\alpha}. }
+#' \item{ \code{b} Gompertz parameter \eqn{\beta}. }
+#' \item{ \code{a} Gompertz parameter \eqn{\alpha}. }
 #' \item{ \code{M} Modal age, derived from the Gompertz parameters
-#' \eqn{\alpha} and \eqn{\beta} according to the equation
-#' (1 / \eqn{\beta}) * log(\eqn{\beta} / \eqn{\alpha}) + minimum_age. }
+#'    \eqn{\alpha} and \eqn{\beta} according to the equation
+#'    (1 / \eqn{\beta}) * log(\eqn{\beta} / \eqn{\alpha}) + minimum_age. }
+#' \item{ \code{age_mean} Mean ages.}
+#' \item{ \code{hdi_diff} \emph{Highest density intervals}.}
 #' }
 #'
 #' @export
@@ -235,55 +235,56 @@ diagnostics.max.min <- function(x) {
 #' age.estim.summary(sorsum_diag)
 #'
 age.estim.summary <- function(x,
-                              mean_choice = "Mode",
                               age_identifier = "age.s")
-  {
+{
   checkmate::assertClass(x, "diagnostic_summary")
   checkmate::assertChoice(age_identifier, c("age.s", "age.s_c"))
-  checkmate::assertChoice(mean_choice, c("Mode", "Median", "Mean"))
 
   age_identifier_grep <- ifelse(age_identifier == "age.s",
                                 "^age.s\\[", "^age.s_c")
   hdi_mass <- (1 - x["a", "HDImass"]) / 2
-  a <- x["a", mean_choice]
+  a_mean <- x["a", "Mean"]
+  a_median <- x["a", "Median"]
+  a_mode <- x["a", "Mode"]
   a_low <- x["a", "HDIlow"]
   a_high <- x["a", "HDIhigh"]
-  b <- x["b", mean_choice]
+  b_mean <- x["b", "Mean"]
+  b_median <- x["b", "Median"]
+  b_mode <- x["b", "Mode"]
   b_low <- x["b", "HDIlow"]
   b_high <- x["b", "HDIhigh"]
-  M <- x["M", mean_choice]
+  M_mean <- x["M", "Mean"]
+  M_median <- x["M", "Median"]
+  M_mode <- x["M", "Mode"]
   M_low <- x["M", "HDIlow"]
   M_high <- x["M", "HDIhigh"]
-  x_diag_red <- x[grep(age_identifier_grep, rownames(x)),]
 
+  x_diag_red <- x[grep(age_identifier_grep, rownames(x)),]
   hdi_diff <- x_diag_red$HDIhigh - x_diag_red$HDIlow
   hdi_dens <- stats::density( hdi_diff )
-  age_dens <- stats::density( x_diag_red[,mean_choice] )
+  age_dens <- stats::density( x_diag_red[,"Mean"] )
 
-  if (mean_choice == "Mode") {
-    hdi <- hdi_dens$x[which.max(hdi_dens$y)]
-    age_mean <- age_dens$x[which.max(age_dens$y)]
-  } else if (mean_choice == "Median") {
-    hdi <- stats::median(hdi_diff)
-    age_mean <- stats::median(x_diag_red[,mean_choice])
-  } else {
-    hdi <- mean(hdi_diff)
-    age_mean <- mean(x_diag_red[,mean_choice])
-  }
+  hdi_mode <- hdi_dens$x[which.max(hdi_dens$y)]
+  age_mode <- age_dens$x[which.max(age_dens$y)]
+  hdi_median <- stats::median(hdi_diff)
+  age_median <- stats::median(x_diag_red[,"Mean"])
+  hdi_mean <- mean(hdi_diff)
+  age_mean <- mean(x_diag_red[,"Mean"])
   hdi_low <- stats::quantile(hdi_diff, probs = c( hdi_mass))
   hdi_high <- stats::quantile(hdi_diff, probs = c( 1 - hdi_mass))
-  age_low <- stats::quantile(x_diag_red[,mean_choice], probs = c( hdi_mass))
-  age_high <- stats::quantile(x_diag_red[,mean_choice], probs = c( 1 -hdi_mass))
+  age_low <- stats::quantile(x_diag_red[,"Mean"], probs = c( hdi_mass))
+  age_high <- stats::quantile(x_diag_red[,"Mean"], probs = c( 1 -hdi_mass))
 
-  age_result <- data.frame(rbind(M = cbind(M, M_low, M_high),
-                                 age_mean = cbind(age_mean, age_low, age_high),
-                                 b = cbind(b, b_low, b_high),
-                                 a = cbind(a, a_low, a_high),
-                                 hdi = cbind(hdi, hdi_low, hdi_high)))
-  colnames(age_result) <- c(mean_choice, hdi_mass, 1 - hdi_mass)
-  rownames(age_result) <- c("M", "age_mean", "b", "a", "hdi_diff")
+  age_result <- data.frame(rbind(
+    b = cbind(b_mean, b_median, b_mode, b_low, b_high),
+    a = cbind(a_mean, a_median, a_mode, a_low, a_high),
+    M = cbind(M_mean, M_median, M_mode, M_low, M_high),
+    age_mean = cbind(age_mean, age_median, age_mode, age_low, age_high),
+    hdi = cbind(hdi_mean, hdi_median, hdi_mode, hdi_low, hdi_high)))
+  colnames(age_result) <- c("Mean", "Median", "Mode", hdi_mass, 1 - hdi_mass)
+  rownames(age_result) <- c("b", "a", "M", "age_mean", "hdi_diff")
   return(age_result)
-  }
+}
 
 
 #' @title gomp.a0
