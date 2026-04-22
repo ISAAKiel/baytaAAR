@@ -281,7 +281,7 @@ age.estim.summary <- function(x,
                                  a = cbind(a, a_low, a_high),
                                  hdi = cbind(hdi, hdi_low, hdi_high)))
   colnames(age_result) <- c(mean_choice, hdi_mass, 1 - hdi_mass)
-  rownames(age_result) <- c("age_mean", "hdi_diff", "b", "a", "M")
+  rownames(age_result) <- c("M", "age_mean", "b", "a", "hdi_diff")
   return(age_result)
   }
 
