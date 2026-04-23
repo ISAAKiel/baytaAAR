@@ -37,7 +37,7 @@ Suggests:
     ggplot2,
     gridExtra,
     kableExtra,
-    posterior,
+    bayesplot,
     tidybayes,
     rjags,
     runjags

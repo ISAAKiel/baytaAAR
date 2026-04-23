@@ -24,10 +24,6 @@ Internal function for generating starting values for the Gompertz model if
 the starting age is not 15 years. Not run if the minimum age is actually 15.
 The original formula derives from \emph{Sasaki and Kondo 2016}.
 }
-\examples{
-gomp.a0()
-
-}
 \references{
 \insertRef{91048}{baytaAAR}
 }

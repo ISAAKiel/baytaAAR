@@ -305,9 +305,6 @@ age.estim.summary <- function(x,
 #' @references
 #' \insertRef{91048}{baytaAAR}
 #'
-#' @examples
-#' gomp.a0()
-#'
 #' @keywords internal
 #'
 gomp.a0 <- function(
