@@ -42,7 +42,8 @@ Suggests:
     bayesplot,
     tidybayes,
     rjags,
-    runjags
+    runjags,
+    ggridges
 Depends:
     R (>= 4.1.0),
     nimble

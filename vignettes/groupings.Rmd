@@ -38,18 +38,26 @@ While `bay.ta()` estimates age at the individual level, many research questions 
 We re-use here the data already used for the vignette on Chelsea 'Old church' (`vignette("worked_example")`). So, the respective MCMC data is downloaded from a `Github` repository.
 
 ```{r paths for rda-files}
-path <- "https://github.com/ISAAKiel/Chelsea_mcmc/raw/refs/heads/main/"
+# path <- "https://github.com/ISAAKiel/Chelsea_mcmc/raw/refs/heads/main/"
+path <- "https://raw.githubusercontent.com/ISAAKiel/Chelsea_mcmc/main/"
 file <- "chelsea_complete_cal_res.Rdata"
 temp <- tempfile()
-download.file(paste0(path, file), destfile = temp)
-load(temp)
+if (Sys.info()[["sysname"]] == "Darwin") {
+  download.file(paste0(path, file), destfile = temp, method = "curl", mode = "wb")
+} else {
+  download.file(paste0(path, file), destfile = temp, method = "libcurl", mode = "wb")
+}
+# download.file(paste0(path, file), destfile = temp, mode = "wb")
+con <- gzfile(temp, "rb")
+load(con)
+close(con)
 ```
 
 ```{r loading of data, echo=F, warning=FALSE}
 temp <- tempfile()
 download.file(
   "https://dams.londonmuseum.org.uk/m/2dc89b01e62759ff/original/PMCOC.zip",
-  temp)
+  temp, mode = "wb")
 unzip(temp, "PMCOC_age_estimates.lst")
 chelsea_age <- read.delim("PMCOC_age_estimates.lst",
                           sep = "|",
@@ -181,7 +189,7 @@ ggpubr::ggarrange(
 
 ```
 
-The left plot displays summed probability densities of all estimates of one osteological age group combined with the mode of the individual estimates as blue short vertical lines. The the densities are normalized within each group and therefore do not reflect group size. The plot somehow resembles similar plots of calibrated C14 data. The overall agreement between the osteological age estimates and the Bayesian estimates is very good. However, a close inspection shows that especially the age group 36--45 years according to the Bayesian estimates extends far beyond the proposed limit of 45 years. This suggests that the traditional age category may truncate older individuals whose trait expressions overlap with higher age ranges. In the right plot the mean of this age group is fixed at about 50 years. The means of the other age groups are within the limits of the osteological age ranges, though at the upper range.
+The left plot displays summed probability densities of all estimates of one osteological age group combined with the mode of the individual estimates as blue short vertical lines. The densities are normalized within each group and therefore do not reflect group size. The plot somehow resembles similar plots of calibrated C14 data. The overall agreement between the osteological age estimates and the Bayesian estimates is very good. However, a close inspection shows that especially the age group 36--45 years according to the Bayesian estimates extends far beyond the proposed limit of 45 years. This suggests that the traditional age category may truncate older individuals whose trait expressions overlap with higher age ranges. In the right plot the mean of this age group is fixed at about 50 years. The means of the other age groups are within the limits of the osteological age ranges, though at the upper range.
 
 
 ### Chelsea 'Old church': Sex

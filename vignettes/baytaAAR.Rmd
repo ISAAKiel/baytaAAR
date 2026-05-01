@@ -327,7 +327,7 @@ The Gompertz function provides a different perspective on the mortality structur
 
 Provided [JAGS](https://mcmc-jags.sourceforge.io) is installed, `bay.ta()` can also be run with JAGS. For this, it is sufficient to set the parameter `framework` to `JAGS`. All other parameters remain unchanged.
 
-```{r sorsum analysis jags, echo = TRUE}
+```{r sorsum analysis jags, echo = TRUE, eval=FALSE}
 sorsum_as_res <- bay.ta(
   framework = "JAGS",
   method = sorsum_as[,2],
@@ -337,13 +337,7 @@ sorsum_as_res <- bay.ta(
 )
 ```
 
-The JAGS model needs a little bit longer than the NIMBLE model but the diagnostics indicate that the overall performance is superior:
-
-```{r sorsum diagnostic table jags, echo = T}
-diagnostic.summary(sorsum_as_res) |> diagnostics.max.min()
-```
-
-At this point, we leave the further analysis following the same steps as above to the reader.
+The JAGS model needs a little bit longer than the NIMBLE model but if you run the diagnostics you will see that the overall performance is superior. At this point, we leave the further analysis following the same steps as above to the reader.
 
 
 ## Going further

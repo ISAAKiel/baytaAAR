@@ -43,7 +43,7 @@ The first step is the loading and preparation of the data. For that, we download
 temp <- tempfile()
 download.file(
   "https://dams.londonmuseum.org.uk/m/2dc89b01e62759ff/original/PMCOC.zip",
-  temp)
+  temp, mode = "wb")
 unzip(temp, "PMCOC_age_estimates.lst")
 chelsea_age <- read.delim("PMCOC_age_estimates.lst",
                           sep = "|",
@@ -189,7 +189,8 @@ Please note that the models should run until the resulting Markov Chain Monte Ca
 
 ```{r paths for rda-files}
 runNewMCMC = !TRUE
-path <- "https://github.com/ISAAKiel/Chelsea_mcmc/raw/refs/heads/main/"
+# path <- "https://github.com/ISAAKiel/Chelsea_mcmc/raw/refs/heads/main/"
+path <- "https://raw.githubusercontent.com/ISAAKiel/Chelsea_mcmc/main/"
 ```
 
 
@@ -221,8 +222,10 @@ if ( runNewMCMC ) {
 } else {
   file <- "chelsea_as_res.Rdata"
   temp <- tempfile()
-  download.file(paste0(path, file), destfile = temp)
-  load(temp)
+  download.file(paste0(path, file), destfile = temp, mode = "wb")
+  con <- gzfile(temp, "rb")
+  load(con)
+  close(con)
   threshold_as <- chelsea_as_res |> threshold.chains() |> 
   diagnostic.summary() |> threshold.matrix(mean_choice = "Mode")
 }
@@ -281,8 +284,10 @@ if ( runNewMCMC ) {
 } else {
   file <- "chelsea_ps_res.Rdata"
   temp <- tempfile()
-  download.file(paste0(path, file), destfile = temp)
-  load(temp)
+  download.file(paste0(path, file), destfile = temp, mode = "wb")
+  con <- gzfile(temp, "rb")
+  load(con)
+  close(con)
 }
 chelsea_ps_diag <- diagnostic.summary(chelsea_ps_res)
 chelsea_ps_age_ranges <- age.estim.summary(chelsea_ps_diag)
@@ -303,8 +308,10 @@ if ( runNewMCMC ) {
 } else {
   file <- "chelsea_costo_res.Rdata"
   temp <- tempfile()
-  download.file(paste0(path, file), destfile = temp)
-  load(temp)
+  download.file(paste0(path, file), destfile = temp, mode = "wb")
+  con <- gzfile(temp, "rb")
+  load(con)
+  close(con)
 }
 chelsea_costo_diag <- diagnostic.summary(chelsea_costo_res)
 chelsea_costo_age_ranges <- age.estim.summary(chelsea_costo_diag)
@@ -325,8 +332,10 @@ if ( runNewMCMC ) {
 } else {
   file <- "chelsea_dental_res.Rdata"
   temp <- tempfile()
-  download.file(paste0(path, file), destfile = temp)
-  load(temp)
+  download.file(paste0(path, file), destfile = temp, mode = "wb")
+  con <- gzfile(temp, "rb")
+  load(con)
+  close(con)
 }
 chelsea_dental_diag <- diagnostic.summary(chelsea_dental_res)
 chelsea_dental_age_ranges <- age.estim.summary(chelsea_dental_diag)
@@ -363,8 +372,10 @@ if ( runNewMCMC ) {
 } else {
   file <- "chelsea_ps_as_res.Rdata"
   temp <- tempfile()
-  download.file(paste0(path, file), destfile = temp)
-  load(temp)
+  download.file(paste0(path, file), destfile = temp, mode = "wb")
+  con <- gzfile(temp, "rb")
+  load(con)
+  close(con)
   chelsea_ps_as_res <- coda::as.mcmc.list(chelsea_ps_as_res)
   chelsea_ps_as_res_diag <- diagnostic.summary(chelsea_ps_as_res)
   threshold_ps_as <- chelsea_ps_as_res |> threshold.chains() |> 
@@ -415,8 +426,10 @@ if ( runNewMCMC ) {
 } else {
   file <- "chelsea_no_nas_res.Rdata"
   temp <- tempfile()
-  download.file(paste0(path, file), destfile = temp)
-  load(temp)
+  download.file(paste0(path, file), destfile = temp, mode = "wb")
+  con <- gzfile(temp, "rb")
+  load(con)
+  close(con)
   chelsea_no_nas_res <- coda::as.mcmc.list(chelsea_no_nas_res)
   chelsea_no_nas_res_diag <- diagnostic.summary(chelsea_no_nas_res)
   chelsea_no_nas_age_ranges <- 
@@ -471,8 +484,10 @@ if ( runNewMCMC ) {
 } else {
   file <- "chelsea_complete_nimble_res.Rdata"
   temp <- tempfile()
-  download.file(paste0(path, file), destfile = temp)
-  load(temp)
+  download.file(paste0(path, file), destfile = temp, mode = "wb")
+  con <- gzfile(temp, "rb")
+  load(con)
+  close(con)
   chelsea_complete_nimble_res <- 
     coda::as.mcmc.list(chelsea_complete_nimble_res)
   chelsea_complete_nimble_diag <- 
@@ -603,8 +618,10 @@ if ( runNewMCMC ) {
 } else {
   file <- "chelsea_complete_cal_res.Rdata"
   temp <- tempfile()
-  download.file(paste0(path, file), destfile = temp)
-  load(temp)
+  download.file(paste0(path, file), destfile = temp, mode = "wb")
+  con <- gzfile(temp, "rb")
+  load(con)
+  close(con)
   chelsea_complete_cal_diag <- 
     diagnostic.summary(chelsea_complete_cal_res)
 }

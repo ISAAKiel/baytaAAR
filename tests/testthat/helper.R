@@ -19,6 +19,6 @@ skip_if_on_ci_and_mac <- function() {
   is_gha <- Sys.getenv("GITHUB_ACTIONS") == "true"
 
   if (is_gha) {
-    testthat::skip_on_os("mac", message = "Skipping on GitHub Actions macOS (NIMBLE segfault)")
+    testthat::skip_on_os("mac")
   }
 }
