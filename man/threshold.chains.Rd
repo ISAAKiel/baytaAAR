@@ -20,9 +20,8 @@ The function returns a \code{coda::mcmc.list} which can be further processed.
 }
 \examples{
 \dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
-# select Sorsum data with auricular surface after Lovejoy et al. 1985 and
-# convert to matrix
-sorsum <- as.matrix(sorsum_as[,2])
+# select Sorsum data with auricular surface after Lovejoy et al. 1985
+sorsum <- sorsum_as[,2]
 
 # example with default settings, please be patient
 sorsum_res <- bay.ta(method = sorsum)

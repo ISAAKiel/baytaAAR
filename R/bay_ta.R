@@ -42,7 +42,8 @@
 #' @param seed integer. Random number for reproducibility. In parallel
 #'   processing, each cluster automatically gets different seeds. If no seed is
 #'   specified, the value is set to today's date as integer.
-#' @param method matrix of integers. Ordinal trait(s) for age estimation.
+#' @param method matrix of integers, converted to matrix if not already matrix.
+#'   Ordinal trait(s) for age estimation.
 #' @param eta numeric. Parameter for the LKJ distribution, must be > 0. Only
 #'  used for multinormal ordered regression for the correlation matrix.
 #'  \code{1} implies equal correlations, lower values assume stronger
@@ -76,9 +77,8 @@
 #'
 #' @examplesIf interactive()
 #'
-#'   # select Sorsum data with auricular surface after Lovejoy et al. 1985 and
-#'   # convert to matrix
-#'   sorsum <- as.matrix(sorsum_as[,2])
+#'   # select Sorsum data with auricular surface after Lovejoy et al. 1985
+#'   sorsum <- sorsum_as[,2]
 #'
 #'   # example with default settings
 #'   sorsum_res <- bay.ta(method = sorsum)
@@ -93,8 +93,8 @@
 #'   # iterations)
 #'   sorsum_res <- bay.ta(method = sorsum, numSavedSteps = 10000, thin = 10)
 #'
-#'   # select Spitalfields data with multiple traits and convert to matrix
-#'   spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
+#'   # select Spitalfields data with multiple traits
+#'   spitalfields_traits <- spitalfields[,c(2:6)]
 #'
 #'   # example with multinormal likelihood, please be patient
 #'   spitalfields_res <- bay.ta(falgorithm = "mnorm",
@@ -122,6 +122,7 @@ bay.ta  <- function(
 
   checkmate::assertChoice(framework, c("JAGS", "NIMBLE"))
   checkmate::assertChoice(algorithm, c("norm", "mnorm"))
+  if (!is.matrix(method)) method <- as.matrix(method)
   checkmate::assertMatrix(method)
   for (i in 1:ncol(method)) {
     checkmate::assertIntegerish(method[,i], all.missing = FALSE, lower = 1) }

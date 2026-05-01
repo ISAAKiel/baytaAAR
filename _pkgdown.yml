@@ -12,6 +12,7 @@ articles:
   - data_preparation
   - known_age
   - worked_example
+  - groupings
 
 reference:
 - title: "Running bay.ta"

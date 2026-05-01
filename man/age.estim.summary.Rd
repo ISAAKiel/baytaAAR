@@ -32,9 +32,8 @@ result of the function \code{diagnostics.summary()}.
 }
 \examples{
 \dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
-# select Sorsum data with auricular surface after Lovejoy et al. 1985 and
-# convert to matrix
-sorsum <- as.matrix(sorsum_as[,2])
+# select Sorsum data with auricular surface after Lovejoy et al. 1985
+sorsum <- sorsum_as[,2]
 
 # example with default settings, please be a little bit patient
 sorsum_res <- bay.ta(method = sorsum)

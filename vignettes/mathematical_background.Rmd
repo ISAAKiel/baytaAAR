@@ -18,19 +18,19 @@ knitr::opts_chunk$set(
 
 ## Benjamin Gompertz and the Gompertz distribution
 
-Central to `baytaAAR` is the Gompertz distribution, named after the British mathematican [B. Gompertz](https://en.wikipedia.org/wiki/Benjamin_Gompertz) (1779–1865) who first presented it in 1825 [@ref_110209]. 
+Central to `baytaAAR` is the Gompertz distribution, named after the British mathematician [B. Gompertz](https://en.wikipedia.org/wiki/Benjamin_Gompertz) (1779–1865) who first presented it in 1825 [@ref_110209]. 
 
 Hazard, survival and the ensuing probability distribution are defined as follows [see also @wood_et_al_2002, 146]: 
 
 $$
 \begin{align}
-\mu(t) & = \alpha \times \exp(\beta \times t) \\
-S(t) & = \exp\big(\frac{\alpha}{\beta} \times (1-\exp(\beta \times t))) \\
-f_0(t \mid \alpha,\beta) & = \alpha \times \exp\big(\beta \times t + \frac{\alpha}{\beta} \times (1-\exp(\beta \times t)))
+\mu(t) & = \alpha \cdot \exp(\beta t) \\
+S(t) & = \exp\big(\frac{\alpha}{\beta} \cdot (1-\exp(\beta  t))\big) \\
+f_0(t \mid \alpha,\beta) & = \alpha \cdot \exp\big(\beta t + \frac{\alpha}{\beta} \cdot (1-\exp(\beta t))\big)
 \end{align}
 $$
 
-Despite or even because of its simplicity, it is still widely applied. Instrumental for `baytaAAR` is the strong empiric correlation between its two parameters $\alpha$ and $\beta$, the so-called *Strehler-Mildvan-correlation* [@strehler_mildvan_1960]. This makes it possible to reformulate it as essentially a one-parameter-distribution that still captures human mortality adequately. The empiric correlation between the two parameters at the age of 15 years was defined by T. Sasaki and O. Kondo [-@91048, 529 fig. 1] as follows:
+Despite or even because of its simplicity, it is still widely applied. Instrumental for `baytaAAR` is the strong empirical correlation between its two parameters $\alpha$ and $\beta$, the so-called *Strehler-Mildvan-correlation* [@strehler_mildvan_1960]. This makes it possible to reformulate it as essentially a one-parameter distribution that still captures human mortality adequately. The empirical correlation between the two parameters at the age of 15 years was defined by T. Sasaki and O. Kondo [-@91048, 529 fig. 1] as follows:
 
 $$
 \begin{align}
@@ -39,18 +39,18 @@ Sbb & = 0.0393 \\
 Ma & = -7.119 \\
 Mb & = 0.0718 \\
 V & = 0.0823 \\
-ln\alpha & \sim \mathrm{dnorm} (Sab \times (\beta - Mb)/Sbb + Ma, 1 / V ) \\
+ln\alpha & \sim \mathrm{dnorm} (Sab \cdot (\beta - Mb)/Sbb + Ma, 1 / V ) \\
 \alpha & = \exp(ln\alpha)
 \end{align}
 $$
-Here, a normal distribution with a variance term of 0.0823 serves as basis to model logarithmically-scaled $\alpha$. If the variance term is omitted, the relationship between $\alpha$ and $\beta$ becomes deterministic:
+Here, a normal distribution with a variance term of 0.0823 serves as a basis to model log-transformed $\alpha$. If the variance term is omitted, the relationship between $\alpha$ and $\beta$ becomes deterministic:
 
 $$
-\alpha =\exp(Sab \times (\beta - Mb)/Sbb + Ma)
+\alpha =\exp(Sab \cdot (\beta - Mb)/Sbb + Ma)
 $$
 If the starting age is not 15, we simulate the relation with the internal function `gomp.a0()`.
 
-The parameter $\beta$ is estimated from the observed data, thus at the same time defining the overall level of mortality of the respective population and also narrowing down the age range of the individuals. The following figure, taken from Müller-Scheeßel et al. [-@ref_26972, 4 fig. 1], displays Gompertz hazard, survival and density curves with different $\beta$ values.
+The parameter $\beta$ is estimated from the observed data, thereby defining the overall level of mortality of the respective population and the age range of the individuals. The following figure, taken from Müller-Scheeßel et al. [-@ref_26972, 4 fig. 1], shows Gompertz hazard, survival and density curves with different $\beta$ values:
 
 ```{r gompertz_figure, warning=FALSE , fig.width=6, fig.height=5, include=TRUE, echo=FALSE, message=FALSE}
 library(ggplot2)
@@ -140,20 +140,22 @@ gridExtra::grid.arrange (
 )
 ```
 
-The modal age _M_ is a useful parameter for adult mortality as it does not change with the starting observed age as life expectancy does [@missov_et_al_2015]. So, for example, e~20~ (life expectancy from age 20) will differ from e~25~ (life expectancy from age 25), and the one is not easily translated to the other. This is not the case with the modal age _M_. It equals the peak of the curves in the lower left image. The modal age _M_ is defined as:
+The modal age _M_ derives naturally from the Gompertz model. It equals the peak of the curves in the lower left image. It is a useful parameter for adult mortality as it does not change with the starting observed age as life expectancy does [@missov_et_al_2015]. So, for example, e~20~ (life expectancy from age 20) will differ from e~25~ (life expectancy from age 25), and the one is not easily translated to the other. This is not the case with the modal age _M_. The modal age _M_ is defined as:
 $$
-M = \frac{1}{\beta} \times log\big(\frac{\beta}{\alpha}\big)
+M = \frac{1}{\beta} \cdot log\big(\frac{\beta}{\alpha}\big)
 $$
 
 
 ## The Gompertz distribution with NIMBLE and JAGS
 
-The Gompertz distribution is implemented in NIMBLE and JAGS with the so-called "ones"-trick, which is a simple, convenient way to implement custom distributions [@ref_77051, 214--215]. Theoretically, NIMBLE allows to add custom functions as `nimble functions` compiled at runtime but we wanted to make sure that the results of the two frameworks are as similar as possible.
+The Gompertz distribution is implemented in NIMBLE and JAGS with the so-called 'ones trick', which is a simple, convenient way to implement custom distributions [@ref_77051, 214--215]. Theoretically, NIMBLE allows custom functions to be added as `nimble functions` compiled at runtime but we wanted to make sure that the results of the two frameworks are as similar as possible.
 
 
 ## Mathematical notation
 
-The observed data are written as $y_{i,j}$ where \emph{i} indexes individuals from \emph{1 to N} and \emph{j} indexes traits (skeletal age “indicators”) from \emph{1 to J}. Because the data are recorded for ordinal categorical traits the values for each trait are in the form of positive integers. The number of states per trait is given as $K_j$. With $K_j$ states per trait $j$ there are $K_j - 1$ thresholds for each trait. 
+Building on this mortality model, we now describe how it is embedded in the latent trait framework used by `baytaAAR`.
+
+The observed data are written as $y_{i,j}$ where \emph{i} indexes individuals from \emph{1 to N} and \emph{j} indexes traits (skeletal age “indicators”) from \emph{1 to J}. Because the data are recorded for ordinal categorical traits the values for each trait are positive integers. The number of states per trait is given as $K_j$. With $K_j$ states per trait $j$, there are $K_j - 1$ thresholds for each trait. 
 
 $$
 i = 1,\dots,N, \qquad
@@ -166,10 +168,10 @@ As stated above, the Gompertz model has two parameters $\alpha$ and $\beta$. The
 $$
 \beta \sim \textit{U}(a = 0.02,\; b = 0.1)
 $$
-where \emph{U(a, b)} is a uniform distribution with the density function having a value of `1/(b - a)` between `a` and `b`. Simplifying the above equation of Sasaki and Kondo above, $\alpha$ is given deterministically as:
+where $U(a, b)$ denotes a uniform distribution with density `1/(b - a)` between `a` and `b`. Simplifying the equation of Sasaki and Kondo above, $\alpha$ is given deterministically as:
 
 $$
-\alpha = \exp(-66.77 \times \beta - 2.325)
+\alpha = \exp(-66.77 \cdot \beta - 2.325)
 $$
 
 The prior for individual ages $t_i$, where $t$ is the age-at-death, is
@@ -179,9 +181,9 @@ t_i \sim \textit{Gompertz}(\alpha,\; \beta)
 $$
 The starting age $t_0$ is usually at 15 years, and the distribution is truncated at `100 years - starting age`, reflecting a maximally expected life span of 100 years.
 
-The thresholds within each trait are represented using the symbol $\gamma$, so that for a trait with five stages, the thresholds are $\gamma_{k_1 = 1} < \gamma_{k_1 = 2} < \gamma_{k_1 = 3} < \gamma_{k_1 = 4}$. So that the model is identifiable, all $\gamma_{k_j = 1} = 1.5$.
+The thresholds within each trait are represented using the symbol $\gamma$, so that for a trait with five stages, the thresholds are $\gamma_{k_1 = 1} < \gamma_{k_1 = 2} < \gamma_{k_1 = 3} < \gamma_{k_1 = 4}$. To ensure identifiability, all $\gamma_{k_j = 1} = 1.5$.
 
-The priors within each trait $j$ for the thresholds with more than two states are:
+The priors for thresholds with more than two states are:
 
 $$
 \gamma_{k=2,…,K_j} \sim \textit{TN}(
@@ -201,15 +203,15 @@ $$
 
 For identifiability, $\sigma$ is fixed at \emph{unity} (1). 
 
-For the complex probit model, these vectors have a multivariate normal distribution:
+For the complex probit model, these vectors follow a multivariate normal distribution:
 
 $$
 \boldsymbol{z}_i \sim \mathcal{MVN}(
 {\mu}_{i,j},\; 
-\mathbf{R}),
+\mathbf{R})
 $$
 
-where there is a “flat” prior by Lewandowski, Kurowicka, & Joe [-@ref_54568] for the correlation matrix:
+We use a “flat” prior by Lewandowski, Kurowicka, & Joe [-@ref_54568] for the correlation matrix:
 
 $$
 \mathbf{R} \sim \textit{LKJ}(\eta = 1)
@@ -217,10 +219,10 @@ $$
 
 For $\eta = 1$, this prior is uniform over the space of correlation matrices.
 
-The terms in the vector $\mu_{i}$ are:
+The components of the vector $\mu_{i}$ are:
 
 $$
-\mu_{i,j} = \textit{beta}_{0_j} + \textit{beta}_j \times \ln(t_i)
+\mu_{i,j} = \textit{beta}_{0_j} + \textit{beta}_j \cdot \ln(t_i)
 $$
 
 with the priors for the $beta_0$ and $beta$ parameters within each trait $j$ being:
@@ -235,7 +237,7 @@ $$
 a = 0,\; b = \infty)
 $$
 
-JAGS and NIMBLE both have the distribution `dinterval` which is difficult to write in a succinct format:
+JAGS and NIMBLE both have the distribution `dinterval` which is difficult to express succinctly:
 
 $$
 y_{i,j} =
@@ -249,7 +251,7 @@ $$
 
 Because `dinterval` indexes categories from `zero` instead of `one`, the observed trait levels and thresholds are internally shifted by one unit.
 
-The proper initialisation of the chains is of eminent importance in probit regression. Each chain starts with different parameter values to enhance mixing, and most parameters pick random values from uniform distributions. For Gompertz $\beta$ the init value is in the range `0.02–0.1`, for $beta$ the range is `0.5–1`, and for $beta_0$ `–10––3`. The init value for age $t_i$ is `20–40`, assuming that the starting age is `0`. The correlation matrix is for all chains initialised with an identity matrix (ones in the diagonal and zeros otherwise). The thresholds  are initialized with `k + 0.5` and the vector of latent traits $z_i$ with $y_{i,j} - \textit{U}(-0.2, 0.2)$.
+The proper initialization of the chains is crucial in probit regression. Each chain starts with different parameter values to enhance mixing, and most parameters are initialized with random values from uniform distributions. For Gompertz $\beta$ initial values are drawn from `0.02–0.1`, for $beta$ the range is `0.5–1`, and for $beta_0$ `–10––3`. The init value for age $t_i$ is `20–40`. To this value, the starting value (`15` by default) is added. The correlation matrix is for all chains initialized with an identity matrix (ones on the diagonal and zeros elsewhere). The thresholds  are initialized with `k + 0.5` and the vector of latent traits $z_i$ with $y_{i,j} - \textit{U}(-0.2, 0.2)$.
 
 ---
 

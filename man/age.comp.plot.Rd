@@ -4,7 +4,13 @@
 \alias{age.comp.plot}
 \title{Plots of quality measures of age estimation}
 \usage{
-age.comp.plot(x, age_identifier = "age.s", known_age, mean_choice = "Mode")
+age.comp.plot(
+  x,
+  age_identifier = "age.s",
+  known_age,
+  mean_choice = "Mode",
+  hdi_color = c("chartreuse4", "coral2")
+)
 }
 \arguments{
 \item{x}{output from the function \code{diagnostic.summary()}.}
@@ -17,12 +23,16 @@ entries will subsequently be ignored.}
 
 \item{mean_choice}{a character string of either "Mean", "Median" or "Mode".
 Default: "Mode".}
+
+\item{hdi_color}{a character vector of exactly two entries with color values
+to differentiate estimated ages within the HDI from those outside the HDI.
+Default: c("chartreuse4", "coral2")}
 }
 \value{
 A ggplot object with 2 x 2 single plots, showing:
 \describe{
   \item{Top left}{Comparison of estimated \emph{highest density intervals}
-  with known ages, green = age within HDI, red = age outside HDI,
+  with known ages, color1 = age within HDI, color2 = age outside HDI,
   individuals ordered according to known age-at-death. }
   \item{Top right}{Comparison of the density of known ages with a Gompertz
   function derived from the arithmetic mean of the estimated population
@@ -41,8 +51,8 @@ help of a combination of plots.
 \examples{
 \dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 
-  # select Spitalfields data with multiple traits and convert to matrix
-  spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
+  # select Spitalfields data with multiple traits
+  spitalfields_traits <- spitalfields[,c(2:6)]
 
   # example with multinormal likelihood, please be patient
   spitalfields_res <- bay.ta(algorithm = "mnorm",

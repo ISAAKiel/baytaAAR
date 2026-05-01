@@ -40,8 +40,8 @@ coverage.}
 }
 }
 \description{
-The \emph{cumulative binomial} test asserts if the expected coverage, i.e. the
-percentage of known ages within the \emph{highest density intervals}, is
+The \emph{cumulative binomial} test asserts if the expected coverage, i.e.
+the percentage of known ages within the \emph{highest density intervals}, is
 within the confidence interval of the realized coverage. This wrapper
 function allows to run this test sequentially, i.e. with a sequence of
 expected coverage levels, at a confidence level of 0.95.
@@ -50,10 +50,11 @@ expected coverage levels, at a confidence level of 0.95.
 \dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 
   # select Spitalfields data with multiple traits and convert to matrix
-  spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
+  spitalfields_traits <- spitalfields[,c(2:6)]
 
   # example with multinormal likelihood, please be patient
-  spitalfields_res <- bay.ta(algorithm = "mnorm", method = spitalfields_traits)
+  spitalfields_res <- bay.ta(algorithm = "mnorm",
+  method = spitalfields_traits)
 
   # compute sequential binomial tests at expected probability levels 0.75
   # and 0.95

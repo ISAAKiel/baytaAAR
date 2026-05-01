@@ -22,8 +22,8 @@ product from the resulting coda estimates.
 \examples{
 \dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 
-  # select Spitalfields data with multiple traits and convert to matrix
-  spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
+  # select Spitalfields data with multiple traits
+  spitalfields_traits <- spitalfields[,c(2:6)]
 
   # example with multinormal likelihood, please be patient
   spitalfields_res <- bay.ta(algorithm = "mnorm",

@@ -41,9 +41,8 @@
 #' @export
 #'
 #' @examplesIf interactive()
-#' # select Sorsum data with auricular surface after Lovejoy et al. 1985 and
-#' # convert to matrix
-#' sorsum <- as.matrix(sorsum_as[,2])
+#' # select Sorsum data with auricular surface after Lovejoy et al. 1985
+#' sorsum <- sorsum_as[,2]
 #'
 #' # example with default settings, please be patient
 #' sorsum_res <- bay.ta(method = sorsum)
@@ -171,9 +170,8 @@ HDIofMCMC = function(
 #' @export
 #'
 #' @examplesIf interactive()
-#' # select Sorsum data with auricular surface after Lovejoy et al. 1985 and
-#' # convert to matrix
-#' sorsum <- as.matrix(sorsum_as[,2])
+#' # select Sorsum data with auricular surface after Lovejoy et al. 1985
+#' sorsum <- sorsum_as[,2]
 #'
 #' # example with default settings, please be atient
 #' sorsum_res <- bay.ta(method = sorsum)
@@ -222,9 +220,8 @@ diagnostics.max.min <- function(x) {
 #' @export
 #'
 #' @examplesIf interactive()
-#' # select Sorsum data with auricular surface after Lovejoy et al. 1985 and
-#' # convert to matrix
-#' sorsum <- as.matrix(sorsum_as[,2])
+#' # select Sorsum data with auricular surface after Lovejoy et al. 1985
+#' sorsum <- sorsum_as[,2]
 #'
 #' # example with default settings, please be a little bit patient
 #' sorsum_res <- bay.ta(method = sorsum)
@@ -348,9 +345,8 @@ gomp.a0 <- function(
 #' @export
 #'
 #' @examplesIf interactive()
-#' # select Sorsum data with auricular surface after Lovejoy et al. 1985 and
-#' # convert to matrix
-#' sorsum <- as.matrix(sorsum_as[,2])
+#' # select Sorsum data with auricular surface after Lovejoy et al. 1985
+#' sorsum <- sorsum_as[,2]
 #'
 #' # example with default settings, please be patient
 #' sorsum_res <- bay.ta(method = sorsum)
@@ -444,9 +440,8 @@ threshold.chains <- function(mcmc_list) {
 #' @export
 #'
 #' @examplesIf interactive()
-#' # select Sorsum data with auricular surface after Lovejoy et al. 1985 and
-#' # convert to matrix
-#' sorsum <- as.matrix(sorsum_as[,2])
+#' # select Sorsum data with auricular surface after Lovejoy et al. 1985
+#' sorsum <- sorsum_as[,2]
 #'
 #' # example with default settings, please be patient
 #' sorsum_res <- bay.ta(method = sorsum)
@@ -506,8 +501,8 @@ threshold.matrix <- function(
 #'
 #' @examplesIf interactive()
 #'
-#'   # select Spitalfields data with multiple traits and convert to matrix
-#'   spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
+#'   # select Spitalfields data with multiple traits
+#'   spitalfields_traits <- spitalfields[,c(2:6)]
 #'
 #'   # example with multinormal likelihood, please be patient
 #'   spitalfields_res <- bay.ta(algorithm = "mnorm",
@@ -573,8 +568,8 @@ corr.mat.mean <- function(mcmc_list) {
 #'
 #' @examplesIf interactive()
 #'
-#'   # select Spitalfields data with multiple traits and convert to matrix
-#'   spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
+#'   # select Spitalfields data with multiple traits
+#'   spitalfields_traits <- spitalfields[,c(2:6)]
 #'
 #'   # example with multinormal likelihood, please be patient
 #'   spitalfields_res <- bay.ta(framework = "NIMBLE", algorithm = "mnorm",

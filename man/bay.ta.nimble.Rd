@@ -25,7 +25,8 @@ bay.ta.nimble(
 regression or \code{mnorm} for multinormal ordered regression. Default:
 \code{norm}.}
 
-\item{method}{matrix of integers. Ordinal trait(s) for age estimation.}
+\item{method}{matrix of integers, converted to matrix if not already matrix.
+Ordinal trait(s) for age estimation.}
 
 \item{parameters}{vector of character strings. Parameters to monitor.}
 

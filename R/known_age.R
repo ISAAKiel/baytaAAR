@@ -40,8 +40,8 @@
 #'
 #' @examplesIf interactive()
 #'
-#'   # select Spitalfields data with multiple traits and convert to matrix
-#'   spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
+#'   # select Spitalfields data with multiple traits
+#'   spitalfields_traits <- spitalfields[,c(2:6)]
 #'
 #'   # example with multinormal likelihood, please be patient
 #'   spitalfields_res <- bay.ta(framework = "NIMBLE", algorithm = "mnorm",
@@ -130,12 +130,16 @@ tmnlp <- function(known_age, mcmcMat) {
 #'
 #' @param x output from the function \code{diagnostic.summary()}.
 #'
+#' @param hdi_color a character vector of exactly two entries with color values
+#' to differentiate estimated ages within the HDI from those outside the HDI.
+#' Default: c("chartreuse4", "coral2")
+#'
 #' @inheritParams age.comp.summary
 #'
 #' @return A ggplot object with 2 x 2 single plots, showing:
 #' \describe{
 #'   \item{Top left}{Comparison of estimated \emph{highest density intervals}
-#'   with known ages, green = age within HDI, red = age outside HDI,
+#'   with known ages, color1 = age within HDI, color2 = age outside HDI,
 #'   individuals ordered according to known age-at-death. }
 #'   \item{Top right}{Comparison of the density of known ages with a Gompertz
 #'   function derived from the arithmetic mean of the estimated population
@@ -151,8 +155,8 @@ tmnlp <- function(known_age, mcmcMat) {
 #'
 #' @examplesIf interactive()
 #'
-#'   # select Spitalfields data with multiple traits and convert to matrix
-#'   spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
+#'   # select Spitalfields data with multiple traits
+#'   spitalfields_traits <- spitalfields[,c(2:6)]
 #'
 #'   # example with multinormal likelihood, please be patient
 #'   spitalfields_res <- bay.ta(algorithm = "mnorm",
@@ -164,7 +168,8 @@ tmnlp <- function(known_age, mcmcMat) {
 age.comp.plot <- function(x,
                         age_identifier = "age.s",
                         known_age,
-                        mean_choice = "Mode" ) {
+                        mean_choice = "Mode",
+                        hdi_color = c("chartreuse4", "coral2")) {
   checkmate::assertClass(x, "diagnostic_summary")
   checkmate::assertChoice(age_identifier, c("age.s", "age.s_c"))
   checkmate::assertAtomic(known_age, all.missing = FALSE)
@@ -191,18 +196,21 @@ age.comp.plot <- function(x,
     ggplot2::geom_errorbar(ggplot2::aes(ymin=HDIlow, ymax=HDIhigh,
                       color= known_age > HDIlow - 0.05 &
                         known_age < HDIhigh + 0.05), lwd = 0.5 ,width = 0) +
-    ggplot2::geom_point(ggplot2::aes(y=known_age), shape = 3, colour = "black") +
+    ggplot2::geom_point(ggplot2::aes(y=known_age), shape = 3,
+                        colour = "black") +
     ggplot2::theme(axis.text.x = ggplot2::element_blank(),
           axis.ticks.x = ggplot2::element_blank()) +
     ggplot2::scale_colour_manual(name = 'Age in range',
-                        values = stats::setNames(c('chartreuse4','coral2'),c(T, F))) +
+                        values = stats::setNames(c(hdi_color[1],
+                                                   hdi_color[2]), c(T, F))) +
     ggplot2::xlab("\nIndividuals ordered by known age-at-death") +
     ggplot2::ylab("HDIlow to HDIhigh, known age-at-death\n") +
     ggplot2::theme_light()
 
   plot2 <- ggplot2::ggplot() +
     ggplot2::geom_line(data = known_age_density_df,
-                       ggplot2::aes(x = x, y = y, col = "density of actual ages\n(bw = 5)\n")) +
+                       ggplot2::aes(x = x, y = y,
+                                    col = "density of actual ages\n(bw = 5)\n")) +
     ggplot2::xlim(age_min, 100) +
     ggplot2::geom_function(fun = function(x) flexsurv::dgompertz(x - age_min,
                                                         beta_mean, alpha_mean),
@@ -215,17 +223,22 @@ age.comp.plot <- function(x,
            legend.spacing.y = ggplot2::unit(1.0, 'cm')) +
     ggplot2::guides(fill = ggplot2::guide_legend(byrow = F))
 
-  plot3 <- ggplot2::ggplot (x_ordered, ggplot2::aes(x = known_age, y = chosen_mean)) +
-    ggplot2::geom_point(shape = 21) + ggplot2::xlim(15,95) + ggplot2::ylim(15,95) +
+  plot3 <- ggplot2::ggplot (x_ordered, ggplot2::aes(x = known_age,
+                                                    y = chosen_mean)) +
+    ggplot2::geom_point(shape = 21) + ggplot2::xlim(15,95) +
+    ggplot2::ylim(15,95) +
     ggplot2::geom_smooth(method='lm', formula= y~x) + ggplot2::theme_light() +
     ggplot2::xlab("\nknown age-at-death") +
     ggplot2::ylab(paste0(mean_choice, " of estimated age-at-death\n")) +
     ggplot2::geom_abline(slope = 1, intercept = 0, linetype = 3)
 
   plot4 <- ggplot2::ggplot(x_ordered,
-                           ggplot2::aes(x=known_age, y = ( known_age - chosen_mean))) +
-    ggplot2::geom_point(shape = 21) + ggplot2::geom_smooth(method='lm', formula= y~x) +
-    ggplot2::geom_hline(yintercept = 0, linetype = 3) + ggplot2::theme_light() +
+                           ggplot2::aes(x=known_age,
+                                        y = ( known_age - chosen_mean))) +
+    ggplot2::geom_point(shape = 21) + ggplot2::geom_smooth(method='lm',
+                                                           formula= y~x) +
+    ggplot2::geom_hline(yintercept = 0, linetype = 3) +
+    ggplot2::theme_light() +
     ggplot2::xlab("\nknown age-at-death") + ggplot2::ylab("Residual\n")
 
   plot_result <- ggpubr::ggarrange( plot1, plot2, plot3, plot4, nrow = 2,
@@ -236,8 +249,8 @@ age.comp.plot <- function(x,
 #' @title Sequential cumulative binomial test
 #'
 #'@description
-#' The \emph{cumulative binomial} test asserts if the expected coverage, i.e. the
-#' percentage of known ages within the \emph{highest density intervals}, is
+#' The \emph{cumulative binomial} test asserts if the expected coverage, i.e.
+#' the percentage of known ages within the \emph{highest density intervals}, is
 #' within the confidence interval of the realized coverage. This wrapper
 #' function allows to run this test sequentially, i.e. with a sequence of
 #' expected coverage levels, at a confidence level of 0.95.
@@ -267,10 +280,11 @@ age.comp.plot <- function(x,
 #' @examplesIf interactive()
 #'
 #'   # select Spitalfields data with multiple traits and convert to matrix
-#'   spitalfields_traits <- as.matrix(spitalfields[,c(2:6)])
+#'   spitalfields_traits <- spitalfields[,c(2:6)]
 #'
 #'   # example with multinormal likelihood, please be patient
-#'   spitalfields_res <- bay.ta(algorithm = "mnorm", method = spitalfields_traits)
+#'   spitalfields_res <- bay.ta(algorithm = "mnorm",
+#'   method = spitalfields_traits)
 #'
 #'   # compute sequential binomial tests at expected probability levels 0.75
 #'   # and 0.95
