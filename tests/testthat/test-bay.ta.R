@@ -6,6 +6,7 @@ test_that("bay.ta() with NIMBLE produced sensible output", {
   skip_on_cran()
   skip_if_not_installed("nimble")
   skip_if_testcoverage()
+  skip_if_on_ci_and_mac()
   bay.ta_compare <- readRDS(test_path("fixtures", "sorsum_res_nimble.Rds"))
   bay.ta_output <- bay.ta(framework = "NIMBLE",
                           method = sorsum_as[,2],

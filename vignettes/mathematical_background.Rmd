@@ -155,7 +155,7 @@ The Gompertz distribution is implemented in NIMBLE and JAGS with the so-called '
 
 Building on this mortality model, we now describe how it is embedded in the latent trait framework used by `baytaAAR`.
 
-The observed data are written as $y_{i,j}$ where \emph{i} indexes individuals from \emph{1 to N} and \emph{j} indexes traits (skeletal age “indicators”) from \emph{1 to J}. Because the data are recorded for ordinal categorical traits the values for each trait are positive integers. The number of states per trait is given as $K_j$. With $K_j$ states per trait $j$, there are $K_j - 1$ thresholds for each trait. 
+The observed data are written as $y_{i,j}$ where $i$ indexes individuals from 1 to $N$ and $j$ indexes traits (skeletal age “indicators”) from 1 to $J$. Because the data are recorded for ordinal categorical traits the values for each trait are positive integers. The number of states per trait is given as $K_j$. With $K_j$ states per trait $j$, there are $K_j - 1$ thresholds for each trait. 
 
 $$
 i = 1,\dots,N, \qquad
@@ -193,7 +193,7 @@ a,\;
 b = \infty)
 $$
 
-where \emph{TN()} is a truncated normal distribution with left truncation at `a` and right truncation at `b`. Because the thresholds must be ordered, for the JAGS-model, $a = 1.5$, and the simulated thresholds are sorted in ascending order. NIMBLE does not have a sort-function, so there $a = \gamma_{k-1}$.
+where $TN()$ is a truncated normal distribution with left truncation at `a` and right truncation at `b`. Because the thresholds must be ordered, for the JAGS-model, $a = 1.5$, and the simulated thresholds are sorted in ascending order. NIMBLE does not have a sort-function, so there $a = \gamma_{k-1}$.
 
 For each individual there is a vector of latent traits $z_i$ of length $J$ (number of traits). For the simple probit model with conditional independence, the elements of these vectors are modeled separately with normal distributions:
 
@@ -201,7 +201,7 @@ $$
 z_{i,j} \sim \mathcal{N}(\mu_{i,j},\; \sigma = 1)
 $$
 
-For identifiability, $\sigma$ is fixed at \emph{unity} (1). 
+For identifiability, $\sigma$ is fixed at $unity$ (1). 
 
 For the complex probit model, these vectors follow a multivariate normal distribution:
 

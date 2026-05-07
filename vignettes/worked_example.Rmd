@@ -65,7 +65,7 @@ chelsea_age <- chelsea_age[,-14]
 colnames(chelsea_age) <- chelsea_age_col
 
 chelsea_adults <- 
-  chelsea_age |> dplyr::filter(grepl("^(ADULT|UNCLASSIFIED AD)", AGE))
+  chelsea_age |> dplyr::filter(grepl("^(ADULT|UNCLASSIFIED ADULT)", AGE))
 
 chelsea_adults_wide <- chelsea_adults |>
   dplyr::mutate(VALUE = as.numeric(VALUE)) |>
@@ -136,7 +136,7 @@ chelsea_complete[,2] |> table()
 Based on the osteological sex estimations, it seems that both sexes are present in roughly equal numbers. The known-age structure is as follows:
 
 ```{r age estimations, echo=TRUE}
-chelsea_complete$known_age |> na.omit() |> as.numeric()
+chelsea_complete$known_age |> na.omit() |> as.numeric() |> sort()
 ```
 
  Most of the 16 individuals with known age-at-death are at least 60 years or above. There are only four individuals with a plate of younger age.
@@ -146,14 +146,14 @@ chelsea_complete$known_age |> na.omit() |> as.numeric()
 ```{r method overview, echo=TRUE}
 options(knitr.kable.NA = '')
 chelsea_complete |>
-  select(starts_with("Dental"),
+  dplyr::select(starts_with("Dental"),
          starts_with("Pubic"),
          starts_with("Auricular"),
          starts_with("Costo")) |>
-  pivot_longer(everything(), names_to = "method", values_to = "phase") |>
-  mutate(phase = as.character(phase)) |>
-  count(method, phase) |>
-  pivot_wider(names_from = phase, values_from = n, values_fill = NA) |>
+  tidyr::pivot_longer(everything(), names_to = "method", values_to = "phase") |>
+  dplyr::mutate(phase = as.character(phase)) |>
+  dplyr::count(method, phase) |>
+  tidyr::pivot_wider(names_from = phase, values_from = n, values_fill = NA) |>
   knitr::kable ()
 ```
 
@@ -184,7 +184,7 @@ We will now analyse the Chelsea data with `baytaAAR` systematically. This implie
 
 ### Defining paths for downloading RDA-files
 
-Please note that the models should run until the resulting Markov Chain Monte Carlo (MCMC) samples meet certain quality criteria. As already noted in the introductory article (`vignette("baytaAAR")`), these are `10,000` for `ESS` and below `1.1` for `PSRF`. To spare the time in running the models, we saved RDA-files with the raw MCMC-chains on `Github` for downloading and loading. If you really want to run the models, set `runNewMCMC` to `TRUE`.
+Please note that the models should run until the resulting Markov Chain Monte Carlo (MCMC) samples meet certain quality criteria. As already noted in the introductory article (`vignette("baytaAAR")`), these are `10,000` for `ESS` and below `1.1` for `PSRF`. To spare the time in running the models, we saved RDA-files with the raw MCMC-chains on `Github` for downloading and loading. If you really want to run the models, set `runNewMCMC` to `TRUE`. If not, stick to the negation `!TRUE`.
 
 
 ```{r paths for rda-files}
@@ -539,11 +539,12 @@ thresholds <- data.frame(rbind(
   threshold_complete_nimble
 ) )
 colnames(thresholds) <- c("I", "II", "III", "IV", "V", "VI", "VII")
-rownames(thresholds) <- c("dental_wear", "pubic_symph", "auricular_surf",
-                          "costochondral", "ps_as - ps",  "ps_as - as",
-                          "no NAs - dw", "no NAs - ps", "no NAs - as",
-                          "no NAs - costo", "mnorm - dw", "mnorm - ps", 
-                          "mnorm - as", "mnorm - costo")
+rownames(thresholds) <- c("dental wear (dw)", "pubic symphysis (ps)", 
+                          "auricular surface (as)", "costochondral (costo)", 
+                          "ps_as - ps",  "ps_as - as", "no NAs - dw", 
+                          "no NAs - ps", "no NAs - as", "no NAs - costo", 
+                          "mnorm - dw", "mnorm - ps", "mnorm - as", 
+                          "mnorm - costo")
 thresholds |>  knitr::kable(digits = 0)
 ```
 
@@ -582,7 +583,7 @@ demo_sum <- demo_sum |> mutate(across(c('b', 'a'), ~ round (., 3))) |>
 demo_sum |> knitr::kable()
 ```
 
-First of all, it is remarkable that for the first four rows which cover the single trait models, the results of all parameters are very close to each other. For the model with all traits and no `NAs`, a much lower modal age `M` is estimated. In contrast, for the pubic symphysis analysed together with the auricular surface as well as for the full model, a higher modal age is computed. Furthermore, for the single trait models, the averages of the `highest density intervals` range between 40 and 60 years while for the multivariate models they are mostly below 30 years. For the multivariate models of the pubic symphysis with the auricular surface as well of all traits without `NAs`, these `HDIs` should cover the true age-at-death at the 0.95-credibility level, the default. Unfortunately, the number of cases with known age-at-death for these models is too low to test this proposition convincingly.
+First of all, it is remarkable that for the first four rows which cover the single trait models, the results of all parameters are very close to each other. For the model with all traits and no `NAs`, a much lower modal age `M` is estimated. In contrast, for the pubic symphysis analysed together with the auricular surface as well as for the full model, a higher modal age is computed. Furthermore, for the single trait models, the averages of the `highest density intervals` range between 40 and 60 years. Especially the very high ranges for dental wear cast doubts on the usefulness of this age estimation method. In contrast, for the multivariate models the ranges are mostly below 30 years. For the multivariate models of the pubic symphysis with the auricular surface as well of all traits without `NAs`, these `HDIs` should cover the true age-at-death at the 0.95-credibility level, the default. Unfortunately, the number of cases with known age-at-death for these models is too low to test this proposition convincingly.
 
 Interestingly, the full model exhibits about the same range in terms of `HDIs` as the model with pubis symphysis and auricular surface. The problem here is that because of the many missing entries, the correlation between traits cannot be taken fully into account, so we would expect that the true `HDI` is slightly higher.
 
@@ -600,7 +601,7 @@ Of the 16 individuals, only 14 meet this condition instead of the at least expec
 
 ### All traits, without correlations (`JAGS`), but calibrated ages
 
-Therefore, we will no add a calibration term to the model. We do this in the JAGS model because without the conditional dependence between traits this runs much faster.  The goal is to get to `HDI` ranges that are similar to the model with conditional dependence. This is achieved by adding a Gaussian distribution to the ages. It turns out that the similar `HDI` ranges are reached with an additional noise of 5 (years) in the parameter `error_sd`. The parameter to be monitored is changed from `age.s` to `age.s_c`.
+Therefore, we will now add a calibration term to the model. We do this in the JAGS model because without the conditional dependence between traits this runs much faster.  The goal is to get to `HDI` ranges that are similar to the model with conditional dependence. This is achieved by adding a Gaussian distribution to the ages. It turns out that the similar `HDI` ranges are reached with an additional noise of 5 (years) in the parameter `error_sd`. The parameter to be monitored is changed from `age.s` to `age.s_c`.
 
 ```{r all methods jags model, with calibration}
 if ( runNewMCMC ) {

@@ -49,7 +49,7 @@ For the sake of illustration, we skip the diagnostic checks here and move direct
 As the name suggests, the function `age.comp.summary()` summarizes standard quality measures of the comparison of known and estimated ages-at-death. These fall into two groups:
 
 1. Frequentist point estimates
-- `Bias` - Arithmetic mean of the difference between known and estimated age.
+- `Bias` - Arithmetic mean of the difference between known and estimated age of all individuals in the sample.
 - `corrPearson` -- Correlation between known and estimated age with
 - `p_value` -- p-value of that correlation and
 - `Residual_slope` -- Slope of the regression of the difference between known and estimated age.
@@ -85,7 +85,7 @@ sequential.binom.test(spitalfields_res,
   knitr::kable(digits = 3)
 ```
 
-In the table above, the confidence intervals of the observed *coverage*, that is, the number of times the *highest density intervals* of the estimated ages encapsulate the true ages-at-death, include the expected *coverage* for all levels. Thus, this result suggests that the model is able to 'predict' age-at-death with the correct level of confidence.
+In the table above, for all levels the confidence intervals of the observed *coverage* include the expected *coverage*. Thus, this result suggests that the model is able to 'predict' age-at-death with the correct level of confidence.
 
 Finally, `age.comp.plot()` shows the relationship between estimated and known ages-at-death graphically. Its four plots convey the following information:
 

@@ -246,7 +246,7 @@ ggpubr::ggarrange(
 )
 ```
 
-Compared to `AGE`, the `SEX` groups display no clear pattern. Their means on the right plot are all around 55 years, and their *highest density intervals*, the black line at the bottom of the densities extending to the left and right from the black circle, overlap to a large extent. The lack of systematic differences between sex categories suggests that the estimated age distributions are largely independent of osteological sex classification in this data set.
+Compared to `AGE`, the `SEX` groups display no clear pattern. Their means on the right plot are all around 55 years, and their *highest density intervals*, the black line at the bottom of the densities extending to the left and right from the black circle, overlap to a large extent. The lack of systematic differences between sex categories suggests that the estimated age distributions are largely independent of osteological sex classification in this data set. Nevertheless, the bimodal distribution of the females raises some questions. It seems possible that the peak in their 20s reflects heightened maternal mortality or that access to the crypt favored either very young or comparatively old women.
 
 Overall, the examples above illustrate how posterior age distributions can be flexibly aggregated to explore group-level patterns and assess how posterior age distributions vary across categorical variables without modifying the underlying model.
 

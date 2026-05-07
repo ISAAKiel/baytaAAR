@@ -199,7 +199,7 @@ More in-depth information on the background of and the rationale behind `baytaAA
 
 ## Data layout
 
-As input, the function `bay.ta()` assumes a `matrix` of trait expressions. In its simplest form, this may contain only one column with a single trait as in the following example ("auricular surface"):
+As input, the function `bay.ta()` assumes a `matrix()` of trait expressions. In its simplest form, this may contain only one column with a single trait as in the following example ("auricular surface"):
 
 ```{r sorsum data, echo = T}
 data(sorsum_as, package = "baytaAAR")
@@ -248,7 +248,7 @@ diagnostics.max.min(sorsum_as_res_diag)
 
 From the output of `diagnostics.max.min()` it is clear that these values are not yet reached and that therefore more iterations would be necessary.
 
-Another measure to assess the quality of the simulations are so-called 'trace-plots'. They illustrate the mixing of the chains which ideally should be nearly indistinguishable. For this, we use the function `bayesplot::mcmc_trace` from the R-package `bayesplot` [@gabry_et_al_2019]. We also switch to the color scheme `viridis` which makes distinguishing between chains easier.
+Another measure to assess the quality of the simulations are so-called 'trace-plots'. They illustrate the mixing of the chains which ideally should be nearly indistinguishable. For this, we use the function `bayesplot::mcmc_trace` from the R package `bayesplot` [@gabry_et_al_2019]. We also switch to the color scheme `viridis` which makes distinguishing between chains easier.
 
 ```{r sorsum trace plots, echo = T}
 bayesplot::color_scheme_set("viridis")
@@ -267,7 +267,7 @@ Ideally, the value of the PSRF should converge to `1`, but stay below `1.1`. On 
 
 From the minimum ESS value of around 40 (see above), it can be surmised that roughly 250 times more iterations are needed to get to a value of 10,000. This would increase runtime proportionally (approximately 200--250 minutes, equaling about 4 hours). However, because the resulting file would also be 250 times larger, some degree of thinning is necessary, so saving only, say, every 100th step (= thinning of 100). This in turn might increase autocorrelation which in turn will force you to run the model even longer.
 
-In the current vignette, we forego this step at the moment. Instead, we inspect the seven thresholds between the eight levels (the number of thresholds is always the number of levels minus one). For this, we use the internal function `threshold.chains()` to compute the threshold values for each iteration. The computation of the thresholds on the age-scale is done outside of the MCMC simulation to reduce computational cost and memory usage. The function returns a `coda::mcmc.list()` which is further processed with first `diagnostic.summary()` and then `threshold.matrix()`. The latter is again a convenience function to extract mean thresholds values from the output of `diagnostic.summary()` which is particularly handy when dealing with several traits.
+In the current vignette, we forego this step at the moment. Instead, we inspect the seven thresholds between the eight levels. For this, we use the internal function `threshold.chains()` to compute the threshold values for each iteration. The computation of the thresholds on the age-scale is done outside of the MCMC simulation to reduce computational cost and memory usage. The function returns a `coda::mcmc.list()` which is further processed with first `diagnostic.summary()` and then `threshold.matrix()`. The latter is again a convenience function to extract mean thresholds values from the output of `diagnostic.summary()` which is particularly handy when dealing with several traits.
 
 ```{r sorsum thresholds, echo = TRUE}
 thresholds <- threshold.chains(sorsum_as_res)
@@ -293,7 +293,7 @@ age.estim.summary(sorsum_as_res_diag) |> knitr::kable(digits = 3)
 
 The above table demonstrates that it makes a difference whether you choose `Mean`, `Median` or `Mode` as the measure of the mean.
 
-To illustrate the spread of the ages, this time we rely on the functionality of the R package `tidybayes` [@kay_2024]. Its function `tidybayes::spread_draws()` allows to subset the chains in a single step to extract the estimated ages (`age.s`). We limit here the age estimates to the first seven.
+To illustrate the distribution of some of the individual ages, this time we rely on the functionality of the R package `tidybayes` [@kay_2024]. Its function `tidybayes::spread_draws()` allows to subset the chains in a single step to extract the estimated ages (`age.s`). We limit here the age estimates to the first seven.
 
 ```{r sorsum ages, echo = TRUE, warning=F, fig.width=5, fig.height=6, fig.align = 'center' }
 sorsum_as_res |> tidybayes::spread_draws(age.s[age_number])  |> 
@@ -302,7 +302,8 @@ sorsum_as_res |> tidybayes::spread_draws(age.s[age_number])  |>
   tidybayes::stat_halfeye(
     .width = 0.95, point_interval = mode_hdi, fill = "lightgrey") + 
   scale_x_continuous(breaks = seq(10,100,10), limits = c(18, 100)) +
-  labs( x = "\nModal age-at-death (years)", y = NULL ) + theme_light() +
+  labs( x = "\nModal age-at-death (years)", y = "Individual no.\n" ) + 
+  theme_light() +
   theme(panel.grid.minor.x = element_blank(), text = element_text(size = 12))
 ```
 
@@ -320,7 +321,7 @@ ggplot() + ylab("density\n") +
   theme(panel.grid.minor.x = element_blank(), text = element_text(size = 12))
 ```
 
-The Gompertz function provides a different perspective on the mortality structure of the population studied as it does not depend on individual point estimates of ages like, for example, [Kaplan-Meier-diagrams](https://en.wikipedia.org/wiki/Kaplan–Meier_estimator).
+The Gompertz function provides a different perspective on the mortality structure of the population studied as it does not depend on individual point estimates of ages like, for example, [Kaplan-Meier-diagrams](https://en.wikipedia.org/wiki/Kaplan–Meier_estimator). Please note that the maximum of the curve coincides with the arithmetic mean of the modal age M (55 years) in the table above.
 
 
 ## Running the analysis with JAGS
@@ -342,7 +343,7 @@ The JAGS model needs a little bit longer than the NIMBLE model but if you run th
 
 ## Going further
 
-More vignettes explain framework decisions (`vignette("computation_framework")`), detail the model in mathematical terms (`vignette("mathematical_background")`), demonstrate how data sets with known age-at-death can be dealt with (`vignette("known_age")`) and provide a thoroughly worked example (`vignette("worked_example")`).
+More vignettes explain framework decisions (`vignette("computation_framework")`), detail the model in mathematical terms (`vignette("mathematical_background")`), demonstrate how data sets with known age-at-death can be dealt with (`vignette("known_age")`), provide a thoroughly worked example (`vignette("worked_example")`) and show how the posterior probability densities can be grouped (`vignette("groupings")`).
 
 ---
 

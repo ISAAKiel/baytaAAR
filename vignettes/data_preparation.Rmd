@@ -34,8 +34,8 @@ data(spitalfields, package = "baytaAAR")
 head(spitalfields[,2:6])
 ```
 
-NAs are allowed but neither rows nor columans may consist entirely of `NA` values. `bay.ta` will refuse to run in such cases, and the offending rows or columns need to be removed before analysis. Please see the `vignette("worked_example")` on Chelsea 'Old church' for an example of how this can be done.
+NAs are allowed but neither rows nor columns may consist entirely of `NA` values. `bay.ta` will refuse to run in such cases, and the offending rows or columns need to be removed before analysis. Please see the `vignette("worked_example")` on Chelsea 'Old church' for an example of how this can be done.
 
 The levels of all traits must start at `1`. Binary traits are possible. Mixed levels like `1.5` as a short-cut for a trait expression between `1` and `2`, however, should not be used as this would violate basic principles of ordinal scaling. Thus, in such cases one of the neighboring levels must be chosen or they need to be set to `NA`.
 
-In contrast to what has been published before (§§), the nodes (i.e., rows of the matrix) do not need to be fully observed for the multinormal model to run, partly because, with [NIMBLE vers. 1.4.1.](https://r-nimble.org/release-notes.html#february-14-2026-weve-released-version-1.4.1), the NIMBLE team introduced a sampler for partially observed multivariate normal variables.
+In contrast to what has been published before (§§), the nodes (i.e., rows of the matrix) do not need to be fully observed for the multinormal model to run, partly because, with [NIMBLE vers. 1.4.1](https://r-nimble.org/release-notes.html#february-14-2026-weve-released-version-1.4.1), the NIMBLE team introduced a sampler for partially observed multivariate normal variables.
