@@ -870,10 +870,10 @@ sequential.binom.test(chelsea_complete_nimble_res,
 |---------:|-----:|------:|-------:|------:|--------:|
 |     0.95 |   15 | 0.938 |  0.698 | 0.998 |    0.56 |
 
-Of the 16 individuals, only 14 meet this condition instead of the at
-least expected 15. While the test is not significant due to the small
-sample size, this could imply that the `HDIs` are indeed not
-well-calibrated.
+Of the 16 individuals, 15 meet this condition instead. While the small
+sample size is small, this could imply that the `HDIs` are
+well-calibrated. However, as mentioned above, we would expect overall
+larger `HDIs` because of the many `NAs`.
 
 ### All traits, without correlations (`JAGS`), but calibrated ages
 
@@ -1187,5 +1187,4 @@ Archaeological Investigations.
 Müller-Scheeßel, Nils, Christoph Rinne, and Katharina Fuchs. 2026. “A
 Fully Bayesian Approach to Adult Skeletal Age Estimation: Multivariate
 Latent Trait Modeling with Markov Chain Monte Carlo Sampling.” *American
-Journal of Biological Anthropology*, ahead of print.
-<https://doi.org/10.1002/ajpa.70289>.
+Journal of Biological Anthropology*.

@@ -16,4 +16,17 @@ Useful links:
 
 - <https://github.com/ISAAKiel/baytaAAR>
 
+- <https://isaakiel.github.io/baytaAAR/>
+
 - Report bugs at <https://github.com/ISAAKiel/baytaAAR/issues>
+
+## Author
+
+**Maintainer**: Nils Müller-Scheeßel
+<nils.mueller-scheessel@ufg.uni-kiel.de>
+([ORCID](https://orcid.org/0000-0001-7992-8722)) \[copyright holder\]
+
+Authors:
+
+- Christoph Rinne <crinne@ufg.uni-kiel.de>
+  ([ORCID](https://orcid.org/0000-0002-9829-6182))

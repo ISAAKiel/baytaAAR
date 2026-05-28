@@ -161,7 +161,6 @@ Müller-Scheeßel N, Rinne C, Fuchs K (2026). “A Fully Bayesian Approach
 to Adult Skeletal Age Estimation: Multivariate Latent Trait Modeling
 with Markov Chain Monte Carlo Sampling.” *American Journal of Biological
 Anthropology*.
-[doi:10.1002/ajpa.70289](https://doi.org/10.1002/ajpa.70289) .
 
 ## Examples
 

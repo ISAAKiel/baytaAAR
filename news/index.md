@@ -1,5 +1,5 @@
 # Changelog
 
-## baytaAAR 0.1.0
+## baytaAAR 1.0.0
 
 First release.

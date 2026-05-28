@@ -93,7 +93,7 @@ sorsum_as_res <- bay.ta(
   thinSteps = 100,
   seed = 1234
 )
-#> Starting Time: 28 May 2026 17:06:42
+#> Starting Time: 28 May 2026 19:30:16
 #> Defining model
 #> Building model
 #> Setting data and initial values
@@ -126,7 +126,7 @@ sorsum_as_res <- bay.ta(
 #> running chain 3...
 #> |-------------|-------------|-------------|-------------|
 #> |-------------------------------------------------------|
-#> Execution Time: 1.47 minutes
+#> Execution Time: 1.39 minutes
 ```
 
 The analysis takes about 1 minute, depending on the computer power. The
@@ -423,5 +423,4 @@ Osteoarchaeology* 35 (1): e3363. <https://doi.org/10.1002/oa.3363>.
 Müller-Scheeßel, Nils, Christoph Rinne, and Katharina Fuchs. 2026. “A
 Fully Bayesian Approach to Adult Skeletal Age Estimation: Multivariate
 Latent Trait Modeling with Markov Chain Monte Carlo Sampling.” *American
-Journal of Biological Anthropology*, ahead of print.
-<https://doi.org/10.1002/ajpa.70289>.
+Journal of Biological Anthropology*.

@@ -50,7 +50,7 @@ spitalfields_res <- bay.ta(
   numSavedSteps = 100000,
   seed = 331
 )
-#> Starting Time: 28 May 2026 17:09:02
+#> Starting Time: 28 May 2026 19:32:28
 #> Defining model
 #> Building model
 #> Setting data and initial values
@@ -86,7 +86,7 @@ spitalfields_res <- bay.ta(
 #> running chain 3...
 #> |-------------|-------------|-------------|-------------|
 #> |-------------------------------------------------------|
-#> Execution Time: 4.34 minutes
+#> Execution Time: 4.18 minutes
 ```
 
 For the sake of illustration, we skip the diagnostic checks here and
@@ -281,8 +281,7 @@ Age-at-Death.” *Journal of Forensic Sciences* 53 (3): 541–57.
 Müller-Scheeßel, Nils, Christoph Rinne, and Katharina Fuchs. 2026. “A
 Fully Bayesian Approach to Adult Skeletal Age Estimation: Multivariate
 Latent Trait Modeling with Markov Chain Monte Carlo Sampling.” *American
-Journal of Biological Anthropology*, ahead of print.
-<https://doi.org/10.1002/ajpa.70289>.
+Journal of Biological Anthropology*.
 
 Stull, Kyra E., Elaine Y. Chu, Louise K. Corron, and Michael H. Price.
 2022. “Subadult Age Estimation Using the Mixed Cumulative Probit and a

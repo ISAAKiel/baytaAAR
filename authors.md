@@ -2,7 +2,10 @@
 
 ## Authors
 
-- **Nils Müller-Scheeßel**. Maintainer.
+- **Nils Müller-Scheeßel**. Author, maintainer, copyright holder.
+  [](https://orcid.org/0000-0001-7992-8722)
+
+- **Christoph Rinne**. Author. [](https://orcid.org/0000-0002-9829-6182)
 
 ## Citation
 

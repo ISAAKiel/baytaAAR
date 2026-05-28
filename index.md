@@ -1,6 +1,7 @@
 ## baytaAAR
 
-![](reference/figures/logo.png)
+\![baytaAAR logo is the ISAAK logo with Gompertz
+curve\]![](reference/figures/logo.png)
 
 `baytaAAR` provides Bayesian age estimation for bioarchaeological
 skeletal data of human adults using ordinal probit regression models
