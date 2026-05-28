@@ -15,3 +15,5 @@
 ## Comments
 The paper <10.1002/ajpa.70289> mentioned in DESCRIPTION is accepted for
 publication but not yet online.
+
+The words flagged as "possibly misspelled" in DESCRIPTION are correct.

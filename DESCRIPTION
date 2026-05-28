@@ -1,6 +1,6 @@
 Package: baytaAAR
 Type: Package
-Title: Bayesian Transition Analysis with MCMC
+Title: Bayesian Transition Analysis with Markov Chain Monte Carlo
 Version: 1.0.0
 Authors@R: c(person(given = "Nils", family = "Müller-Scheeßel",
                       email = "nils.mueller-scheessel@ufg.uni-kiel.de",
