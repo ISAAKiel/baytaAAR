@@ -1,7 +1,7 @@
 Package: baytaAAR
 Type: Package
 Title: Bayesian Transition Analysis with MCMC
-Version: 0.1.0
+Version: 1.0.0
 Author: c(person(given = "Nils", family = "Müller-Scheeßel",
                       email = "nils.mueller-scheessel@ufg.uni-kiel.de",
                       role = c("aut", "cre", "cph"),
@@ -50,5 +50,5 @@ Depends:
 RdMacros: Rdpack
 VignetteBuilder: knitr
 Config/testthat/edition: 3
-URL: https://github.com/ISAAKiel/baytaAAR
+URL: https://github.com/ISAAKiel/baytaAAR, https://isaakiel.github.io/baytaAAR/
 BugReports: https://github.com/ISAAKiel/baytaAAR/issues

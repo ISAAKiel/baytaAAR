@@ -189,7 +189,6 @@ Please note that the models should run until the resulting Markov Chain Monte Ca
 
 ```{r paths for rda-files}
 runNewMCMC = !TRUE
-# path <- "https://github.com/ISAAKiel/Chelsea_mcmc/raw/refs/heads/main/"
 path <- "https://raw.githubusercontent.com/ISAAKiel/Chelsea_mcmc/main/"
 ```
 
@@ -679,7 +678,7 @@ ggpubr::ggarrange(
 )
 ```
 
-As noted previously (§§), the HDI ranges are lowest in early life and increase from there onwards. However, at about an age mode of 60--70 years, they start to shrink again.
+As noted previously [@ref_299013], the HDI ranges are lowest in early life and increase from there onwards. However, at about an age mode of 60--70 years, they start to shrink again.
 
 The plots of the joined analysis of the auricular surface and the pubic symphysis as well as that for the data set without `NAs` look very similar, despite the fact that the first model contained much more entries than the second. In both cases, the point estimates form a rather clean arc. In contrast, the complete model looks rather messy with some extreme outliers, presumably from individuals were only the weakest method, dental wear, was assessable. Furthermore, the clean arc of the first two models has disappeared because middle-aged individuals were assessed overall younger than in the first two models. In comparison, the complete model with the calibration term of 5 years has again moved closer to the model without `NAs`. This we would take as a hint that the estimates of the model with calibration term are more conservative.
 
@@ -707,7 +706,7 @@ summary_mat |> t() |> knitr::kable(digits = 2)
 
 Above the resulting coverage for 95% credibility was computed. As already pointed out above, the first six frequentist quality measures are dependent on the point estimate and therefore malleable to the chosen measure of the mean. The mode is best in terms of the first four quality measures while the arithmetic mean performs better for `Inaccuracy` and `RMSE`. The median is somehow in-between. The two Bayesian measures `TMNLP` and `CRPS`, in contrast, do not change, regardless which point estimate was chosen.
 
-When reviewing the quality measures itself (see §§ for a short review of some tests of age estimation methods), the performance is quite good. Most single methods will not reach an `Inaccuracy` of 7.3 years or a `CRPS` of 5.25.
+When reviewing the quality measures itself [see @ref_299013 for a short review of some tests of age estimation methods], the performance is quite good. Most single methods will not reach an `Inaccuracy` of 7.3 years or a `CRPS` of 5.25.
 
 A formal test of the coverage is the binomial test which checks if the resulting numbers deviate significantly from expectation. Below, we do this for several credibility ranges. Due to the small sample size of only 16 age-known individuals, we cannot expect any significant result.
 
@@ -737,7 +736,7 @@ One of the main aims of the above workflow was to show how the *highest density 
 
 Apart from this, two further aspects which become apparent with the Chelsea 'Old church' data set merit attention. The first concerns the different mean and modal ages for the different model based on different traits and trait combinations. It has to be kept in mind that the ensuing samples are not identical and only partly overlap. That means that the different mean ages might well reflect true differences in the age composition of the respective samples. Especially in the case of the model of no `NAs`, that is the one where all traits were assessable, the low mean age is noteworthy, despite the fact that the plot with the ages and the `HDIs` looked very similar to the one with auricular surface and pubic symphsis. Therefore, we have to consider that age-at-death and completeness of trait observations is very probably not independent from one another. This suggests that missingness is not random with respect to age, which may bias multivariate estimates.
  
- The second aspects relates to the *highest density intervals*: For the multivariate normal models, these were around 30 years of age. This is the same range which was found for the DRNNAGE system (§§) but also for the new ABDOU transition analysis (manuscript in prep.). It seems quite possible that with methods based on pathological changes in the skeleton, as those age markers essentially are [@FUCHS20261], we cannot get below this threshold of 30 years. This seems to equal an inaccuracy level of about 6--7 years or a `CRPS` of about 4--5 years.
+ The second aspects relates to the *highest density intervals*: For the multivariate normal models, these were around 30 years of age. This is the same range which was found for the DRNNAGE system [@ref_299013] but also for the new ABDOU transition analysis (manuscript in prep.). It seems quite possible that with methods based on pathological changes in the skeleton, as those age markers essentially are [@FUCHS20261], we cannot get below this threshold of 30 years. This seems to equal an inaccuracy level of about 6--7 years or a `CRPS` of about 4--5 years.
  
 ---
 

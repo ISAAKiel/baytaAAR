@@ -27,7 +27,7 @@ library(flexsurv)
 
 ## Introduction
 
-**baytaAAR** implements latent trait analysis within a Bayesian Markov Chain Monte Carlo (MCMC) framework. It is intended to estimate the age-of-death of adult individuals for whom one or several ordinal traits related to the human aging process have been assessed. It produces probability densities for the individual ages but also for the respective population as a whole. `baytaAAR` has been introduced and tested in the paper ###, and there the basic idea of the model is illustrated in the following figure:
+**baytaAAR** implements latent trait analysis within a Bayesian Markov Chain Monte Carlo (MCMC) framework. It is intended to estimate the age-of-death of adult individuals for whom one or several ordinal traits related to the human aging process have been assessed. It produces probability densities for the individual ages but also for the respective population as a whole. `baytaAAR` has been introduced and tested by Müller-Scheeßel et al. [-@ref_299013], and there the basic idea of the model is illustrated in the following figure:
 
 ```{r ordered probit regression, echo = FALSE, message=FALSE, fig.width=6, fig.height=4, fig.align = 'center' }
 library(flexsurv)

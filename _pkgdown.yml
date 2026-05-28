@@ -1,8 +1,7 @@
-url: ~
+url: https://isaakiel.github.io/baytaAAR/
 template:
   bootstrap: 5
-  light-switch: true
-
+  light-switch: yes
 articles:
 - title: Articles
   navbar: ~
@@ -13,12 +12,10 @@ articles:
   - known_age
   - worked_example
   - groupings
-
 reference:
-- title: "Running bay.ta"
-  contents:
-  - bay.ta
-- title: "Postprocessing"
+- title: Running bay.ta
+  contents: bay.ta
+- title: Postprocessing
   contents:
   - diagnostic.summary
   - diagnostics.max.min
@@ -27,12 +24,13 @@ reference:
   - threshold.matrix
   - corr.mat.mean
   - prob.cat
-- title: "Known age-at-death"
+- title: Known age-at-death
   contents:
   - age.comp.summary
   - age.comp.plot
   - sequential.binom.test
-- title: "Data sets"
+- title: Data sets
   contents:
   - sorsum_as
   - spitalfields
+

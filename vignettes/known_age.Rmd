@@ -28,7 +28,7 @@ head(spitalfields)
 
 Buckberry and Chamberlain introduced a new scoring system of the *pubic symphysis* and thereby replaced a single score with multiple levels to several traits with fewer levels each.
 
-For running the model, we use NIMBLE and the multivariate normal likelihood (`mnorm`). In a real-life setting, `multicore` should be set to `TRUE` to reduce computation time. Still, even on modern hardware, the model will run for up to several weeks until the usual quality criteria are met. However, already a shorter run demonstrates the principle [for the full run see the results in §§§].
+For running the model, we use NIMBLE and the multivariate normal likelihood (`mnorm`). In a real-life setting, `multicore` should be set to `TRUE` to reduce computation time. Still, even on modern hardware, the model will run for up to several weeks until the usual quality criteria are met. However, already a shorter run demonstrates the principle [for the full run see the results in @ref_299013].
 
 ```{r spitalfields bayta, echo = TRUE}
 spitalfields_res <- bay.ta(

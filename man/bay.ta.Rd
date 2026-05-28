@@ -90,7 +90,9 @@ Chain Monte Carlo (MCMC) framework. It is intended to estimate the
 age-of-death of adult individuals for whom one or several ordinal traits
 have been assessed. It produces probability densities for the individual
 ages but also for the respective population as a whole. \code{bay.ta()} has
-been introduced and tested in the paper ###.
+been introduced and tested by Müller-Scheeßel et al. (2026).
+}
+\details{
 \code{bay.ta()} is a wrapper for the functions \code{bay.ta.jags()} and
 \code{bay.ta.nimble()}. NIMBLE allows the user to run models with multinormal
 ordered regression, also with parallel clusters. In this respect, however,
@@ -145,4 +147,7 @@ normal random variables.
   spitalfields_res <- bay.ta(falgorithm = "mnorm",
   method = spitalfields_traits)
 \dontshow{\}) # examplesIf}
+}
+\references{
+\insertRef{ref_299013}{baytaAAR}
 }

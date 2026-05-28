@@ -19,7 +19,7 @@ How to cite this package
 
 You can cite this package like this "we estimated age-at-death of human adults with the baytaAAR R-package (Müller-Scheeßel et al. 2026)". Here is the full bibliographic reference to include in your reference list (don't forget to update the 'last accessed' date):
 
-> N. Müller-Scheeßel, K. Fuchs, C. Rinne (2026). baytaAAR: Bayesian age estimations of human adults (vers. 0.1.0). <https://doi.org/10.32614/CRAN.package.baytaAAR>.
+> N. Müller-Scheeßel, K. Fuchs, C. Rinne (2026). baytaAAR: Bayesian age estimations of human adults (vers. 1.0.0). <https://github.com/ISAAKiel/baytaAAR>.
 
 
 Installation
