@@ -135,4 +135,4 @@ Achim Zeileis. Technische Universität Wien.
 
 Plummer, Martyn, Nicky Best, Kate Cowles, and Karen Vines. 2006. “CODA:
 Convergence Diagnosis and Output Analysis for MCMC.” *R News* 6 (1):
-7–11. <https://journal.r-project.org/archive/>.
+7–11.

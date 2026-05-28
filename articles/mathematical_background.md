@@ -222,10 +222,10 @@ $`y_{i,j} - \textit{U}(-0.2, 0.2)`$.
 
 ## References
 
-Gompertz, Benjamin. 1825. “[On the Nature of the Function Expressive of
+Gompertz, Benjamin. 1825. “On the Nature of the Function Expressive of
 the Law of Human Mortality, and on a New Mode of Determining the Value
-of Life Contingencies](https://isaakiel.github.io/baytaAAR/articles/).”
-*Philosophical Transactions of the Royal Society of London* 115: 513–83.
+of Life Contingencies.” *Philosophical Transactions of the Royal Society
+of London* 115: 513–83. <https://doi.org/10.1098/rstl.1825.0026>.
 
 Kruschke, John K. 2015. *Doing Bayesian data analysis: a tutorial with
 R, JAGS, and Stan*. Academic Press.
