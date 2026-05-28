@@ -14,7 +14,17 @@ Provides Bayesian age estimation for bioarchaeological skeletal data using ordin
 Useful links:
 \itemize{
   \item \url{https://github.com/ISAAKiel/baytaAAR}
+  \item \url{https://isaakiel.github.io/baytaAAR/}
   \item Report bugs at \url{https://github.com/ISAAKiel/baytaAAR/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Nils Müller-Scheeßel \email{nils.mueller-scheessel@ufg.uni-kiel.de} (\href{https://orcid.org/0000-0001-7992-8722}{ORCID}) [copyright holder]
+
+Authors:
+\itemize{
+  \item Christoph Rinne \email{crinne@ufg.uni-kiel.de} (\href{https://orcid.org/0000-0002-9829-6182}{ORCID})
 }
 
 }

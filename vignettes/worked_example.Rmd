@@ -595,7 +595,7 @@ sequential.binom.test(chelsea_complete_nimble_res,
   knitr::kable(digits = 3)
 ```
 
-Of the 16 individuals, only 14 meet this condition instead of the at least expected 15. While the test is not significant due to the small sample size, this could imply that the `HDIs` are indeed not well-calibrated.
+Of the 16 individuals, 15 meet this condition instead. While the small sample size is small, this could imply that the `HDIs` are well-calibrated. However, as mentioned above, we would expect overall larger `HDIs` because of the many `NAs`.
 
 
 ### All traits, without correlations (`JAGS`), but calibrated ages

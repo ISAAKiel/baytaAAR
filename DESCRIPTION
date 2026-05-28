@@ -2,13 +2,13 @@ Package: baytaAAR
 Type: Package
 Title: Bayesian Transition Analysis with MCMC
 Version: 1.0.0
-Author: c(person(given = "Nils", family = "Müller-Scheeßel",
+Authors@R: c(person(given = "Nils", family = "Müller-Scheeßel",
                       email = "nils.mueller-scheessel@ufg.uni-kiel.de",
                       role = c("aut", "cre", "cph"),
                       comment = c(ORCID = "0000-0001-7992-8722")),
                       person(given = "Christoph", family = "Rinne", 
                       email = "crinne@ufg.uni-kiel.de", 
-                      role = c("aut", "cre"),
+                      role = c("aut"),
                       comment = c(ORCID = "0000-0002-9829-6182")))
 Maintainer: Nils Müller-Scheeßel <nils.mueller-scheessel@ufg.uni-kiel.de>
 Description: Provides Bayesian age estimation for bioarchaeological skeletal 
