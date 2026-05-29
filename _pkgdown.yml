@@ -10,8 +10,8 @@ articles:
   - mathematical_background
   - data_preparation
   - known_age
-  - worked_example
-  - groupings
+  - articles/worked_example
+  - articles/groupings
 reference:
 - title: Running bay.ta
   contents: bay.ta
@@ -33,4 +33,3 @@ reference:
   contents:
   - sorsum_as
   - spitalfields
-

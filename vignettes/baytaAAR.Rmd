@@ -343,7 +343,7 @@ The JAGS model needs a little bit longer than the NIMBLE model but if you run th
 
 ## Going further
 
-More vignettes explain framework decisions (`vignette("computation_framework")`), detail the model in mathematical terms (`vignette("mathematical_background")`), demonstrate how data sets with known age-at-death can be dealt with (`vignette("known_age")`), provide a thoroughly worked example (`vignette("worked_example")`) and show how the posterior probability densities can be grouped (`vignette("groupings")`).
+More vignettes explain framework decisions (`vignette("computation_framework")`), detail the model in mathematical terms (`vignette("mathematical_background")`), demonstrate how data sets with known age-at-death can be dealt with (`vignette("known_age")`), provide a thoroughly worked example (`vignette("articles/worked_example")`) and show how the posterior probability densities can be grouped (`vignette("articles/groupings")`).
 
 ---
 

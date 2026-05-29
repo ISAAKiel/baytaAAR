@@ -1,6 +1,6 @@
 ---
 title: "Grouping of data"
-bibliography: ../inst/REFERENCES.bib
+bibliography: ../../inst/REFERENCES.bib
 ---
 
 ```{r, include = FALSE}
