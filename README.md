@@ -5,7 +5,7 @@
 baytaAAR
 -------
 
-![baytaAAR logo is the ISAAK logo with Gompertz curve]<img src="man/figures/logo.png" align="right" height="139" alt="" />
+<img src="man/figures/logo.png" align="right" height="139" alt="" />
 
 `baytaAAR` provides Bayesian age estimation for bioarchaeological skeletal data of human adults using ordinal probit regression models implemented in JAGS and NIMBLE. The package is designed to handle multiple ordinal traits and incorporates a Gompertz prior on age to reflect population-level mortality trends. It accounts for estimation uncertainties and supports full customization of model parameters and MCMC settings.
 
@@ -15,9 +15,9 @@ For further information, please have a look at the Documentation with several vi
 How to cite this package
 ------------
 
-You can cite this package like this "we estimated age-at-death of human adults with the baytaAAR R-package (Müller-Scheeßel et al. 2026)". Here is the full bibliographic reference to include in your reference list (don't forget to update the 'last accessed' date):
+You can cite this package like this "we estimated age-at-death of human adults with the baytaAAR R-package (Müller-Scheeßel & Rinne 2026)". Here is the full bibliographic reference to include in your reference list (don't forget to update the 'last accessed' date):
 
-> N. Müller-Scheeßel, K. Fuchs, C. Rinne (2026). baytaAAR: Bayesian age estimations of human adults (vers. 1.0.0). <https://github.com/ISAAKiel/baytaAAR>.
+> N. Müller-Scheeßel & C. Rinne (2026). baytaAAR: Bayesian Transition Analysis with Markov Chain Monte Carlo (vers. 1.0.0). <https://github.com/ISAAKiel/baytaAAR>.
 
 
 Installation

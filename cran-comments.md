@@ -4,6 +4,14 @@
 
 * This is a new release.
 
+
+## Comments
+* The words flagged as "possibly misspelled" in DESCRIPTION are correct.
+
+* The paper <10.1002/ajpa.70289> mentioned in DESCRIPTION is accepted for
+publication but not yet online.
+
+
 ## Test environments
 * local OS X install, R 4.5.2
 * macOS builder (release)
@@ -11,9 +19,3 @@
 * ubuntu-latest (devel, on github-action)
 * windows-latest (release, on github-action)
 * win-builder (devel)
-
-## Comments
-The paper <10.1002/ajpa.70289> mentioned in DESCRIPTION is accepted for
-publication but not yet online.
-
-The words flagged as "possibly misspelled" in DESCRIPTION are correct.

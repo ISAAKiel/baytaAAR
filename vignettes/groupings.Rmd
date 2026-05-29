@@ -38,7 +38,6 @@ While `bay.ta()` estimates age at the individual level, many research questions 
 We re-use here the data already used for the vignette on Chelsea 'Old church' (`vignette("worked_example")`). So, the respective MCMC data is downloaded from a `Github` repository.
 
 ```{r paths for rda-files}
-# path <- "https://github.com/ISAAKiel/Chelsea_mcmc/raw/refs/heads/main/"
 path <- "https://raw.githubusercontent.com/ISAAKiel/Chelsea_mcmc/main/"
 file <- "chelsea_complete_cal_res.Rdata"
 temp <- tempfile()
@@ -47,7 +46,6 @@ if (Sys.info()[["sysname"]] == "Darwin") {
 } else {
   download.file(paste0(path, file), destfile = temp, method = "libcurl", mode = "wb")
 }
-# download.file(paste0(path, file), destfile = temp, mode = "wb")
 con <- gzfile(temp, "rb")
 load(con)
 close(con)

@@ -3,6 +3,5 @@ bibentry(
   title = "A Fully Bayesian Approach to Adult Skeletal Age Estimation: Multivariate Latent Trait Modeling with Markov Chain Monte Carlo sampling",
   author = "Nils Müller-Scheeßel, Katharina Fuchs, Christoph Rinne",
   journal = "American Journal of Biological Anthropology",
-  year = 2026,
-  doi = "10.1002/ajpa.70289"
+  year = 2026
 )
