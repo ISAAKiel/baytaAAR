@@ -1,5 +1,5 @@
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![Codecov test coverage](https://codecov.io/gh/nmueller18/baytaAAR/graph/badge.svg)](https://app.codecov.io/gh/nmueller18/baytaAAR)
+[![Codecov test coverage](https://codecov.io/gh/ISAAKiel/baytaAAR/graph/badge.svg)](https://app.codecov.io/gh/ISAAKiel/baytaAAR)
 [![license](https://img.shields.io/badge/license-GPL%203-B50B82.svg)](https://www.r-project.org/Licenses/GPL-3)
 
 baytaAAR
