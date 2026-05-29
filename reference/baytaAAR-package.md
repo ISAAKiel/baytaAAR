@@ -1,4 +1,4 @@
-# baytaAAR: Bayesian Transition Analysis with MCMC
+# baytaAAR: Bayesian Transition Analysis with Markov Chain Monte Carlo
 
 Provides Bayesian age estimation for bioarchaeological skeletal data
 using ordinal probit regression models implemented in 'JAGS' and

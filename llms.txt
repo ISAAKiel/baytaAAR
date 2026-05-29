@@ -10,8 +10,8 @@ reflect population-level mortality trends. It accounts for estimation
 uncertainties and supports full customization of model parameters and
 MCMC settings.
 
-For further information, please have a look at the Documentation with
-several vignettes.
+For further information, please have a look at the documentation with
+several [vignettes](https://isaakiel.github.io/baytaAAR/).
 
 ## How to cite this package
 

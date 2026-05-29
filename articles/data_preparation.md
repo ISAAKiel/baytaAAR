@@ -46,7 +46,7 @@ NAs are allowed but neither rows nor columns may consist entirely of
 `NA` values. `bay.ta` will refuse to run in such cases, and the
 offending rows or columns need to be removed before analysis. Please see
 the
-[`vignette("worked_example")`](https://isaakiel.github.io/baytaAAR/articles/worked_example.md)
+[`vignette("articles/worked_example")`](https://isaakiel.github.io/baytaAAR/articles/worked_example.md)
 on Chelsea ‘Old church’ for an example of how this can be done.
 
 The levels of all traits must start at `1`. Binary traits are possible.

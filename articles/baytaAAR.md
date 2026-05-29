@@ -93,7 +93,7 @@ sorsum_as_res <- bay.ta(
   thinSteps = 100,
   seed = 1234
 )
-#> Starting Time: 29 May 2026 07:37:35
+#> Starting Time: 29 May 2026 18:45:38
 #> Defining model
 #> Building model
 #> Setting data and initial values
@@ -126,7 +126,7 @@ sorsum_as_res <- bay.ta(
 #> running chain 3...
 #> |-------------|-------------|-------------|-------------|
 #> |-------------------------------------------------------|
-#> Execution Time: 1.51 minutes
+#> Execution Time: 1.23 minutes
 ```
 
 The analysis takes about 1 minute, depending on the computer power. The
@@ -390,9 +390,9 @@ detail the model in mathematical terms
 demonstrate how data sets with known age-at-death can be dealt with
 ([`vignette("known_age")`](https://isaakiel.github.io/baytaAAR/articles/known_age.md)),
 provide a thoroughly worked example
-([`vignette("worked_example")`](https://isaakiel.github.io/baytaAAR/articles/worked_example.md))
+([`vignette("articles/worked_example")`](https://isaakiel.github.io/baytaAAR/articles/worked_example.md))
 and show how the posterior probability densities can be grouped
-([`vignette("groupings")`](https://isaakiel.github.io/baytaAAR/articles/groupings.md)).
+([`vignette("articles/groupings")`](https://isaakiel.github.io/baytaAAR/articles/groupings.md)).
 
 ------------------------------------------------------------------------
 

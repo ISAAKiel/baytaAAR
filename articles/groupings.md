@@ -35,9 +35,8 @@ burial customs or grave goods. However, the principle would be the same.
 ## Downloading the data
 
 We re-use here the data already used for the vignette on Chelsea ‘Old
-church’
-([`vignette("worked_example")`](https://isaakiel.github.io/baytaAAR/articles/worked_example.md)).
-So, the respective MCMC data is downloaded from a `Github` repository.
+church’ (`vignette("worked_example")`). So, the respective MCMC data is
+downloaded from a `Github` repository.
 
 ``` r
 
