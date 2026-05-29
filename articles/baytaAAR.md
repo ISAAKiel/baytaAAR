@@ -93,7 +93,7 @@ sorsum_as_res <- bay.ta(
   thinSteps = 100,
   seed = 1234
 )
-#> Starting Time: 28 May 2026 22:01:03
+#> Starting Time: 29 May 2026 07:37:35
 #> Defining model
 #> Building model
 #> Setting data and initial values
@@ -126,7 +126,7 @@ sorsum_as_res <- bay.ta(
 #> running chain 3...
 #> |-------------|-------------|-------------|-------------|
 #> |-------------------------------------------------------|
-#> Execution Time: 1.38 minutes
+#> Execution Time: 1.51 minutes
 ```
 
 The analysis takes about 1 minute, depending on the computer power. The

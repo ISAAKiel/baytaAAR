@@ -41,7 +41,6 @@ So, the respective MCMC data is downloaded from a `Github` repository.
 
 ``` r
 
-# path <- "https://github.com/ISAAKiel/Chelsea_mcmc/raw/refs/heads/main/"
 path <- "https://raw.githubusercontent.com/ISAAKiel/Chelsea_mcmc/main/"
 file <- "chelsea_complete_cal_res.Rdata"
 temp <- tempfile()
@@ -50,7 +49,6 @@ if (Sys.info()[["sysname"]] == "Darwin") {
 } else {
   download.file(paste0(path, file), destfile = temp, method = "libcurl", mode = "wb")
 }
-# download.file(paste0(path, file), destfile = temp, mode = "wb")
 con <- gzfile(temp, "rb")
 load(con)
 close(con)

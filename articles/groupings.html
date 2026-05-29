@@ -119,8 +119,7 @@ same.</p>
 church’ (<code><a href="../articles/worked_example.html">vignette("worked_example")</a></code>). So, the respective
 MCMC data is downloaded from a <code>Github</code> repository.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># path &lt;- "https://github.com/ISAAKiel/Chelsea_mcmc/raw/refs/heads/main/"</span></span>
-<span><span class="va">path</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/ISAAKiel/Chelsea_mcmc/main/"</span></span>
+<code class="sourceCode R"><span><span class="va">path</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/ISAAKiel/Chelsea_mcmc/main/"</span></span>
 <span><span class="va">file</span> <span class="op">&lt;-</span> <span class="st">"chelsea_complete_cal_res.Rdata"</span></span>
 <span><span class="va">temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.info.html" class="external-link">Sys.info</a></span><span class="op">(</span><span class="op">)</span><span class="op">[[</span><span class="st">"sysname"</span><span class="op">]</span><span class="op">]</span> <span class="op">==</span> <span class="st">"Darwin"</span><span class="op">)</span> <span class="op">{</span></span>
@@ -128,7 +127,6 @@ MCMC data is downloaded from a <code>Github</code> repository.</p>
 <span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">path</span>, <span class="va">file</span><span class="op">)</span>, destfile <span class="op">=</span> <span class="va">temp</span>, method <span class="op">=</span> <span class="st">"libcurl"</span>, mode <span class="op">=</span> <span class="st">"wb"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
-<span><span class="co"># download.file(paste0(path, file), destfile = temp, mode = "wb")</span></span>
 <span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">gzfile</a></span><span class="op">(</span><span class="va">temp</span>, <span class="st">"rb"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">close</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>

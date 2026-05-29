@@ -1,7 +1,6 @@
 ## baytaAAR
 
-\![baytaAAR logo is the ISAAK logo with Gompertz
-curve\]![](reference/figures/logo.png)
+![](reference/figures/logo.png)
 
 `baytaAAR` provides Bayesian age estimation for bioarchaeological
 skeletal data of human adults using ordinal probit regression models
@@ -17,12 +16,12 @@ several vignettes.
 ## How to cite this package
 
 You can cite this package like this “we estimated age-at-death of human
-adults with the baytaAAR R-package (Müller-Scheeßel et al. 2026)”. Here
+adults with the baytaAAR R-package (Müller-Scheeßel & Rinne 2026)”. Here
 is the full bibliographic reference to include in your reference list
 (don’t forget to update the ‘last accessed’ date):
 
-> N. Müller-Scheeßel, K. Fuchs, C. Rinne (2026). baytaAAR: Bayesian age
-> estimations of human adults (vers. 1.0.0).
+> N. Müller-Scheeßel & C. Rinne (2026). baytaAAR: Bayesian Transition
+> Analysis with Markov Chain Monte Carlo (vers. 1.0.0).
 > <https://github.com/ISAAKiel/baytaAAR>.
 
 ## Installation
