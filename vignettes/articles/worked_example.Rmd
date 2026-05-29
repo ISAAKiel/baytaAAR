@@ -1,6 +1,6 @@
 ---
 title: "Chelsea 'Old Church': A worked example"
-bibliography: ../inst/REFERENCES.bib
+bibliography: ../REFERENCES.bib
 ---
 
 ```{r, include = FALSE}
