@@ -52,3 +52,4 @@ VignetteBuilder: knitr
 Config/testthat/edition: 3
 URL: https://github.com/ISAAKiel/baytaAAR, https://isaakiel.github.io/baytaAAR/
 BugReports: https://github.com/ISAAKiel/baytaAAR/issues
+Config/Needs/website: rmarkdown

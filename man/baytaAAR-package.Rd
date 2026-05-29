@@ -4,7 +4,7 @@
 \name{baytaAAR-package}
 \alias{baytaAAR}
 \alias{baytaAAR-package}
-\title{baytaAAR: Bayesian Transition Analysis with MCMC}
+\title{baytaAAR: Bayesian Transition Analysis with Markov Chain Monte Carlo}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 

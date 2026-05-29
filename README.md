@@ -9,7 +9,7 @@ baytaAAR
 
 `baytaAAR` provides Bayesian age estimation for bioarchaeological skeletal data of human adults using ordinal probit regression models implemented in JAGS and NIMBLE. The package is designed to handle multiple ordinal traits and incorporates a Gompertz prior on age to reflect population-level mortality trends. It accounts for estimation uncertainties and supports full customization of model parameters and MCMC settings.
 
-For further information, please have a look at the Documentation with several vignettes.
+For further information, please have a look at the documentation with several [vignettes](https://isaakiel.github.io/baytaAAR/).
 
 
 How to cite this package

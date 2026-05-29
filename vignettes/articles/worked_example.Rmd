@@ -1,11 +1,6 @@
 ---
 title: "Chelsea 'Old Church': A worked example"
-output: rmarkdown::html_vignette
 bibliography: ../inst/REFERENCES.bib
-vignette: >
-  %\VignetteIndexEntry{Chelsea 'Old Church': A worked example}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE}
