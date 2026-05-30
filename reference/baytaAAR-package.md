@@ -6,9 +6,7 @@ using ordinal probit regression models implemented in 'JAGS' and
 adult individuals and incorporates a Gompertz prior on age to reflect
 population-level mortality. It accounts for estimation uncertainties and
 supports full customization of model parameters and Markov Chain Monte
-Carlo settings. The underlying method was introduced in Müller-Scheeßel
-et al. (2026)
-[doi:10.1002/ajpa.70289](https://doi.org/10.1002/ajpa.70289) .
+Carlo settings.
 
 ## See also
 

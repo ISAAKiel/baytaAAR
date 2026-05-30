@@ -50,7 +50,7 @@ spitalfields_res <- bay.ta(
   numSavedSteps = 100000,
   seed = 331
 )
-#> Starting Time: 29 May 2026 18:47:48
+#> Starting Time: 30 May 2026 22:59:10
 #> Defining model
 #> Building model
 #> Setting data and initial values
@@ -86,7 +86,7 @@ spitalfields_res <- bay.ta(
 #> running chain 3...
 #> |-------------|-------------|-------------|-------------|
 #> |-------------------------------------------------------|
-#> Execution Time: 3.88 minutes
+#> Execution Time: 4.24 minutes
 ```
 
 For the sake of illustration, we skip the diagnostic checks here and
