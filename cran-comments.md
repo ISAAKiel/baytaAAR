@@ -2,14 +2,13 @@
 
 0 errors | 0 warnings | 1 note
 
-* This is a new release.
+* This is a resubmission. In this version we have:
 
+- Deleted the reference to the paper <10.1002/ajpa.70289> mentioned in 
+DESCRIPTION which is accepted for publication but not yet online.
 
 ## Comments
 * The words flagged as "possibly misspelled" in DESCRIPTION are correct.
-
-* The paper <10.1002/ajpa.70289> mentioned in DESCRIPTION is accepted for
-publication but not yet online.
 
 
 ## Test environments
