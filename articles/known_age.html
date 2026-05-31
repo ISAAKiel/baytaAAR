@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">baytaAAR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -119,47 +119,10 @@ al. 2026)</span>.</p>
 <span>  method <span class="op">=</span> <span class="va">spitalfields</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span><span class="op">]</span>,</span>
 <span>  minimum_age <span class="op">=</span> <span class="fl">16</span>,</span>
 <span>  parameters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"b"</span>, <span class="st">"a"</span>, <span class="st">"beta0"</span>, <span class="st">"beta"</span>, <span class="st">"thresh"</span>, <span class="st">"age.s"</span>, <span class="st">"Ustar"</span><span class="op">)</span>,</span>
-<span>  thinSteps <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  numSavedSteps <span class="op">=</span> <span class="fl">100000</span>,</span>
+<span>  thinSteps <span class="op">=</span> <span class="fl">200</span>,</span>
+<span>  numSavedSteps <span class="op">=</span> <span class="fl">500</span>,</span>
 <span>  seed <span class="op">=</span> <span class="fl">331</span></span>
-<span><span class="op">)</span></span>
-<span><span class="co">#&gt; Starting Time: 31 May 2026 07:04:50</span></span>
-<span><span class="co">#&gt; Defining model</span></span>
-<span><span class="co">#&gt; Building model</span></span>
-<span><span class="co">#&gt; Setting data and initial values</span></span>
-<span><span class="co">#&gt; Running calculate on model</span></span>
-<span><span class="co">#&gt;   [Note] Any error reports that follow may simply reflect missing values in model variables.</span></span>
-<span><span class="co">#&gt; Checking model sizes and dimensions</span></span>
-<span><span class="co">#&gt; Checking model calculations</span></span>
-<span><span class="co">#&gt; Compiling</span></span>
-<span><span class="co">#&gt;   [Note] This may take a minute.</span></span>
-<span><span class="co">#&gt;   [Note] Use 'showCompilerOutput = TRUE' to see C++ compilation details.</span></span>
-<span><span class="co">#&gt; ===== Monitors =====</span></span>
-<span><span class="co">#&gt; thin = 1: a, age.s, b, beta, beta0, thresh, Ustar</span></span>
-<span><span class="co">#&gt; ===== Samplers =====</span></span>
-<span><span class="co">#&gt; RW_block_lkj_corr_cholesky sampler (1)</span></span>
-<span><span class="co">#&gt;   - Ustar[1:5, 1:5] </span></span>
-<span><span class="co">#&gt; RW_block sampler (180)</span></span>
-<span><span class="co">#&gt;   - ystar[]  (180 multivariate elements)</span></span>
-<span><span class="co">#&gt; RW sampler (200)</span></span>
-<span><span class="co">#&gt;   - age[]  (180 elements)</span></span>
-<span><span class="co">#&gt;   - beta[]  (5 elements)</span></span>
-<span><span class="co">#&gt;   - beta0[]  (5 elements)</span></span>
-<span><span class="co">#&gt;   - b</span></span>
-<span><span class="co">#&gt;   - thresh[]  (9 elements)</span></span>
-<span><span class="co">#&gt; Compiling</span></span>
-<span><span class="co">#&gt;   [Note] This may take a minute.</span></span>
-<span><span class="co">#&gt;   [Note] Use 'showCompilerOutput = TRUE' to see C++ compilation details.</span></span>
-<span><span class="co">#&gt; running chain 1...</span></span>
-<span><span class="co">#&gt; |-------------|-------------|-------------|-------------|</span></span>
-<span><span class="co">#&gt; |-------------------------------------------------------|</span></span>
-<span><span class="co">#&gt; running chain 2...</span></span>
-<span><span class="co">#&gt; |-------------|-------------|-------------|-------------|</span></span>
-<span><span class="co">#&gt; |-------------------------------------------------------|</span></span>
-<span><span class="co">#&gt; running chain 3...</span></span>
-<span><span class="co">#&gt; |-------------|-------------|-------------|-------------|</span></span>
-<span><span class="co">#&gt; |-------------------------------------------------------|</span></span>
-<span><span class="co">#&gt; Execution Time: 3.3 minutes</span></span></code></pre></div>
+<span><span class="op">)</span></span></code></pre></div>
 <p>For the sake of illustration, we skip the diagnostic checks here and
 move directly to the comparison with known ages-at-death. For this,
 <code>baytaAAR</code> provides several custom functions which
@@ -239,13 +202,13 @@ ignored.</p>
 <tbody>
 <tr class="odd">
 <td align="left">Bias</td>
-<td align="right">2.14</td>
+<td align="right">2.64</td>
 <td align="right">4.33</td>
-<td align="right">5.39</td>
+<td align="right">5.42</td>
 </tr>
 <tr class="even">
 <td align="left">corrPearson</td>
-<td align="right">0.65</td>
+<td align="right">0.63</td>
 <td align="right">0.67</td>
 <td align="right">0.67</td>
 </tr>
@@ -257,33 +220,33 @@ ignored.</p>
 </tr>
 <tr class="even">
 <td align="left">Residual_slope</td>
-<td align="right">0.29</td>
+<td align="right">0.31</td>
 <td align="right">0.39</td>
 <td align="right">0.47</td>
 </tr>
 <tr class="odd">
 <td align="left">Inaccuracy</td>
-<td align="right">12.39</td>
-<td align="right">11.18</td>
-<td align="right">11.20</td>
+<td align="right">12.52</td>
+<td align="right">11.21</td>
+<td align="right">11.19</td>
 </tr>
 <tr class="even">
 <td align="left">RMSE</td>
-<td align="right">15.53</td>
-<td align="right">14.26</td>
+<td align="right">15.88</td>
+<td align="right">14.28</td>
 <td align="right">14.06</td>
 </tr>
 <tr class="odd">
 <td align="left">TMNLP</td>
-<td align="right">4.55</td>
-<td align="right">4.55</td>
-<td align="right">4.55</td>
+<td align="right">4.95</td>
+<td align="right">4.95</td>
+<td align="right">4.95</td>
 </tr>
 <tr class="even">
 <td align="left">CRPS</td>
-<td align="right">8.01</td>
-<td align="right">8.01</td>
-<td align="right">8.01</td>
+<td align="right">8.03</td>
+<td align="right">8.03</td>
+<td align="right">8.03</td>
 </tr>
 </tbody>
 </table>
@@ -320,51 +283,51 @@ given credibility levels:</p>
 <tbody>
 <tr class="odd">
 <td align="right">0.50</td>
-<td align="right">89</td>
-<td align="right">0.494</td>
-<td align="right">0.419</td>
-<td align="right">0.570</td>
-<td align="right">0.941</td>
+<td align="right">80</td>
+<td align="right">0.444</td>
+<td align="right">0.371</td>
+<td align="right">0.520</td>
+<td align="right">0.157</td>
 </tr>
 <tr class="even">
 <td align="right">0.60</td>
-<td align="right">102</td>
-<td align="right">0.567</td>
-<td align="right">0.491</td>
-<td align="right">0.640</td>
-<td align="right">0.362</td>
+<td align="right">99</td>
+<td align="right">0.550</td>
+<td align="right">0.474</td>
+<td align="right">0.624</td>
+<td align="right">0.172</td>
 </tr>
 <tr class="odd">
 <td align="right">0.70</td>
-<td align="right">119</td>
-<td align="right">0.661</td>
-<td align="right">0.587</td>
-<td align="right">0.730</td>
-<td align="right">0.256</td>
+<td align="right">122</td>
+<td align="right">0.678</td>
+<td align="right">0.604</td>
+<td align="right">0.745</td>
+<td align="right">0.516</td>
 </tr>
 <tr class="even">
 <td align="right">0.80</td>
-<td align="right">141</td>
-<td align="right">0.783</td>
-<td align="right">0.716</td>
-<td align="right">0.841</td>
-<td align="right">0.576</td>
+<td align="right">137</td>
+<td align="right">0.761</td>
+<td align="right">0.692</td>
+<td align="right">0.821</td>
+<td align="right">0.192</td>
 </tr>
 <tr class="odd">
 <td align="right">0.90</td>
-<td align="right">157</td>
-<td align="right">0.872</td>
-<td align="right">0.814</td>
-<td align="right">0.917</td>
-<td align="right">0.213</td>
+<td align="right">158</td>
+<td align="right">0.878</td>
+<td align="right">0.821</td>
+<td align="right">0.922</td>
+<td align="right">0.319</td>
 </tr>
 <tr class="even">
 <td align="right">0.95</td>
-<td align="right">169</td>
-<td align="right">0.939</td>
-<td align="right">0.893</td>
-<td align="right">0.969</td>
-<td align="right">0.491</td>
+<td align="right">166</td>
+<td align="right">0.922</td>
+<td align="right">0.873</td>
+<td align="right">0.957</td>
+<td align="right">0.088</td>
 </tr>
 </tbody>
 </table>

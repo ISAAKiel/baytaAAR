@@ -46,47 +46,10 @@ spitalfields_res <- bay.ta(
   method = spitalfields[,c(2:6)],
   minimum_age = 16,
   parameters = c("b", "a", "beta0", "beta", "thresh", "age.s", "Ustar"),
-  thinSteps = 1,
-  numSavedSteps = 100000,
+  thinSteps = 200,
+  numSavedSteps = 500,
   seed = 331
 )
-#> Starting Time: 31 May 2026 07:04:50
-#> Defining model
-#> Building model
-#> Setting data and initial values
-#> Running calculate on model
-#>   [Note] Any error reports that follow may simply reflect missing values in model variables.
-#> Checking model sizes and dimensions
-#> Checking model calculations
-#> Compiling
-#>   [Note] This may take a minute.
-#>   [Note] Use 'showCompilerOutput = TRUE' to see C++ compilation details.
-#> ===== Monitors =====
-#> thin = 1: a, age.s, b, beta, beta0, thresh, Ustar
-#> ===== Samplers =====
-#> RW_block_lkj_corr_cholesky sampler (1)
-#>   - Ustar[1:5, 1:5] 
-#> RW_block sampler (180)
-#>   - ystar[]  (180 multivariate elements)
-#> RW sampler (200)
-#>   - age[]  (180 elements)
-#>   - beta[]  (5 elements)
-#>   - beta0[]  (5 elements)
-#>   - b
-#>   - thresh[]  (9 elements)
-#> Compiling
-#>   [Note] This may take a minute.
-#>   [Note] Use 'showCompilerOutput = TRUE' to see C++ compilation details.
-#> running chain 1...
-#> |-------------|-------------|-------------|-------------|
-#> |-------------------------------------------------------|
-#> running chain 2...
-#> |-------------|-------------|-------------|-------------|
-#> |-------------------------------------------------------|
-#> running chain 3...
-#> |-------------|-------------|-------------|-------------|
-#> |-------------------------------------------------------|
-#> Execution Time: 3.3 minutes
 ```
 
 For the sake of illustration, we skip the diagnostic checks here and
@@ -153,14 +116,14 @@ summary_mat |> t() |> knitr::kable(digits = 2)
 
 |                |  Mode | Median |  Mean |
 |:---------------|------:|-------:|------:|
-| Bias           |  2.14 |   4.33 |  5.39 |
-| corrPearson    |  0.65 |   0.67 |  0.67 |
+| Bias           |  2.64 |   4.33 |  5.42 |
+| corrPearson    |  0.63 |   0.67 |  0.67 |
 | corr_p         |  0.00 |   0.00 |  0.00 |
-| Residual_slope |  0.29 |   0.39 |  0.47 |
-| Inaccuracy     | 12.39 |  11.18 | 11.20 |
-| RMSE           | 15.53 |  14.26 | 14.06 |
-| TMNLP          |  4.55 |   4.55 |  4.55 |
-| CRPS           |  8.01 |   8.01 |  8.01 |
+| Residual_slope |  0.31 |   0.39 |  0.47 |
+| Inaccuracy     | 12.52 |  11.21 | 11.19 |
+| RMSE           | 15.88 |  14.28 | 14.06 |
+| TMNLP          |  4.95 |   4.95 |  4.95 |
+| CRPS           |  8.03 |   8.03 |  8.03 |
 
 As the above table shows, it can make quite a difference which mean
 measures `Mean` (= arithmetic mean), `Median` or `Mode` is chosen for
@@ -190,12 +153,12 @@ sequential.binom.test(spitalfields_res,
 
 | coverage | n_in |  perc | CI_low | CI_up | p_value |
 |---------:|-----:|------:|-------:|------:|--------:|
-|     0.50 |   89 | 0.494 |  0.419 | 0.570 |   0.941 |
-|     0.60 |  102 | 0.567 |  0.491 | 0.640 |   0.362 |
-|     0.70 |  119 | 0.661 |  0.587 | 0.730 |   0.256 |
-|     0.80 |  141 | 0.783 |  0.716 | 0.841 |   0.576 |
-|     0.90 |  157 | 0.872 |  0.814 | 0.917 |   0.213 |
-|     0.95 |  169 | 0.939 |  0.893 | 0.969 |   0.491 |
+|     0.50 |   80 | 0.444 |  0.371 | 0.520 |   0.157 |
+|     0.60 |   99 | 0.550 |  0.474 | 0.624 |   0.172 |
+|     0.70 |  122 | 0.678 |  0.604 | 0.745 |   0.516 |
+|     0.80 |  137 | 0.761 |  0.692 | 0.821 |   0.192 |
+|     0.90 |  158 | 0.878 |  0.821 | 0.922 |   0.319 |
+|     0.95 |  166 | 0.922 |  0.873 | 0.957 |   0.088 |
 
 In the table above, for all levels the confidence intervals of the
 observed *coverage* include the expected *coverage*. Thus, this result

@@ -79,10 +79,10 @@ We will now run a first analysis with
 [`bay.ta()`](https://isaakiel.github.io/baytaAAR/reference/bay.ta.md)
 with the Sorsum data. We will leave most parameters at the default
 values and only change the minimum age to `18` and the thinning interval
-(`thinsteps`) to `100`. This number is multiplied with the number of
-saved steps (`10000` by default) and the result divided by the number of
-chains (default = 3) to obtain the total number of iterations, minus the
-number of iterations used for burning-in. We also set a seed for
+(`thinsteps`) to `1000`. This number is multiplied with the number of
+saved steps (`1000`) and the result divided by the number of chains
+(default = 3) to obtain the total number of iterations, minus the number
+of iterations used for burning-in. We also set a seed for
 reproducibility.
 
 ``` r
@@ -90,10 +90,11 @@ reproducibility.
 sorsum_as_res <- bay.ta(
   method = sorsum_as[,2],
   minimum_age = 18,
-  thinSteps = 100,
+  thinSteps = 1000,
+  numSavedSteps = 1000,
   seed = 1234
 )
-#> Starting Time: 31 May 2026 07:03:03
+#> Starting Time: 31 May 2026 20:51:44
 #> Defining model
 #> Building model
 #> Setting data and initial values
@@ -126,7 +127,7 @@ sorsum_as_res <- bay.ta(
 #> running chain 3...
 #> |-------------|-------------|-------------|-------------|
 #> |-------------------------------------------------------|
-#> Execution Time: 1.09 minutes
+#> Execution Time: 1.39 minutes
 ```
 
 The analysis takes about 1 minute, depending on the computer power. The
@@ -151,16 +152,16 @@ sorsum_as_res_diag |> head(10) |> knitr::kable(digits = 4)
 
 |  | PSRF Point est. | PSRF Upper C.I. | Mean | Median | Mode | ESS | MCSE | HDImass | HDIlow | HDIhigh |
 |:---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| M | 1.0099 | 1.0334 | 55.3712 | 60.4173 | 71.4011 | 807.4 | 0.6745 | 0.95 | 15.7587 | 81.9340 |
-| a | 1.0103 | 1.0351 | 0.0092 | 0.0072 | 0.0023 | 795.6 | 0.0003 | 0.95 | 0.0002 | 0.0235 |
-| age.s\[1\] | 1.0070 | 1.0185 | 45.0687 | 43.3574 | 39.0836 | 896.1 | 0.4287 | 0.95 | 23.4513 | 70.2791 |
-| age.s\[2\] | 1.0059 | 1.0191 | 57.8226 | 57.4594 | 53.4649 | 977.5 | 0.4269 | 0.95 | 33.4074 | 83.0358 |
-| age.s\[3\] | 1.0093 | 1.0318 | 82.7442 | 83.7908 | 85.3527 | 1788.0 | 0.2275 | 0.95 | 65.1592 | 99.9859 |
-| age.s\[4\] | 1.0101 | 1.0291 | 45.0537 | 43.6533 | 38.6658 | 916.2 | 0.4277 | 0.95 | 22.4667 | 70.0227 |
-| age.s\[5\] | 1.0095 | 1.0336 | 66.9647 | 67.0932 | 65.2070 | 1112.1 | 0.3543 | 0.95 | 44.0615 | 88.9595 |
-| age.s\[6\] | 1.0077 | 1.0134 | 33.4189 | 30.8381 | 26.5628 | 1037.3 | 0.3355 | 0.95 | 18.0274 | 54.7704 |
-| age.s\[7\] | 1.0089 | 1.0302 | 73.2311 | 73.7746 | 76.1753 | 1296.6 | 0.3081 | 0.95 | 50.7935 | 93.0637 |
-| age.s\[8\] | 1.0073 | 1.0178 | 45.1912 | 43.5342 | 38.8988 | 899.7 | 0.4299 | 0.95 | 23.2491 | 70.3786 |
+| M | 1.0235 | 1.0748 | 55.4075 | 60.1760 | 70.5845 | 620.9 | 0.7614 | 0.95 | 17.1554 | 81.7739 |
+| a | 1.0226 | 1.0740 | 0.0091 | 0.0073 | 0.0029 | 621.7 | 0.0003 | 0.95 | 0.0002 | 0.0231 |
+| age.s\[1\] | 1.0086 | 1.0309 | 45.1235 | 43.6152 | 40.7268 | 708.6 | 0.4788 | 0.95 | 20.8396 | 67.7356 |
+| age.s\[2\] | 1.0041 | 1.0208 | 57.7845 | 57.2079 | 53.0281 | 666.3 | 0.5238 | 0.95 | 31.7521 | 81.9953 |
+| age.s\[3\] | 1.0341 | 1.1155 | 82.9289 | 83.5910 | 82.9695 | 860.7 | 0.3295 | 0.95 | 65.2826 | 99.9182 |
+| age.s\[4\] | 1.0123 | 1.0340 | 45.6070 | 44.4307 | 38.5401 | 647.7 | 0.5230 | 0.95 | 20.6297 | 70.8874 |
+| age.s\[5\] | 1.0088 | 1.0322 | 67.1531 | 67.3303 | 72.0938 | 528.2 | 0.5269 | 0.95 | 44.4429 | 90.0163 |
+| age.s\[6\] | 1.0083 | 1.0162 | 33.2717 | 30.7858 | 24.9060 | 627.2 | 0.4364 | 0.95 | 18.0831 | 55.3287 |
+| age.s\[7\] | 1.0063 | 1.0238 | 73.2174 | 74.1248 | 74.9703 | 711.1 | 0.4262 | 0.95 | 52.1496 | 94.1982 |
+| age.s\[8\] | 1.0015 | 1.0061 | 45.0487 | 43.3770 | 35.5461 | 671.8 | 0.4876 | 0.95 | 24.6571 | 70.3490 |
 
 The diagnostic table gives a first impression of the result, above the
 first ten rows are shown.
@@ -176,7 +177,7 @@ value should be below `1.1`, and the ESS value larger than `10,000`
 
 diagnostics.max.min(sorsum_as_res_diag)
 #>   PSRF_max PSRF_upper_max ESS_min
-#> 1 1.070522       1.223944    39.7
+#> 1 1.070302       1.228565      33
 ```
 
 From the output of
@@ -222,14 +223,14 @@ case, but not so on the right panel, again for the `beta` parameter
 (please note the difference in scale of the y-axis!). This therefore
 also indicates that more iterations are required.
 
-From the minimum ESS value of around 40 (see above), it can be surmised
-that roughly 250 times more iterations are needed to get to a value of
+From the minimum ESS value of around 25 (see above), it can be surmised
+that roughly 400 times more iterations are needed to get to a value of
 10,000. This would increase runtime proportionally (approximately
 200–250 minutes, equaling about 4 hours). However, because the resulting
-file would also be 250 times larger, some degree of thinning is
-necessary, so saving only, say, every 100th step (= thinning of 100).
-This in turn might increase autocorrelation which in turn will force you
-to run the model even longer.
+file would also be 400 times larger, some degree of thinning is
+necessary, so saving only, say, every 10,000th step (= thinning of
+10,000). This in turn might increase autocorrelation which in turn will
+force you to run the model even longer.
 
 In the current vignette, we forego this step at the moment. Instead, we
 inspect the seven thresholds between the eight levels. For this, we use
@@ -255,9 +256,9 @@ thresh_diag <- diagnostic.summary(thresholds)
 threshold.matrix(thresh_diag) |> data.frame() |> knitr::kable(digits = 1)
 ```
 
-|  X1 |  X2 |   X3 |   X4 |   X5 |   X6 |   X7 |
-|----:|----:|-----:|-----:|-----:|-----:|-----:|
-|  18 |  21 | 29.1 | 41.5 | 69.9 | 73.6 | 84.3 |
+|  X1 |   X2 |   X3 |   X4 |   X5 |   X6 |   X7 |
+|----:|-----:|-----:|-----:|-----:|-----:|-----:|
+|  18 | 21.5 | 29.3 | 49.4 | 70.4 | 76.8 | 83.8 |
 
 The thresholds of this trait (auricular surface) are unevenly spaced
 within the age range of 18 and 100 years. The probability distribution
@@ -295,11 +296,11 @@ age.estim.summary(sorsum_as_res_diag) |> knitr::kable(digits = 3)
 
 |          |   Mean | Median |   Mode |  0.025 |  0.975 |
 |:---------|-------:|-------:|-------:|-------:|-------:|
-| b        |  0.044 |  0.041 |  0.033 |  0.020 |  0.076 |
-| a        |  0.009 |  0.007 |  0.002 |  0.000 |  0.024 |
-| M        | 55.371 | 60.417 | 71.401 | 15.759 | 81.934 |
-| age_mean | 56.409 | 57.758 | 58.033 | 24.069 | 82.775 |
-| hdi_diff | 42.193 | 45.130 | 47.300 | 17.981 | 49.649 |
+| b        |  0.044 |  0.041 |  0.029 |  0.020 |  0.075 |
+| a        |  0.009 |  0.007 |  0.003 |  0.000 |  0.023 |
+| M        | 55.407 | 60.176 | 70.585 | 17.155 | 81.774 |
+| age_mean | 56.467 | 57.851 | 58.185 | 23.859 | 82.933 |
+| hdi_diff | 41.918 | 45.582 | 46.995 | 17.680 | 50.300 |
 
 The above table demonstrates that it makes a difference whether you
 choose `Mean`, `Median` or `Mode` as the measure of the mean.
@@ -372,6 +373,7 @@ sorsum_as_res <- bay.ta(
   method = sorsum_as[,2],
   minimum_age = 18,
   thinSteps = 100,
+  numSavedSteps = 5000,
   seed = 1234
 )
 ```
