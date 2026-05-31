@@ -4,8 +4,10 @@
 
 * This is a resubmission. In this version we have:
 
-- Deleted the reference to the paper <10.1002/ajpa.70289> mentioned in 
-DESCRIPTION which is accepted for publication but not yet online.
+- reduced the time to generate the vignettes substantially by providing
+pre-computed results and reducing the number of iterations. win-devel now
+reports 6 minutes for checking the package.
+
 
 ## Comments
 * The words flagged as "possibly misspelled" in DESCRIPTION are correct.

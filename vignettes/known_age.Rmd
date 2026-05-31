@@ -30,7 +30,7 @@ Buckberry and Chamberlain introduced a new scoring system of the *pubic symphysi
 
 For running the model, we use NIMBLE and the multivariate normal likelihood (`mnorm`). In a real-life setting, `multicore` should be set to `TRUE` to reduce computation time. Still, even on modern hardware, the model will run for up to several weeks until the usual quality criteria are met. However, already a shorter run demonstrates the principle [for the full run see the results in @ref_299013].
 
-```{r spitalfields bayta, echo = TRUE}
+```{r spitalfields bayta, echo = TRUE, eval=FALSE }
 spitalfields_res <- bay.ta(
   framework = "NIMBLE",
   algorithm = "mnorm",
@@ -38,8 +38,8 @@ spitalfields_res <- bay.ta(
   method = spitalfields[,c(2:6)],
   minimum_age = 16,
   parameters = c("b", "a", "beta0", "beta", "thresh", "age.s", "Ustar"),
-  thinSteps = 1,
-  numSavedSteps = 100000,
+  thinSteps = 200,
+  numSavedSteps = 500,
   seed = 331
 )
 ```
@@ -63,6 +63,11 @@ As the name suggests, the function `age.comp.summary()` summarizes standard qual
 For nearly all measures, lower is better. The only exception is `corrPearson` where larger is better. Because the differences are squared with the `RMSE`, outliers influence this measure more strongly than this is the case for `Inaccuracy`, and therefore, the former tends to be higher than the latter. A similar relationship exists between `CRPS` and `TMNLP`. Overall, Müller-Scheeßel et al. found that the `CRPS` seems to be more informative than the `TMNLP` and, therefore, the `CRPS` is probably the most informative and single best measure to compare the results between different age estimation methods in terms of their quality to 'predict' age-at-death.
 
 `age.comp.summary()` assumes that you choose one of the point estimates `Mode`, `Median`, `Mean` but in the code snippet below we demonstrate how all three measures can be computed and tabulated in one go. `age.comp.summary()` expects the raw output from `bay.ta()` as well as a vector of known age-at-death. The latter may contain `NAs`, these are subsequently simply ignored.
+
+
+```{r load spitalfields_res, echo = FALSE}
+spitalfields_res <- baytaAAR:::spitalfields_res
+```
 
 ```{r spitalfields age.estimate.summary, echo = TRUE}
 summary_list <- lapply(c("Mode", "Median", "Mean"), function(choice) {

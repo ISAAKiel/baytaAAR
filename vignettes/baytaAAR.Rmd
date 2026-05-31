@@ -220,13 +220,14 @@ Level 5 is the most numerous while levels 1 and 2 are only present once each. Mo
 
 ## Running a first analysis
 
-We will now run a first analysis with `bay.ta()` with the Sorsum data. We will leave most parameters at the default values and only change the minimum age to `18` and the thinning interval (`thinsteps`) to `100`. This number is multiplied with the number of saved steps (`10000` by default) and the result divided by the number of chains (default = 3) to obtain the total number of iterations, minus the number of iterations used for burning-in. We also set a seed for reproducibility.
+We will now run a first analysis with `bay.ta()` with the Sorsum data. We will leave most parameters at the default values and only change the minimum age to `18` and the thinning interval (`thinsteps`) to `1000`. This number is multiplied with the number of saved steps (`1000`) and the result divided by the number of chains (default = 3) to obtain the total number of iterations, minus the number of iterations used for burning-in. We also set a seed for reproducibility.
 
 ```{r sorsum analysis, echo = TRUE}
 sorsum_as_res <- bay.ta(
   method = sorsum_as[,2],
   minimum_age = 18,
-  thinSteps = 100,
+  thinSteps = 1000,
+  numSavedSteps = 1000,
   seed = 1234
 )
 ```
@@ -265,7 +266,7 @@ coda::gelman.plot(sorsum_as_res[, c("b", "beta[1]")])
 
 Ideally, the value of the PSRF should converge to `1`, but stay below `1.1`. On the left panel for the parameter `b`, this is clearly the case, but not so on the right panel, again for the `beta` parameter (please note the difference in scale of the y-axis!). This therefore also indicates that more iterations are required.
 
-From the minimum ESS value of around 40 (see above), it can be surmised that roughly 250 times more iterations are needed to get to a value of 10,000. This would increase runtime proportionally (approximately 200--250 minutes, equaling about 4 hours). However, because the resulting file would also be 250 times larger, some degree of thinning is necessary, so saving only, say, every 100th step (= thinning of 100). This in turn might increase autocorrelation which in turn will force you to run the model even longer.
+From the minimum ESS value of around 25 (see above), it can be surmised that roughly 400 times more iterations are needed to get to a value of 10,000. This would increase runtime proportionally (approximately 200--250 minutes, equaling about 4 hours). However, because the resulting file would also be 400 times larger, some degree of thinning is necessary, so saving only, say, every 10,000th step (= thinning of 10,000). This in turn might increase autocorrelation which in turn will force you to run the model even longer.
 
 In the current vignette, we forego this step at the moment. Instead, we inspect the seven thresholds between the eight levels. For this, we use the internal function `threshold.chains()` to compute the threshold values for each iteration. The computation of the thresholds on the age-scale is done outside of the MCMC simulation to reduce computational cost and memory usage. The function returns a `coda::mcmc.list()` which is further processed with first `diagnostic.summary()` and then `threshold.matrix()`. The latter is again a convenience function to extract mean thresholds values from the output of `diagnostic.summary()` which is particularly handy when dealing with several traits.
 
@@ -334,6 +335,7 @@ sorsum_as_res <- bay.ta(
   method = sorsum_as[,2],
   minimum_age = 18,
   thinSteps = 100,
+  numSavedSteps = 5000,
   seed = 1234
 )
 ```
